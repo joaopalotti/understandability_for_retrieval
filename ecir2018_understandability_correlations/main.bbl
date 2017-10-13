@@ -1,0 +1,132 @@
+\begin{thebibliography}{10}
+
+\bibitem{atcherson14readability}
+S.~R. Atcherson, A.~E. DeLaune, K.~Hadden, R.~I. Zraick, R.~J. Kelly-Campbell,
+  and C.~P. Minaya.
+\newblock A computer-based readability analysis of consumer materials on the
+  american speech-language-hearing association website.
+\newblock {\em Contemporary Issues in Communication Science \& Disorders}, 41,
+  2014.
+
+\bibitem{lix}
+C.~H. Björnsson.
+\newblock Readability of newspapers in 11 languages.
+\newblock {\em Reading Research Quarterly}, 18(4):480--497, 1983.
+
+\bibitem{cli75}
+M.~Coleman and T.~L. Liau.
+\newblock {A Computer Readability Formula Designed for Machine Scoring}.
+\newblock {\em Journal of Applied Psychology}, 1975.
+
+\bibitem{collins2014computational}
+K.~Collins-Thompson.
+\newblock Computational assessment of text readability: A survey of current and
+  future research.
+\newblock {\em ITL-International Journal of Applied Linguistics},
+  165(2):97--135, 2014.
+
+\bibitem{dale48}
+E.~Dale and J.~S. Chall.
+\newblock A formula for predicting readability: Instructions.
+\newblock {\em Educational Research Bulletin}, 27(2):37--54, 1948.
+
+\bibitem{fitzsimmons2010readability}
+P.~Fitzsimmons, B.~Michael, J.~Hulley, and G.~Scott.
+\newblock A readability assessment of online parkinson's disease information.
+\newblock {\em The journal of the Royal College of Physicians of Edinburgh},
+  40(4):292--296, 2010.
+
+\bibitem{graber99readability}
+M.~A. Graber, C.~M. Roller, and B.~Kaeble.
+\newblock Readability levels of patient education material on the world wide
+  web.
+\newblock {\em Journal of Family Practice}, 48(1):58--59, 1999.
+
+\bibitem{gunning52}
+R.~Gunning.
+\newblock {\em {The Technique of Clear Writing}}.
+\newblock McGraw-Hill, 1952.
+
+\bibitem{flesch75}
+J.~Kincaid, R.~Fishburne, R.~Rogers, and B.~Chissom.
+\newblock {\em {Derivation of New Readability Formulas for Navy Enlisted
+  Personnel}}.
+\newblock National Technical Information Service, 1975.
+
+\bibitem{smog69}
+G.~H. McLaughlin.
+\newblock {SMOG Grading - a New Readability Formula}.
+\newblock {\em Journal of Reading}, 1969.
+
+\bibitem{meillier17readability}
+A.~Meillier and S.~Patel.
+\newblock Readability of healthcare literature for gastroparesis and evaluation
+  of medical terminology in reading difficulty.
+\newblock {\em Gastroenterology Research}, 10(1):1--5, 2017.
+
+\bibitem{palotti16b}
+J.~Palotti, G.~Zuccon, J.~Bernhardt, A.~Hanbury, and L.~Goeuriot.
+\newblock {Assessors Agreement: A Case Study across Assessor Type, Payment
+  Levels, Query Variations and Relevance Dimensions}.
+\newblock In {\em Experimental IR Meets Multilinguality, Multimodality, and
+  Interaction: 7th International Conference of the CLEF Association, CLEF'16
+  Proceedings}. Springer International Publishing, 2016.
+
+\bibitem{clef15}
+J.~Palotti, G.~Zuccon, L.~Goeuriot, L.~Kelly, A.~Hanbury, G.~J.~F. Jones,
+  M.~Lupu, and P.~Pecina.
+\newblock {ShARe/CLEF eHealth Evaluation Lab 2015, Task 2: User-centred Health
+  Information Retrieval}.
+\newblock In {\em Working Notes for {CLEF} 2015 Conference, Toulouse, France,
+  September 8-11, 2015.}, 2015.
+
+\bibitem{patel13readability}
+C.~R. Patel, D.~V. Cherla, S.~Sanghvi, S.~Baredes, and J.~A. Eloy.
+\newblock Readability assessment of online thyroid surgery patient education
+  materials.
+\newblock {\em Head \& neck}, 35(10):1421--1425, 2013.
+
+\bibitem{ari67}
+E.~A. Smith and R.~J. Senter.
+\newblock {\em {Automated Readability Index}}.
+\newblock AMRL-TR-66-220. Aerospace Medical Research Laboratories, 1967.
+
+\bibitem{soldaini15}
+L.~Soldaini, A.~Cohan, A.~Yates, N.~Goharian, and O.~Frieder.
+\newblock {\em Retrieving Medical Literature for Clinical Decision Support},
+  pages 538--549.
+\newblock Springer International Publishing, 2015.
+
+\bibitem{wiener2013readability}
+R.~C. Wiener and R.~Wiener-Pla.
+\newblock Literacy, pregnancy and potential oral health changes: The internet
+  and readability levels.
+\newblock {\em Maternal and child health journal}, 18(3):657--662, 2014.
+
+\bibitem{yan11}
+X.~Yan, R.~Y. Lau, D.~Song, X.~Li, and J.~Ma.
+\newblock Toward a semantic granularity model for domain-specific information
+  retrieval.
+\newblock {\em ACM Transactions on Information Systems}, 29(3):15:1--15:46,
+  July 2011.
+
+\bibitem{zeng06}
+Q.~T. Zeng and T.~Tse.
+\newblock Exploring and developing consumer health vocabularies.
+\newblock {\em Journal of the American Medical Informatics Association},
+  13(1):24--29, 2006.
+
+\bibitem{zhou2006}
+W.~Zhou, V.~Torvik, and N.~Smalheiser.
+\newblock Adam: Another database of abbreviations in medline.
+\newblock {\em Bioinformatics}, 22(22):2813--2818, 2006.
+
+\bibitem{clef16}
+G.~Zuccon, J.~Palotti, L.~Goeuriot, L.~Kelly, M.~Lupu, P.~Pecina, H.~Mueller,
+  J.~Budaher, and A.~Deacon.
+\newblock {The IR Task at the CLEF eHealth evaluation lab 2016: user-centred
+  health information retrieval}.
+\newblock In {\em {CLEF 2016-Conference and Labs of the Evaluation Forum}},
+  volume 1609, pages 15--27, 2016.
+
+\end{thebibliography}
