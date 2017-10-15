@@ -314,65 +314,32 @@ The bottom part of Table~\ref{tab:comparison_preprocessing} shows the comparison
 \input{tab_comparison_preprocessing}
 %
 
-%\section{Going Beyond Readability Measures}
+\section{Experimenting with Understandability}
+\label{sec:experiments}
 
-%\begin{tabular}{lrlr}
-%\toprule
-%                                    Feature & Chi2 Value &  Features & MI Value \\
-%\midrule
-%     number\_chars\_nopreprocess &  3.99e+06 &                                   chv\_mean\_jst   &  0.1165 \\
-%              number\_chars\_jst &  3.46e+06 &                      dale\_chall\_score\_jst\_fp   &  0.1090 \\
-%              number\_chars\_bs4 &  2.90e+06 &              difficult\_words\_per\_word\_jst\_fp  &  0.1065 \\
-% number\_syllables\_nopreprocess &  1.22e+06 &             difficult\_words\_per\_word\_jst\_nfp  &  0.1050 \\
-%          number\_syllables\_jst &  1.11e+06 &                    coleman\_liau\_index\_jst\_fp   &  0.1030 \\
-%          number\_syllables\_bs4 &  9.44e+05 &            number\_syllables\_per\_word\_jst\_nfp  &  0.0967 \\
-%     number\_words\_nopreprocess &  7.24e+05 &             number\_syllables\_per\_word\_jst\_fp  &  0.0965 \\
-%              number\_words\_jst &  6.07e+05 &                   longer\_10\_per\_word\_jst\_nfp  &  0.0957 \\
-%       eng\_found\_nopreprocess &  5.50e+05 &                    longer\_10\_per\_word\_jst\_fp  &  0.0952 \\
-%             number\_words\_bs4 &  5.21e+05 &                        chv\_mean\_nopreprocess     &  0.0931 \\
-%                eng\_found\_jst &  4.68e+05 &                     dale\_chall\_score\_jst\_nfp   &  0.0930 \\
-%  difficult\_words\_nopreprocess &  4.43e+05 &                    longer\_6\_per\_word\_jst\_nfp  &  0.0912 \\
-%                 eng\_found\_bs4 &  3.96e+05 &                     longer\_6\_per\_word\_jst\_fp  &  0.0903 \\
-%           difficult\_words\_jst &  3.67e+05 &                   flesch\_reading\_ease\_jst\_fp   &  0.0901 \\
-%         longer\_4\_nopreprocess &  3.38e+05 &                  flesch\_reading\_ease\_jst\_nfp   &  0.0895 \\
-%                  longer\_4\_jst &  3.33e+05 &               longer\_10\_per\_sentence\_jst\_nfp  &  0.0854 \\
-%           difficult\_words\_bs4 &  3.30e+05 &                   coleman\_liau\_index\_jst\_nfp   &  0.0839 \\
-%  stopwords\_found\_nopreprocess &  2.98e+05 &                            lix\_index\_jst\_nfp    &  0.0837 \\
-%                n\_chv\_concepts &  2.82e+05 &         difficult\_words\_per\_sentence\_jst\_nfp  &  0.0822 \\
-%                  longer\_4\_bs4 &  2.75e+05 &   number\_polysyllable\_words\_per\_word\_jst\_nfp &  0.0815 \\ 
-%\bottomrule
-%\end{tabular}
+The data use made our analysis here was also used in the Information Retrieval branch of CLEF eHealth.
+We focus our attention to the CLEF eHealth 2016 campaign leaving 2015 experiments offline\footnote{Link to experiments will be available upon acceptance of this manuscript}.
 
-%\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
-%\hline 
-%\multirow{2}{*}{Feature Group} & \multicolumn{3}{c|}{Chi} & \multicolumn{3}{c|}{Multual Information} & \multicolumn{3}{c|}{Goodman Kruskal}\tabularnewline
-%\cline{2-10} 
-% & Top 10 & Top 20 & Top50 & Top 10 & Top 20 & Top 50 & Top 10 & Top 20 & Top 50\tabularnewline
-%\hline 
-%Justext &  &  & 6 &  &  &  &  &  & \tabularnewline
-%\hline 
-%BS4 &  &  & 6 &  &  &  &  &  & \tabularnewline
-%\hline 
-%No Preprocessing &  &  & 7 &  &  &  &  &  & \tabularnewline
-%\hline 
-%Force Period &  &  & 0 &  &  &  &  &  & \tabularnewline
-%\hline 
-%Do Not Force Period &  &  & 0 &  &  &  &  &  & \tabularnewline
-%\hline 
-%HTML Features &  &  &  &  &  &  &  &  & \tabularnewline
-%\hline 
-%Readability Features &  &  &  &  &  &  &  &  & \tabularnewline
-%\hline 
-% &  &  &  &  &  &  &  &  & \tabularnewline
-%\hline 
-%\end{tabular}
-%
+We start by the defining the evaluation measure that we will use here. 
+In CLEF eHealth campaign, organizers used a modification of RBP which ties together the relevance of a document with any other relevance dimension, in this case in particular, with understandability.
+Mathematically, it consists in adding an understandability factor to the RBP formula, as shown:
+\todo{add formula here}
 
-%\section{Discussion}
-%\label{sec:discussion}
+The drawback of such evaluation metric is that we cannot separately evaluate each dimension. We propose, instead, to separately evaluate a ranking list with respect to its topical relevance and its understandability:
+\begin{itemize}
+        \item P@10r: a document is topically relevant if assessed as somewhat relevant or highly relevant. This metric counts the number of relevant documents in the top 10 documents of a ranked list.
+        \item P@10u: a document is relevant for this metric if the understandability score is smaller than a threshold $U$. Like P@10r, we count the number of relevant documents in the first 10 docs of a ranked list. We use $U = 40$ in our experiments. \todo{I decided to use this threshold based on the data. I will need to add a figure to support this clam, I think.}
+\end{itemize}
+
+During the campaign, organizers opt to use shallow pools and focus on highly ranked documents, using P@10r as one official metric for topical relevance.
+It makes our choice of metric natural. Likewise it is traditionally done with F measure, we combine P@10r and P@10u with an harmonic mean: $F_ru = 2 \times \frac{P@10r \times P@10u}{P@10r + P@10u}$
 
 
-\section{Summary}
+\input{tab_experiments}
+
+
+
+\section{Conclusion}
 \label{sec:conclusion_doc_analysis}
 
 There is an abundance of factors that affect how readability is perceived by users. 
