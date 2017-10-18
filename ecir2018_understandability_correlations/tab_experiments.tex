@@ -2,6 +2,8 @@
 \caption{Reports on the experiments with 4 base runs: the top 3 runs of CLEF eHealth 2017 and a plain baseline run. The second (indices 5-8) and third (indices 9-12) parts shows results of a RegressorTree based on top features from Table X. The forth part of this table shows results when reranking top 20 results based on Dale-Chall Index. Finally, we combine selected runs with reciprocal rank fusion in the last part of this table. Results shows that regression on top 15 improves
     understandability to the detriment of topical relevance. Regression on top 20 it is even more agreessive. Dale Chall presents the same logic, but understandability gains are smaller compared to regressor results. Finally, the combination with rrf yields the best $F_ru$ scores. I still need to compute if we get statistically significant improvements or not.}
 \label{tab:experiments}
+%
+\resizebox{1.\textwidth}{!}{
 \begin{tabular}{c|c|c|ccc|cc|c|ccc}
 \toprule 
     Index & Rerank & Run & $P_r@10$ & $P_u@10$ & $F_{ru}$ & RBP & uRBP & Unj@10 & $P_r@10$ & $P_u@10$ & $F_{ru}${*}\tabularnewline
@@ -30,6 +32,12 @@
 18 &  & Runs 2 and 10 & 30.67 & 51.90 & \textbf{38.55} & 28.34 & 20.11 & 0.01 & 30.97 & 52.53 & 38.96\tabularnewline
 19 &  & Runs 3 and 11 & 30.40 & 51.37 & \textbf{38.20} & 27.82 & 19.72 & 0.01 & 30.67 & 51.90 & 38.55\tabularnewline
 20 &  & Runs 4 and 12 & 28.67 & 50.67 & \textbf{36.62} & 26.33 & 18.68 & 0.03 & 29.37 & 51.87 & 37.50\tabularnewline
+\midrule 
+\midrule 
+21 & \multirow{2}{*}{LTR XBoost} & BM25 Only IR Feat \& IR label & 23.43 & 43.97 & 30.57 & 22.43 & 14.34 & 0.12 & 26.57 & 50.90 & 34.91\tabularnewline
+22 &  & BM25 \& Unders. Feat. & 29.33 & 41.00 & 34.20 & 28.14 & 16.91 & 0.17 & 34.37 & 51.10 & \color{red}{\textbf{41.10}}\tabularnewline
 \bottomrule
 \end{tabular}
+%
+} % end of resizebox
 \end{table}

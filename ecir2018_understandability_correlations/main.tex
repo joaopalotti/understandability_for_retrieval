@@ -82,29 +82,56 @@
 \section{Introduction}
 \label{chp:understanding_understandability}
 
-Recently, a number of works rely on the output of readability formulas to deem if a Web page is easy or hard to understand (e.g., \cite{graber99readability,fitzsimmons2010readability,wiener2013readability,patel13readability,atcherson14readability,meillier17readability}).
-However, as discussed in Chapter~\ref{chp:preprocessing}, preprocessing steps are crucial for the interpretation of readability formula results. When applying them to assess the understandability of Web   document, the same readability formula may yield results that vary from \textit{suitable even for kids} to \textit{understandable only if you are an experts} with only minor modifications in the preprocessing steps.
-In this chapter, we investigate if any of these two interpretations is correct analysing the correlations of various understandability estimators and human assessments.
-For that, we take advantage of the understandability assessments made in recent CLEF eHealth campaigns (\cite{clef15,clef16}).
+An existing concern of communicators is knowing if their message is well understood by their target public.  
+Writing for a group of readers other than one's own is difficult.
+This fact motived research over the past century on the development of readability formulas which can, through a single number, provide hints on the difficulty of a text.
+Readability formulas were then widely adopted by different groups of the society, showing their effectiveness when increasing the amount learnt by recruits in the army \cite{klare55} or the readership of newspaper \cite{perry54}.
+%became popular and are widely used. For example, different news outlets have are targeting different audiences: TV Guide....NewYorkTimes....
+%....being implemented, for instance, in the Microsoft office package\footnote{\url{https://support.office.com/en-us/article/Test-your-document-s-readability-85b4969e-e80a-4777-8dd3-f7fc3c8b3fd2#ID0EAADAAA=2016,_2013,_2010}}.
 
-During the CLEF eHealth 2015 and 2016 campaigns \cite{clef15,clef16}, in addition to topical relevance, medical students and professional serving as assessors were instructed to assess how easy to understand and how much they would trust the information contained in each assessed document. The assessment tool used in these campaigns is shown in Figure~\ref{fig:relevation} to enhance the reader understanding.
+Nevertheless, with advent and popularity of Web, in which anyone can write about anything, content has been largely generated without proper concern with its understandability.
+Again: writing for a group of readers other than one's own is difficult and in some domains this might be dangerous.
+The medical domain is one of such \cite{}.
+The problem, as reported by X, is that health consumers might put themselves at risk if they misunderstand the content of what they read on the Web \cite{}.
+Typically health consumers, such as patients and their next-of-kin, start their searches through commercial search engines \cite{}.
+Thus, researchers in various areas of medicine have assessed the understandability of the material retrieved by popular search engines, often finding that they are harder to understand than they should be (e.g., \cite{graber99readability,fitzsimmons2010readability,wiener2013readability,patel13readability,atcherson14readability,meillier17readability}).
+Mostly, this kind of research also relies on the output of readability formulas to deem if a Web page is easy or hard to understand.
 
-The understandability assessments for the topically relevant documents are used throughout this chapter.
-We limit our analysis to the relevant documents to reduce the noise associated with understandability assessments, as the use of ClueWeb-12 B in 2016 campaign resulted in documents from a broad range of topics being retrieved, not only medical ones, and we would like to keep in our analysis only documents related to medicine.
+However, as recently discussed in Palotti et al.\cite{palotti15}, the automated use of readability formulas firstly requires the content extraction from Web documents.
+Palotti identified that the decision of appending a period at the end of each element in a list or table extracted from the HTML might result either in a single very long or many very short sentences, 
+which drastically affects the interpretation of readability formula results. The same readability formula may yield results that vary from \textit{suitable even for kids} to \textit{understandable only if you are an experts} with only adding or removing a single period, a 'minor' implementation decision when cleaning HTML pages. 
+One limitation of Palotti's work is not evaluating if either of these interpretations is correct.
 
-As also depicted in Figure~\ref{fig:relevation}, understandability assessments were given on a 4-label scale (scores from 0 to 3) in 2015 and on a 0-100 scale in 2016.
-Easy to understand documents had assessments closer to 0 while hard to understand document had their assessments close to the maximal value, 3 in 2015 and 100 in 2016.
-Altogether there are 1,452 documents assessed for understandability for CLEF eHealth 2015 and 3,320 for 2016 (see a detailed analysis in Appendix~\ref{apx:clef}, for example, Figures~\ref{fig:boxplot_labels} and~\ref{fig:boxplot_others} report the assessment distribution).
-We use the Pearson, Kendall Tau and Spearman's Rank correlation in this work. \todo{Add reason for using all 3 correlations}
-The first one is used to calculate the strength of two linearly related variables, while the last two are rank correlation, i.e., they act on the rank of the variables instead of their values.
-We opt to report on all three variables as all three are equally used in the understandability literature, and thus we allow that other researchers can compare our results across.
+In this paper, we propose a vast investigation on the preprocessing of Web documents and the correlation of their understandability estimation with human assessments.
+For that, we take advantage of the understandability assessments made in recent Information Retrieval campaigns in CLEF eHealth (\cite{clef15,clef16}).
 
-We start our experiments in this chapter analysing the correlation of each readability formula to the human assessments, our ground truth, in Section~\ref{sec:which_readability}.
-We then study other understandability estimators going far beyond the readability formulas. Those are presented in Section~\ref{sec:proxies}.
-Similarly, to our experiments with readability formulas, we empirically investigate in Section~\ref{sec:beyond_readability} the patterns that lead to effective understandability estimators.
-In Section~\ref{sec:which_preprocessing} we compare the effect of different preprocessing methods in the light of more than 100 understandability estimators.
-Our findings and highlights are summarized in Section~\ref{sec:conclusion_doc_analysis}.
+%\todo{Should we detail the tasks?} 
+During the CLEF eHealth 2015 and 2016 campaigns \cite{clef15,clef16}, organizers explored Internet communities, such as Reddit AskDocs\footnote{\url{https://www.reddit.com/r/AskDocs/}} - in which people seek medical advice free of charge, to generate health consumer searches. Participants in CLEF eHealth campaigns were then instruct to search a considerable portion of the Web\footnote{In 2016 campaing ClueWeb-12 B was used: \url{http://lemurproject.org/clueweb12/}} for documents that could be topically relevant for each consumer query.
+In addition to topical relevance, medical students and health professionals serving as assessors were instructed to assess how easy to understand and how much they would trust the information contained in each assessed document. % The assessment tool used in these campaigns is shown in Figure~\ref{fig:relevation} to enhance the reader understanding.
+%
+In this work, we extensively use the understandability assessments collected in these campaigns.
+%We limit our analysis to the relevant documents to reduce the noise associated with understandability assessments, as the use of ClueWeb-12 B in 2016 campaign resulted in documents from a broad range of topics being retrieved, not only medical ones, and we would like to keep in our analysis only documents related to medicine.
 
+%As also depicted in Figure~\ref{fig:relevation}, understandability assessments were given on a 4-label scale (scores from 0 to 3) in 2015 and on a 0-100 scale in 2016.
+%Easy to understand documents had assessments closer to 0 while hard to understand document had their assessments close to the maximal value, 3 in 2015 and 100 in 2016.
+%Altogether there are 1,452 documents assessed for understandability for CLEF eHealth 2015 and 3,320 for 2016 (see a detailed analysis in Appendix~\ref{apx:clef}, for example, Figures~\ref{fig:boxplot_labels} and~\ref{fig:boxplot_others} report the assessment distribution).
+
+We correlate the human assessments with the output of various readability formulas applied with different preprocessing settings.
+Our first intent is to complete Palotti's work, providing guidelines for the automatic use of these formulas in the Web documents in the medical domain.
+We take advantage of the framework built to further investigate other understandability estimators besides the readability formulas.
+Finally, we use the lessons learnt in our correlation analysis to demonstrate how is possible to retrieve more understandable medical content. 
+
+\todo{add roadmap?}
+
+%We start our experiments in this chapter analysing the correlation of each readability formula to the human assessments, our ground truth, in Section~\ref{sec:which_readability}.
+%We then study other understandability estimators going far beyond the readability formulas. Those are presented in Section~\ref{sec:proxies}.
+%Similarly, to our experiments with readability formulas, we empirically investigate in Section~\ref{sec:beyond_readability} the patterns that lead to effective understandability estimators.
+%In Section~\ref{sec:which_preprocessing} we compare the effect of different preprocessing methods in the light of more than 100 understandability estimators.
+%Our findings and highlights are summarized in Section~\ref{sec:conclusion_doc_analysis}.
+
+\section{Related Word}
+\label{sec:related}
+Readability formulas? CLEF work? CIKM paper? White/MSR papers?....???
 
 \section{Which Readability Formula To Use}
 \label{sec:which_readability}
@@ -115,12 +142,20 @@ Our findings and highlights are summarized in Section~\ref{sec:conclusion_doc_an
 %We plotted Figures~\ref{fig:bar_corr_clef15} and~\ref{fig:bar_corr_clef16} focusing on the correlation score of each traditional readability metric of Figures~\ref{fig:boxplot_corr_docs_2015} and~\ref{fig:boxplot_corr_docs_2016}.
 % TODO: write about the preprocessing methods here...
 
-Our previous experiments summarized in Figure~\ref{fig:readability_result} found that the use of Naive preprocessing was associated with larger variances in the understandability score estimated by readability formulas. We plot in Figures~\ref{fig:bar_corr_clef15} and~\ref{fig:bar_corr_clef16} the correlation scores of each traditional readability metric with the human assessments made in CLEF 2015 and 2016, respectively. We observe that the Naive preprocessing also results in the lowest
-correlation, no matter which correlation measure or readability formula is used. Also, when the Naive preprocessing is used, the variant DoNotForcePeriod yields higher correlations than the variant ForcePeriod, but when using a higher quality HTML cleaner, such as Justext or Boilerplate, the results indicate that the use of ForcePeriod should be preferred.
+Palotti, Zuccon and Hanbury~\cite{palotti15} compared six different HTML cleaning methods and their impact in the use of readability formulas.
+They evaluate three methods to extract the content of a Web page from its HTML source: BeautifulSoap 4, which just naively removed HTML tags, Boilerpipe\footnote{Add ref.} and Justext\footnote{Add ref.}, two approaches to eliminate boilerplate text together with HTML tags. Henceforth these methods are referred as \textit{Naive}, \textit{Boilerpipe - Boi} and \textit{Justext - Jst}, respectively.
+The authors noticed that the text in HTML tags often missed a correct punctuation mark. For example, the text extract from titles, menus, tables or lists could be interpreted as many short sentences of few very long sentences, depending only whether a period is forced at the end of sentences. These two preprocessing options are henceforth called \textit{ForcePeriod - FP} and \textit{DoNotForcePeriod - DNFP}.
 
-Among all the readability formulas and preprocessing methods, SMOG with ForcePeriod preprocessing and Dale-Chall Index with DoNotForcePeriod are the best ones respectively for 2015 and 2016. 
-Although there is no single best readability measure or best preprocessing strategy in all scenarios, CLI and FRE with Justext are stable options, with correlation as high as the best ones in both campaigns.
-Thus, we advice for the use of CLI, as it has also been shown to be the most robust measure to variances due to use of ForcePeriod or DoNotForcePerid in Figure~\ref{fig:readability_result}.
+Their experiments found that the use of \textit{Naive} preprocessing was associated with larger variances in the understandability score estimated by readability formulas, while the use of both \textit{Boi} and \textit{Jst} were more stable. Coleman-Liau Index (CLI) was the most stable metric among all tested in Palotti's work\cite{palotti15}.
+
+In our experiments, we use the Pearson, Kendall Tau and Spearman's Rank correlation to compare the understandability label assigned to each document by human assessors and by readability formulas.
+Pearson correlation is used to calculate the strength of two linearly related variables, while the Kendall and Spearman are rank correlation, i.e., they act on the rank of the variables instead of their values. We opt to report on all three correlation coefficients as all three are equally used in the literature, and thus we allow other researchers to compare our results across.
+
+We show in Figures~\ref{fig:bar_corr_clef15} and~\ref{fig:bar_corr_clef16} the correlation scores of each traditional readability metric with the human assessments made in CLEF 2015 and 2016, respectively. We observe that the \textit{Naive} preprocessing also results in the lowest
+correlation, no matter which correlation measure or readability formula is used. Also, when the \textit{Naive} preprocessing is used, the variant \textit{DoNotForcePeriod} yields higher correlations than the variant \textit{ForcePeriod}, but when using a higher quality HTML cleaner, such as Justext or Boilerplate, the results indicate that the use of \textit{ForcePeriod} should be preferred.
+
+Among all the readability formulas and preprocessing methods, SMOG with \textit{ForcePeriod} preprocessing and Dale-Chall Index with \textit{DoNotForcePeriod} are the best ones respectively for 2015 and 2016. Although there is no single best readability measure or best preprocessing strategy in all scenarios, CLI and FRE with \textit{Justext} are stable options, with correlation coefficients as high as the best ones in both campaigns. Thus, we confirm Palotti's advice for the use of CLI, as it
+has shown once more to be the most robust measure to variances due to use of \textit{ForcePeriod} or \textit{DoNotForcePerid}.
 
 
 \begin{figure}[th!]
@@ -147,8 +182,8 @@ Thus, we advice for the use of CLI, as it has also been shown to be the most rob
 \section{(More) Understandability Estimators}
 \label{sec:proxies}
 
-The correlation of readability formulas as shown in Figures~\ref{fig:bar_corr_clef15} and~\ref{fig:bar_corr_clef16} is not strong, with no correlation being higher than 0.5.
-One of our intents with the rest of this chapter is comparing the correlation of the traditional readability formulas with other methods for understandability estimation, including an evaluation of other  humans performing the same task.
+The correlation of readability formulas as shown in Figures~\ref{fig:bar_corr_clef15} and~\ref{fig:bar_corr_clef16} is not strong, with no correlation coefficient being higher than 0.5.
+Our next intent is comparing the correlation coefficient of the traditional readability formulas with other methods for understandability estimation, including an evaluation of other humans performing the same task.
 For that, we devise and group several methods into semantically related groups which will be following presented.
 We summarize all methods in Table~\ref{tab:doc_features}.
 
@@ -213,7 +248,7 @@ Finally, we ignore out of vocabulary (OV) words in our calculations, unless it i
 
 \begin{figure}[th!]
    \centering
-   \includegraphics[width=1.00\textwidth]{graphics/hyperthermia}
+   \includegraphics[width=0.50\textwidth]{graphics/hyperthermia}
     \caption{Wikipedia page on hyperthermia. A rectangular red box identify the Infobox on the right hand side containing entries for Specialty, ICD-9-CM, DiseasesDB and MeSH.}
     \label{fig:hyperthermia}
 \end{figure}
@@ -234,7 +269,8 @@ We employed the three datasets explained in Section~\ref{sec:word_freq} and assu
     \item PubMed Central (label 3): Documents from this collection are expected to be written in a highly formal style, as the target audience of these documents are physicians, nursers and researchers in the biomedical domain.
 \end{itemize}
 
-Based on word counts in documents in these three collections, we model two different tasks a classification one and a regression task.
+Models were trained on a Latent Semantic Analysis (LSA) empirically set to have ten dimension based on word counts in documents in these three collections.
+We model two different tasks a classification one and a regression task.
 Different labels for the regression could be employed, for example, a label 5 to PubMed Central documents to emphasize that these documents are explicitly made for expert users.
 We did not explore the effects of different labels in this work, it is left as future work.
 
@@ -257,7 +293,7 @@ The dominating metrics for the Natural Language group are the number of pronouns
 In turn, the top correlations for the HTML group, counts of P tags and list tags, were the weakest. P tags are used to create paragraphs in a Web page, being roughly a proxy for text lengthiness. 
 Top estimators for the word frequency group are based on the Medical Reddit and PubMed counts, with correlations as high as the readability formulas.
 Finally, the group with the highest correlated estimators are the regressors and classifiers, with top estimators being the Neural Network regressor and the multinomial Naive Bayes.
-\todo{this section misses some short of conclusion or at least a link to the next section}
+\todo{this section misses some sort of conclusion or at least a link to the next section}
 %
 \input{tab_top_corr_metrics}
 %

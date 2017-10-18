@@ -53,6 +53,12 @@ J.~Kincaid, R.~Fishburne, R.~Rogers, and B.~Chissom.
   Personnel}}.
 \newblock National Technical Information Service, 1975.
 
+\bibitem{klare55}
+G.~R. Klare, J.~E. Mabry, and L.~M. Gustafson.
+\newblock The relationship of style difficulty to immediate retention and to
+  acceptability of technical material.
+\newblock In {\em Journal of Education Psychology}, pages 287--295, 1955.
+
 \bibitem{smog69}
 G.~H. McLaughlin.
 \newblock {SMOG Grading - a New Readability Formula}.
@@ -80,11 +86,24 @@ J.~Palotti, G.~Zuccon, L.~Goeuriot, L.~Kelly, A.~Hanbury, G.~J.~F. Jones,
 \newblock In {\em Working Notes for {CLEF} 2015 Conference, Toulouse, France,
   September 8-11, 2015.}, 2015.
 
+\bibitem{palotti15}
+J.~a. R. d.~M. Palotti, G.~Zuccon, and A.~Hanbury.
+\newblock The influence of pre-processing on the estimation of readability of
+  web documents.
+\newblock In {\em Proceedings of the 24th ACM International on Conference on
+  Information and Knowledge Management}, CIKM '15, pages 1763--1766, New York,
+  NY, USA, 2015. ACM.
+
 \bibitem{patel13readability}
 C.~R. Patel, D.~V. Cherla, S.~Sanghvi, S.~Baredes, and J.~A. Eloy.
 \newblock Readability assessment of online thyroid surgery patient education
   materials.
 \newblock {\em Head \& neck}, 35(10):1421--1425, 2013.
+
+\bibitem{perry54}
+B.~L. Perry.
+\newblock {\em Newspaper readability: A pilot study}.
+\newblock PhD thesis, Boston University, USA, 1954.
 
 \bibitem{ari67}
 E.~A. Smith and R.~J. Senter.

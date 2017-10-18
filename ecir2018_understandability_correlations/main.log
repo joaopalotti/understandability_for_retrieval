@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.30)  15 OCT 2017 06:10
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.30)  18 OCT 2017 05:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -615,109 +615,77 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 79.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-
-LaTeX Warning: Reference `chp:preprocessing' on page 1 undefined on input line 
-86.
+) [1
 
 
-LaTeX Warning: Reference `fig:relevation' on page 1 undefined on input line 90.
-
-
-
-LaTeX Warning: Reference `fig:relevation' on page 1 undefined on input line 95.
-
-
-
-LaTeX Warning: Reference `apx:clef' on page 1 undefined on input line 97.
-
-
-LaTeX Warning: Reference `fig:boxplot_labels' on page 1 undefined on input line
- 97.
-
-
-LaTeX Warning: Reference `fig:boxplot_others' on page 1 undefined on input line
- 97.
-
-[1
-
-
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-
-LaTeX Warning: Reference `fig:readability_result' on page 2 undefined on input 
-line 118.
-
-
-LaTeX Warning: Reference `fig:readability_result' on page 2 undefined on input 
-line 123.
-
-<graphics/bar_corr_pearson15_values.pdf, id=14, 873.48831pt x 315.71545pt>
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
+<graphics/bar_corr_pearson15_values.pdf, id=19, 873.48831pt x 315.71545pt>
 File: graphics/bar_corr_pearson15_values.pdf Graphic file (type pdf)
 
 <use graphics/bar_corr_pearson15_values.pdf>
 Package pdftex.def Info: graphics/bar_corr_pearson15_values.pdf used on input l
-ine 128.
+ine 163.
 (pdftex.def)             Requested size: 347.12354pt x 125.46498pt.
 
-<graphics/bar_corr_spearman15_values.pdf, id=15, 873.48831pt x 322.25392pt>
+<graphics/bar_corr_spearman15_values.pdf, id=20, 873.48831pt x 322.25392pt>
 File: graphics/bar_corr_spearman15_values.pdf Graphic file (type pdf)
 
 <use graphics/bar_corr_spearman15_values.pdf>
 Package pdftex.def Info: graphics/bar_corr_spearman15_values.pdf used on input 
-line 129.
+line 164.
 (pdftex.def)             Requested size: 347.12354pt x 128.06335pt.
 
-<graphics/bar_corr_kendalltau15_values.pdf, id=16, 873.48831pt x 328.11958pt>
+<graphics/bar_corr_kendalltau15_values.pdf, id=21, 873.48831pt x 328.11958pt>
 File: graphics/bar_corr_kendalltau15_values.pdf Graphic file (type pdf)
 
 <use graphics/bar_corr_kendalltau15_values.pdf>
 Package pdftex.def Info: graphics/bar_corr_kendalltau15_values.pdf used on inpu
-t line 130.
+t line 165.
 (pdftex.def)             Requested size: 347.12354pt x 130.39436pt.
 
-<graphics/legend62.pdf, id=17, 965.57613pt x 89.65056pt>
+<graphics/legend62.pdf, id=22, 965.57613pt x 89.65056pt>
 File: graphics/legend62.pdf Graphic file (type pdf)
 
 <use graphics/legend62.pdf>
-Package pdftex.def Info: graphics/legend62.pdf used on input line 131.
+Package pdftex.def Info: graphics/legend62.pdf used on input line 166.
 (pdftex.def)             Requested size: 347.12354pt x 32.22902pt.
 
-<graphics/bar_corr_pearson16_values.pdf, id=18, 873.48831pt x 315.71545pt>
+<graphics/bar_corr_pearson16_values.pdf, id=23, 873.48831pt x 315.71545pt>
 File: graphics/bar_corr_pearson16_values.pdf Graphic file (type pdf)
 
 <use graphics/bar_corr_pearson16_values.pdf>
 Package pdftex.def Info: graphics/bar_corr_pearson16_values.pdf used on input l
-ine 138.
+ine 173.
 (pdftex.def)             Requested size: 347.12354pt x 125.46498pt.
 
-<graphics/bar_corr_spearman16_values.pdf, id=19, 873.48831pt x 322.25392pt>
+<graphics/bar_corr_spearman16_values.pdf, id=24, 873.48831pt x 322.25392pt>
 File: graphics/bar_corr_spearman16_values.pdf Graphic file (type pdf)
 
 <use graphics/bar_corr_spearman16_values.pdf>
 Package pdftex.def Info: graphics/bar_corr_spearman16_values.pdf used on input 
-line 139.
+line 174.
 (pdftex.def)             Requested size: 347.12354pt x 128.06335pt.
 
-<graphics/bar_corr_kendalltau16_values.pdf, id=20, 873.48831pt x 328.11958pt>
+<graphics/bar_corr_kendalltau16_values.pdf, id=25, 873.48831pt x 328.11958pt>
 File: graphics/bar_corr_kendalltau16_values.pdf Graphic file (type pdf)
 
 <use graphics/bar_corr_kendalltau16_values.pdf>
 Package pdftex.def Info: graphics/bar_corr_kendalltau16_values.pdf used on inpu
-t line 140.
+t line 175.
 (pdftex.def)             Requested size: 347.12354pt x 130.39436pt.
 File: graphics/legend62.pdf Graphic file (type pdf)
  <use graphics/legend62.pdf>
-Package pdftex.def Info: graphics/legend62.pdf used on input line 141.
+Package pdftex.def Info: graphics/legend62.pdf used on input line 176.
 (pdftex.def)             Requested size: 347.12354pt x 32.22902pt.
 
 
-LaTeX Warning: Reference `chp:preprocessing' on page 2 undefined on input line 
-160.
+LaTeX Warning: Reference `chp:preprocessing' on page 3 undefined on input line 
+195.
 
 
-LaTeX Warning: Reference `tab:formulas' on page 2 undefined on input line 160.
+LaTeX Warning: Reference `tab:formulas' on page 3 undefined on input line 195.
 
-[2] [3 <./graphics/bar_corr_pearson15_values.pdf> <./graphics/bar_corr_spearman
+[3] [4 <./graphics/bar_corr_pearson15_values.pdf> <./graphics/bar_corr_spearman
 15_values.pdf
 
 pdfTeX warning: pdflatex (file ./graphics/bar_corr_spearman15_values.pdf): PDF 
@@ -730,7 +698,7 @@ F inclusion: multiple pdfs with page group included in a single page
 
 pdfTeX warning: pdflatex (file ./graphics/legend62.pdf): PDF inclusion: multipl
 e pdfs with page group included in a single page
->] [4 <./graphics/bar_corr_pearson16_values.pdf> <./graphics/bar_corr_spearman1
+>] [5 <./graphics/bar_corr_pearson16_values.pdf> <./graphics/bar_corr_spearman1
 6_values.pdf
 
 pdfTeX warning: pdflatex (file ./graphics/bar_corr_spearman16_values.pdf): PDF 
@@ -741,98 +709,101 @@ pdfTeX warning: pdflatex (file ./graphics/bar_corr_kendalltau16_values.pdf): PD
 F inclusion: multiple pdfs with page group included in a single page
 >]
 
-LaTeX Warning: Reference `chp:user_query_logs' on page 5 undefined on input lin
-e 172.
+LaTeX Warning: Reference `chp:user_query_logs' on page 6 undefined on input lin
+e 207.
 
 
-LaTeX Warning: Reference `chp:medical_expertise' on page 5 undefined on input l
-ine 172.
+LaTeX Warning: Reference `chp:medical_expertise' on page 6 undefined on input l
+ine 207.
 
 
-LaTeX Warning: Reference `sec:semantic' on page 5 undefined on input line 173.
+LaTeX Warning: Reference `sec:semantic' on page 6 undefined on input line 208.
 
-[5]
-Overfull \hbox (10.72424pt too wide) in paragraph at lines 203--207
+[6]
+Overfull \hbox (10.72424pt too wide) in paragraph at lines 238--242
 \OT1/cmr/m/n/10 MeSHID, Mesh-Name, Mesh-Num-ber, GeneRe-views-Name, Or-phanet, 
 eMedicine,
  []
 
-<graphics/hyperthermia.png, id=309, 772.8875pt x 576.1525pt>
+<graphics/hyperthermia.png, id=312, 772.8875pt x 576.1525pt>
 File: graphics/hyperthermia.png Graphic file (type png)
 
 <use graphics/hyperthermia.png>
-Package pdftex.def Info: graphics/hyperthermia.png used on input line 216.
-(pdftex.def)             Requested size: 347.12354pt x 258.7651pt.
- (./tab_collection_stats.tex) [6] [7 <./graphics/hyperthermia.png>] (./tab_doc_
+Package pdftex.def Info: graphics/hyperthermia.png used on input line 251.
+(pdftex.def)             Requested size: 173.56177pt x 129.38255pt.
+ (./tab_collection_stats.tex) [7] [8 <./graphics/hyperthermia.png>] (./tab_doc_
 features.tex) (./tab_top_corr_metrics.tex)
-[8] <graphics/box_pearson15_raw_values.pdf, id=321, 972.92862pt x 584.97263pt>
+[9] <graphics/box_pearson15_raw_values.pdf, id=324, 972.92862pt x 584.97263pt>
 File: graphics/box_pearson15_raw_values.pdf Graphic file (type pdf)
 
 <use graphics/box_pearson15_raw_values.pdf>
 Package pdftex.def Info: graphics/box_pearson15_raw_values.pdf used on input li
-ne 278.
+ne 314.
 (pdftex.def)             Requested size: 242.98541pt x 146.09105pt.
 
-<graphics/box_spearman15_raw_values.pdf, id=322, 972.92862pt x 584.97263pt>
+<graphics/box_spearman15_raw_values.pdf, id=325, 972.92862pt x 584.97263pt>
 File: graphics/box_spearman15_raw_values.pdf Graphic file (type pdf)
 
 <use graphics/box_spearman15_raw_values.pdf>
 Package pdftex.def Info: graphics/box_spearman15_raw_values.pdf used on input l
-ine 279.
+ine 315.
 (pdftex.def)             Requested size: 242.98541pt x 146.09105pt.
 
-<graphics/box_kendalltau15_raw_values.pdf, id=323, 972.92862pt x 584.97263pt>
+<graphics/box_kendalltau15_raw_values.pdf, id=326, 972.92862pt x 584.97263pt>
 File: graphics/box_kendalltau15_raw_values.pdf Graphic file (type pdf)
 
 <use graphics/box_kendalltau15_raw_values.pdf>
 Package pdftex.def Info: graphics/box_kendalltau15_raw_values.pdf used on input
- line 280.
+ line 316.
 (pdftex.def)             Requested size: 242.98541pt x 146.09105pt.
 
-<graphics/legendCorr.pdf, id=324, 871.99838pt x 260.42326pt>
+<graphics/legendCorr.pdf, id=327, 871.99838pt x 260.42326pt>
 File: graphics/legendCorr.pdf Graphic file (type pdf)
 
 <use graphics/legendCorr.pdf>
-Package pdftex.def Info: graphics/legendCorr.pdf used on input line 281.
+Package pdftex.def Info: graphics/legendCorr.pdf used on input line 317.
 (pdftex.def)             Requested size: 225.62817pt x 67.3826pt.
 
-<graphics/box_pearson16_raw_values.pdf, id=325, 972.92862pt x 582.50613pt>
+<graphics/box_pearson16_raw_values.pdf, id=328, 972.92862pt x 582.50613pt>
 File: graphics/box_pearson16_raw_values.pdf Graphic file (type pdf)
 
 <use graphics/box_pearson16_raw_values.pdf>
 Package pdftex.def Info: graphics/box_pearson16_raw_values.pdf used on input li
-ne 289.
+ne 325.
 (pdftex.def)             Requested size: 242.98541pt x 145.47507pt.
 
-<graphics/box_spearman16_raw_values.pdf, id=326, 972.92862pt x 584.97263pt>
+<graphics/box_spearman16_raw_values.pdf, id=329, 972.92862pt x 584.97263pt>
 File: graphics/box_spearman16_raw_values.pdf Graphic file (type pdf)
 
 <use graphics/box_spearman16_raw_values.pdf>
 Package pdftex.def Info: graphics/box_spearman16_raw_values.pdf used on input l
-ine 290.
+ine 326.
 (pdftex.def)             Requested size: 242.98541pt x 146.09105pt.
 
-<graphics/box_kendalltau16_raw_values.pdf, id=327, 972.92862pt x 584.97263pt>
+<graphics/box_kendalltau16_raw_values.pdf, id=330, 972.92862pt x 584.97263pt>
 File: graphics/box_kendalltau16_raw_values.pdf Graphic file (type pdf)
 
 <use graphics/box_kendalltau16_raw_values.pdf>
 Package pdftex.def Info: graphics/box_kendalltau16_raw_values.pdf used on input
- line 291.
+ line 327.
 (pdftex.def)             Requested size: 242.98541pt x 146.09105pt.
 File: graphics/legendCorr.pdf Graphic file (type pdf)
  <use graphics/legendCorr.pdf>
-Package pdftex.def Info: graphics/legendCorr.pdf used on input line 292.
+Package pdftex.def Info: graphics/legendCorr.pdf used on input line 328.
 (pdftex.def)             Requested size: 225.62817pt x 67.3826pt.
 
 
-LaTeX Warning: Reference `chp:preprocessing' on page 9 undefined on input line 
-309.
+LaTeX Warning: Reference `chp:preprocessing' on page 10 undefined on input line
+ 345.
 
-[9]
+(./tab_comparison_preprocessing.tex)
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Warning: Text page 10 contains only floats.
+ [10]
 
-[10 <./graphics/box_pearson15_raw_values.pdf> <./graphics/box_spearman15_raw_va
+LaTeX Warning: Text page 11 contains only floats.
+
+[11 <./graphics/box_pearson15_raw_values.pdf> <./graphics/box_spearman15_raw_va
 lues.pdf
 
 pdfTeX warning: pdflatex (file ./graphics/box_spearman15_raw_values.pdf): PDF i
@@ -847,9 +818,9 @@ pdfTeX warning: pdflatex (file ./graphics/legendCorr.pdf): PDF inclusion: multi
 ple pdfs with page group included in a single page
 >]
 
-LaTeX Warning: Text page 11 contains only floats.
+LaTeX Warning: Text page 12 contains only floats.
 
-[11 <./graphics/box_pearson16_raw_values.pdf> <./graphics/box_spearman16_raw_va
+[12 <./graphics/box_pearson16_raw_values.pdf> <./graphics/box_spearman16_raw_va
 lues.pdf
 
 pdfTeX warning: pdflatex (file ./graphics/box_spearman16_raw_values.pdf): PDF i
@@ -858,24 +829,20 @@ nclusion: multiple pdfs with page group included in a single page
 
 pdfTeX warning: pdflatex (file ./graphics/box_kendalltau16_raw_values.pdf): PDF
  inclusion: multiple pdfs with page group included in a single page
->] (./tab_comparison_preprocessing.tex) (./tab_experiments.tex
-Overfull \hbox (60.36598pt too wide) in paragraph at lines 5--35
-[][] 
- []
-
-) [12] (./main.bbl
+>] (./tab_experiments.tex) [13] (./main.bbl
 Missing character: There is no Ã in font cmr9!
 Missing character: There is no ¶ in font cmr9!
- [13]) [14] [15] [16] [17] (./main.aux)
+ [14]) [15] [16] [17] [18]
+(./main.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 13203 strings out of 494860
- 260893 string characters out of 6177602
- 366218 words of memory out of 5000000
- 16202 multiletter control sequences out of 15000+600000
+ 13202 strings out of 494860
+ 260846 string characters out of 6177602
+ 384157 words of memory out of 5000000
+ 16201 multiletter control sequences out of 15000+600000
  11125 words of font info for 43 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  62i,19n,76p,942b,842s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -896,10 +863,10 @@ ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dis
 t/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts
 /type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on main.pdf (17 pages, 692424 bytes).
+Output written on main.pdf (18 pages, 700237 bytes).
 PDF statistics:
- 798 PDF objects out of 1000 (max. 8388607)
- 170 compressed objects within 2 object streams
+ 801 PDF objects out of 1000 (max. 8388607)
+ 172 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  88 words of extra memory for PDF output out of 10000 (max. 10000000)
 
