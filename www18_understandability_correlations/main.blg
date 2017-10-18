@@ -1,0 +1,73 @@
+This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: main.aux
+The style file: ACM-Reference-Format.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Database file #1: main.bib
+Warning--I didn't find a database entry for ""
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
+Reallocated global_strs (elt_size=20001) to 20 items from 10.
+Reallocated glb_str_end (elt_size=4) to 20 items from 10.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Warning--page numbers missing in both pages and numpages fields in atcherson14readability
+Warning--no number and no volume in cli75
+Warning--page numbers missing in both pages and numpages fields in cli75
+Warning--empty address in gunning52
+Warning--empty address in flesch75
+Warning--empty publisher in klare55
+Warning--empty address in klare55
+Warning--no number and no volume in smog69
+Warning--page numbers missing in both pages and numpages fields in smog69
+Warning--empty address in palotti16b
+Warning--page numbers missing in both pages and numpages fields in palotti16b
+Warning--empty publisher in clef15
+Warning--empty address in clef15
+Warning--numpages field, but no articleno or eid field, in palotti15
+Warning--empty address in ari67
+Warning--empty address in soldaini15
+Warning--empty publisher in clef16
+Warning--empty address in clef16
+You've used 24 entries,
+            5795 wiz_defined-function locations,
+            1475 strings with 20546 characters,
+and the built_in function-call counts, 30384 in all, are:
+= -- 4055
+> -- 1124
+< -- 0
++ -- 379
+- -- 523
+* -- 2222
+:= -- 3090
+add.period$ -- 123
+call.type$ -- 24
+change.case$ -- 176
+chr.to.int$ -- 23
+cite$ -- 42
+duplicate$ -- 2397
+empty$ -- 1698
+format.name$ -- 463
+if$ -- 7278
+int.to.chr$ -- 3
+int.to.str$ -- 1
+missing$ -- 88
+newline$ -- 238
+num.names$ -- 191
+pop$ -- 908
+preamble$ -- 1
+purify$ -- 390
+quote$ -- 0
+skip$ -- 787
+stack$ -- 0
+substring$ -- 2545
+swap$ -- 232
+text.length$ -- 273
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 458
+warning$ -- 18
+while$ -- 181
+width$ -- 0
+write$ -- 453
+(There were 19 warnings)
