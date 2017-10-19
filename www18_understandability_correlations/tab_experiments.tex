@@ -6,37 +6,67 @@
 \resizebox{1.\textwidth}{!}{
 \begin{tabular}{c|c|c|ccc|cc|c|ccc}
 \toprule 
-    Index & Rerank & Run & $P_r@10$ & $P_u@10$ & $F_{ru}$ & RBP & uRBP & Unj@10 & $P_r@10$ & $P_u@10$ & $F_{ru}${*}\tabularnewline
+    Index & Rerank & Run & $P_r@10$ & $P_u@10$ & $F_{ru}$ & RBP & uRBP & Unj@10 & $P_r@10$* & $P_u@10$* & $F_{ru}${*}\tabularnewline
 \midrule 
-1 & \multirow{4}{*}{No Rerank} & BM25 Q.E. & 31.43 & 49.70 & 38.51 & 29.05 & 18.65 & 0.02 & 31.70 & 50.83 & 39.05\tabularnewline
-2 &  & GUIR & 29.67 & 50.97 & 37.50 & 28.11 & 18.12 & 0.01 & 30.20 & 51.80 & 38.16\tabularnewline
-3 &  & ECNU & 29.33 & 49.27 & 36.77 & 27.70 & 17.55 & 0.01 & 29.50 & 49.87 & 37.07\tabularnewline
+1 & \multirow{4}{*}{No Rerank} & BM25 Q. E. (Best Run) & 31.43 & 49.70 & 38.51 & 29.05 & 18.65 & 0.02 & 31.70 & 50.83 & 39.05\tabularnewline
+2 &  & GUIR (Runner Up Run) & 29.67 & 50.97 & 37.50 & 28.11 & 18.12 & 0.01 & 30.20 & 51.80 & 38.16\tabularnewline
+3 &  & ECNU (Thrid Place) & 29.33 & 49.27 & 36.77 & 27.70 & 17.55 & 0.01 & 29.50 & 49.87 & 37.07\tabularnewline
 4 &  & Plain BM25 & 26.47 & 46.33 & 33.69 & 25.28 & 16.05 & 0.06 & 27.63 & 48.93 & 35.32\tabularnewline
 \midrule 
-5 & \multirow{4}{*}{Regress Top 15} & Based on Run 1 & 27.87 & 49.40 & 35.63 & 26.38 & 19.77 & 0.01 & 28.10 & 49.60 & 35.88\tabularnewline
-6 &  & Based on Run 2 & 27.27 & 48.57 & 34.93 & 25.95 & 19.31 & 0.01 & 27.30 & 48.60 & 34.96\tabularnewline
-7 &  & Based on Run 3  & 26.60 & 50.10 & 34.75 & 25.08 & 18.68 & 0.00 & 26.67 & 50.10 & 34.81\tabularnewline
-8 &  & Based on Run 4 & 23.73 & 50.87 & 32.37 & 22.86 & 17.68 & 0.09 & 24.97 & 52.67 & 33.87\tabularnewline
+5 & \multirow{4}{*}{Linear Regre. Top 15} & Based on Run 1 & 30.17 & 50.50 & 37.77 & 26.10 & 17.92 & 0.07 & 31.50 & 53.13 & 39.55\tabularnewline
+6 &  & Based on Run 2 & 29.23 & 53.03 & 37.69 & 25.16 & 17.23 & 0.03 & 29.73 & 54.13 & 38.38\tabularnewline
+7 &  & Based on Run 3 & 28.23 & 52.57 & 36.74 & 24.21 & 16.53 & 0.02 & 28.83 & 53.30 & 37.42\tabularnewline
+8 &  & Based on Run 4 & 26.00 & 49.53 & 34.10 & 22.75 & 15.67 & 0.07 & 26.83 & 51.00 & 35.16\tabularnewline
 \midrule 
-9 & \multirow{4}{*}{Regress. Top 20} & Based on Run 1 & 27.70 & \textbf{52.13} & 36.18 & 26.10 & 20.06 & 0.02 & 28.17 & 52.53 & 36.67\tabularnewline
-10 &  & Based on Run 2 & 26.70 & \textbf{53.10} & 35.53 & 25.44 & 19.62 & 0.01 & 26.83 & 53.33 & 35.70\tabularnewline
-11 &  & Based on Run 3  & 26.17 & \textbf{52.67} & 34.96 & 24.88 & 19.21 & 0.02 & 26.43 & 53.17 & 35.31\tabularnewline
-12 &  & Based on Run 4 & 23.30 & \textbf{51.43} & 32.07 & 22.53 & 18.01 & 0.12 & 25.10 & 55.20 & 34.51\tabularnewline
+9 & \multirow{4}{*}{Linear Regre. Top 20} & Based on Run 1 & 27.57 & 49.87 & 35.51 & 24.00 & 16.71 & 0.11 & 30.03 & 54.93 & 38.83\tabularnewline
+10 &  & Based on Run 2 & 26.50 & 54.00 & 35.55 & 22.45 & 15.58 & 0.06 & 28.13 & 57.03 & 37.68\tabularnewline
+11 &  & Based on Run 3 & 26.33 & 53.50 & 35.29 & 22.67 & 15.72 & 0.05 & 27.50 & 55.77 & 36.84\tabularnewline
+12 &  & Based on Run 4 & 24.40 & 50.37 & 32.87 & 20.95 & 14.68 & 0.10 & 26.00 & 53.20 & 34.93\tabularnewline
 \midrule 
-13 & \multirow{4}{*}{Dale-Chall top 20} & Based on Run 1 & 29.63 & 49.93 & 37.19 & 26.45 & 17.78 & 0.02 & 29.87 & 50.37 & 37.50\tabularnewline
-14 &  & Based on Run 2 & 28.37 & 51.10 & 36.48 & 25.01 & 16.96 & 0.01 & 28.60 & 51.40 & 36.75\tabularnewline
-15 &  & Based on Run 3  & 27.70 & 50.80 & 35.85 & 24.54 & 16.49 & 0.02 & 28.03 & 51.47 & 36.30\tabularnewline
-16 &  & Based on Run 4 & 24.13 & 49.97 & 32.55 & 21.28 & 14.60 & 0.10 & 26.17 & 53.17 & 35.07\tabularnewline
+13 & \multirow{4}{*}{Linear Regre. Top 50} & Based on Run 1 & 18.83 & 43.40 & 26.27 & 16.32 & 11.89 & 0.29 & 26.33 & 59.93 & 36.59\tabularnewline
+14 &  & Based on Run 2 & 18.57 & 45.60 & 26.39 & 16.18 & 11.83 & 0.26 & 24.83 & 60.23 & 35.17\tabularnewline
+15 &  & Based on Run 3 & 18.17 & 43.83 & 25.69 & 15.56 & 11.26 & 0.28 & 24.20 & 59.13 & 34.34\tabularnewline
+16 &  & Based on Run 4 & 16.33 & 43.57 & 23.76 & 14.13 & 10.30 & 0.29 & 22.77 & 58.20 & 32.73\tabularnewline
 \midrule 
-17 & \multirow{4}{*}{Reciprocal Rank Fusion} & Runs 1 and 9 & 30.70 & 52.37 & \textbf{38.71} & 27.93 & 20.20 & 0.02 & 31.10 & 53.30 & 39.28\tabularnewline
-18 &  & Runs 2 and 10 & 30.67 & 51.90 & \textbf{38.55} & 28.34 & 20.11 & 0.01 & 30.97 & 52.53 & 38.96\tabularnewline
-19 &  & Runs 3 and 11 & 30.40 & 51.37 & \textbf{38.20} & 27.82 & 19.72 & 0.01 & 30.67 & 51.90 & 38.55\tabularnewline
-20 &  & Runs 4 and 12 & 28.67 & 50.67 & \textbf{36.62} & 26.33 & 18.68 & 0.03 & 29.37 & 51.87 & 37.50\tabularnewline
+17 & \multirow{4}{*}{Grad. Boost Reg. Top 15} & Based on Run 1 & 29.40 & 51.10 & 37.33 & 26.04 & 17.95 & 0.07 & 30.67 & 53.87 & 39.08\tabularnewline
+18 &  & Based on Run 2 & 28.10 & 53.23 & 36.78 & 24.15 & 16.78 & 0.03 & 28.70 & 54.70 & 37.65\tabularnewline
+19 &  & Based on Run 3 & 27.63 & 53.00 & 36.33 & 23.68 & 16.33 & 0.02 & 28.13 & 53.63 & 36.91\tabularnewline
+20 &  & Based on Run 4 & 24.70 & 49.53 & 32.96 & 21.19 & 14.69 & 0.09 & 25.70 & 51.53 & 34.30\tabularnewline
 \midrule 
+21 & \multirow{4}{*}{Grad. Boost Reg. Top 20} & Based on Run 1 & 26.73 & 49.37 & 34.68 & 23.24 & 16.24 & 0.12 & 29.50 & 55.20 & 38.45\tabularnewline
+22 &  & Based on Run 2 & 24.97 & 53.07 & 33.96 & 21.15 & 14.97 & 0.07 & 26.37 & 56.60 & 35.97\tabularnewline
+23 &  & Based on Run 3 & 25.10 & 52.63 & 33.99 & 21.67 & 15.22 & 0.05 & 26.30 & 55.13 & 35.61\tabularnewline
+24 &  & Based on Run 4 & 22.30 & 49.10 & 30.67 & 19.40 & 13.69 & 0.12 & 24.43 & 53.20 & 33.49\tabularnewline
 \midrule 
-21 & \multirow{2}{*}{LTR XBoost} & BM25 Only IR Feat \& IR label & 23.43 & 43.97 & 30.57 & 22.43 & 14.34 & 0.12 & 26.57 & 50.90 & 34.91\tabularnewline
-22 &  & BM25 \& Unders. Feat. & 29.33 & 41.00 & 34.20 & 28.14 & 16.91 & 0.17 & 34.37 & 51.10 & \color{red}{\textbf{41.10}}\tabularnewline
-\bottomrule
+25 & \multirow{4}{*}{Grad. Boost Reg. Top 50} & Based on Run 1 & 17.60 & 39.97 & 24.44 & 14.96 & 10.81 & 0.32 & 25.47 & 57.77 & 35.35\tabularnewline
+26 &  & Based on Run 2 & 15.47 & 42.17 & 22.63 & 13.38 & 9.85 & 0.29 & 22.70 & 58.23 & 32.67\tabularnewline
+27 &  & Based on Run 3 & 16.40 & 40.17 & 23.29 & 13.95 & 10.06 & 0.31 & 22.97 & 56.93 & 32.73\tabularnewline
+28 &  & Based on Run 4 & 14.63 & 38.07 & 21.14 & 11.93 & 8.54 & 0.33 & 21.03 & 55.77 & 30.55\tabularnewline
+\midrule 
+29 & \multirow{4}{*}{Dale-Chall Top 20} & Based on Run 1 & 28.43 & 49.57 & 36.14 & 24.64 & 16.78 & 0.10 & 30.63 & 54.57 & 39.24\tabularnewline
+30 &  & Based on Run 2 & 25.90 & 52.80 & 34.75 & 22.19 & 15.36 & 0.06 & 27.27 & 55.90 & 36.65\tabularnewline
+31 &  & Based on Run 3 & 26.87 & 53.07 & 35.67 & 23.01 & 15.70 & 0.05 & 27.83 & 54.90 & 36.94\tabularnewline
+32 &  & Based on Run 4 & 24.60 & 50.43 & 33.07 & 21.58 & 14.83 & 0.09 & 26.30 & 53.00 & 35.16\tabularnewline
+\midrule 
+33 & \multirow{4}{*}{RRF Top 15 (LR \& Orig.)} & Based on Run 1 & 30.43 & 50.40 & 37.95 & 28.46 & 19.09 & 0.04 & 31.37 & 52.47 & 39.26\tabularnewline
+34 &  & Based on Run 2 & 29.43 & 52.93 & 37.83 & 27.17 & 18.15 & 0.02 & 30.00 & 53.80 & 38.52\tabularnewline
+35 &  & Based on Run 3 & 28.70 & 51.87 & 36.95 & 26.78 & 17.82 & 0.02 & 29.10 & 52.63 & 37.48\tabularnewline
+36 &  & Based on Run 4 & 26.17 & 48.90 & 34.09 & 24.84 & 16.56 & 0.06 & 27.27 & 51.27 & 35.60\tabularnewline
+\midrule 
+37 & \multirow{4}{*}{RRF Top 20 (LR \& Orig.)} & Based on Run 1 & 30.30 & 50.23 & 37.80 & 27.97 & 18.92 & 0.06 & 31.60 & 53.30 & 39.68\tabularnewline
+38 &  & Based on Run 2 & 28.73 & 53.83 & 37.47 & 26.54 & 17.89 & 0.03 & 29.43 & 55.23 & 38.40\tabularnewline
+39 &  & Based on Run 3 & 28.57 & 52.73 & 37.06 & 26.21 & 17.57 & 0.03 & 29.30 & 54.07 & 38.00\tabularnewline
+40 &  & Based on Run 4 & 25.67 & 50.30 & 33.99 & 24.53 & 16.59 & 0.07 & 27.00 & 53.07 & 35.79\tabularnewline
+\midrule 
+41 & \multirow{4}{*}{RRF Top 50 (LR \& Orig.)} & Based on Run 1 & 27.63 & 50.77 & 35.79 & 25.58 & 17.71 & 0.12 & 30.50 & 56.63 & 39.65\tabularnewline
+42 &  & Based on Run 2 & 26.00 & 53.40 & 34.97 & 23.62 & 16.46 & 0.09 & 28.37 & 58.10 & 38.12\tabularnewline
+43 &  & Based on Run 3 & 25.47 & 52.40 & 34.28 & 23.52 & 16.22 & 0.09 & 27.80 & 57.07 & 37.39\tabularnewline
+44 &  & Based on Run 4 & 24.10 & 50.47 & 32.62 & 22.10 & 15.27 & 0.12 & 26.33 & 56.03 & 35.83\tabularnewline
+\midrule 
+45 & LTR XBoost & BM25 Only IR Feat \& IR label & 23.43 & 43.97 & 30.57 & 22.43 & 14.34 & 0.12 & 26.57 & 50.90 & 34.91\tabularnewline
+46 &  & BM25 + Few ReadFeat & 23.37 & 39.47 & 29.35 & 21.21 & 13.15 & 0.21 & 29.50 & 50.73 & 37.31\tabularnewline
+47 &  & BM25 + All ReadFeat & 29.33 & 41.00 & 34.20 & 28.14 & 16.91 & 0.17 & 34.37 & 51.10 & 41.10\tabularnewline
+\bottomrule 
 \end{tabular}
 %
 } % end of resizebox
