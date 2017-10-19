@@ -129,22 +129,23 @@ This group contains all the traditional readability formulas listed in Section~\
 This group comprises the building blocks that make up the traditional readability measures. Some examples include the average number of characters per word or the average number of syllables in a sentence\footnote{Words were divided into syllables using the Python package Pyphen \url{http://pyphen.org/}}.
 
 \textbf{General Medical Vocabularies:}
-This group includes methods such as the number of words with a medical prefix or suffix, i.e. beginning or ending with Latin or Greek particles (e.g., amni, angi, algia, arteri), acronyms \footnote{The acronym list was obtained from the ADAM database \cite{zhou2006}} or medical vocabularies such as the International Statistical Classification of Diseases and Related Health Problems (ICD), Drugbank and the OpenMedSpel dictionary\footnote{\url{http://extensions.openoffice.org/en/project/openmedspel-en-us}}. 
+This group includes methods such as the number of words with a medical prefix or suffix, i.e. beginning or ending with Latin or Greek particles (e.g., amni-, angi-, algia-, arteri-), acronyms\footnote{The acronym list was obtained from the ADAM database \cite{zhou2006}} or medical vocabularies such as the International Statistical Classification of Diseases and Related Health Problems (ICD), Drugbank and the OpenMedSpel dictionary\footnote{\url{http://extensions.openoffice.org/en/project/openmedspel-en-us}}. 
 Methods listed here were matched with documents using a simple keywords matching.
 
 \textbf{Consumer Vocabulary Features:}
 the Consumer Health Vocabulary (CHV) is a prominent medical vocabulary dedicated to mapping consumer (layperson) vocabulary to technical terms. 
 It attributes a score for each of its concepts with respect to their difficulty, with lower/higher scores for harder/easier concepts.
-We used MetaMap once again to map the content of Web documents, as done in Chapters~\ref{chp:user_query_logs} and~\ref{chp:medical_expertise}. 
-We further use MetaMap options to also filter only concepts identified as symptoms or diseases, using the same definitions from Section~\ref{sec:semantic}. 
+We used NLM MetaMap\footnote{\url{https://metamap.nlm.nih.gov/}} to map contents occurring in Web documents to the CHV vocabulary.
+We further use MetaMap options to also filter only concepts identified as symptoms or diseases.
+Similar approach is commonly used in the literature \cite{} \mytodo{maybe cite something that is not ours}.
 %The CHV dataset (version 20110204) links part of the UMLS concepts, such as “myocardial infarction”, to everyday expressions, “heart attack”.
 
 \textbf{Expert Vocabulary Features:}
 The hierarchy of Medical Subject Headers (MeSH) was previously used in the literature to identify hard concepts, assuming that a concept that is deep in the hierarchy is harder than a shallow one~\cite{yan11}.
-As done with CHV, we used MetaMap to map the content of Web documents to MeSH and explore symptoms and disease concepts separately.
+As done with CHV, we used MetaMap to map the content of Web documents to MeSH, exploring symptoms and disease concepts separately.
 
 \textbf{Natural Language:}
-This group comprises commonly used metrics in the natural language processing field: the ratio of part-of-speech (POS) classes, the number of entities in a text, the sentiment polarity and the ratio of words found in English vocabularies. The Python package NLTK 3.2\footnote{\url{http://www.nltk.org/}} was employed for sentiment analysis and POS tagging. The GNU Aspell\footnote{\url{http://www.aspell.net/}} dictionary was used as a standard English vocabulary and a stopword list was built by merging the stopword
+This group comprises commonly used metrics in the natural language processing field, such as the ratio of part-of-speech (POS) classes, the number of entities in a text, the sentiment polarity and the ratio of words found in English vocabularies. The Python package NLTK 3.2\footnote{\url{http://www.nltk.org/}} was employed for sentiment analysis and POS tagging. The GNU Aspell\footnote{\url{http://www.aspell.net/}} dictionary was used as a standard English vocabulary and a stopword list was built by merging the stopword
 lists of the Indri\footnote{\url{http://www.lemurproject.org/indri/}} and Terrier\footnote{\url{http://www.terrier.org/}} toolkits. 
 
 \textbf{HTML Features:}
@@ -158,20 +159,20 @@ In this work we model word frequency in a straightforward manner: we sort the fr
 We explore three different corpora in this work:
 
 \begin{itemize}
-\item Medical Reddit: Reddit is an Internet forum with a sizable user community which is responsible for generating content. Any user can start a discussion receiving replies from any other user.
-This discussion forum is intensively used for health purposes, for example in the Reddit community AskDocs licensed nursers and doctors (subject to user identity verification) advise help seekers free of charge. We selected six of such communities (medical, AskDocs, AskDoctorSmeeee, Health, WomensHealth, Mens\_Health) and downloaded all user interactions using the Python Reddit API Wrapper (PRAW\footnote{\url{https://praw.readthedocs.io/}}), v5.1. In total 43,018 discussions were collected.
+\item \underline{Medical Reddit:} Reddit\footnote{\url{https://www.reddit.com/}} is an Internet forum with a sizable user community which is responsible for generating its content. Any user can start a discussion receiving replies from any other user. This discussion forum is intensively used for health purposes, for example in the Reddit community AskDocs\footnote{\url{https://www.reddit.com/r/AskDocs/}} licensed nursers and doctors (subject to user identity verification) advise help seekers
+        free of charge. We selected six of such communities (medical, AskDocs, AskDoctorSmeeee, Health, WomensHealth, Mens\_Health) and downloaded all user interactions using the Python library PRAW\footnote{\url{https://praw.readthedocs.io/}}. In total 43,018 discussions were collected.
 
-\item PubMed Central: PubMed Central (PMC) is an online digital database of freely available full-text biomedical literature playing a similar role to physicians as the ACM Digital Library does to computer scientists. We used in this work the same collection crafted for the TREC Clinical Decision Support Track 2014 and 2015 (TREC-CDS)\footnote{\url{http://www.trec-cds.org/}} consisting of 733,138 articles. 
+\item \underline{PubMed Central:} PubMed Central\footnote{\url{https://www.ncbi.nlm.nih.gov/pmc/}} is an online digital database of freely available full-text biomedical literature playing a similar role to physicians as the ACM Digital Library does to computer scientists. We used in this work the same collection crafted for the TREC Clinical Decision Support Track 2014 and 2015 (TREC-CDS)\footnote{\url{http://www.trec-cds.org/}} consisting of 733,138 articles. 
  
-\item Medical English Wikipedia: we filtered articles from a Wikipedia dump\footnote{\url{https://dumps.wikimedia.org/enwiki/}} (May 1st 2017), that contained an Infobox\footnote{A Wikipedia infobox is a template containing structured information that appear on the right of Wikipedia pages to summarize key aspects of concepts} in which at least one of the following words appeared as a property: ICD10, ICD9, DiseasesDB, MeSH, MeSHID, MeshName, MeshNumber, GeneReviewsName, Orphanet, eMedicine, MedlinePlus, drug\_name, Drugs.com, DailyMedID, LOINC.
+\item \underline{Medical English Wikipedia:} we filtered articles from a Wikipedia dump\footnote{\url{https://dumps.wikimedia.org/enwiki/}} (May 1st 2017), that contained an Infobox\footnote{A Wikipedia infobox is a template containing structured information that appear on the right of Wikipedia pages to summarize key aspects of concepts} in which at least one of the following words appeared as a property: ICD10, ICD9, DiseasesDB, MeSH, MeSHID, MeshName, MeshNumber, GeneReviewsName, Orphanet, eMedicine, MedlinePlus, drug\_name, Drugs.com, DailyMedID, LOINC.
 Figure~\ref{fig:hyperthermia} illustrates a Wikipedia page that is marked as medical because of its Infobox entries.
 This idea was successfully implemented in Soldaini et al.~\cite{soldaini15} and our filtering process resulted in a collection of 11,942 articles. 
-Note that this procedure highly favors precision over recall.
+        Note that this procedure highly favors precision over recall. \mytodo{In case we need space, I suggest we drop this figure}
 \end{itemize}
 
 A summary of the statistics of these three collections is reported in Table~\ref{tab:collection_stats}.
 In order to calculate word frequency, we removed words that occur less than 5 times in a corpus.
-Finally, we ignore out of vocabulary (OV) words in our calculations, unless it is explicitly stated.
+Finally, unless it is explicitly stated otherwise, we ignore out of vocabulary (OV) words in our calculations,
 
 \begin{figure}[th!]
    \centering
@@ -187,18 +188,17 @@ In a recent survey, Kevin Collins-Thompson reports that the future of understand
 A challenge in using Machine Learning in this task is defining the background corpora used as training set.
 A possible setup for our work could have used CLEF 2015 assessments to learn a model for CLEF 2016 and vice-versa, but instead, we opt for a 
 more reusable solution for the medical/health domain. 
-We employed the three datasets explained in Section~\ref{sec:word_freq} and assume different labels according to the average difficulty of documents in these collections:
+We employed the three datasets described in Table~\ref{tab:collection_stats} and assume different labels according to the average difficulty of documents in these collections:
 
 \begin{itemize}
     \item Medical Reddit (label 1): Documents in this collection are expected to be written in a colloquial style, and thus the easiest to understand. All the conversations are in fact explicitly directed to assist inexpert health consumers;
     \item Medical English Wikipedia (label 2): Documents in this collection are expected to be less formal than scientific articles, but more formal than a Web forum like Reddit;
-    \item PubMed Central (label 3): Documents from this collection are expected to be written in a highly formal style, as the target audience of these documents are physicians, nursers and researchers in the biomedical domain.
+    \item PubMed Central (label 3): Documents from this collection are expected to be written in a highly formal style, as the target audience here are physicians, nursers and researchers in the biomedical domain.
 \end{itemize}
 
 Models were trained on a Latent Semantic Analysis (LSA) empirically set to have ten dimension based on word counts in documents in these three collections.
-We model two different tasks a classification one and a regression task.
-Different labels for the regression could be employed, for example, a label 5 to PubMed Central documents to emphasize that these documents are explicitly made for expert users.
-We did not explore the effects of different labels in this work, it is left as future work.
+We model two different tasks: a classification one and a regression task.
+Different labels for the regression could be employed, for example, a label 6 to PubMed Central documents would emphasize that these documents are explicitly made for expert users, being 3 times harder than Wikipedia ones. We did not explore the effects of different labels in this work, it is left as future work.
 
 \input{tab_doc_features}
 
@@ -279,22 +279,45 @@ The bottom part of Table~\ref{tab:comparison_preprocessing} shows the comparison
 \section{Experimenting with Understandability}
 \label{sec:experiments}
 
-The data use made our analysis here was also used in the Information Retrieval branch of CLEF eHealth.
-We focus our attention to the CLEF eHealth 2016 campaign leaving 2015 experiments offline\footnote{Link to experiments will be available upon acceptance of this manuscript}.
+Our experiments are based on the data collected during the Information Retrieval branch of CLEF eHealth. To the best of our knowledge that was the only venue in which topical and understandability assessments were collected. 
+We show here experiments with the CLEF eHealth 2016 campaign leaving 2015 experiments offline\footnote{Link to experiments will be available upon acceptance of this manuscript}.
 
 We start by the defining the evaluation measure that we will use here. 
-In CLEF eHealth campaign, organizers used a modification of RBP which ties together the relevance of a document with any other relevance dimension, in this case in particular, with understandability.
-Mathematically, it consists in adding an understandability factor to the RBP formula, as shown:
-\todo{add formula here}
+In CLEF eHealth campaign, organizers used a modification of RBP which ties together document relevance any other relevance dimension, in this case in particular, understandability \cite{clef16}.
+Mathematically, it consists in adding an understandability factor to the RBP formula: $uRBP(\rho) = (1 - \rho) \sum_{k=1}^{K} \rho^{K-1} r(d@K) u(d@k)$, with r(d@k) representing the gain in retrieving a topically relevant documents at rank $k$ and u(d@k) the gains coming from the understandability factor of a document at rank $k$.
 
 The drawback of such evaluation metric is that we cannot separately evaluate each dimension. We propose, instead, to separately evaluate a ranking list with respect to its topical relevance and its understandability:
 \begin{itemize}
-        \item P@10r: a document is topically relevant if assessed as somewhat relevant or highly relevant. This metric counts the number of relevant documents in the top 10 documents of a ranked list.
-        \item P@10u: a document is relevant for this metric if the understandability score is smaller than a threshold $U$. Like P@10r, we count the number of relevant documents in the first 10 docs of a ranked list. We use $U = 40$ in our experiments. \todo{I decided to use this threshold based on the data. I will need to add a figure to support this clam, I think.}
+        \item $P_r@10$: a document is topically relevant if assessed as somewhat relevant or highly relevant. This metric counts the number of topically relevant documents in the top 10 documents of a ranked list.
+        \item $P_u@10$: a document is relevant for this metric if the understandability score is smaller than a threshold $U$. Like $P_r@10$, we count the number of relevant documents in the first 10 documents of a ranked list. We use $U = 40$ in our experiments. \todo{I decided to use this threshold based on the data. I will need to add a figure to support this clam, I think.}
 \end{itemize}
 
-During the campaign, organizers opt to use shallow pools and focus on highly ranked documents, using P@10r as one official metric for topical relevance.
-It makes our choice of metric natural. Likewise it is traditionally done with F measure, we combine P@10r and P@10u with an harmonic mean: $F_ru = 2 \times \frac{P@10r \times P@10u}{P@10r + P@10u}$
+During the campaign, organizers opt to use shallow pools and focus on highly ranked documents, using $P_r@10$ as one official metric for topical relevance.
+It makes our choice of metric natural. Likewise it is traditionally done with F measure, we combine $P_r@10$ and $P_u@10$ with an harmonic mean: $F_{ru} = 2 \times \frac{P_r@10 \times P_u@10}{P_r@10 + P_u@10}$. 
+
+When reranking runs, we risk to bring to the top of the rankings documents that were not assessed when the task took place. For this reason, we inform the average percentage of documents that were not assessed in the top 10 documents of each run (Unj@10) and we inform $P_r@10*$, $P_u@10*$ and $F_{ru}*$, modified measures that excluding all unassessed documents for the ranking list before evaluation.
+These last three metrics showcase the potential of a run if it had been included in the pool set.
+
+We start our experiments by showing at the top of Table~\ref{tab:experiments} (indices 1-4) the performance of the top 3 systems in CLEF eHealth 2016 together with a straightforward BM25 baseline run made with Terrier toolkit. Our further experiments will use not only these runs as a comparison base, but modify these runs when necessary.
+
+The first batch of experiments, indices 5-8, consists of reranking the top 20 documents based solely on the Dale-Chall index, as it was the metrics with highest correlation with human judgements for this collection.
+The topical relevance of the reranked resulting lists is immediately hurt in benefit of understandability. Note how $P_r@10$ and $P_r@10*$ decrease while $P_u@10$ and in special $P_u@10*$ increase.
+The percentage of unassessed documents reach 10\% and, unfortunately, only looking at RBP and uRBP we cannot see the understandability benefits brought by the rerank method.
+
+The next batch of experiments, indices 9-19, swaps the Dale-Chall Index by a Linear Regression (LR) learned using the top features of Table~\ref{tab:top_corr_metrics}\footnote{Experiments with various machine learning methods were performed as well and will be available in a website upon paper acceptance. The results of other methods are similar}. 
+We experiment with reranking the top 15 (more more conservative method), 20 and 50 (a more heterodox method). We clearly see the trade-off between understandability and relevance when we increase from top 15 to top 50: while the $P_r@10$ falls 5 points, $P_u@10$ increases 10. Nevertheless, $F_{ru}*$ shows that more conservative methods provide the best trade-offs.
+When comparing the use of Dale-Chall and Linear Regression reranking the same number of documents (indices 13-16), we notice that LR results for $P_u@10*$ are always superior to Dale-Chall, meaning it does a better job when bringing the easier documents to the top of the rank, but that not necessarily means the final rank is better, as we can see comparing the results for $F_{ru}*$.
+
+Our third batch of experiments, indices 20-31, aims to combine the good ranking for topicality coming from the original rank list with the best rankings for understandability, coming from the LR reranking.
+For that, we use the Reciprocal Rank Fusion (RRF) method, which combines runs on the rank of documents instead of scores~\cite{cormack09}. Reranking with LR and combining runs with RRF allows to obtain the best trade-offs so far, with $F_{ru}$ of the best method in CLEF being improved from 39.05 to 39.68, with comes from a very small decrease in $P_u@10*$ (from 31.70 to 31.60) and a 4.9\% increase in $P_u@10*$ (from 50.83 to 53.30).
+
+Our final batch of experiments, indices 32-34, are based on learning-to-rank. We decided to use the pairwise implementation of the gradient boosting approach from the XGBoost framework~\cite{chen16} due to its recent good results in many machine learning tasks \todo{actually, I should use XGBoost method instead of LR}. Evaluating other learning to rank methods and frameworks are left as future work.
+We evaluated three different settings based on the plain BM25 run shown in index 4, each one with a different combination of feature set and relevance labels:
+\begin{itemize}
+    \item Index 32: we used as relevance labels only the topical labels and as feature set the score of different information retrieval models (BM25, Dirichlet LM and PL2). This represents the typical use of learning to rank aiming to optimize only the topical relevance results. Unfortunately that was not the case and not even the $P_r@10*$ was improved.
+    \item Index 33: we used as relevance labels the linear combination of topical relevance and understandability. Additionally to the IR features, we used the 10 features correspondent to the best features according to Kendall tau in Table~\ref{tab:top_corr_metrics}. Results show that this resulted in higher $F_{ur}*$ when compared to its correspondent approaches (indices 4, 8, 12, 16, 19, 23, 27 and 31) due to a high increase in $P_r@10*$, which reveals understandability features improving topicability.
+    \item Index 34: On top of our previous run, we included here all features shown in Table~\ref{tab:doc_features}. Note that despite the very high number of unassessed documents, this run shows improvements even in $P_r@10$ obtaining the same results as the third best run in the campaign (ECNU). In its turn, the $P_{r}*$ which ignores the unassessed documents is 8.4\% higher than the best system, while $F_{ru}*$ is 5.2\% higher.
+\end{itemize}
 
 
 \input{tab_experiments}

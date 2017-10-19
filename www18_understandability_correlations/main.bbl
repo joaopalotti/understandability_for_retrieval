@@ -2,7 +2,7 @@
 %%% Do NOT edit. File created by BibTeX with style
 %%% ACM-Reference-Format-Journals [18-Jan-2012].
 
-\begin{thebibliography}{24}
+\begin{thebibliography}{26}
 
 %%% ====================================================================
 %%% NOTE TO THE USER: you can override these defaults by providing
@@ -66,6 +66,21 @@
 \url{http://www.jstor.org/stable/747382}}
 
 
+\bibitem[\protect\citeauthoryear{Chen and Guestrin}{Chen and Guestrin}{2016}]%
+        {chen16}
+\bibfield{author}{\bibinfo{person}{Tianqi Chen} {and} \bibinfo{person}{Carlos
+  Guestrin}.} \bibinfo{year}{2016}\natexlab{}.
+\newblock \showarticletitle{XGBoost: A Scalable Tree Boosting System}. In
+  \bibinfo{booktitle}{{\em Proceedings of the 22Nd ACM SIGKDD International
+  Conference on Knowledge Discovery and Data Mining}} {\em
+  (\bibinfo{series}{KDD '16})}. \bibinfo{publisher}{ACM}, \bibinfo{address}{New
+  York, NY, USA}, \bibinfo{pages}{785--794}.
+\newblock
+\showISBNx{978-1-4503-4232-2}
+\showDOI{%
+\url{https://doi.org/10.1145/2939672.2939785}}
+
+
 \bibitem[\protect\citeauthoryear{Coleman and Liau}{Coleman and Liau}{1975}]%
         {cli75}
 \bibfield{author}{\bibinfo{person}{Meri Coleman} {and} \bibinfo{person}{T.~L.
@@ -87,6 +102,24 @@
   Linguistics\/}} \bibinfo{volume}{165}, \bibinfo{number}{2}
   (\bibinfo{year}{2014}), \bibinfo{pages}{97--135}.
 \newblock
+
+
+\bibitem[\protect\citeauthoryear{Cormack, Clarke, and Buettcher}{Cormack
+  et~al\mbox{.}}{2009}]%
+        {cormack09}
+\bibfield{author}{\bibinfo{person}{Gordon~V. Cormack}, \bibinfo{person}{Charles
+  L~A Clarke}, {and} \bibinfo{person}{Stefan Buettcher}.}
+  \bibinfo{year}{2009}\natexlab{}.
+\newblock \showarticletitle{Reciprocal Rank Fusion Outperforms Condorcet and
+  Individual Rank Learning Methods}. In \bibinfo{booktitle}{{\em Proceedings of
+  the 32Nd International ACM SIGIR Conference on Research and Development in
+  Information Retrieval}} {\em (\bibinfo{series}{SIGIR '09})}.
+  \bibinfo{publisher}{ACM}, \bibinfo{address}{New York, NY, USA},
+  \bibinfo{pages}{758--759}.
+\newblock
+\showISBNx{978-1-60558-483-6}
+\showDOI{%
+\url{https://doi.org/10.1145/1571941.1572114}}
 
 
 \bibitem[\protect\citeauthoryear{Dale and Chall}{Dale and Chall}{1948}]%
