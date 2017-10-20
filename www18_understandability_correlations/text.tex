@@ -69,14 +69,18 @@ A common finding of these studies is that, in general health content available o
 
 Previous Linguistics and Information Retrieval research has attempted to devise computational methods for the automatic estimation of text readability and understandability~\footnote{TODO: difference between readability and understandability}, and for the inclusion of these within search methods. Computational approaches to understandability estimations include (1) readability formulas, which exploit word surface characteristics of the text, (2) matching with specialised dictionaries or terminologies, often compiled with information about understandability difficulty, (3) machine learning approaches.
 
-Measures such as  Coleman-Liau Index (CLI), Dale-Chall Index, XXX (FRE), XXX (SMOG)~\cite{} belong to the first category. These measures generally rely on ...
-While these measures have been widely used in studies investigating the understandability of health content retrieved by search engines, e.g.~\cite{becker2004study}, Palotti et al. found that these measures are heavily affected by the methods used to extract text from the HTML source~\cite{palotti15}. They were able to identify specific settings of a HTML preprocessing pipeline that provided consistent  estimates. We shall revisit this work in more details in Section~\ref{sec:which_readability}, as we further investigate this problem by comparing the effect of HTML preprocessing on text understandability estimations in light of explicit human assessments. 
+Measures such as Coleman-Liau Index (CLI)~\cite{cli75}, Dale-Chall Index (DCI)~\cite{dale48}, Flesch Reading Easy (FRE)~\cite{flesch77}, Simple Measure of Gobbledygook (SMOG)~\cite{smog69} and Gunning-Fog index (GFI)~\cite{gunning52} belong to the first category. These measures generally rely on surface-level characteristics of text, such as characters, syllables and word counts~\cite{dubay04}.
+While these metrics have been widely used in studies investigating the understandability of health content retrieved by search engines (e.g.,~\cite{becker2004study,graber99readability,fitzsimmons2010readability,wiener2013readability,patel13readability,atcherson14readability,meillier17readability}), Palotti et al. found that these measures are heavily affected by the methods used to extract text from the HTML source~\cite{palotti15}. They were able to identify specific settings of a HTML preprocessing pipeline that provided consistent  estimates. We shall revisit this work in more details in Section~\ref{sec:which_readability}, as we further investigate this problem by comparing the effect of HTML preprocessing on text understandability estimations in light of explicit human assessments. 
 
 
 The use of the Consumer Health Vocabulary (CHV) or of terminologies like the MEdical Subject Headings (MESH) belong to the second category. TODO: here speak about CHV, but also about Dawei Song's use of UMLS/Mesh ontology level.
+Moved from Section~\ref{sec:proxies}:
+The Consumer Health Vocabulary (CHV) is a prominent medical vocabulary dedicated to mapping consumer (layperson) vocabulary to technical terms~\cite{zeng06}. 
+It attributes a score for each of its concepts with respect to their difficulty, with lower/higher scores for harder/easier concepts.
+The hierarchy of Medical Subject Headers (MeSH) was previously used in the literature to identify hard concepts, assuming that a concept that is deep in the hierarchy is harder than a shallow one~\cite{yan11}.
 
-Use of Machine Learning for understandability: anything in health specifically?
 
+Use of Machine Learning for understandability: anything in health specifically? JP: See comments on slack + \cite{wu13,wu16}
 %Readability formulas? CLEF work? CIKM paper? White/MSR papers?....???
 
 \section{Which Readability Formula To Use}
@@ -89,7 +93,7 @@ Use of Machine Learning for understandability: anything in health specifically?
 % TODO: write about the preprocessing methods here...
 
 Palotti, Zuccon and Hanbury~\cite{palotti15} compared six different HTML cleaning methods and their impact in the use of readability formulas.
-They evaluate three methods to extract the content of a Web page from its HTML source: BeautifulSoap 4, which just naively removed HTML tags, Boilerpipe\footnote{Add ref.} and Justext\footnote{Add ref.}, two approaches to eliminate boilerplate text together with HTML tags. Henceforth these methods are referred as \textit{Naive}, \textit{Boilerpipe - Boi} and \textit{Justext - Jst}, respectively.
+They evaluate three methods to extract the content of a Web page from its HTML source: BeautifulSoap 4, which just naively removed HTML tags, Boilerpipe\cite{kohlschutter10} and Justext\cite{jan11}, two approaches to eliminate boilerplate text together with HTML tags. Henceforth these methods are referred as \textit{Naive}, \textit{Boilerpipe - Boi} and \textit{Justext - Jst}, respectively.
 The authors noticed that the text in HTML tags often missed a correct punctuation mark. For example, the text extract from titles, menus, tables or lists could be interpreted as many short sentences of few very long sentences, depending only whether a period is forced at the end of sentences. These two preprocessing options are henceforth called \textit{ForcePeriod - FP} and \textit{DoNotForcePeriod - DNFP}.
 
 Their experiments found that the use of \textit{Naive} preprocessing was associated with larger variances in the understandability score estimated by readability formulas, while the use of both \textit{Boi} and \textit{Jst} were more stable. Coleman-Liau Index (CLI) was the most stable metric among all tested in Palotti's work\cite{palotti15}.
@@ -128,7 +132,7 @@ has shown once more to be the most robust measure to variances due to use of \te
 \section{(More) Understandability Estimators}
 \label{sec:proxies}
 
-The correlation of readability formulas as shown in Figures~\ref{fig:bar_corr_clef15} and~\ref{fig:bar_corr_clef16} is not strong, with no correlation coefficient being higher than 0.5.
+The correlation of readability formulas as shown in Figures~\ref{fig:bar_corr_clef15} and~\ref{fig:bar_corr_clef16} is not strong, without any correlation coefficient being higher than 0.5.
 Our next intent is comparing the correlation coefficient of the traditional readability formulas with other methods for understandability estimation, including an evaluation of other humans performing the same task.
 For that, we devise and group several methods into semantically related groups which will be following presented.
 We summarize all methods in Table~\ref{tab:doc_features}.
@@ -138,7 +142,7 @@ We summarize all methods in Table~\ref{tab:doc_features}.
 %Note that we divide these estimators into semantically related groups, which are presented below.
 
 \textbf{Traditional Readability Formulas:}
-This group contains all the traditional readability formulas listed in Section~\ref{sec:related} (or maybe  in Table~\ref{tab:formulas}).
+This group contains a large set of traditional readability formulas. Some were mentioned in Section~\ref{sec:related}. A full list can be found in surveys such as Collins-Thompson~\cite{collins2014computational} or Dubay~\cite{dubay04}.
 
 \textbf{Raw Components of Readability Formulas:}
 This group comprises the building blocks that make up the traditional readability measures. Some examples include the average number of characters per word or the average number of syllables in a sentence\footnote{Words were divided into syllables using the Python package Pyphen \url{http://pyphen.org/}}.
@@ -148,15 +152,12 @@ This group includes methods such as the number of words with a medical prefix or
 Methods listed here were matched with documents using a simple keywords matching.
 
 \textbf{Consumer Vocabulary Features:}
-the Consumer Health Vocabulary (CHV) is a prominent medical vocabulary dedicated to mapping consumer (layperson) vocabulary to technical terms. 
-It attributes a score for each of its concepts with respect to their difficulty, with lower/higher scores for harder/easier concepts.
-We used NLM MetaMap\footnote{\url{https://metamap.nlm.nih.gov/}} to map contents occurring in Web documents to the CHV vocabulary.
+We used NLM MetaMap~\cite{aronson10} to map contents occurring in Web documents to the CHV vocabulary~\cite{zeng06}.
 We further use MetaMap options to also filter only concepts identified as symptoms or diseases.
 Similar approach is commonly used in the literature \cite{} \mytodo{maybe cite something that is not ours}.
 %The CHV dataset (version 20110204) links part of the UMLS concepts, such as “myocardial infarction”, to everyday expressions, “heart attack”.
 
 \textbf{Expert Vocabulary Features:}
-The hierarchy of Medical Subject Headers (MeSH) was previously used in the literature to identify hard concepts, assuming that a concept that is deep in the hierarchy is harder than a shallow one~\cite{yan11}.
 As done with CHV, we used MetaMap to map the content of Web documents to MeSH, exploring symptoms and disease concepts separately.
 
 \textbf{Natural Language:}
@@ -281,9 +282,9 @@ The highest correlations were archived by the regressors and classifiers, indepe
 Similarly to Figure~\ref{fig:boxplot_corr_docs_2015}, Figure~\ref{fig:boxplot_corr_docs_2016} reports the findings for CLEF eHealth 2016. This time, though, the Naive preprocessing method was clearly underperforming for most of the groups analysed, including regressors and classifiers.
 
 In order to further understand our experiments, we compared the median of each pair of preprocessing strategy showed in Figures~\ref{fig:boxplot_corr_docs_2015} and~\ref{fig:boxplot_corr_docs_2016} and present the results in Table~\ref{tab:comparison_preprocessing}. 
-For instance, the entry \textit{FP < DNFP} counts the number of times the median value for ForcePeriod was superior to DoNotForcePeriod when comparisons with the same HTML cleaning method was used, e.g. Naive ForcePeriod versus Naive DoNotForcePeriod. From all comparisons, the ones that were statistically significant according to a t-test are shown inside parentheses.
+For instance, the entry $\mathit{FP < DNFP}$ counts the number of times the median value for ForcePeriod was superior to DoNotForcePeriod when comparisons with the same HTML cleaning method was used, e.g. Naive ForcePeriod versus Naive DoNotForcePeriod. From all comparisons, the ones that were statistically significant according to a t-test are shown inside parentheses.
 
-The upper part of Table~\ref{tab:comparison_preprocessing} shows results for the comparisons between ForcePeriod (FP) and DoNotForcePeriod (DNFP). Although the interpretation of readability formulas is drastically affected by this choice of preprocessing, as learning in Chapter~\ref{chp:preprocessing}, the correlation results are not.
+The upper part of Table~\ref{tab:comparison_preprocessing} shows results for the comparisons between ForcePeriod (FP) and DoNotForcePeriod (DNFP). Although the interpretation of readability formulas is drastically affected by this choice of preprocessing, as research indicates~\cite{palotti15}, the correlation results are not.
 The number of times FP reached a higher correlation than DNFP is roughly the same that DNFP was higher than FP.
 The bottom part of Table~\ref{tab:comparison_preprocessing} shows the comparisons made for Naive, Justext and Boilerpipe. Results for CLEF 2015 contrast with 2016, while Naive was sightly better than Boilerpipe and Justext in 2015, it was the worst in almost all 2016 comparisons. Also, the comparisons between Justext and Boilerpipe are exactly the opposite from 2015 to 2016.
 
@@ -343,19 +344,12 @@ We evaluated three different settings based on the plain BM25 run shown in index
 \label{sec:conclusion_doc_analysis}
 
 There is an abundance of factors that affect how readability is perceived by users. 
-In this chapter we devised and studied a large number of readability estimators, ranging from traditional readability formulas extensively used in the past 50 years to state-of-the-art machine learning algorithms.
+In this paper we devised and studied a large number of readability estimators, ranging from traditional readability formulas extensively used in the past 50 years to state-of-the-art machine learning algorithms.
 We grouped them into semantically related groups in order to visualize their correlation with human assessments collected during CLEF eHealth campaigns in 2015 and 2016.
 
-Complementary to our previous chapter, we evaluated how preprocessing steps impact the readability estimation in traditional readability formulas and in other modern estimators. We empirically learnt the importance of preprocessing steps when applying readability formulas, as the highest correlations happen when other than the Naive method is used.
+Complementary to the literature research~\cite{palotti15}, we evaluated how preprocessing steps impact the readability estimation in traditional readability formulas and in other modern estimators. We empirically learnt the importance of preprocessing steps when applying readability formulas, as the highest correlations happen when other than the Naive method is used.
 For the most modern estimators, such as the ones based on machine learning methods, the correlation is less sensible to the preprocessing steps.
 
 We also studied the correlation of each individual readability formula to the human assessment to provide insights on which formula should be preferred. Our analysis concluded that the Simple Measure of Gobbledygook (SMOG) and Dale-Chall Index (DCI) were the most correlated metrics for the two datasets studied and, together with Coleman-Liau Index (CLI) and the Flesch Reading Ease (FRE) are the most stable metrics across datasets, and therefore, should be preferred.
 
-Finally, this chapter serves as a basis for the following chapters of this work, as the learning to rank methods will largely use the estimators devised and analysed here.
-
-%MISSING - POSSIBLE TODOs:
-% * I will use the evaluations from CLEF eHealth 2015 and 2016 to conclude that for the same topic, we can find very different results in respect to their understandability (readability) score. I might want to hire some people to classify how hard a topic is. Then I could correlate that with the mean scores of documents for that topic.
-% * I will try to come up with some sort of reasoning behind the understandability judgements: is it because of the text length? number of hard (long or out of dictionary) words?
-
-%\mytodo{In this chapter I could add other readability measures later, such as the neural network ones (see cikm 2017)}
 
