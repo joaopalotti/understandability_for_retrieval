@@ -104,7 +104,7 @@ Among all the readability formulas and preprocessing methods, SMOG with \textit{
 has shown once more to be the most robust measure to variances due to use of \textit{ForcePeriod} or \textit{DoNotForcePerid}.
 
 
-\begin{figure}[th!]
+\begin{figure*}[th!]
    \centering
    \includegraphics[width=1.\textwidth]{graphics/bar_corr_pearson15_values}
    \includegraphics[width=1.00\textwidth]{graphics/bar_corr_spearman15_values}
@@ -112,9 +112,9 @@ has shown once more to be the most robust measure to variances due to use of \te
    \includegraphics[width=1\textwidth]{graphics/legend62}
     \caption{Correlation of different readability measures and the understandability scores collected in CLEF eHealth 2015}
    \label{fig:bar_corr_clef15}
-\end{figure}
+\end{figure*}
 
-\begin{figure}[th!]
+\begin{figure*}[th!]
    \centering
     \includegraphics[width=1.\textwidth]{graphics/bar_corr_pearson16_values}
     \includegraphics[width=1.\textwidth]{graphics/bar_corr_spearman16_values}
@@ -122,7 +122,7 @@ has shown once more to be the most robust measure to variances due to use of \te
     \includegraphics[width=1\textwidth]{graphics/legend62}
     \caption{Correlation of different readability measures and the understandability scores collected in CLEF eHealth 2016.}
    \label{fig:bar_corr_clef16}
-\end{figure}
+\end{figure*}
 
 
 \section{(More) Understandability Estimators}
@@ -250,7 +250,7 @@ Boxes extend from the lower to upper quartile values of the data, with a line at
 We also include in Figures~\ref{fig:boxplot_corr_docs_2015} and~\ref{fig:boxplot_corr_docs_2016} boxes for the summary of the 3 preprocessing procedures to remove HTML, the use of HTML features, which is done without any preprocessing and the comparison with other human assessors. For CLEF eHealth 2015, we used as human assessments the additional assessments made by unpaid medical students and health consumers (see~\cite{palotti16b}), while for CLEF eHealth 2016 data, we randomly selected 100 pages that were assessed by another assessor. \mytodo{add at least another person doing assessments}.
 The correlations with human assessments provide important insights on how hard and subjective understandability assessments are.
 
-\begin{figure}[th!]
+\begin{figure*}[th!]
    \centering
    \includegraphics[width=0.70\textwidth]{graphics/box_pearson15_raw_values}
    \includegraphics[width=0.70\textwidth]{graphics/box_spearman15_raw_values}
@@ -259,9 +259,9 @@ The correlations with human assessments provide important insights on how hard a
     \vspace{-1.cm}
     \caption{Box plots divided by feature groups. Correlations are calculated using understandability labels from relevant documents assessed in CLEF eHealth 2015}
    \label{fig:boxplot_corr_docs_2015}
-\end{figure}
+\end{figure*}
 
-\begin{figure}[th!]
+\begin{figure*}[th!]
    \centering
    \includegraphics[width=0.70\textwidth]{graphics/box_pearson16_raw_values}
    \includegraphics[width=0.70\textwidth]{graphics/box_spearman16_raw_values}
@@ -270,7 +270,7 @@ The correlations with human assessments provide important insights on how hard a
     \vspace{-1.cm}
     \caption{Box plots divided by feature groups. Correlations are calculated using understandability labels from relevant documents assessed in CLEF eHealth 2016}
    \label{fig:boxplot_corr_docs_2016}
-\end{figure}
+\end{figure*}
 
 Figure~\ref{fig:boxplot_corr_docs_2015} shows the correlations for CLEF eHealth 2015 assessments.
 The choice of preprocessing method had the highest impact on the traditional readability formula group, with the Naive preprocessing clearly underperforming the other preprocessing methods. The choice of the Naive method was also the worst with the raw readability formula components and word frequency estimators, but, interestingly, it was a good choice, if not the best one, for all other groups.
