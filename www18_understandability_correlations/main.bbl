@@ -52,9 +52,21 @@
 \newblock
 
 
-\bibitem[\protect\citeauthoryear{Björnsson}{Björnsson}{1983}]%
+\bibitem[\protect\citeauthoryear{Becker}{Becker}{2004}]%
+        {becker2004study}
+\bibfield{author}{\bibinfo{person}{Shirley~Ann Becker}.}
+  \bibinfo{year}{2004}\natexlab{}.
+\newblock \showarticletitle{A study of web usability for older adults seeking
+  online health resources}.
+\newblock \bibinfo{journal}{{\em ACM Transactions on Computer-Human Interaction
+  (TOCHI)\/}} \bibinfo{volume}{11}, \bibinfo{number}{4} (\bibinfo{year}{2004}),
+  \bibinfo{pages}{387--406}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Bj{\"o}rnsson}{Bj{\"o}rnsson}{1983}]%
         {lix}
-\bibfield{author}{\bibinfo{person}{C.~H. Björnsson}.}
+\bibfield{author}{\bibinfo{person}{C.~H. Bj{\"o}rnsson}.}
   \bibinfo{year}{1983}\natexlab{}.
 \newblock \showarticletitle{Readability of Newspapers in 11 Languages}.
 \newblock \bibinfo{journal}{{\em Reading Research Quarterly\/}}
@@ -186,18 +198,6 @@
 \newblock
 
 
-\bibitem[\protect\citeauthoryear{Klare, Mabry, and Gustafson}{Klare
-  et~al\mbox{.}}{1955}]%
-        {klare55}
-\bibfield{author}{\bibinfo{person}{G.~R. Klare}, \bibinfo{person}{J.~E. Mabry},
-  {and} \bibinfo{person}{L.~M. Gustafson}.} \bibinfo{year}{1955}\natexlab{}.
-\newblock \showarticletitle{The relationship of style difficulty to immediate
-  retention and to acceptability of technical material}. In
-  \bibinfo{booktitle}{{\em Journal of Education Psychology}}.
-  \bibinfo{pages}{287--295}.
-\newblock
-
-
 \bibitem[\protect\citeauthoryear{McLaughlin}{McLaughlin}{1969}]%
         {smog69}
 \bibfield{author}{\bibinfo{person}{G.~Harry McLaughlin}.}
@@ -236,27 +236,12 @@
 \newblock
 
 
-\bibitem[\protect\citeauthoryear{Palotti, Zuccon, Goeuriot, Kelly, Hanbury,
-  Jones, Lupu, and Pecina}{Palotti et~al\mbox{.}}{2015b}]%
-        {clef15}
-\bibfield{author}{\bibinfo{person}{Jo{\~{a}}o Palotti}, \bibinfo{person}{Guido
-  Zuccon}, \bibinfo{person}{Lorraine Goeuriot}, \bibinfo{person}{Liadh Kelly},
-  \bibinfo{person}{Allan Hanbury}, \bibinfo{person}{Gareth J.~F. Jones},
-  \bibinfo{person}{Mihai Lupu}, {and} \bibinfo{person}{Pavel Pecina}.}
-  \bibinfo{year}{2015}\natexlab{b}.
-\newblock \showarticletitle{{ShARe/CLEF eHealth Evaluation Lab 2015, Task 2:
-  User-centred Health Information Retrieval}}. In \bibinfo{booktitle}{{\em
-  Working Notes for {CLEF} 2015 Conference, Toulouse, France, September 8-11,
-  2015.}}
-\newblock
-
-
 \bibitem[\protect\citeauthoryear{Palotti, Zuccon, and Hanbury}{Palotti
-  et~al\mbox{.}}{2015a}]%
+  et~al\mbox{.}}{2015}]%
         {palotti15}
-\bibfield{author}{\bibinfo{person}{Jo\~{a}o Rafael de~Moura Palotti},
-  \bibinfo{person}{Guido Zuccon}, {and} \bibinfo{person}{Allan Hanbury}.}
-  \bibinfo{year}{2015}\natexlab{a}.
+\bibfield{author}{\bibinfo{person}{Jo\~{a}o Palotti}, \bibinfo{person}{Guido
+  Zuccon}, {and} \bibinfo{person}{Allan Hanbury}.}
+  \bibinfo{year}{2015}\natexlab{}.
 \newblock \showarticletitle{The Influence of Pre-processing on the Estimation
   of Readability of Web Documents}. In \bibinfo{booktitle}{{\em Proceedings of
   the 24th ACM International on Conference on Information and Knowledge
@@ -275,16 +260,6 @@
   patient education materials}.
 \newblock \bibinfo{journal}{{\em Head \& neck\/}} \bibinfo{volume}{35},
   \bibinfo{number}{10} (\bibinfo{year}{2013}), \bibinfo{pages}{1421--1425}.
-\newblock
-
-
-\bibitem[\protect\citeauthoryear{Perry}{Perry}{1954}]%
-        {perry54}
-\bibfield{author}{\bibinfo{person}{Bernard~Lionel Perry}.}
-  \bibinfo{year}{1954}\natexlab{}.
-\newblock {\em \bibinfo{title}{Newspaper readability: A pilot study}}.
-\newblock \bibinfo{thesistype}{Ph.D. Dissertation}. \bibinfo{school}{Boston
-  University, USA}.
 \newblock
 
 
@@ -308,6 +283,36 @@
 \newblock \bibinfo{publisher}{Springer International Publishing},
   \bibinfo{pages}{538--549}.
 \newblock
+
+
+\bibitem[\protect\citeauthoryear{White}{White}{2013}]%
+        {white13}
+\bibfield{author}{\bibinfo{person}{Ryen White}.}
+  \bibinfo{year}{2013}\natexlab{}.
+\newblock \showarticletitle{Beliefs and biases in web search}. In
+  \bibinfo{booktitle}{{\em Proceedings of the 36th international ACM SIGIR
+  conference on Research and development in information retrieval}} {\em
+  (\bibinfo{series}{SIGIR '13})}. \bibinfo{publisher}{ACM},
+  \bibinfo{address}{New York, NY, USA}, \bibinfo{pages}{3--12}.
+\newblock
+\showISBNx{978-1-4503-2034-4}
+\showDOI{%
+\url{https://doi.org/10.1145/2484028.2484053}}
+
+
+\bibitem[\protect\citeauthoryear{White and Horvitz}{White and Horvitz}{2009}]%
+        {white09b}
+\bibfield{author}{\bibinfo{person}{Ryen~W. White} {and} \bibinfo{person}{Eric
+  Horvitz}.} \bibinfo{year}{2009}\natexlab{}.
+\newblock \showarticletitle{Cyberchondria: Studies of the Escalation of Medical
+  Concerns in Web Search}.
+\newblock \bibinfo{journal}{{\em ACM Transactions on Information Systems\/}}
+  \bibinfo{volume}{27}, \bibinfo{number}{4}, Article \bibinfo{articleno}{23}
+  (\bibinfo{date}{Nov.} \bibinfo{year}{2009}), \bibinfo{numpages}{37}~pages.
+\newblock
+\showISSN{1046-8188}
+\showDOI{%
+\url{https://doi.org/10.1145/1629096.1629101}}
 
 
 \bibitem[\protect\citeauthoryear{Wiener and Wiener-Pla}{Wiener and
