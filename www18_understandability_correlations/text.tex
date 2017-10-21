@@ -101,7 +101,8 @@ Their experiments found that the use of \textit{Naive} preprocessing was associa
 In our experiments, we use the Pearson, Kendall Tau and Spearman's Rank correlation to compare the understandability label assigned to each document by human assessors and by readability formulas.
 Pearson correlation is used to calculate the strength of two linearly related variables, while the Kendall and Spearman are rank correlation, i.e., they act on the rank of the variables instead of their values. We opt to report on all three correlation coefficients as all three are equally used in the literature, and thus we allow other researchers to compare our results across.
 
-We show in Figures~\ref{fig:bar_corr_clef15} and~\ref{fig:bar_corr_clef16} the correlation scores of each traditional readability metric with the human assessments made in CLEF 2015 and 2016, respectively. We observe that the \textit{Naive} preprocessing also results in the lowest
+We show in Figure~\ref{fig:bar_corr_clef15} %and~\ref{fig:bar_corr_clef16}
+the correlation scores of each traditional readability metric with the human assessments made in CLEF 2015 and 2016, respectively. We observe that the \textit{Naive} preprocessing also results in the lowest
 correlation, no matter which correlation measure or readability formula is used. Also, when the \textit{Naive} preprocessing is used, the variant \textit{DoNotForcePeriod} yields higher correlations than the variant \textit{ForcePeriod}, but when using a higher quality HTML cleaner, such as Justext or Boilerplate, the results indicate that the use of \textit{ForcePeriod} should be preferred.
 
 Among all the readability formulas and preprocessing methods, SMOG with \textit{ForcePeriod} preprocessing and Dale-Chall Index with \textit{DoNotForcePeriod} are the best ones respectively for 2015 and 2016. Although there is no single best readability measure or best preprocessing strategy in all scenarios, CLI and FRE with \textit{Justext} are stable options, with correlation coefficients as high as the best ones in both campaigns. Thus, we confirm Palotti's advice for the use of CLI, as it
@@ -110,29 +111,29 @@ has shown once more to be the most robust measure to variances due to use of \te
 
 \begin{figure*}[th!]
    \centering
-   \includegraphics[width=1.\textwidth]{graphics/bar_corr_pearson15_values}
-   \includegraphics[width=1.00\textwidth]{graphics/bar_corr_spearman15_values}
-   \includegraphics[width=1.00\textwidth]{graphics/bar_corr_kendalltau15_values}
-   \includegraphics[width=1\textwidth]{graphics/legend62}
-    \caption{Correlation of different readability measures and the understandability scores collected in CLEF eHealth 2015}
+   \includegraphics[width=.45\textwidth]{graphics/bar_corr_pearson15_values}
+   \includegraphics[width=.45\textwidth]{graphics/bar_corr_pearson16_values}
+   \includegraphics[width=.45\textwidth]{graphics/bar_corr_spearman15_values}
+   \includegraphics[width=.45\textwidth]{graphics/bar_corr_spearman16_values}
+   \includegraphics[width=.45\textwidth]{graphics/bar_corr_kendalltau15_values}
+   \includegraphics[width=.45\textwidth]{graphics/bar_corr_kendalltau16_values}
+   \includegraphics[width=.8\textwidth]{graphics/legend62}
+    \caption{Absolute correlation coefficient of different readability measures and understandability scores. On the left hard side, CLEF eHealth 2015, on the right hand side, CLEF eHealth 2016}
    \label{fig:bar_corr_clef15}
 \end{figure*}
 
-\begin{figure*}[th!]
-   \centering
-    \includegraphics[width=1.\textwidth]{graphics/bar_corr_pearson16_values}
-    \includegraphics[width=1.\textwidth]{graphics/bar_corr_spearman16_values}
-    \includegraphics[width=1.\textwidth]{graphics/bar_corr_kendalltau16_values}
-    \includegraphics[width=1\textwidth]{graphics/legend62}
-    \caption{Correlation of different readability measures and the understandability scores collected in CLEF eHealth 2016.}
-   \label{fig:bar_corr_clef16}
-\end{figure*}
+%\begin{figure*}[th!]
+%  \centering
+%   \caption{Correlation of different readability measures and the understandability scores collected in CLEF eHealth 2016.}
+%  \label{fig:bar_corr_clef16}
+%\end{figure*}
 
 
 \section{(More) Understandability Estimators}
 \label{sec:proxies}
 
-The correlation of readability formulas as shown in Figures~\ref{fig:bar_corr_clef15} and~\ref{fig:bar_corr_clef16} is not strong, without any correlation coefficient being higher than 0.5.
+The correlation of readability formulas as shown in Figure~\ref{fig:bar_corr_clef15} %and~\ref{fig:bar_corr_clef16}
+is not strong, without any correlation coefficient being higher than 0.5.
 Our next intent is comparing the correlation coefficient of the traditional readability formulas with other methods for understandability estimation, including an evaluation of other humans performing the same task.
 For that, we devise and group several methods into semantically related groups which will be following presented.
 We summarize all methods in Table~\ref{tab:doc_features}.
