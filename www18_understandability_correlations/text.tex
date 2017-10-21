@@ -145,29 +145,29 @@ We summarize all methods in Table~\ref{tab:doc_features}.
 This group contains a large set of traditional readability formulas. Some were mentioned in Section~\ref{sec:related}. A full list can be found in surveys such as Collins-Thompson~\cite{collins2014computational} or Dubay~\cite{dubay04}.
 
 \textbf{Raw Components of Readability Formulas:}
-This group comprises the building blocks that make up the traditional readability measures. Some examples include the average number of characters per word or the average number of syllables in a sentence\footnote{Words were divided into syllables using the Python package Pyphen \url{http://pyphen.org/}}.
+This group comprises the building blocks that make up the traditional readability measures. Some examples include the average number of characters per word or the average number of syllables in a sentence. Words were divided into syllables using the Python package Pyphen \cite{pyphen}.
 
 \textbf{General Medical Vocabularies:}
-This group includes methods such as the number of words with a medical prefix or suffix, i.e. beginning or ending with Latin or Greek particles (e.g., amni-, angi-, algia-, arteri-), acronyms\footnote{The acronym list was obtained from the ADAM database \cite{zhou2006}} or medical vocabularies such as the International Statistical Classification of Diseases and Related Health Problems (ICD), Drugbank and the OpenMedSpel dictionary\footnote{\url{http://extensions.openoffice.org/en/project/openmedspel-en-us}}. 
-Methods listed here were matched with documents using a simple keywords matching.
+This group includes methods such as the number of words with a medical prefix or suffix, i.e. beginning or ending with Latin or Greek particles (e.g., amni-, angi-, algia-, arteri-), acronyms or medical vocabularies such as the International Statistical Classification of Diseases and Related Health Problems (ICD), Drugbank and the OpenMedSpel dictionary \cite{openmedspel}.
+Acronym list was obtained from ADAM database~\cite{zhou2006}. Methods listed here were matched with documents using a simple keywords matching.
 
 \textbf{Consumer Vocabulary Features:}
-We used NLM MetaMap~\cite{aronson10} to map contents occurring in Web documents to the CHV vocabulary~\cite{zeng06}.
+NLM MetaMap~\cite{aronson10} was employed to map the content of Web documents to the CHV vocabulary~\cite{zeng06}.
 We further use MetaMap options to also filter only concepts identified as symptoms or diseases.
 Similar approach is commonly used in the literature \cite{} \mytodo{maybe cite something that is not ours}.
 %The CHV dataset (version 20110204) links part of the UMLS concepts, such as “myocardial infarction”, to everyday expressions, “heart attack”.
 
 \textbf{Expert Vocabulary Features:}
-As done with CHV, we used MetaMap to map the content of Web documents to MeSH, exploring symptoms and disease concepts separately.
+As done with CHV, we used MetaMap to map the content of Web documents to MeSH, exploring symptoms and disease concepts separately. 
 
 \textbf{Natural Language:}
-This group comprises commonly used metrics in the natural language processing field, such as the ratio of part-of-speech (POS) classes, the number of entities in a text, the sentiment polarity and the ratio of words found in English vocabularies. The Python package NLTK 3.2\footnote{\url{http://www.nltk.org/}} was employed for sentiment analysis and POS tagging. The GNU Aspell\footnote{\url{http://www.aspell.net/}} dictionary was used as a standard English vocabulary and a stopword list was built by merging the stopword
-lists of the Indri\footnote{\url{http://www.lemurproject.org/indri/}} and Terrier\footnote{\url{http://www.terrier.org/}} toolkits. 
+This group comprises commonly used metrics in the natural language processing field, such as the ratio of part-of-speech (POS) classes, the number of entities in a text, the sentiment polarity and the ratio of words found in English vocabularies. The Python package NLTK~\cite{nltk} was employed for sentiment analysis and POS tagging. The GNU Aspell~\cite{aspell} dictionary was used as a standard English vocabulary and a stopword list was built by merging the stopword
+lists of the Indri~\cite{indri} and Terrier~\cite{terrier} toolkits. 
 
 \textbf{HTML Features:}
 The aim of this group is to represent a web page by its HTML content.
 We hypothesize that a Web page rich of images or with its content well summarized in tables can potentially ease hard subjects such as medicine. 
-We identify a large number of HTML tags in this group with the Python library BeautifulSoap v4.4\footnote{\url{https://www.crummy.com/software/BeautifulSoup/}}.
+We identify a large number of HTML tags in this group with the Python library BeautifulSoap \cite{bs4}.
 
 \textbf{Word Frequency Features:}
 Common and known words are usually frequent words, while unknown and obscure words are rare. This idea is implemented in readability formulas such as the Dale-Chall index which uses a list of common words and counts the number of words that fall outside this list~\cite{dale48}.
@@ -175,27 +175,27 @@ In this work we model word frequency in a straightforward manner: we sort the fr
 We explore three different corpora in this work:
 
 \begin{itemize}
-\item \underline{Medical Reddit:} Reddit\footnote{\url{https://www.reddit.com/}} is an Internet forum with a sizable user community which is responsible for generating its content. Any user can start a discussion receiving replies from any other user. This discussion forum is intensively used for health purposes, for example in the Reddit community AskDocs\footnote{\url{https://www.reddit.com/r/AskDocs/}} licensed nursers and doctors (subject to user identity verification) advise help seekers
-        free of charge. We selected six of such communities (medical, AskDocs, AskDoctorSmeeee, Health, WomensHealth, Mens\_Health) and downloaded all user interactions using the Python library PRAW\footnote{\url{https://praw.readthedocs.io/}}. In total 43,018 discussions were collected.
+\item \underline{Medical Reddit:} Reddit~\cite{reddit} is an Internet forum with a sizable user community which is responsible for generating its content. Any user can start a discussion receiving replies from any other user. This discussion forum is intensively used for health purposes, for example in the Reddit community AskDocs~\cite{redditaskdocs} licensed nursers and doctors (subject to user identity verification) advise help seekers free of charge. We selected six of such communities
+    (medical, AskDocs, AskDoctorSmeeee, Health, WomensHealth, Mens\_Health) and downloaded all user interactions using the Python library PRAW~\cite{redditapi}. In total 43,018 discussions were collected.
 
-\item \underline{PubMed Central:} PubMed Central\footnote{\url{https://www.ncbi.nlm.nih.gov/pmc/}} is an online digital database of freely available full-text biomedical literature playing a similar role to physicians as the ACM Digital Library does to computer scientists. We used in this work the same collection crafted for the TREC Clinical Decision Support Track 2014 and 2015 (TREC-CDS)\footnote{\url{http://www.trec-cds.org/}} consisting of 733,138 articles. 
+\item \underline{PubMed Central:} PubMed Central~\cite{pubmed} is an online digital database of freely available full-text biomedical literature playing a similar role to physicians as the ACM Digital Library does to computer scientists. We used in this work the same collection crafted for the TREC Clinical Decision Support Track 2014 and 2015 (TREC-CDS)~\cite{roberts16,trec15} consisting of 733,138 articles. 
  
-\item \underline{Medical English Wikipedia:} we filtered articles from a Wikipedia dump\footnote{\url{https://dumps.wikimedia.org/enwiki/}} (May 1st 2017), that contained an Infobox\footnote{A Wikipedia infobox is a template containing structured information that appear on the right of Wikipedia pages to summarize key aspects of concepts} in which at least one of the following words appeared as a property: ICD10, ICD9, DiseasesDB, MeSH, MeSHID, MeshName, MeshNumber, GeneReviewsName, Orphanet, eMedicine, MedlinePlus, drug\_name, Drugs.com, DailyMedID, LOINC.
-Figure~\ref{fig:hyperthermia} illustrates a Wikipedia page that is marked as medical because of its Infobox entries.
+\item \underline{Medical English Wikipedia:} we filtered articles from a Wikipedia dump~\cite{wikipedia} (May 1st 2017), that contained an Infobox\footnote{A Wikipedia infobox is a template containing structured information that appear on the right of Wikipedia pages to summarize key aspects of concepts} in which at least one of the following words appeared as a property: ICD10, ICD9, DiseasesDB, MeSH, MeSHID, MeshName, MeshNumber, GeneReviewsName, Orphanet, eMedicine, MedlinePlus, drug\_name, Drugs.com, DailyMedID, LOINC.
+%Figure~\ref{fig:hyperthermia} illustrates a Wikipedia page that is marked as medical because of its Infobox entries.
 This idea was successfully implemented in Soldaini et al.~\cite{soldaini15} and our filtering process resulted in a collection of 11,942 articles. 
-        Note that this procedure highly favors precision over recall. \mytodo{In case we need space, I suggest we drop this figure}
+Note that this procedure highly favors precision over recall. %\mytodo{In case we need space, I suggest we drop this figure}
 \end{itemize}
 
 A summary of the statistics of these three collections is reported in Table~\ref{tab:collection_stats}.
 In order to calculate word frequency, we removed words that occur less than 5 times in a corpus.
 Finally, unless it is explicitly stated otherwise, we ignore out of vocabulary (OV) words in our calculations,
 
-\begin{figure}[th!]
-   \centering
-   \includegraphics[width=0.50\textwidth]{graphics/hyperthermia}
-    \caption{Wikipedia page on hyperthermia. A rectangular red box identify the Infobox on the right hand side containing entries for Specialty, ICD-9-CM, DiseasesDB and MeSH.}
-    \label{fig:hyperthermia}
-\end{figure}
+%\begin{figure}[th!]
+%   \centering
+%   \includegraphics[width=0.50\textwidth]{graphics/hyperthermia}
+%    \caption{Wikipedia page on hyperthermia. A rectangular red box identify the Infobox on the right hand side containing entries for Specialty, ICD-9-CM, DiseasesDB and MeSH.}
+%    \label{fig:hyperthermia}
+%\end{figure}
 
 \input{tab_collection_stats}
 
@@ -221,7 +221,7 @@ Different labels for the regression could be employed, for example, a label 6 to
 \section{Top Measures from Each Group}
 \label{sec:beyond_readability}
 
-We correlated each individual understandability estimator listed in Table~\ref{tab:doc_features} with the human assessments collected in CLEF eHealth 2015 and 2016 campaigns.
+We correlated each individual understandability estimator listed in Table~\ref{tab:doc_features} \todo{is it too small?} with the human assessments collected in CLEF eHealth 2015 and 2016 campaigns.
 We report in Table~\ref{tab:top_corr_metrics} the best metric for each group according to Pearson, Spearman or Kendall correlation.
 For some groups, such as the readability formula group, the highest correlated metric was the same for different correlation measure: SMOG Index in CLEF eHealth 2015 and Dale-Chall Index in 2016. 
 We highlight the top score value of each correlation measure in each group. Note that there is no single case in which three different metrics were the top correlated for each different correlation measure.
