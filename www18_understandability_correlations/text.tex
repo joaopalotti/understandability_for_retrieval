@@ -81,32 +81,35 @@ The hierarchy of Medical Subject Headers (MeSH) was previously used in the liter
 
 Use of Machine Learning for understandability: \todo{anything in health specifically? JP: See comments on slack + \cite{wu13,wu16}}
 
-In this work we investigate approaches to estimate understandability from each of these categories. We further extend Palotti et al.'s work to understand the influence of HTML preprocessing on automatic understandability methods and establish best practice when with this regard. 
+In this work we investigate approaches to estimate understandability from each of these categories. We further extend Palotti et al.'s work to understand the influence of HTML preprocessing on automatic understandability methods and establish best practice with this regard. 
 
-There has been prior work that attempted to use understandability estimations for improving search results in consumer health search; as well as methods to evaluate retrieval systems that do account for understandability along with topical relevance. Palotti et al.~\cite{palotti2016ranking} have used learning to rank 
-
-\cite{soldaini2017learning}
-
+Some prior work has attempted to use understandability estimations for improving search results in consumer health search; as well as methods to evaluate retrieval systems that do account for understandability along with topical relevance. Palotti et al.~\cite{palotti2016ranking} have used learning to rank with standard retrieval features along with features based on readability measures and medical lexical aspects to determine
+understandability. van Doorn et al.~\cite{van2016balancing} have shown that learning a set of rankers that provide trade-offs across a number of relevance criteria, including readability/understandability, increase overall system effectiveness.   
 Zuccon and Koopman~\cite{zuccon14}, and later Zuccon~\cite{zuccon2016understandability} have proposed and investigated a family of measures based on the gain-discount framework, where the gain of a document is influenced by both its topical relevance and its understandability. They showed that, although generally correlated, topical-relevance evaluation alone provides differing system rankings compared to understandability-biased evaluation measures. 
+In this work we further explore the development of retrieval methods that combine signals about topical relevance and understandability. 
 
 
-\section{Which Readability Formula To Use}
+%\section{Which Readability Formula To Use}
+\section{Influence of Preprocessing on Readability Formula}
 \label{sec:which_readability}
 
-%The aim of this section is to study the individual correlation of each traditional readability metric listed in Table~\ref{tab:doc_features}.
-%Our goal is to provide guidelines for the use of readability metrics on health Web documents, as typically has been done in various recent works 
-%(e.g., \cite{graber99readability,fitzsimmons2010readability,wiener2013readability,patel13readability,atcherson14readability,meillier17readability}) \todo{elaborate on this motivation}. 
-%We plotted Figures~\ref{fig:bar_corr_clef15} and~\ref{fig:bar_corr_clef16} focusing on the correlation score of each traditional readability metric of Figures~\ref{fig:boxplot_corr_docs_2015} and~\ref{fig:boxplot_corr_docs_2016}.
-% TODO: write about the preprocessing methods here...
+Next, we report on our study of the influence of the preprocessing of Web pages on the estimation of understandability when using surface level readability formulas like SMOG, CLI, etc. We did so by comparing the combination of a number of pre-processing pipelines and heuristics and readability measure with human assessments of web page understandability. 
+Our experiments extended those by Palotti et al.~\cite{palotti15}, who did not compare their results against human assessments. 
 
-Palotti, Zuccon and Hanbury~\cite{palotti15} compared six different HTML cleaning methods and their impact in the use of readability formulas.
-They evaluate three methods to extract the content of a Web page from its HTML source: BeautifulSoap 4, which just naively removed HTML tags, Boilerpipe\cite{kohlschutter10} and Justext\cite{jan11}, two approaches to eliminate boilerplate text together with HTML tags. Henceforth these methods are referred as \textit{Naive}, \textit{Boilerpipe - Boi} and \textit{Justext - Jst}, respectively.
-The authors noticed that the text in HTML tags often missed a correct punctuation mark. For example, the text extract from titles, menus, tables or lists could be interpreted as many short sentences of few very long sentences, depending only whether a period is forced at the end of sentences. These two preprocessing options are henceforth called \textit{ForcePeriod - FP} and \textit{DoNotForcePeriod - DNFP}.
+We used three approaches to extract the content of a Web page from the HTML source: BeautifulSoap 4 (\textit{Naive}), which just naively removes HTML tags, Boilerpipe\cite{kohlschutter10} (\textit{Boilerpipe - Boi}) and Justext\cite{jan11} ({Justext - Jst}), which eliminate boilerplate text together with HTML tags. An analysis of initial data highlighted that the text in HTML tags often missed a correct punctuation mark and thus the text extracted from HTML fields like titles, menus, tables and lists could be interpreted as many short sentences or few very long sentences, depending on whether a period was forced at the end of fields/sentences. We thus implemented two heuristics to deal with this: \textit{ForcePeriod - FP} and \textit{DoNotForcePeriod - DNFP}. The \textit{ForcePeriod - FP} heuristics forced a period at the end of each extracted HTML field; while the \textit{DoNotForcePeriod - DNFP} did not. 
+
+We used Pearson, Kendall Tau and Spearman's Rank correlations to compare the understandability assessments of human assessors with estimations obtained with readability formulas, under all combinations of extraction pipelines and sentence-ending heuristics. Pearson correlation is used to calculate the strength of linear relation between two variables, while the Kendall and Spearman measure the rank correlations between the variables. We opted to report all three correlation coefficients to allow for a thorough comparison to other work, as they are equally used in the literature.
+
+Correlations between human assessments and readability measures, under the different settings of extraction pipelines and heuristics ...
+
+%Palotti, Zuccon and Hanbury~\cite{palotti15} compared six different HTML cleaning methods and their impact in the use of readability formulas.
+%They evaluate three methods to extract the content of a Web page from its HTML source: BeautifulSoap 4, which just naively removed HTML tags, Boilerpipe\cite{kohlschutter10} and Justext\cite{jan11}, two approaches to eliminate boilerplate text together with HTML tags. Henceforth these methods are referred as \textit{Naive}, \textit{Boilerpipe - Boi} and \textit{Justext - Jst}, respectively.
+%The authors noticed that the text in HTML tags often missed a correct punctuation mark. For example, the text extract from titles, menus, tables or lists could be interpreted as many short sentences of few very long sentences, depending only whether a period is forced at the end of sentences. These two preprocessing options are henceforth called \textit{ForcePeriod - FP} and \textit{DoNotForcePeriod - DNFP}.
 
 Their experiments found that the use of \textit{Naive} preprocessing was associated with larger variances in the understandability score estimated by readability formulas, while the use of both \textit{Boi} and \textit{Jst} were more stable. Coleman-Liau Index (CLI) was the most stable metric among all tested in Palotti's work\cite{palotti15}.
 
-In our experiments, we use the Pearson, Kendall Tau and Spearman's Rank correlation to compare the understandability label assigned to each document by human assessors and by readability formulas.
-Pearson correlation is used to calculate the strength of two linearly related variables, while the Kendall and Spearman are rank correlation, i.e., they act on the rank of the variables instead of their values. We opt to report on all three correlation coefficients as all three are equally used in the literature, and thus we allow other researchers to compare our results across.
+%In our experiments, we use the Pearson, Kendall Tau and Spearman's Rank correlation to compare the understandability label assigned to each document by human assessors and by readability formulas.
+%Pearson correlation is used to calculate the strength of two linearly related variables, while the Kendall and Spearman are rank correlation, i.e., they act on the rank of the variables instead of their values. We opt to report on all three correlation coefficients as all three are equally used in the literature, and thus we allow other researchers to compare our results across.
 
 We show in Figure~\ref{fig:bar_corr_clef15} %and~\ref{fig:bar_corr_clef16}
 the correlation scores of each traditional readability metric with the human assessments made in CLEF 2015 and 2016, respectively. We observe that the \textit{Naive} preprocessing also results in the lowest
