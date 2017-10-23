@@ -7,32 +7,32 @@
 \toprule 
     Index & Rerank & Run & $P_r@10$ & $P_u@10$ & $F_{ru}$ & RBP & uRBP & Unj@10 & $P_r@10$* & $P_u@10$* & $F_{ru}${*}\tabularnewline
 \midrule 
-1 & \multirow{4}{*}{No Rerank} & BM25 Q. E. (Best Run) & 31.43 & 49.70 & 38.51 & 29.05 & 18.65 & 0.02 & 31.70 & 50.83 & 39.05\tabularnewline
-2 &  & GUIR (Runner Up Run) & 29.67 & 50.97 & 37.50 & 28.11 & 18.12 & 0.01 & 30.20 & 51.80 & 38.16\tabularnewline
-3 &  & ECNU (Thrid Place) & 29.33 & 49.27 & 36.77 & 27.70 & 17.55 & 0.01 & 29.50 & 49.87 & 37.07\tabularnewline
-4 &  & Plain BM25 & 26.47 & 46.33 & 33.69 & 25.28 & 16.05 & 0.06 & 27.63 & 48.93 & 35.32\tabularnewline
+1 & \multirow{4}{*}{No Rerank} & BM25 Q. E. (Best Run) & 31.43 & 49.70 & 28.91 & 29.05 & 18.65 & 0.02 & 31.70 & 50.83 & 29.19\tabularnewline
+2 &  & GUIR (Runner Up Run) & 29.67$^\diamond$  & 50.97 & 27.86 & 28.11 & 18.12 & 0.01 & 30.20$^\diamond$  & 51.80 & 28.31 \tabularnewline
+3 &  & ECNU (Thrid Place) & 29.33$^\diamond$ & 49.27 & 27.68$^\diamond$  & 27.70 & 17.55 & 0.01 & 29.50$^\diamond$  & 49.87 & 27.99$^\diamond$  \tabularnewline
+4 &  & Plain BM25 & 26.47$^\diamond$  & 46.33$^\diamond$  & 24.79$^\diamond$  & 25.28 & 16.05 & 0.06 & 27.63$^\diamond$  & 48.93$^\diamond$  & 26.28$^\diamond$ \tabularnewline
 \midrule 
 \midrule 
-5 & \multirow{4}{*}{\makecell{Dale-Chall \\Top 20}} & Based on Run 1 & 28.43$^\dagger$ & 49.57 & 36.14 & 24.64 & 16.78 & 0.10 & 30.63 & 54.57$^\dagger$ & 39.24\tabularnewline
-6 &  & Based on Run 2 & 25.90$^\dagger$ & 52.80$^\dagger$ & 34.75 & 22.19 & 15.36 & 0.06 & 27.27$^\dagger$ & 55.90$^\dagger$ & 36.65\tabularnewline
-7 &  & Based on Run 3 & 26.87$^\dagger$ & 53.07$^\dagger$ & 35.67 & 23.01 & 15.70 & 0.05 & 27.83$^\dagger$ & 54.90$^\dagger$ & 36.94\tabularnewline
-8 &  & Based on Run 4 & 24.60$^\dagger$ & 50.43$^\dagger$ & 33.07 & 21.58 & 14.83 & 0.09 & 26.30$^\dagger$ & 53.00$^\dagger$ & 35.16\tabularnewline
+5 & \multirow{4}{*}{\makecell{Dale-Chall \\Top 20}} & Based on Run 1 & 28.43$^\dagger$ & 49.57 & 27.93 & 24.64 & 16.78 & 0.10 & 30.63 & 54.57$^\dagger$ & 30.14\tabularnewline
+6 &  & Based on Run 2 & 25.90$^\dagger$ & 52.80$^\dagger$ & 26.43$^\dagger$ & 22.19 & 15.36 & 0.06 & 27.27$^\dagger$ & 55.90$^\dagger$ & 27.92 \tabularnewline
+7 &  & Based on Run 3 & 26.87$^\dagger$ & 53.07$^\dagger$ & 27.20 & 23.01 & 15.70 & 0.05 & 27.83$^\dagger$ & 54.90$^\dagger$ & 28.19 \tabularnewline
+8 &  & Based on Run 4 & 24.60$^\dagger$ & 50.43$^\dagger$ & 25.78 & 21.58 & 14.83 & 0.09 & 26.30$^\dagger$ & 53.00$^\dagger$ & 27.56 \tabularnewline
 \midrule 
 \midrule 
-    9  & \multirow{4}{*}{\makecell{Linear Regre.\\ Top 15}} & Based on Run 1 & 30.17$^\dagger$ & 50.50 & 37.77 & 26.10 & 17.92 & 0.07 & 31.50 & 53.13$^\dagger$  & 39.55\tabularnewline
-10 &  & Based on Run 2 & 29.23 & 53.03$^\dagger$ & 37.69 & 25.16 & 17.23 & 0.03 & 29.73 & 54.13$^\dagger$ & 38.38\tabularnewline
-11 &  & Based on Run 3 & 28.23 & 52.57$^\dagger$ & 36.74 & 24.21 & 16.53 & 0.02 & 28.83 & 53.30$^\dagger$ & 37.42\tabularnewline
-12 &  & Based on Run 4 & 26.00 & 49.53$^\dagger$ & 34.10 & 22.75 & 15.67 & 0.07 & 26.83 & 51.00$^\dagger$ & 35.16\tabularnewline
+    9  & \multirow{4}{*}{\makecell{Linear Regre.\\ Top 15}} & Based on Run 1 & 30.17$^\dagger$ & 50.50 & 28.80 & 26.10 & 17.92 & 0.07 & 31.50 & 53.13$^\dagger$ & 30.00\tabularnewline
+10 &  & Based on Run 2 & 29.23 & 53.03$^\dagger$ & 28.34 & 25.16 & 17.23 & 0.03 & 29.73 & 54.13$^\dagger$ & 28.89 \tabularnewline
+11 &  & Based on Run 3 & 28.23 & 52.57$^\dagger$ & 27.63 & 24.21 & 16.53 & 0.02 & 28.83 & 53.30$^\dagger$ & 28.24 \tabularnewline
+12 &  & Based on Run 4 & 26.00 & 49.53$^\dagger$ & 25.71 & 22.75 & 15.67 & 0.07 & 26.83 & 51.00$^\dagger$ & 26.60 \tabularnewline
 \midrule 
-    13 & \multirow{4}{*}{\makecell{Linear Regre.\\ Top 20}} & Based on Run 1 & 27.57$^\dagger$ & 49.87 & 35.51 & 24.00 & 16.71 & 0.11 & 30.03$^\dagger$ & 54.93$^\dagger$ & 38.83\tabularnewline
-14 &  & Based on Run 2 & 26.50$^\dagger$ & 54.00$^\dagger$ & 35.55 & 22.45 & 15.58 & 0.06 & 28.13$^\dagger$ & 57.03$^\dagger$ & 37.68\tabularnewline
-15 &  & Based on Run 3 & 26.33$^\dagger$ & 53.50$^\dagger$ & 35.29 & 22.67 & 15.72 & 0.05 & 27.50$^\dagger$ & 55.77$^\dagger$ & 36.84\tabularnewline
-16 &  & Based on Run 4 & 24.40$^\dagger$ & 50.37$^\dagger$ & 32.87 & 20.95 & 14.68 & 0.10 & 26.00$^\dagger$ & 53.20$^\dagger$ & 34.93\tabularnewline
+    13 & \multirow{4}{*}{\makecell{Linear Regre.\\ Top 20}} & Based on Run 1 & 27.57$^\dagger$ & 49.87 & 27.28$^\dagger$ & 24.00 & 16.71 & 0.11 & 30.03$^\dagger$ & 54.93$^\dagger$ & 29.66 \tabularnewline
+14 &  & Based on Run 2 & 26.50$^\dagger$ & 54.00$^\dagger$ & 26.68 & 22.45 & 15.58 & 0.06 & 28.13$^\dagger$ & 57.03$^\dagger$ & 28.50 \tabularnewline
+15 &  & Based on Run 3 & 26.33$^\dagger$ & 53.50$^\dagger$ & 26.60 & 22.67 & 15.72 & 0.05 & 27.50$^\dagger$ & 55.77$^\dagger$ & 27.76 \tabularnewline
+16 &  & Based on Run 4 & 24.40$^\dagger$ & 50.37$^\dagger$ & 25.30 & 20.95 & 14.68 & 0.10 & 26.00$^\dagger$ & 53.20$^\dagger$ & 26.96 \tabularnewline
 \midrule 
-    17 & \multirow{4}{*}{\makecell{Linear Regre.\\ Top 50}} & Based on Run 1 & 18.83$^\dagger$ & 43.40$^\dagger$ & 26.27 & 16.32 & 11.89 & 0.29 & 26.33$^\dagger$ & 59.93$^\dagger$ & 36.59\tabularnewline
-18 &  & Based on Run 2 & 18.57$^\dagger$ & 45.60$^\dagger$ & 26.39 & 16.18 & 11.83 & 0.26 & 24.83$^\dagger$ & 60.23$^\dagger$ & 35.17\tabularnewline
-19 &  & Based on Run 3 & 18.17$^\dagger$ & 43.83$^\dagger$ & 25.69 & 15.56 & 11.26 & 0.28 & 24.20$^\dagger$ & 59.13$^\dagger$ & 34.34\tabularnewline
-19 &  & Based on Run 4 & 16.33$^\dagger$ & 43.57 & 23.76 & 14.13 & 10.30 & 0.29 & 22.77$^\dagger$ & 58.20$^\dagger$ & 32.73\tabularnewline
+    17 & \multirow{4}{*}{\makecell{Linear Regre.\\ Top 50}} & Based on Run 1 & 18.83$^\dagger$ & 43.40$^\dagger$ & 20.39$^\dagger$ & 16.32 & 11.89 & 0.29 & 26.33$^\dagger$ & 59.93$^\dagger$ & 28.18\tabularnewline
+18 &  & Based on Run 2 & 18.57$^\dagger$ & 45.60$^\dagger$ & 20.74$^\dagger$& 16.18 & 11.83 & 0.26 & 24.83$^\dagger$ & 60.23$^\dagger$ & 27.52\tabularnewline
+19 &  & Based on Run 3 & 18.17$^\dagger$ & 43.83$^\dagger$ & 20.38$^\dagger$& 15.56 & 11.26 & 0.28 & 24.20$^\dagger$ & 59.13$^\dagger$ & 26.86\tabularnewline
+19 &  & Based on Run 4 & 16.33$^\dagger$ & 43.57 &  18.44$^\dagger$& 14.13 & 10.30 & 0.29 & 22.77$^\dagger$ & 58.20$^\dagger$ & 25.28\tabularnewline
 \midrule 
 \midrule 
 %17 & \multirow{4}{*}{Grad. Boost Reg. Top 15} & Based on Run 1 & 29.40 & 51.10 & 37.33 & 26.04 & 17.95 & 0.07 & 30.67 & 53.87 & 39.08\tabularnewline
@@ -50,25 +50,25 @@
 %27 &  & Based on Run 3 & 16.40 & 40.17 & 23.29 & 13.95 & 10.06 & 0.31 & 22.97 & 56.93 & 32.73\tabularnewline
 %28 &  & Based on Run 4 & 14.63 & 38.07 & 21.14 & 11.93 & 8.54 & 0.33 & 21.03 & 55.77 & 30.55\tabularnewline
 %\midrule 
-20 & \multirow{4}{*}{\makecell{RRF Top 15\\ (LR \& Orig.)}} & Based on Run 1 & 30.43$^\dagger$ & 50.40 & 37.95 & 28.46 & 19.09 & 0.04 & 31.37 & 52.47$^\dagger$ & 39.26\tabularnewline
-21 &  & Based on Run 2 & 29.43 & 52.93$^\dagger$ & 37.83 & 27.17 & 18.15 & 0.02 & 30.00 & 53.80$^\dagger$ & 38.52\tabularnewline
-22 &  & Based on Run 3 & 28.70 & 51.87$^\dagger$ & 36.95 & 26.78 & 17.82 & 0.02 & 29.10 & 52.63$^\dagger$ & 37.48\tabularnewline
-23 &  & Based on Run 4 & 26.17 & 48.90$^\dagger$ & 34.09 & 24.84 & 16.56 & 0.06 & 27.27 & 51.27$^\dagger$ & 35.60\tabularnewline
+20 & \multirow{4}{*}{\makecell{RRF Top 15\\ (LR \& Orig.)}} & Based on Run 1 & 30.43$^\dagger$ & 50.40 & 28.66 & 28.46 & 19.09 & 0.04 & 31.37 & 52.47$^\dagger$ & 29.64 \tabularnewline
+21 &  & Based on Run 2 & 29.43 & 52.93$^\dagger$ & 28.37 & 27.17 & 18.15 & 0.02 & 30.00 & 53.80$^\dagger$ & 28.91\tabularnewline
+22 &  & Based on Run 3 & 28.70 & 51.87$^\dagger$ & 27.96 & 26.78 & 17.82 & 0.02 & 29.10 & 52.63$^\dagger$ & 28.48\tabularnewline
+23 &  & Based on Run 4 & 26.17 & 48.90$^\dagger$ & 25.67$^\dagger$ & 24.84 & 16.56 & 0.06 & 27.27 & 51.27$^\dagger$ & 27.06$^\dagger$\tabularnewline
 \midrule 
-24 & \multirow{4}{*}{\makecell{RRF Top 20\\ (LR \& Orig.)}} & Based on Run 1 & 30.30$^\dagger$ & 50.23 & 37.80 & 27.97 & 18.92 & 0.06 & 31.60 & 53.30$^\dagger$ & 39.68\tabularnewline
-25 &  & Based on Run 2 & 28.73$^\dagger$ & 53.83$^\dagger$ & 37.47 & 26.54 & 17.89 & 0.03 & 29.43 & 55.23$^\dagger$ & 38.40\tabularnewline
-26 &  & Based on Run 3 & 28.57 & 52.73$^\dagger$ & 37.06 & 26.21 & 17.57 & 0.03 & 29.30 & 54.07$^\dagger$ & 38.00\tabularnewline
-27 &  & Based on Run 4 & 25.67 & 50.30$^\dagger$ & 33.99 & 24.53 & 16.59 & 0.07 & 27.00 & 53.07$^\dagger$ & 35.79\tabularnewline
+24 & \multirow{4}{*}{\makecell{RRF Top 20\\ (LR \& Orig.)}} & Based on Run 1 & 30.30$^\dagger$ & 50.23 & 29.01 & 27.97 & 18.92 & 0.06 & 31.60 & 53.30$^\dagger$ & 30.39$^\dagger$\tabularnewline
+25 &  & Based on Run 2 & 28.73$^\dagger$ & 53.83$^\dagger$ & 28.30 & 26.54 & 17.89 & 0.03 & 29.43 & 55.23$^\dagger$ & 28.96 \tabularnewline
+26 &  & Based on Run 3 & 28.57 & 52.73$^\dagger$ & 28.27 & 26.21 & 17.57 & 0.03 & 29.30 & 54.07$^\dagger$ & 29.12$^\dagger$\tabularnewline
+27 &  & Based on Run 4 & 25.67 & 50.30$^\dagger$ & 25.58 & 24.53 & 16.59 & 0.07 & 27.00 & 53.07$^\dagger$ & 27.24$^\dagger$\tabularnewline
 \midrule 
-28 & \multirow{4}{*}{\makecell{RRF Top 50\\ (LR \& Orig.)}} & Based on Run 1 & 27.63$^\dagger$ & 50.77 & 35.79 & 25.58 & 17.71 & 0.12 & 30.50 & 56.63$^\dagger$ & 39.65\tabularnewline
-29 &  & Based on Run 2 & 26.00$^\dagger$ & 53.40$^\dagger$ & 34.97 & 23.62 & 16.46 & 0.09 & 28.37$^\dagger$ & 58.10$^\dagger$ & 38.12\tabularnewline
-30 &  & Based on Run 3 & 25.47$^\dagger$ & 52.40$^\dagger$ & 34.28 & 23.52 & 16.22 & 0.09 & 27.80$^\dagger$ & 57.07$^\dagger$ & 37.39\tabularnewline
-31 &  & Based on Run 4 & 24.10$^\dagger$ & 50.47$^\dagger$ & 32.62 & 22.10 & 15.27 & 0.12 & 26.33$^\dagger$ & 56.03$^\dagger$ & 35.83\tabularnewline
+28 & \multirow{4}{*}{\makecell{RRF Top 50\\ (LR \& Orig.)}} & Based on Run 1 & 27.63$^\dagger$ & 50.77 & 27.65 & 25.58 & 17.71 & 0.12 & 30.50 & 56.63$^\dagger$ & 30.52$^\dagger$ \tabularnewline
+29 &  & Based on Run 2 & 26.00$^\dagger$ & 53.40$^\dagger$ & 26.67 & 23.62 & 16.46 & 0.09 & 28.37$^\dagger$ & 58.10$^\dagger$ & 29.12\tabularnewline
+30 &  & Based on Run 3 & 25.47$^\dagger$ & 52.40$^\dagger$ & 26.29 & 23.52 & 16.22 & 0.09 & 27.80$^\dagger$ & 57.07$^\dagger$ & 28.95\tabularnewline
+31 &  & Based on Run 4 & 24.10$^\dagger$ & 50.47$^\dagger$ & 24.88 & 22.10 & 15.27 & 0.12 & 26.33$^\dagger$ & 56.03$^\dagger$ & 27.55$^\dagger$\tabularnewline
 \midrule 
 \midrule 
-32 & \multirow{3}{*}{\makecell{LeToR\\ XGBoost}} & Run 4 IR Feat \& IR label & 23.43$^\dagger$ & 43.97 & 30.57$^\dagger$  & 22.43 & 14.34 & 0.12 & 26.57 & 50.90 & 34.91\tabularnewline
-33 &                          & Run 4 + Few ReadFeat & 23.37$^\dagger$ & 39.47$^\dagger$ & 29.35$^\dagger$  & 21.21 & 13.15 & 0.21 & 29.50 & 50.73 & 37.31\tabularnewline
-34 &                          & Run 4 + All ReadFeat & 29.33$^\dagger$ & 41.00$^\dagger$ & 34.20 & 28.14 & 16.91 & 0.17 & 34.37$^\dagger$ & 51.10 & 41.10$^\dagger$ \tabularnewline
+32 & \multirow{3}{*}{\makecell{LeToR\\ XGBoost}} & Run 4 IR Feat \& IR label & 23.43$^\dagger$ & 43.97 & 22.79$^\dagger$  & 22.43 & 14.34 & 0.12 & 26.57 & 50.90 & 26.57\tabularnewline
+33 &                          & Run 4 + Best ReadFeat & 24.33 & 38.37$^\dagger$ & 22.22$^\dagger$  & 24.32 & 15.71 & 0.23 & 31.23$^\dagger$ & 50.17 & 29.38$^\dagger$ \tabularnewline
+34 &                          & Run 4 + All ReadFeat & 28.17  & 39.73$^\dagger$ & 24.53 & 27.51 & 16.65 & 0.22 & 34.97$^\dagger$ & 51.17 & 31.32$^\dagger$ \tabularnewline
 \bottomrule 
 \end{tabular}
 %
