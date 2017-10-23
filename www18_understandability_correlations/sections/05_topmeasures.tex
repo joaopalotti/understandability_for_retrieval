@@ -1,0 +1,23 @@
+\section{Top Measures from Each Group}
+\label{sec:beyond_readability}
+
+We correlated each individual understandability estimator listed in Table~\ref{tab:doc_features} \todo{is it too small?} with the human assessments collected in CLEF eHealth 2015 and 2016 campaigns.
+We report in Table~\ref{tab:top_corr_metrics} the best metric for each group according to Pearson, Spearman or Kendall correlation.
+For some groups, such as the readability formula group, the highest correlated metric was the same for different correlation measure: SMOG Index in CLEF eHealth 2015 and Dale-Chall Index in 2016. 
+We highlight the top score value of each correlation measure in each group. Note that there is no single case in which three different metrics were the top correlated for each different correlation measure.
+\todo{hypotesis that kendatll tau and spearman always point to the same winner}
+
+Interestingly, Table~\ref{tab:top_corr_metrics} shows that the polysyllable words, best formula component metric for CLEF 2015 data, is the main metric for the SMOG formula, the best readability formula for CLEF 2015. 
+Likewise, the number of difficult words, best formula component metric for CLEF 2016, is the main metric for Dale-Chall index, the best readability formula for CLEF 2016.
+
+The top correlation for MeSH group, number of MeSH concepts, reaches much lower correlation than the top correlation metric for the CHV group, the scores of CHV concepts.
+The dominating metrics for the Natural Language group are the number of pronouns, the number of stopwords and the number of out of vocabulary words; all these are consistently more correlated than metrics in the MeSH and CHV group.
+In turn, the top correlations for the HTML group, counts of P tags and list tags, were the weakest. P tags are used to create paragraphs in a Web page, being roughly a proxy for text lengthiness. 
+Top estimators for the word frequency group are based on the Medical Reddit and PubMed counts, with correlations as high as the readability formulas.
+Finally, the group with the highest correlated estimators are the regressors and classifiers, with top estimators being the Neural Network regressor and the multinomial Naive Bayes.
+\todo{this section misses some sort of conclusion or at least a link to the next section}
+%
+\input{tables/tab_top_corr_metrics}
+%
+
+

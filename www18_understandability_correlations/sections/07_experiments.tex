@@ -1,0 +1,47 @@
+\section{Experimenting with Understandability}
+\label{sec:experiments}
+
+Our experiments are based on the data collected during the Information Retrieval branch of CLEF eHealth. To the best of our knowledge that was the only venue in which topical and understandability assessments were collected. 
+We show here experiments with the CLEF eHealth 2016 campaign leaving 2015 experiments offline\footnote{Link to experiments will be available upon acceptance of this manuscript}.
+
+We start by the defining the evaluation measure that we will use here. 
+In CLEF eHealth campaign, organizers used a modification of RBP which ties together document relevance any other relevance dimension, in this case in particular, understandability \cite{clef16}.
+Mathematically, it consists in adding an understandability factor to the RBP formula: $uRBP(\rho) = (1 - \rho) \sum_{k=1}^{K} \rho^{K-1} r(d@K) u(d@k)$, with r(d@k) representing the gain in retrieving a topically relevant documents at rank $k$ and u(d@k) the gains coming from the understandability factor of a document at rank $k$.
+
+The drawback of such evaluation metric is that we cannot separately evaluate each dimension. We propose, instead, to separately evaluate a ranking list with respect to its topical relevance and its understandability:
+\begin{itemize}
+        \item $P_r@10$: a document is topically relevant if assessed as somewhat relevant or highly relevant. This metric counts the number of topically relevant documents in the top 10 documents of a ranked list.
+        \item $P_u@10$: a document is relevant for this metric if the understandability score is smaller than a threshold $U$. Like $P_r@10$, we count the number of relevant documents in the first 10 documents of a ranked list. We use $U = 40$ in our experiments. \todo{I decided to use this threshold based on the data. I will need to add a figure to support this clam, I think.}
+\end{itemize}
+
+During the campaign, organizers opt to use shallow pools and focus on highly ranked documents, using $P_r@10$ as one official metric for topical relevance.
+It makes our choice of metric natural. Likewise it is traditionally done with F measure, we combine $P_r@10$ and $P_u@10$ with an harmonic mean: $F_{ru} = 2 \times \frac{P_r@10 \times P_u@10}{P_r@10 + P_u@10}$. 
+
+When reranking runs, we risk to bring to the top of the rankings documents that were not assessed when the task took place. For this reason, we inform the average percentage of documents that were not assessed in the top 10 documents of each run (Unj@10) and we inform $P_r@10*$, $P_u@10*$ and $F_{ru}*$, modified measures that excluding all unassessed documents for the ranking list before evaluation.
+These last three metrics showcase the potential of a run if it had been included in the pool set.
+
+We start our experiments by showing at the top of Table~\ref{tab:experiments} (indices 1-4) the performance of the top 3 systems in CLEF eHealth 2016 together with a straightforward BM25 baseline run made with Terrier toolkit. Our further experiments will use not only these runs as a comparison base, but modify these runs when necessary.
+
+The first batch of experiments, indices 5-8, consists of reranking the top 20 documents based solely on the Dale-Chall index, as it was the metrics with highest correlation with human judgements for this collection.
+The topical relevance of the reranked resulting lists is immediately hurt in benefit of understandability. Note how $P_r@10$ and $P_r@10*$ decrease while $P_u@10$ and in special $P_u@10*$ increase.
+The percentage of unassessed documents reach 10\% and, unfortunately, only looking at RBP and uRBP we cannot see the understandability benefits brought by the rerank method.
+
+The next batch of experiments, indices 9-19, swaps the Dale-Chall Index by a Linear Regression (LR) learned using the top features of Table~\ref{tab:top_corr_metrics}\footnote{Experiments with various machine learning methods were performed as well and will be available in a website upon paper acceptance. The results of other methods are similar}. 
+We experiment with reranking the top 15 (more more conservative method), 20 and 50 (a more heterodox method). We clearly see the trade-off between understandability and relevance when we increase from top 15 to top 50: while the $P_r@10$ falls 5 points, $P_u@10$ increases 10. Nevertheless, $F_{ru}*$ shows that more conservative methods provide the best trade-offs.
+When comparing the use of Dale-Chall and Linear Regression reranking the same number of documents (indices 13-16), we notice that LR results for $P_u@10*$ are always superior to Dale-Chall, meaning it does a better job when bringing the easier documents to the top of the rank, but that not necessarily means the final rank is better, as we can see comparing the results for $F_{ru}*$.
+
+Our third batch of experiments, indices 20-31, aims to combine the good ranking for topicality coming from the original rank list with the best rankings for understandability, coming from the LR reranking.
+For that, we use the Reciprocal Rank Fusion (RRF) method, which combines runs on the rank of documents instead of scores~\cite{cormack09}. Reranking with LR and combining runs with RRF allows to obtain the best trade-offs so far, with $F_{ru}$ of the best method in CLEF being improved from 39.05 to 39.68, with comes from a very small decrease in $P_u@10*$ (from 31.70 to 31.60) and a 4.9\% increase in $P_u@10*$ (from 50.83 to 53.30).
+
+Our final batch of experiments, indices 32-34, are based on learning-to-rank. We decided to use the pairwise implementation of the gradient boosting approach from the XGBoost framework~\cite{chen16} due to its recent good results in many machine learning tasks \todo{actually, I should use XGBoost method instead of LR}. Evaluating other learning to rank methods and frameworks are left as future work.
+We evaluated three different settings based on the plain BM25 run shown in index 4, each one with a different combination of feature set and relevance labels:
+\begin{itemize}
+    \item Index 32: we used as relevance labels only the topical labels and as feature set the score of different information retrieval models (BM25, Dirichlet LM and PL2). This represents the typical use of learning to rank aiming to optimize only the topical relevance results. Unfortunately that was not the case and not even the $P_r@10*$ was improved.
+    \item Index 33: we used as relevance labels the linear combination of topical relevance and understandability. Additionally to the IR features, we used the 10 features correspondent to the best features according to Kendall tau in Table~\ref{tab:top_corr_metrics}. Results show that this resulted in higher $F_{ur}*$ when compared to its correspondent approaches (indices 4, 8, 12, 16, 19, 23, 27 and 31) due to a high increase in $P_r@10*$, which reveals understandability features improving topicability.
+    \item Index 34: On top of our previous run, we included here all features shown in Table~\ref{tab:doc_features}. Note that despite the very high number of unassessed documents, this run shows improvements even in $P_r@10$ obtaining the same results as the third best run in the campaign (ECNU). In its turn, the $P_{r}*$ which ignores the unassessed documents is 8.4\% higher than the best system, while $F_{ru}*$ is 5.2\% higher.
+\end{itemize}
+
+
+\input{tables/tab_experiments}
+
+
