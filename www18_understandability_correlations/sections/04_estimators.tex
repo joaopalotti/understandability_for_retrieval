@@ -1,26 +1,41 @@
 
-\section{(More) Understandability Estimators}
+\section{ More Understandability Estimators}
 \label{sec:proxies}
+The previous results highlighted that surface level readability formulas only weakly correlate with human assessments of Web pages understandability (Figure~\ref{fig:bar_corr_clef15}). Next, we considered alternative methods of estimating understandability (Table~\ref{tab:doc_features}), which we present in the following, grouped into categories. 
 
-The correlation of readability formulas as shown in Figure~\ref{fig:bar_corr_clef15} %and~\ref{fig:bar_corr_clef16}
-is not strong, without any correlation coefficient being higher than 0.5.
-Our next intent is comparing the correlation coefficient of the traditional readability formulas with other methods for understandability estimation, including an evaluation of other humans performing the same task.
-For that, we devise and group several methods into semantically related groups which will be following presented.
-We summarize all methods in Table~\ref{tab:doc_features}.
+
+
+
+ 
+%The correlation of readability formulas as shown in Figure~\ref{fig:bar_corr_clef15} %and~\ref{fig:bar_corr_clef16} is not strong, without any correlation coefficient being higher than 0.5.
+%Our next intent is comparing the correlation coefficient of the traditional readability formulas with other methods for understandability estimation, including an evaluation of other humans performing the same task.
+%For that, we devise and group several methods into semantically related groups which will be following presented. We summarize all methods in Table~\ref{tab:doc_features}.
+
+
+\textbf{Traditional Readability Formulas:}
+These included the readability formulas used in Section~\ref{sec:related}, as well as other, less popular ones. A full list is provided in surveys by Collins-Thompson~\cite{collins2014computational} and Dubay~\cite{dubay04}.
 
 %Therefore, what unifies all methods listed in this section is the goal to automatically infer the understandability of a document, in our case, a Web page with medical content.
 %For sake of understanding, in Table~\ref{tab:doc_features} we list all the methods used in this chapter to estimate document understandability.
 %Note that we divide these estimators into semantically related groups, which are presented below.
 
-\textbf{Traditional Readability Formulas:}
-This group contains a large set of traditional readability formulas. Some were mentioned in Section~\ref{sec:related}. A full list can be found in surveys such as Collins-Thompson~\cite{collins2014computational} or Dubay~\cite{dubay04}.
+%\textbf{Traditional Readability Formulas:}
+%This group contains a large set of traditional readability formulas. Some were mentioned in Section~\ref{sec:related}. A full list can be found in surveys such as Collins-Thompson~\cite{collins2014computational} or Dubay~\cite{dubay04}.
 
 \textbf{Raw Components of Readability Formulas:}
-This group comprises the building blocks that make up the traditional readability measures. Some examples include the average number of characters per word or the average number of syllables in a sentence. Words were divided into syllables using the Python package Pyphen \cite{pyphen}.
+These were formed by the ``building blocks'' used in the traditional readability formulas; examples of such building blocks included the average number of characters per word and the average number of syllables in a sentence. Words were divided into syllables using the Python package Pyphen~\cite{pyphen}.
+
+
+%\textbf{General Medical Vocabularies:}
+%This group includes methods such as the number of words with a medical prefix or suffix, i.e. beginning or ending with Latin or Greek particles (e.g., amni-, angi-, algia-, arteri-), acronyms or medical vocabularies such as the International Statistical Classification of Diseases and Related Health Problems (ICD), Drugbank and the OpenMedSpel dictionary \cite{openmedspel}.
+%Acronym list was obtained from ADAM database~\cite{zhou2006}. Methods listed here were matched with documents using a simple keywords matching.
+
 
 \textbf{General Medical Vocabularies:}
-This group includes methods such as the number of words with a medical prefix or suffix, i.e. beginning or ending with Latin or Greek particles (e.g., amni-, angi-, algia-, arteri-), acronyms or medical vocabularies such as the International Statistical Classification of Diseases and Related Health Problems (ICD), Drugbank and the OpenMedSpel dictionary \cite{openmedspel}.
-Acronym list was obtained from ADAM database~\cite{zhou2006}. Methods listed here were matched with documents using a simple keywords matching.
+These included methods that count the number of words with a medical prefix or suffix, i.e. beginning or ending with Latin or Greek particles (e.g., amni-, angi-, algia-, arteri-), text strings included in list of acronyms or medical vocabularies such as the International Statistical Classification of Diseases and Related Health Problems (ICD), Drugbank and the OpenMedSpel dictionary~\cite{openmedspel}. An acronym list was obtained from the ADAM database~\cite{zhou2006}. Methods in this group were matched with documents using a simple keywords matching.
+
+\todo{ARRIVED HERE}
+
 
 \textbf{Consumer Vocabulary Features:}
 NLM MetaMap~\cite{aronson10} was employed to map the content of Web documents to the CHV vocabulary~\cite{zeng06}.
