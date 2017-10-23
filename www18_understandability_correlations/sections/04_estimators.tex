@@ -109,17 +109,19 @@ A summary of the statistics of these three collections is reported in Table~\ref
 %more reusable solution for the medical/health domain. 
 %We employed the three datasets described in Table~\ref{tab:collection_stats} and assume different labels according to the average difficulty of documents in these collections:
 
-\todo{ARRIVED HERE}
+
 
 \begin{itemize}
-    \item Medical Reddit (label 1): Documents in this collection are expected to be written in a colloquial style, and thus the easiest to understand. All the conversations are in fact explicitly directed to assist inexpert health consumers;
-    \item Medical English Wikipedia (label 2): Documents in this collection are expected to be less formal than scientific articles, but more formal than a Web forum like Reddit;
-    \item PubMed Central (label 3): Documents from this collection are expected to be written in a highly formal style, as the target audience here are physicians, nursers and researchers in the biomedical domain.
+    \item Medical Reddit (label 1): Documents in this collection were expected to be written in a colloquial style, and thus the easiest to understand. All the conversations were in fact explicitly directed to assist inexpert health consumers;
+    \item Medical English Wikipedia (label 2): Documents in this collection were expected to be less formal than scientific articles, but more formal than a Web forum like Reddit, thus somewhat more difficult ro understand;
+    \item PubMed Central (label 3): Documents from this collection were expected to be written in a highly formal style, as the target audience were physicians and researchers in the biomedical domain.
 \end{itemize}
 
-Models were trained on a Latent Semantic Analysis (LSA) empirically set to have ten dimension based on word counts in documents in these three collections.
-We model two different tasks: a classification one and a regression task.
-Different labels for the regression could be employed, for example, a label 6 to PubMed Central documents would emphasize that these documents are explicitly made for expert users, being 3 times harder than Wikipedia ones. We did not explore the effects of different labels in this work, it is left as future work.
+Models were trained using Latent Semantic Analysis (LSA) with 10 dimensions (empirically set based on document word counts in the three collections).
+We modelled two different tasks: a classification and a regression task. \todo{this sentence about tasks is coming out the blue: what tasks? What do they do? For what?. Also, it is unclear what these regressors and classifiers are.}
+
+
+%Different labels for the regression could be employed, for example, a label 6 to PubMed Central documents would emphasize that these documents are explicitly made for expert users, being 3 times harder than Wikipedia ones. We did not explore the effects of different labels in this work, it is left as future work.
 
 \input{tables/tab_doc_features}
 

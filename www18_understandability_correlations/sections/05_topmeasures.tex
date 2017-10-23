@@ -1,18 +1,32 @@
-\section{Top Measures from Each Group}
+\section{Evaluation of understandability estimators}
 \label{sec:beyond_readability}
+Using the CLEF eHealth 2015 and 2016 collections, we studied the correlations of methods to estimate Web page understandability (Table~\ref{tab:doc_features}) and human assessments. For each category of understandability estimation method, Table~\ref{tab:top_corr_metrics} reports the methods with highest Pearson, Spearman or Kendall correlations.
 
-We correlated each individual understandability estimator listed in Table~\ref{tab:doc_features} \todo{is it too small?} with the human assessments collected in CLEF eHealth 2015 and 2016 campaigns.
-We report in Table~\ref{tab:top_corr_metrics} the best metric for each group according to Pearson, Spearman or Kendall correlation.
-For some groups, such as the readability formula group, the highest correlated metric was the same for different correlation measure: SMOG Index in CLEF eHealth 2015 and Dale-Chall Index in 2016. 
-We highlight the top score value of each correlation measure in each group. Note that there is no single case in which three different metrics were the top correlated for each different correlation measure.
-\todo{hypotesis that kendatll tau and spearman always point to the same winner}
+Overall, Spearman and Kendall correlations obtained similar results (in terms of which methods exhibited the highest correlations): this was expected as, unlike Pearson, they are both rank-based correlations.
 
-Interestingly, Table~\ref{tab:top_corr_metrics} shows that the polysyllable words, best formula component metric for CLEF 2015 data, is the main metric for the SMOG formula, the best readability formula for CLEF 2015. 
-Likewise, the number of difficult words, best formula component metric for CLEF 2016, is the main metric for Dale-Chall index, the best readability formula for CLEF 2016.
+For surface level readability measures,  the SMOG Index had the highest correlations for CLEF 2015 and Dale-Chall Index for CLEF 2016, regardless of correlation measure. These results resonated with those obtained for the category of raw components of readability formulas. In fact, the polysyllable words measure, which is the main feature used in SMOG, had the highest correlation for CLEF 2015 among these methods. While, the number of difficult words, which is the main feature used in Dale-Chall index, had the highest correlation for CLEF 2016 among these methods.
 
-The top correlation for MeSH group, number of MeSH concepts, reaches much lower correlation than the top correlation metric for the CHV group, the scores of CHV concepts.
-The dominating metrics for the Natural Language group are the number of pronouns, the number of stopwords and the number of out of vocabulary words; all these are consistently more correlated than metrics in the MeSH and CHV group.
-In turn, the top correlations for the HTML group, counts of P tags and list tags, were the weakest. P tags are used to create paragraphs in a Web page, being roughly a proxy for text lengthiness. 
+
+%We correlated each individual understandability estimator listed in Table~\ref{tab:doc_features} \todo{is it too small?} with the human assessments collected in CLEF eHealth 2015 and 2016 campaigns.
+%We report in Table~\ref{tab:top_corr_metrics} the best metric for each group according to Pearson, Spearman or Kendall correlation.
+
+%For some groups, such as the readability formula group, the highest correlated metric was the same for different correlation measure: SMOG Index in CLEF eHealth 2015 and Dale-Chall Index in 2016. 
+%We highlight the top score value of each correlation measure in each group. Note that there is no single case in which three different metrics were the top correlated for each different correlation measure.
+%\todo{hypotesis that kendatll tau and spearman always point to the same winner}
+
+%Interestingly, Table~\ref{tab:top_corr_metrics} shows that the polysyllable words, best formula component metric for CLEF 2015 data, is the main metric for the SMOG formula, the best readability formula for CLEF 2015. 
+%Likewise, the number of difficult words, best formula component metric for CLEF 2016, is the main metric for Dale-Chall index, the best readability formula for CLEF 2016.
+
+When examining the expert vocabulary category, we found that the number of MeSH concepts obtained the highest correlations with human assessments; however its correlations were sensibly lower than those achieved by the best method from the general medical vocabularies category, i.e. the scores of CHV concepts. For the natural language category, we found that the number of pronouns, the number of stop words and the number of out of vocabulary words had the highest correlations -- and these were even higher than those obtained with MeSH and CHV based methods. In turn, the methods that obtained the highest correlations among the HTML category (counts of P tags and list tags) exhibited overall the lowest correlations compared to methods in the other categories. P tags are used to create paragraphs in a Web page, being thus a rough proxy for text length. 
+
+
+
+%The top correlation for MeSH group, number of MeSH concepts, reaches much lower correlation than the top correlation metric for the CHV group, the scores of CHV concepts.
+%The dominating metrics for the Natural Language group are the number of pronouns, the number of stopwords and the number of out of vocabulary words; all these are consistently more correlated than metrics in the MeSH and CHV group.
+%In turn, the top correlations for the HTML group, counts of P tags and list tags, were the weakest. P tags are used to create paragraphs in a Web page, being roughly a proxy for text lengthiness. 
+
+\todo{ARRIVED HERE}
+
 Top estimators for the word frequency group are based on the Medical Reddit and PubMed counts, with correlations as high as the readability formulas.
 Finally, the group with the highest correlated estimators are the regressors and classifiers, with top estimators being the Neural Network regressor and the multinomial Naive Bayes.
 \todo{this section misses some sort of conclusion or at least a link to the next section}
