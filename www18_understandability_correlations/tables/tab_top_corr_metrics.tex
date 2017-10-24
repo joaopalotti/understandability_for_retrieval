@@ -1,66 +1,43 @@
-\begin{table}[t]
+\begin{table*}[t]
 \centering    
 \caption{Metrics with highest correlation per group. In bold are the metric that archived the highest correlation for a correlation measure.}
 \label{tab:top_corr_metrics}
-\resizebox{.45\textwidth}{!}{ %%%%
-\begin{tabular}{c|c|c|c|c|c|c}
-\toprule
-\textbf{Dataset} & \textbf{Group} & \textbf{Metric} & \textbf{Preproc.} & \textbf{Pears.} & \textbf{Spear.} & \textbf{Kend.}\tabularnewline
-\midrule
-\multirow{15}{*}{CLEF 2015} & RF & SMOG Index & JST NFP & \textbf{0.438} & \textbf{0.388} & \textbf{0.286}\tabularnewline
-\cmidrule{2-7} 
- & \multirow{2}{*}{CRF} & Avg. Num. of Polysyl. Words per Word & JST FP & \textbf{0.429} & 0.364 & 0.268\tabularnewline
- &  & Avg. N. of Polysyl. Words per Sentence & JST NFP & 0.192 & \textbf{0.388} & \textbf{0.286}\tabularnewline
-\cmidrule{2-7} 
-& \multirow{2}{*}{GMV} & Avg. N. Medical Prefixes per Word & Naive FP & \textbf{0.314} & 0.312 & 0.229\tabularnewline
- &  & Number of Medical Prefixes & Naive FP & 0.131 & \textbf{0.368} & \textbf{0.272}\tabularnewline
-\cmidrule{2-7} 
- & CMV & CHV Mean Score for all Concepts & Naive FP & \textbf{0.371} & \textbf{0.314} & \textbf{0.228}\tabularnewline
-\cmidrule{2-7} 
- & EMV & Number of MeSH Concepts & Naive FP & \textbf{0.227} & \textbf{0.249} & \textbf{0.178}\tabularnewline
-\cmidrule{2-7} 
- &  \multirow{2}{*}{NLF} & N. of words not found in Aspell Dict. & JST NFP & \textbf{0.351} & 0.276 & 0.203\tabularnewline
- &  & Number of Pronouns per Word & Naive FP & 0.271 & \textbf{0.441} & \textbf{0.325}\tabularnewline
-\cmidrule{2-7} 
- & HF & Number of P Tags & None & \textbf{0.219} & \textbf{0.196} & \textbf{0.142}\tabularnewline
-\cmidrule{2-7} 
- &  \multirow{2}{*}{WFF} & Mean Rank Medical Reddit - Includes OV & JST NFP & \textbf{0.435} & 0.277 & 0.197\tabularnewline
- &  & 25th percentil Pubmed & JST NFP & 0.330 & \textbf{0.347} & \textbf{0.256}\tabularnewline
-\cmidrule{2-7} 
- &  \multirow{2}{*}{MLR} & Neural Network Regressor & BOI NFP & \textbf{0.602} & 0.394 & 0.287\tabularnewline
- &  & Neural Network Regressor & JST FP & 0.565 & \textbf{0.438} & \textbf{0.324}\tabularnewline
-\cmidrule{2-7} 
- & MLC & Multinomial Naive Bayes & Naive FP & \textbf{0.573} & \textbf{0.477} & \textbf{0.416}\tabularnewline
-\midrule
-\midrule
-\multirow{18}{*}{CLEF 2016} & \multirow{2}{*}{RF} & Dale Chall Index & JST FP & \textbf{0.439} & 0.381 & 0.264\tabularnewline
- &  & Dale Chall Index & BOI FP & 0.437 & \textbf{0.382} & \textbf{0.264}\tabularnewline
-\cmidrule{2-7} 
- & CRF & Avg. Difficult Words Per Word & BOI FP & \textbf{0.431} & \textbf{0.379} & \textbf{0.262}\tabularnewline
-\cmidrule{2-7} 
- & \multirow{2}{*}{GMV} & Avg. Prefixes per Sentence & JST FP & \textbf{0.263} & 0.242 & 0.164\tabularnewline
- &  & ICD Concepts Per Sentence & JST NFP & 0.014 & \textbf{0.253} & \textbf{0.172}\tabularnewline
-\cmidrule{2-7} 
- & \multirow{2}{*}{CMV} & CHV Mean Score for all Concepts & JST FP & \textbf{0.329} & 0.313 & 0.216\tabularnewline
- &  & CHV Mean Score for all Concepts & BOI FP & 0.329 & \textbf{0.325} & \textbf{0.224}\tabularnewline
-\cmidrule{2-7} 
- & \multirow{2}{*}{EMV} & Number of MeSH Concepts & BOI NFP & \textbf{0.201} & 0.166 & 0.113\tabularnewline
- &  & Number of MeSH Disease Concepts & BOI NFP & 0.179 & \textbf{0.192} & \textbf{0.132}\tabularnewline
-\cmidrule{2-7} 
- & \multirow{2}{*}{NLF} & Avg. Stopword Per Word & BOI FP & \textbf{0.344} & 0.312 & 0.213\tabularnewline
- &  & Number of Pronouns & BOI FP & 0.341 & \textbf{0.364} & \textbf{0.252}\tabularnewline
-\cmidrule{2-7} 
-& \multirow{2}{*}{HF} & Number of Lists & \multirow{2}{*}{None} & \textbf{0.114} & 0.021 & 0.015\tabularnewline
- &  & Number of P Tags &  & 0.110 & \textbf{0.123} & \textbf{0.084}\tabularnewline
-\cmidrule{2-7} 
- & \multirow{2}{*}{WFF} & Mean Rank Medical Reddit & BOI NFP & \textbf{0.387} & 0.312 & 0.214\tabularnewline
- &  & 50th percentil Medical Reddit & JST NFP & 0.351 & \textbf{0.315} & \textbf{0.216}\tabularnewline
-\cmidrule{2-7} 
- & \multirow{2}{*}{MLR} & Neural Network Regressor & JST NFP & \textbf{0.454} & \textbf{0.373} & 0.258\tabularnewline
- &  & Random Forest Regressor & BOI NFP & 0.389 & 0.355 & \textbf{0.264}\tabularnewline
-\cmidrule{2-7} 
- & MLC & Multinomial Naive Bayes & JST FP & \textbf{0.461} & \textbf{0.391} & \textbf{0.318}\tabularnewline
+\resizebox{.95\textwidth}{!}{ %%%%
+\begin{tabular}{l|ccccc|ccccc}
+\toprule 
+\multirow{2}{*}{\textbf{Group} } & \multicolumn{5}{c|}{\textbf{CLEF eHealth 2015}} & \multicolumn{5}{c}{\textbf{CLEF eHealth 2016}}\tabularnewline
+\cmidrule{2-11} 
+ & \textbf{Metric}  & \textbf{Preproc.}  & \textbf{Pears.}  & \textbf{Spear.}  & \textbf{Kend.} & \textbf{Metric}  & \textbf{Preproc.}  & \textbf{Pears.}  & \textbf{Spear.}  & \textbf{Kend.}\tabularnewline
+\midrule 
+\multirow{2}{*}{\textbf{RF}} & \multirow{2}{*}{SMOG Index } & \multirow{2}{*}{JST NFP } & \multirow{2}{*}{\textbf{0.438} } & \multirow{2}{*}{\textbf{0.388} } & \multirow{2}{*}{\textbf{0.286}} & \multirow{2}{*}{Dale Chall Index } & JST FP  & \textbf{0.439}  & 0.381  & 0.264\tabularnewline
+ &  &  &  &  &  &  & BOI FP  & 0.437  & \textbf{0.382}  & \textbf{0.264}\tabularnewline
+\midrule 
+\multirow{2}{*}{\textbf{CRF}} & Avg. Num. of Polysyl. Words per Word  & JST FP  & \textbf{0.429}  & 0.364  & 0.268 & \multirow{2}{*}{Avg. Difficult Words Per Word } & \multirow{2}{*}{BOI FP } & \multirow{2}{*}{\textbf{0.431} } & \multirow{2}{*}{\textbf{0.379} } & \multirow{2}{*}{\textbf{0.262}}\tabularnewline
+ & Avg. N. of Polysyl. Words per Sentence  & JST NFP  & 0.192  & \textbf{0.388}  & \textbf{0.286} &  &  &  &  & \tabularnewline
+\midrule 
+\multirow{2}{*}{\textbf{GMV}}  & Avg. N. Medical Prefixes per Word  & \multirow{2}{*}{Naive FP} & \textbf{0.314}  & 0.312  & 0.229 & Avg. Prefixes per Sentence  & JST FP  & \textbf{0.263}  & 0.242  & 0.164\tabularnewline
+ & Number of Medical Prefixes  &  & 0.131  & \textbf{0.368}  & \textbf{0.272} & ICD Concepts Per Sentence  & JST NFP  & 0.014  & \textbf{0.253}  & \textbf{0.172}\tabularnewline
+\midrule 
+\multirow{2}{*}{\textbf{CMV}} & \multirow{2}{*}{CHV Mean Score for all Concepts } & \multirow{2}{*}{Naive FP } & \multirow{2}{*}{\textbf{0.371} } & \multirow{2}{*}{\textbf{0.314} } & \multirow{2}{*}{\textbf{0.228}} & CHV Mean Score for all Concepts  & JST FP  & \textbf{0.329}  & 0.313  & 0.216\tabularnewline
+ &  &  &  &  &  & CHV Mean Score for all Concepts  & BOI FP  & 0.329  & \textbf{0.325}  & \textbf{0.224}\tabularnewline
+\midrule 
+\multirow{2}{*}{\textbf{EMV}} & \multirow{2}{*}{Number of MeSH Concepts } & \multirow{2}{*}{Naive FP } & \multirow{2}{*}{\textbf{0.227} } & \multirow{2}{*}{\textbf{0.249} } & \multirow{2}{*}{\textbf{0.178}} & Number of MeSH Concepts  & \multirow{2}{*}{BOI NFP } & \textbf{0.201}  & 0.166  & 0.113\tabularnewline
+ &  &  &  &  &  & Number of MeSH Disease Concepts  &  & 0.179  & \textbf{0.192}  & \textbf{0.132}\tabularnewline
+\midrule 
+\multirow{2}{*}{\textbf{NLF}} & N. of words not found in Aspell Dict.  & JST NFP  & \textbf{0.351}  & 0.276  & 0.203 & Avg. Stopword Per Word  & \multirow{2}{*}{BOI FP } & \textbf{0.344}  & 0.312  & 0.213\tabularnewline
+ & Number of Pronouns per Word  & Naive FP  & 0.271  & \textbf{0.441}  & \textbf{0.325} & Number of Pronouns  &  & 0.341  & \textbf{0.364}  & \textbf{0.252}\tabularnewline
+\midrule 
+\multirow{2}{*}{\textbf{HF}} & \multirow{2}{*}{Number of P Tags } & \multirow{2}{*}{None } & \multirow{2}{*}{\textbf{0.219} } & \multirow{2}{*}{\textbf{0.196} } & \multirow{2}{*}{\textbf{0.142}} & Number of Lists  & \multirow{2}{*}{None} & \textbf{0.114}  & 0.021  & 0.015\tabularnewline
+ &  &  &  &  &  & Number of P Tags  &  & 0.110  & \textbf{0.123}  & \textbf{0.084}\tabularnewline
+\midrule 
+\multirow{2}{*}{\textbf{WFF}} & Mean Rank Medical Reddit - Includes OV  & JST NFP  & \textbf{0.435}  & 0.277  & 0.197 & Mean Rank Medical Reddit  & BOI NFP  & \textbf{0.387}  & 0.312  & 0.214\tabularnewline
+ & 25th percentil Pubmed  & JST NFP  & 0.330  & \textbf{0.347}  & \textbf{0.256} & 50th percentil Medical Reddit  & JST NFP  & 0.351  & \textbf{0.315}  & \textbf{0.216}\tabularnewline
+\midrule 
+\multirow{2}{*}{\textbf{MLR}} & Neural Network Regressor  & BOI NFP  & \textbf{0.602}  & 0.394  & 0.287 & Neural Network Regressor  & JST NFP  & \textbf{0.454}  & \textbf{0.373}  & 0.258\tabularnewline
+ & Neural Network Regressor  & JST FP  & 0.565  & \textbf{0.438}  & \textbf{0.324} & Random Forest Regressor  & BOI NFP  & 0.389  & 0.355  & \textbf{0.264}\tabularnewline
+\midrule 
+\textbf{MLC} & Multinomial Naive Bayes  & Naive FP  & \textbf{0.573}  & \textbf{0.477}  & \textbf{0.416} & Multinomial Naive Bayes  & JST FP  & \textbf{0.461}  & \textbf{0.391}  & \textbf{0.318}\tabularnewline
 \bottomrule
 \end{tabular}
 } %%%%% ---- 
-\end{table}
+\end{table*}
