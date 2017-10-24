@@ -12,7 +12,7 @@ As reviewed in Section~\ref{}, several methods have been proposed and used to es
 %For that, we devise and group several methods into semantically related groups which will be following presented. We summarize all methods in Table~\ref{tab:doc_features}.
 
 
-\textbf{Traditional Readability Formulas:}
+\textbf{Traditional Readability Formulas (RF):}
 These included the readability formulas used in Section~\ref{sec:related}, as well as other, less popular ones. A full list is provided in surveys by Collins-Thompson~\cite{collins2014computational} and Dubay~\cite{dubay04}.
 
 %Therefore, what unifies all methods listed in this section is the goal to automatically infer the understandability of a document, in our case, a Web page with medical content.
@@ -22,7 +22,7 @@ These included the readability formulas used in Section~\ref{sec:related}, as we
 %\textbf{Traditional Readability Formulas:}
 %This group contains a large set of traditional readability formulas. Some were mentioned in Section~\ref{sec:related}. A full list can be found in surveys such as Collins-Thompson~\cite{collins2014computational} or Dubay~\cite{dubay04}.
 
-\textbf{Raw Components of Readability Formulas:}
+\textbf{Raw Components of Readability Formulas (CRF):}
 These were formed by the ``building blocks'' used in the traditional readability formulas; examples of such building blocks included the average number of characters per word and the average number of syllables in a sentence. Words were divided into syllables using the Python package Pyphen~\cite{pyphen}.
 
 
@@ -31,7 +31,7 @@ These were formed by the ``building blocks'' used in the traditional readability
 %Acronym list was obtained from ADAM database~\cite{zhou2006}. Methods listed here were matched with documents using a simple keywords matching.
 
 
-\textbf{General Medical Vocabularies:}
+\textbf{General Medical Vocabularies (GMV):}
 These included methods that count the number of words with a medical prefix or suffix, i.e. beginning or ending with Latin or Greek particles (e.g., amni-, angi-, algia-, arteri-), text strings included in list of acronyms or medical vocabularies such as the International Statistical Classification of Diseases and Related Health Problems (ICD), Drugbank and the OpenMedSpel dictionary~\cite{openmedspel}. An acronym list was obtained from the ADAM database~\cite{zhou2006}. Methods in this group were matched with documents using a simple keywords matching.
 
 
@@ -44,30 +44,30 @@ These included methods that count the number of words with a medical prefix or s
 %The CHV dataset (version 20110204) links part of the UMLS concepts, such as “myocardial infarction”, to everyday expressions, “heart attack”.
 
 
-textbf{Consumer Vocabulary Features:}
+textbf{Consumer Medical Vocabulary (CMV):}
 The popular MetaMap~\cite{aronson10} tool was used to map the text content of Web pages to entries in the CHV vocabulary~\cite{zeng06}.
 We further used the MetaMap options to retain only concepts identified as symptoms or diseases. Similar approaches have been commonly used in the literature\todo{~\cite{}}.
 
 
 
-\textbf{Expert Vocabulary Features:}
+\textbf{Expert Medical Vocabulary (EMV):}
 Similarly to the CHV features, we used MetaMap to convert the content of Web pages into MeSH entities, studying symptoms and disease concepts separately. 
 
 
 
-\textbf{Natural Language:}
+\textbf{Natural Language (NL):}
 These included commonly used natural language heuristics such as the ratio of part-of-speech (POS) classes, the number of entities in the text, the sentiment polarity and the ratio of words found in English vocabularies. The Python package NLTK~\cite{nltk} was employed for sentiment analysis and POS tagging. The GNU Aspell~\cite{aspell} dictionary was used as a standard English vocabulary and a stop word list was built by merging those of Indri~\cite{indri} and Terrier~\cite{terrier}. 
 
 
 
-\textbf{HTML Features:}
+\textbf{HTML Features (HF):}
 These included the identification of a large number of HTML tags, which were extracted with the Python library BeautifulSoap~\cite{bs4}. The intuition for these features is that Web pages rich of images of tabular content may well explain and summarise health content -- thus providing more understandable content to the general public. 
 %The aim of this group is to represent a web page by its HTML content.
 %We hypothesize that a Web page rich of images or with its content well summarized in tables can potentially ease hard subjects such as medicine. 
 %We identify a large number of HTML tags in this group with the Python library BeautifulSoap \cite{bs4}.
 
 
-\textbf{Word Frequency Features:}
+\textbf{Word Frequency Features (WFF):}
 Generally speaking, common and known words are usually frequent words, while unknown and obscure words are generally rare. This idea is implemented in readability formulas such as the Dale-Chall index which uses a list of common words and counts the number of words that fall outside this list (complex words)~\cite{dale48}.
 We extended these observations by studying corpora-wide word frequencies. 
 We modelled word frequencies in a corpus in a straightforward manner: we sorted the word frequencies and normalized word rankings such that values close to 100 were attributed to common words and values close to 0 to rare words. Three corpora were analysed to extract word frequencies:
@@ -100,7 +100,7 @@ A summary of the statistics of these three collections is reported in Table~\ref
 
 \input{tables/tab_collection_stats}
 
-\textbf{Machine Learning on Text - Regressors and Classifiers:} These included machine learning methods for estimating Web page understandability. While Collins-Thompson highlighted the promise of estimating understandability using machine learning methods, a challenge is identifying the background corpus to be used for training~\cite{collins2014computational}. To this aim, we used the three corpora detailed above, and assume understandability labels according to the average (expected) difficulty of documents in these collections:
+\textbf{Machine Learning on Text - Regressors (MLR) and Classifiers (MLC):} These included machine learning methods for estimating Web page understandability. While Collins-Thompson highlighted the promise of estimating understandability using machine learning methods, a challenge is identifying the background corpus to be used for training~\cite{collins2014computational}. To this aim, we used the three corpora detailed above, and assume understandability labels according to the average (expected) difficulty of documents in these collections:
 
 
 %In a recent survey, Kevin Collins-Thompson reports that the future of understandability estimation relies on Machine Learning~\cite{collins2014computational}.
