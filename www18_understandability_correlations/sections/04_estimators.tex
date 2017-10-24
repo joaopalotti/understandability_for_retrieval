@@ -44,7 +44,7 @@ These included methods that count the number of words with a medical prefix or s
 %The CHV dataset (version 20110204) links part of the UMLS concepts, such as “myocardial infarction”, to everyday expressions, “heart attack”.
 
 
-textbf{Consumer Medical Vocabulary (CMV):}
+\textbf{Consumer Medical Vocabulary (CMV):}
 The popular MetaMap~\cite{aronson10} tool was used to map the text content of Web pages to entries in the CHV vocabulary~\cite{zeng06}.
 We further used the MetaMap options to retain only concepts identified as symptoms or diseases. Similar approaches have been commonly used in the literature\todo{~\cite{}}.
 
@@ -55,7 +55,7 @@ Similarly to the CHV features, we used MetaMap to convert the content of Web pag
 
 
 
-\textbf{Natural Language (NL):}
+\textbf{Natural Language Features (NLF):}
 These included commonly used natural language heuristics such as the ratio of part-of-speech (POS) classes, the number of entities in the text, the sentiment polarity and the ratio of words found in English vocabularies. The Python package NLTK~\cite{nltk} was employed for sentiment analysis and POS tagging. The GNU Aspell~\cite{aspell} dictionary was used as a standard English vocabulary and a stop word list was built by merging those of Indri~\cite{indri} and Terrier~\cite{terrier}. 
 
 
