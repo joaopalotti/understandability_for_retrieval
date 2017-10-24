@@ -1,31 +1,39 @@
-\section{Evaluation of Preprocessing Pipelines and Heuristics}
+\section{Preprocessing Pipelines and Heuristics}
 
 %\section{Which Preprocessing Approach To Prefer}
-\label{sec:which_preprocessing}
-
-
-Next, we studied the influence of the preprocessing of Web pages on the estimation of understandability when using the methods evaluated in the previous section. We did so by comparing the combination of a number of pre-processing pipelines and heuristics and understandability estimation methods with human assessments of web page understandability. 
+Next, we studied the influence of the preprocessing of Web pages on the estimation of understandability when using the methods evaluated in the previous section. We did so by comparing the combination of a number of pre-processing pipelines, heuristics and understandability estimation methods with human assessments of web page understandability. 
 Our experiments extended those by Palotti et al.~\cite{palotti15}, who did only evaluate surface level readability formulas and did not compare their results against human assessments. 
 
 We employed the same three approaches used in Palotti et al.~\cite{palotti15} to extract the content of a Web page from the HTML source: BeautifulSoap 4 (\textit{Naive}), which just naively removes HTML tags, Boilerpipe\cite{kohlschutter10} (\textit{Boilerpipe - Boi}) and Justext\cite{jan11} ({Justext - Jst}), which eliminate boilerplate text together with HTML tags. 
 Their data analysis highlighted that the text in HTML tags often missed a correct punctuation mark and thus the text extracted from HTML fields like titles, menus, tables and lists could be interpreted as many short sentences or few very long sentences, depending on whether a period was forced at the end of fields/sentences. We thus implemented the same two heuristics to deal with this: \textit{ForcePeriod - FP} and \textit{DoNotForcePeriod - DNFP}. The \textit{ForcePeriod - FP} heuristics forced a period at the end of each extracted HTML field; while the \textit{DoNotForcePeriod - DNFP} did not. 
 
 
-\todo{ARRIVED HERE -- need to merge section 4 and 7.}
+\section{Evaluation of Preprocessing Pipelines and Heuristics}
+\label{sec:which_preprocessing}
+Results from these experiments are shown in Figure~\ref{fig:boxplot_corr_docs} (top: CLEF 2015; bottom: CLEF 2016). For each category of methods and combination of preprocessing and heuristics, we reported their variability in Sperman rank correlation with the human assessments (other correlation measures are reported in the online appendix, but showed similar trends). We further reported summary results across all understandability assessments methods and sentence ending heuristics for each of the preprocessing pipelines. Finally, we also reported the inter-assessor correlation (last box) when multiple assessors provided judgements about the understandability of Web pages (see Section~\ref{} for details about this data). This provided an indication of the range of variability and subjectiveness when assessing understandability, along with the highest correlation we measured between human assessors. 
 
-We further investigate the preprocessing steps with the groups of features introduced in Table~\ref{tab:doc_features}.
-For that, we present in Figure~\ref{fig:boxplot_corr_docs} the box plot of Spearman rank correlation metric divided by preprocessing alternative for CLEF eHealth 2015 and 2016\footnote{Due to space limitation, additional plots with Pearson and Kendall correlations are available online at \url{XYZ}.}.
+We first examined the correlations between human assessments and readability formulas. We found that the \textit{Naive} preprocessing resulted in the lowest correlations, regardless readability formula and heuristics (although \textit{DoNotForcePeriod} performed better than \textit{ForcePeriod}). Using Justext or Boilerplate resulted in higher correlations with human understandability assessments, and the \textit{ForcePeriod} heuristic was shown to be better than the other. These results confirm the speculations of Palotti et al.~\cite{palotti15}: they found these settings to produce lower variances in understandability estimations and thus hypothesise they were better suited to the task.
+
+Overall, among readability formulas, the best results (highest correlations) were obtained by SMOG with \textit{ForcePeriod} and Justext for CLEF 2015 and Dale-Chall Index with \textit{DoNotForcePeriod} and DoNotForcePeriod for CLEF 2016. Although no single setting outperformed the others in both collections, we found that the use of CLI and FRE with \textit{Justext} provided the most stable results across the collections, with correlation coefficients as high as the best ones in both collections.
+
+These results confirmed the advice put forward by Palotti et al.~\cite{palotti15}, i.e. if using readability measures, then CLI should be preferred, along with an appropriate HTML extraction pipeline, regardless of the heuristic for sentence ending.
+
+When considering methods beyond those based on readability formulas, we found that the highest correlations were archived by the regressors (MLR) and classifiers (MLC), independently of the preprocessing method used. For methods in these categories, correlations were only marginally influenced by preprocessing and heuristics, with the exception for regressors on CLEF 2015 that did exhibit not negligible variances.  
+
+A common trend when comparing preprocessing pipelines, is that the Naive pipeline provided the weakest correlations with human assessments for CLEF 2016, regardless of estimation methods and heuristics. This result however was not confirmed for CLEF 2015, where the Naive preprocessing did negatively influence correlations for the readability formula category (RF), but not for other categories, although it was generally associated with larger variances. 
+
+
+%For that, we present in Figure~\ref{fig:boxplot_corr_docs} the box plot of Spearman rank correlation metric divided by preprocessing alternative for CLEF eHealth 2015 and 2016\footnote{Due to space limitation, additional plots with Pearson and Kendall correlations are available online at \url{XYZ}.}.
 %Figures~\ref{fig:boxplot_corr_docs_2015} and~\ref{fig:boxplot_corr_docs_2016} the box plot of different correlation metrics divided by preprocessing alternative for CLEF eHealth 2015 and 2016. 
-For instance, the very first box plot in the upper part of these figures shows the absolute Pearson's rank correlation of different readability metrics when using a combination of Naive and ForcePeriod as preprocessing steps.
-Boxes extend from the lower to upper quartile values of the data, with a line at the median. Whiskers extend from the box to show the range of the data. Flier points are those past the end of the whiskers, usually interpreted as outlier values.
+%For instance, the very first box plot in the upper part of these figures shows the absolute Pearson's rank correlation of different readability metrics when using a combination of Naive and ForcePeriod as preprocessing steps.
+%Boxes extend from the lower to upper quartile values of the data, with a line at the median. Whiskers extend from the box to show the range of the data. Flier points are those past the end of the whiskers, usually interpreted as outlier values.
 
 
 
 
 %We also include in Figures~\ref{fig:boxplot_corr_docs_2015} and~\ref{fig:boxplot_corr_docs_2016} 
-We also include in Figure~\ref{fig:boxplot_corr_docs} 
-boxes for the summary of the 3 preprocessing procedures to remove HTML, the use of HTML features, which is done without any preprocessing and the comparison with other human assessors. For CLEF eHealth 2015, we used as human assessments the additional assessments made by unpaid medical students and health consumers (see~\cite{palotti16b}), while for CLEF eHealth 2016 data, we randomly selected 100 pages that were assessed by another assessor. \mytodo{add at least another person doing assessments}.
-The correlations with human assessments provide important insights on how hard and subjective understandability assessments are.
+%We also include in Figure~\ref{fig:boxplot_corr_docs} boxes for the summary of the 3 preprocessing procedures to remove HTML, the use of HTML features, which is done without any preprocessing and the comparison with other human assessors. For CLEF eHealth 2015, we used as human assessments the additional assessments made by unpaid medical students and health consumers (see~\cite{palotti16b}), while for CLEF eHealth 2016 data, we randomly selected 100 pages that were assessed by another assessor. \mytodo{add at least another person doing assessments}.
+%The correlations with human assessments provide important insights on how hard and subjective understandability assessments are.
 
 \begin{figure*}[h!]
    \centering
@@ -59,23 +67,33 @@ The correlations with human assessments provide important insights on how hard a
 %\end{figure*}
 
 %Figure~\ref{fig:boxplot_corr_docs_2015} shows the correlations for CLEF eHealth 2015 assessments.
-Top part of Figure~\ref{fig:boxplot_corr_docs} shows the Spearman correlation for CLEF eHealth 2015 assessments.
-The choice of preprocessing method had the highest impact on the traditional readability formula group, with the Naive preprocessing clearly underperforming the other preprocessing methods. The choice of the Naive method was also the worst for the word frequency group, but, interestingly, it was a good choice, or at least a competitive one, for all other groups.
-The highest correlations were archived by the regressors and classifiers, independently of the preprocessing method used.
+%Top part of Figure~\ref{fig:boxplot_corr_docs} shows the Spearman correlation for CLEF eHealth 2015 assessments.
+
+%The choice of preprocessing method had the highest impact on the traditional readability formula group, with the Naive preprocessing clearly underperforming the other preprocessing methods. The choice of the Naive method was also the worst for the word frequency group, but, interestingly, it was a good choice, or at least a competitive one, for all other groups.
+%The highest correlations were archived by the regressors and classifiers, independently of the preprocessing method used.
 
 %For this group, all correlation measures point out that the Naive processing yielded the weakest correlation, and Justext was marginally better than Boilerpipe. Comparing the medians, the strategy of DoNotForcePeriod performed better than ForcePeriod. The readability formula group was also the one with higher correlation, with an average correlation equal or higher than the human one.
 
 %Similarly to Figure~\ref{fig:boxplot_corr_docs_2015}, Figure~\ref{fig:boxplot_corr_docs_2016} reports the findings for CLEF eHealth 2016. 
-Similarly the bottom part of Figure~\ref{fig:boxplot_corr_docs} reports the findings for CLEF eHealth 2016. 
-This time, though, the Naive preprocessing method was clearly underperforming for most of the groups analysed, including regressors and classifiers.
+%Similarly the bottom part of Figure~\ref{fig:boxplot_corr_docs} reports the findings for CLEF eHealth 2016. 
+%This time, though, the Naive preprocessing method was clearly underperforming for most of the groups analysed, including regressors and classifiers.
 
 %In order to further understand our experiments, we compared the median of each pair of preprocessing strategy showed in Figures~\ref{fig:boxplot_corr_docs_2015} and~\ref{fig:boxplot_corr_docs_2016} and present the results in Table~\ref{tab:comparison_preprocessing}. 
-In order to further understand our experiments, we present in Table~\ref{tab:comparison_preprocessing} the results of comparing the median of two-by-two for different preprocessing strategies shown in Figure~\ref{fig:boxplot_corr_docs}. We also include the results for Pearson and Kendall correlations.
-For instance, the entry $\mathit{FP < DNFP}$ counts the number of times the median value for \textit{ForcePeriod} was superior to \textit{DoNotForcePeriod} when comparisons with the same HTML cleaning method was used, e.g. \textit{Naive ForcePeriod} versus \textit{Naive DoNotForcePeriod}. From all comparisons, the ones that were statistically significant according to a t-test are shown inside parentheses.
 
-The upper part of Table~\ref{tab:comparison_preprocessing} shows results for the comparisons between ForcePeriod (FP) and DoNotForcePeriod (DNFP). Although the interpretation of readability formulas is drastically affected by this choice of preprocessing, as research indicates~\cite{palotti15}, the correlation results are not.
-The number of times FP reached a higher correlation than DNFP is roughly the same that DNFP was higher than FP.
-The bottom part of Table~\ref{tab:comparison_preprocessing} shows the comparisons made for Naive, Justext and Boilerpipe. Results for CLEF 2015 contrast with 2016, while Naive was sightly better than Boilerpipe and Justext in 2015, it was the worst in almost all 2016 comparisons. Also, the comparisons between Justext and Boilerpipe are exactly the opposite from 2015 to 2016.
+We further analysed the results by performing pairwise comparisons between the median correlations across preprocessing pipelines and heuristics, and reporting the number of times the median correlation of a setting was better than another. These are reported in Table~\ref{tab:comparison_preprocessing}: in brackets we reported the number of comparisons that were statistically significant. 
+
+%In order to further understand our experiments, we present in Table~\ref{tab:comparison_preprocessing} the results of comparing the median of two-by-two for different preprocessing strategies shown in Figure~\ref{fig:boxplot_corr_docs}. We also include the results for Pearson and Kendall correlations.
+%For instance, the entry $\mathit{FP < DNFP}$ counts the number of times the median value for \textit{ForcePeriod} was superior to \textit{DoNotForcePeriod} when comparisons with the same HTML cleaning method was used, e.g. \textit{Naive ForcePeriod} versus \textit{Naive DoNotForcePeriod}. From all comparisons, the ones that were statistically significant according to a t-test are shown inside parentheses.
+
+We first examined the comparison between sentence ending heuristics (ForcePeriod (FP) and DoNotForcePeriod (DNFP)). Results showed that the two methods achieved comparable results. Then we examined the comparison between preprocessing pipelines. For these, results for CLEF 2015 were in contrast with those for CLEF 2016. While Naive was marginally better than Boilerpipe and Justext in 2015, it was the worst in the majority of comparisons for 2016. \todo{I think something could be said about ustext and Boilerpipe}
+
+
+\todo{ARRIVED HERE -- need to merge section 4 and 7.}
+
+
+%The upper part of Table~\ref{tab:comparison_preprocessing} shows results for the comparisons between ForcePeriod (FP) and DoNotForcePeriod (DNFP). Although the interpretation of readability formulas is drastically affected by this choice of preprocessing, as research indicates~\cite{palotti15}, the correlation results are not.
+%The number of times FP reached a higher correlation than DNFP is roughly the same that DNFP was higher than FP.
+%The bottom part of Table~\ref{tab:comparison_preprocessing} shows the comparisons made for Naive, Justext and Boilerpipe. Results for CLEF 2015 contrast with 2016, while Naive was sightly better than Boilerpipe and Justext in 2015, it was the worst in almost all 2016 comparisons. Also, the comparisons between Justext and Boilerpipe are exactly the opposite from 2015 to 2016.
 
 %
 \input{tables/tab_comparison_preprocessing}

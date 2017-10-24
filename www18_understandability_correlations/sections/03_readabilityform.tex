@@ -6,7 +6,8 @@ The CLEF 2015 collection contains 50 queries and 1,437 documents have been asses
 The CLEF 2016 collection contains 300 queries and 3,298 relevant documents that also have been assessed with respect to understandability~\cite{clef16}. Documents in this collection belong to the Clueweb12b corpus, and thus are general English Web pages, not necessarily targeted to health topics, nor of a controlled quality (as are instead HON certified sites). 
 Understandability assessments were provided on a 5-point Likert scale for CLEF 2015, and within a $[0,100]$ range for CLEF 2016 (0 lowest understandability). 
 
-\todo{To support the investigation in Section~\ref{}(say what it is), we further collected understandability assessments for 100 documents. Three members of our research team, which did not author this paper, were recruited and instructed to provided the assessments. The Relevantion tool~\cite{} was used to assist with the assessments, mimicking the settings used for the CLEF collections.}
+To support the investigation in Section~\ref{sec:which_preprocessing} (influence of pre-processing on understandability estimation), we further considered correlations between multiple human assessors (inter-assessor agreement). For CLEF 2015, we used the publicly available additional assessments made by unpaid medical students and health consumers collected by Palotti et al.~\cite{palotti16b} in a study of how medical expertise affects assessments. For CLEF 2016 we  collected understandability assessments for 100 documents. Three members of our research team, which did not author this paper, were recruited and instructed to provided the assessments. The Relevantion tool~\cite{} was used to assist with the assessments, mimicking the settings used for the CLEF collections.
+
 
 In the experiments, we used Pearson, Kendall and Spearman's Rank correlations to compare the understandability assessments of human assessors with estimations obtained with readability formulas, under all combinations of extraction pipelines and sentence-ending heuristics. Pearson correlation is used to calculate the strength of the linear relation between two variables, while the Kendall and Spearman measure the rank correlations between the variables. We opted to report all three correlation coefficients to allow for a thorough comparison to other work, as they are equally used in the literature. 
 
@@ -15,8 +16,8 @@ In the experiments, we used Pearson, Kendall and Spearman's Rank correlations to
 \todo{link to online appendix for all results}
 
 %\section{Which Readability Formula To Use}
-\section{Influence of Preprocessing on Readability Formulas}
-\label{sec:which_readability}
+%\section{Influence of Preprocessing on Readability Formulas}
+%\label{sec:which_readability}
 
 %Next, we report on our study of the influence of the preprocessing of Web pages on the estimation of understandability when using surface level readability formulas like SMOG, CLI, etc. We did so by comparing the combination of a number of pre-processing pipelines and heuristics and readability formula with human assessments of web page understandability. 
 %Our experiments extended those by Palotti et al.~\cite{palotti15}, who did not compare their results against human assessments. 
@@ -27,11 +28,11 @@ In the experiments, we used Pearson, Kendall and Spearman's Rank correlations to
 %We used Pearson, Kendall and Spearman's Rank correlations to compare the understandability assessments of human assessors with estimations obtained with readability formulas, under all combinations of extraction pipelines and sentence-ending heuristics. Pearson correlation is used to calculate the strength of the linear relation between two variables, while the Kendall and Spearman measure the rank correlations between the variables. We opted to report all three correlation coefficients to allow for a thorough comparison to other work, as they are equally used in the literature. 
 %To obtain understandability assessments, we used the data from the CLEF 2015 and 2016 eHealth collections. The CLEF 2015 collection contains 50 queries and 1,437 documents have been assessed relevant by clinical experts and have an assessment for understandability~\cite{clef15}, while the CLEF 2016 collection contains 300 queries and 3,298 relevant documents that also have been assessed with respect to understandability~\cite{clef16}. Understandability assessments were provided on a 5-point Likert scale for CLEF 2015, and within a $[0,100]$ range for CLEF 2016 (0 lowest understandability). 
 
-Correlations between human assessments and readability formulas, under the different settings of extraction pipelines and heuristics are shown in Figure~\ref{fig:bar_corr_clef15}. We found that the \textit{Naive} preprocessing resulted in the lowest correlations, regardless readability formula and heuristics (although \textit{DoNotForcePeriod} performed better than \textit{ForcePeriod}). Using Justext or Boilerplate resulted in higher correlations with human understandability assessments, and the \textit{ForcePeriod} heuristic was shown to be better than the other. These results confirm the speculations of Palotti et al.~\cite{palotti15}: they found these settings to produce lower variances in understandability estimations and thus hypothesise they were better suited to the task.
-
-Overall, the best results (highest correlations) were obtained by SMOG with \textit{ForcePeriod} and Justext for CLEF 2015 and Dale-Chall Index with \textit{DoNotForcePeriod} and DoNotForcePeriod for CLEF 2016. Although no single setting outperformed the others in both collections, we found that the use of CLI and FRE with \textit{Justext} provided the most stable results across the collections, with correlation coefficients as high as the best ones in both collections.
-
-These results confirm the advice put forward by Palotti et al.~\cite{palotti15}, i.e. if using readability measures, then CLI should be preferred, along with an appropriate HTML extraction pipeline, regardless of the heuristic for sentence ending.
+%Correlations between human assessments and readability formulas, under the different settings of extraction pipelines and heuristics are shown in Figure~\ref{fig:bar_corr_clef15}. We found that the \textit{Naive} preprocessing resulted in the lowest correlations, regardless readability formula and heuristics (although \textit{DoNotForcePeriod} performed better than \textit{ForcePeriod}). Using Justext or Boilerplate resulted in higher correlations with human understandability assessments, and the \textit{ForcePeriod} heuristic was shown to be better than the other. These results confirm the speculations of Palotti et al.~\cite{palotti15}: they found these settings to produce lower variances in understandability estimations and thus hypothesise they were better suited to the task.
+%
+%Overall, the best results (highest correlations) were obtained by SMOG with \textit{ForcePeriod} and Justext for CLEF 2015 and Dale-Chall Index with \textit{DoNotForcePeriod} and DoNotForcePeriod for CLEF 2016. Although no single setting outperformed the others in both collections, we found that the use of CLI and FRE with \textit{Justext} provided the most stable results across the collections, with correlation coefficients as high as the best ones in both collections.
+%
+%These results confirm the advice put forward by Palotti et al.~\cite{palotti15}, i.e. if using readability measures, then CLI should be preferred, along with an appropriate HTML extraction pipeline, regardless of the heuristic for sentence ending.
 
 
 %We observe that the \textit{Naive} preprocessing also results in the lowest
@@ -55,18 +56,18 @@ These results confirm the advice put forward by Palotti et al.~\cite{palotti15},
 %Among all the readability formulas and preprocessing methods, SMOG with \textit{ForcePeriod} preprocessing and Dale-Chall Index with \textit{DoNotForcePeriod} are the best ones respectively for 2015 and 2016. Although there is no single best readability measure or best preprocessing strategy in all scenarios, CLI and FRE with \textit{Justext} are stable options, with correlation coefficients as high as the best ones in both campaigns. Thus, we confirm Palotti's advice for the use of CLI, as it has shown once more to be the most robust measure to variances due to use of \textit{ForcePeriod} or \textit{DoNotForcePerid}.
 
 
-\begin{figure*}[th!]
-   \centering
-   \includegraphics[width=.45\textwidth]{graphics/bar_corr_pearson15_values}
-   \includegraphics[width=.45\textwidth]{graphics/bar_corr_pearson16_values}
-   \includegraphics[width=.45\textwidth]{graphics/bar_corr_spearman15_values}
-   \includegraphics[width=.45\textwidth]{graphics/bar_corr_spearman16_values}
-   \includegraphics[width=.45\textwidth]{graphics/bar_corr_kendalltau15_values}
-   \includegraphics[width=.45\textwidth]{graphics/bar_corr_kendalltau16_values}
-   \includegraphics[width=.8\textwidth]{graphics/legend62}
-    \caption{Absolute correlation coefficient of different readability measures and understandability scores. On the left hard side, CLEF eHealth 2015, on the right hand side, CLEF eHealth 2016}
-   \label{fig:bar_corr_clef15}
-\end{figure*}
+%\begin{figure*}[th!]
+%   \centering
+%   \includegraphics[width=.45\textwidth]{graphics/bar_corr_pearson15_values}
+%   \includegraphics[width=.45\textwidth]{graphics/bar_corr_pearson16_values}
+%   \includegraphics[width=.45\textwidth]{graphics/bar_corr_spearman15_values}
+%   \includegraphics[width=.45\textwidth]{graphics/bar_corr_spearman16_values}
+%   \includegraphics[width=.45\textwidth]{graphics/bar_corr_kendalltau15_values}
+%   \includegraphics[width=.45\textwidth]{graphics/bar_corr_kendalltau16_values}
+%   \includegraphics[width=.8\textwidth]{graphics/legend62}
+%    \caption{Absolute correlation coefficient of different readability measures and understandability scores. On the left hard side, CLEF eHealth 2015, on the right hand side, CLEF eHealth 2016}
+%   \label{fig:bar_corr_clef15}
+%\end{figure*}
 
 %\begin{figure*}[th!]
 %  \centering
