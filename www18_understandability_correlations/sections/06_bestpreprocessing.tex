@@ -3,6 +3,14 @@
 %\section{Which Preprocessing Approach To Prefer}
 \label{sec:which_preprocessing}
 
+
+Next, we studied the influence of the preprocessing of Web pages on the estimation of understandability when using the methods evaluated in the previous section. We did so by comparing the combination of a number of pre-processing pipelines and heuristics and understandability estimation methods with human assessments of web page understandability. 
+Our experiments extended those by Palotti et al.~\cite{palotti15}, who did only evaluate surface level readability formulas and did not compare their results against human assessments. 
+
+We employed the same three approaches used in Palotti et al.~\cite{palotti15} to extract the content of a Web page from the HTML source: BeautifulSoap 4 (\textit{Naive}), which just naively removes HTML tags, Boilerpipe\cite{kohlschutter10} (\textit{Boilerpipe - Boi}) and Justext\cite{jan11} ({Justext - Jst}), which eliminate boilerplate text together with HTML tags. 
+Their data analysis highlighted that the text in HTML tags often missed a correct punctuation mark and thus the text extracted from HTML fields like titles, menus, tables and lists could be interpreted as many short sentences or few very long sentences, depending on whether a period was forced at the end of fields/sentences. We thus implemented the same two heuristics to deal with this: \textit{ForcePeriod - FP} and \textit{DoNotForcePeriod - DNFP}. The \textit{ForcePeriod - FP} heuristics forced a period at the end of each extracted HTML field; while the \textit{DoNotForcePeriod - DNFP} did not. 
+
+
 \todo{ARRIVED HERE -- need to merge section 4 and 7.}
 
 We further investigate the preprocessing steps with the groups of features introduced in Table~\ref{tab:doc_features}.
