@@ -7,7 +7,7 @@ To this aim we selected the top two systems at CLEF 2016 (based on their perform
 
 Then, we approached the problem of providing results that are both relevant and understandable as a re-ranking problem. To achieve this, we applied selected understandability estimation approaches to improve the results of the selected retrieval runs. We explored both estimations based on readability formulas (we used Dale-Chall) and on machine learning regressors (we used linear regression). These methods were used for re-ranking the top 20 search results returned by the initial systems. 
 
-Next, we approached the problem of providing results that are both relevant and understandable as a result fusion. For this, we used the Reciprocal Rank Fusion (RRF) method, which combines two lists of search results based on the rank of documents in each list, rather than their score. Rank-fusion, rather than score-fusion, was more appropriate in our case because 
+Next, we approached the problem of providing results that are both relevant and understandable as a result fusion. For this, we used the Reciprocal Rank Fusion (RRF) method, which combines two lists of search results based on the rank of documents in each list, rather than their score. Rank-fusion, rather than score-fusion, was more appropriate in our case because runs that were fused had very differing score distributions.
 
 In the following we report results for CLEF 2016. Results for CLEF 2015 are included in the online appendix: they show similar trends to the 2016 results.
 
