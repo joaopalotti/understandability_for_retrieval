@@ -1,24 +1,26 @@
 \section{Integrating Understandability into Retrieval}
 \label{sec:experiments}
 
-Our experiments are based on the data collected during the Information Retrieval branch of CLEF eHealth. To the best of our knowledge that was the only venue in which topical and understandability assessments were collected. 
-We show here experiments with the CLEF eHealth 2016 campaign leaving 2015 experiments offline\footnote{Link to experiments will be available upon acceptance of this manuscript}.
+Next, we investigated how understandability estimations could be used and integrated into retrieval methods to increase the quality of search results returned to an health information seeker. In the following we report results for CLEF 2016. Results for CLEF 2015 are included in the online appendix: they show similar trends to the 2016 results.
 
-We start by the defining the evaluation measure that we will use here. 
-In CLEF eHealth campaign, organizers used a modification of RBP which ties together document relevance any other relevance dimension, in this case in particular, understandability \cite{clef16}.
-Mathematically, it consists in adding an understandability factor to the RBP formula: $uRBP(\rho) = (1 - \rho) \sum_{k=1}^{K} \rho^{K-1} r(d@K) u(d@k)$, with r(d@k) representing the gain in retrieving a topically relevant documents at rank $k$ and u(d@k) the gains coming from the understandability factor of a document at rank $k$.
-
-The drawback of such evaluation metric is that we cannot separately evaluate each dimension. We propose, instead, to separately evaluate a ranking list with respect to its topical relevance and its understandability:
-\begin{itemize}
-        \item $P_r@10$: a document is topically relevant if assessed as somewhat relevant or highly relevant. This metric counts the number of topically relevant documents in the top 10 documents of a ranked list.
-        \item $P_u@10$: a document is relevant for this metric if the understandability score is smaller than a threshold $U$. Like $P_r@10$, we count the number of relevant documents in the first 10 documents of a ranked list. We use $U = 40$ in our experiments. \todo{I decided to use this threshold based on the data. I will need to add a figure to support this clam, I think.}
-\end{itemize}
-
-During the campaign, organizers opt to use shallow pools and focus on highly ranked documents, using $P_r@10$ as one official metric for topical relevance.
-It makes our choice of metric natural. Likewise it is traditionally done with F measure, we combine $P_r@10$ and $P_u@10$ with an harmonic mean: $F_{ru} = 2 \times \frac{P_r@10 \times P_u@10}{P_r@10 + P_u@10}$. 
-
-When reranking runs, we risk to bring to the top of the rankings documents that were not assessed when the task took place. For this reason, we inform the average percentage of documents that were not assessed in the top 10 documents of each run (Unj@10) and we inform $P_r@10*$, $P_u@10*$ and $F_{ru}*$, modified measures that excluding all unassessed documents for the ranking list before evaluation.
-These last three metrics showcase the potential of a run if it had been included in the pool set.
+%Our experiments are based on the data collected during the Information Retrieval branch of CLEF eHealth. To the best of our knowledge that was the only venue in which topical and understandability assessments were collected. 
+%We show here experiments with the CLEF eHealth 2016 campaign leaving 2015 experiments offline\footnote{Link to experiments will be available upon acceptance of this manuscript}.
+%
+%We start by the defining the evaluation measure that we will use here. 
+%In CLEF eHealth campaign, organizers used a modification of RBP which ties together document relevance any other relevance dimension, in this case in particular, understandability \cite{clef16}.
+%Mathematically, it consists in adding an understandability factor to the RBP formula: $uRBP(\rho) = (1 - \rho) \sum_{k=1}^{K} \rho^{K-1} r(d@K) u(d@k)$, with r(d@k) representing the gain in retrieving a topically relevant documents at rank $k$ and u(d@k) the gains coming from the understandability factor of a document at rank $k$.
+%
+%The drawback of such evaluation metric is that we cannot separately evaluate each dimension. We propose, instead, to separately evaluate a ranking list with respect to its topical relevance and its understandability:
+%\begin{itemize}
+%        \item $P_r@10$: a document is topically relevant if assessed as somewhat relevant or highly relevant. This metric counts the number of topically relevant documents in the top 10 documents of a ranked list.
+%        \item $P_u@10$: a document is relevant for this metric if the understandability score is smaller than a threshold $U$. Like $P_r@10$, we count the number of relevant documents in the first 10 documents of a ranked list. We use $U = 40$ in our experiments. \todo{I decided to use this threshold based on the data. I will need to add a figure to support this clam, I think.}
+%\end{itemize}
+%
+%During the campaign, organizers opt to use shallow pools and focus on highly ranked documents, using $P_r@10$ as one official metric for topical relevance.
+%It makes our choice of metric natural. Likewise it is traditionally done with F measure, we combine $P_r@10$ and $P_u@10$ with an harmonic mean: $F_{ru} = 2 \times \frac{P_r@10 \times P_u@10}{P_r@10 + P_u@10}$. 
+%
+%When reranking runs, we risk to bring to the top of the rankings documents that were not assessed when the task took place. For this reason, we inform the average percentage of documents that were not assessed in the top 10 documents of each run (Unj@10) and we inform $P_r@10*$, $P_u@10*$ and $F_{ru}*$, modified measures that excluding all unassessed documents for the ranking list before evaluation.
+%These last three metrics showcase the potential of a run if it had been included in the pool set.
 
 We start our experiments by showing at the top of Table~\ref{tab:experiments} (indices 1-4) the performance of the top 3 systems in CLEF eHealth 2016 together with a straightforward BM25 baseline run made with Terrier toolkit. Our further experiments will use not only these runs as a comparison base, but modify these runs when necessary.
 

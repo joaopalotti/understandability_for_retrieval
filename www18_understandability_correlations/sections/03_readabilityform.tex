@@ -13,6 +13,24 @@ In the experiments, we used Pearson, Kendall and Spearman's Rank correlations to
 
 \todo{move IR measures here}
 
+
+For the retrieval experiments in Section~\ref{}, we used evaluation measures that used both topical relevance and understandability assessments. The uRBP measure (defined in~\cite{}) extends rank biased precision (RBP) to scenarios where multiple relevance dimensions are used. Formally, the measure is defined as $uRBP(\rho) = (1 - \rho) \sum_{k=1}^{K} \rho^{K-1} r(d@K) u(d@k)$, where $r(d@k)$ is the gain for retrieving a topically relevant documens at rank $k$ and $u(d@k)$ is the gain for retrieving a document of a certain understandability at rank $k$. This measure was originally used in the CLEF collections used here for experimentation. 
+
+The drawback of uRBP is that relevance and understandability are combined into a unique evaluation score, thus making it difficult to interpret whether improvements are due to more understandable or more topical documents being retrieved. To overcome this, we devised modifications to other measures to evaluate search results with respect to their topical relevance and understandability separately first, and then combine into a unique effectiveness measure:
+
+\begin{itemize}
+	\item $P_r@n$: counts the number of topically relevant documents in the top $n$ (we set $n=10$) search results. In our experiments using CLEF data, we regarded a document as topically relevant if assessed as somewhat relevant or highly relevant.
+	
+	\item $P_u@n$: counts the number of documents assessed as understandable in the top $n$ (we set $n=10$) search results. In our experiments using CLEF data, we regarded a document as understandable if its assessed understandability score was smaller than a threshold $U$. Like $P_r@10$, we count the number of relevant documents in the first 10 documents of a ranked list. We use $U = 40$ in our experiments. \todo{I decided to use this threshold based on the data. I will need to add a figure to support this clam, I think.}
+\end{itemize}
+
+During the campaign, organizers opt to use shallow pools and focus on highly ranked documents, using $P_r@10$ as one official metric for topical relevance.
+It makes our choice of metric natural. Likewise it is traditionally done with F measure, we combine $P_r@10$ and $P_u@10$ with an harmonic mean: $F_{ru} = 2 \times \frac{P_r@10 \times P_u@10}{P_r@10 + P_u@10}$. 
+
+When reranking runs, we risk to bring to the top of the rankings documents that were not assessed when the task took place. For this reason, we inform the average percentage of documents that were not assessed in the top 10 documents of each run (Unj@10) and we inform $P_r@10*$, $P_u@10*$ and $F_{ru}*$, modified measures that excluding all unassessed documents for the ranking list before evaluation.
+These last three metrics showcase the potential of a run if it had been included in the pool set.
+
+
 \todo{link to online appendix for all results}
 
 %\section{Which Readability Formula To Use}
