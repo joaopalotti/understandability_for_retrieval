@@ -1,7 +1,16 @@
 \section{Integrating Understandability into Retrieval}
 \label{sec:experiments}
 
-Next, we investigated how understandability estimations could be used and integrated into retrieval methods to increase the quality of search results returned to an health information seeker. In the following we report results for CLEF 2016. Results for CLEF 2015 are included in the online appendix: they show similar trends to the 2016 results.
+Next, we investigated how understandability estimations could be used and integrated into retrieval methods to increase the quality of search result. 
+
+
+To this aim we selected the top three systems at CLEF (based on their performance on \todo{XX?}). 
+
+Then, we approached the problem of providing results that are both relevant and understandable as a re-ranking problem. To achieve this, we applied selected understandability estimation approaches to improve the results of the selected retrieval runs. We explored both estimations based on readability formulas (we used Dale-Chall) and on machine learning regressors (we used linear regression). These methods were used for re-ranking the top 20 search results returned by the initial systems. 
+
+Next, we approached the problem of providing results that are both relevant and understandable as a result fusion. For this, we used the Reciprocal Rank Fusion (RRF) method, which combines two lists of search results based on the rank of documents in each list, rather than their score. Rank-fusion, rather than score-fusion, was more appropriate in our case because 
+
+In the following we report results for CLEF 2016. Results for CLEF 2015 are included in the online appendix: they show similar trends to the 2016 results.
 
 %Our experiments are based on the data collected during the Information Retrieval branch of CLEF eHealth. To the best of our knowledge that was the only venue in which topical and understandability assessments were collected. 
 %We show here experiments with the CLEF eHealth 2016 campaign leaving 2015 experiments offline\footnote{Link to experiments will be available upon acceptance of this manuscript}.
