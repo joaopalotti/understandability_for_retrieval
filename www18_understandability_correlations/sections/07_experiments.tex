@@ -22,7 +22,13 @@ Next, we investigated how understandability estimations could be used and integr
 %When reranking runs, we risk to bring to the top of the rankings documents that were not assessed when the task took place. For this reason, we inform the average percentage of documents that were not assessed in the top 10 documents of each run (Unj@10) and we inform $P_r@10*$, $P_u@10*$ and $F_{ru}*$, modified measures that excluding all unassessed documents for the ranking list before evaluation.
 %These last three metrics showcase the potential of a run if it had been included in the pool set.
 
-We start our experiments by showing at the top of Table~\ref{tab:experiments} (indices 1-4) the performance of the top 3 systems in CLEF eHealth 2016 together with a straightforward BM25 baseline run made with Terrier toolkit. Our further experiments will use not only these runs as a comparison base, but modify these runs when necessary.
+\begin{figure}
+    \caption{\todo{Feature selection experiment: different ML models were evaluated with various number of features in a 10 Cross Validation experiment. Top feature selection were made with mutual info algo. With 10 features, the selection made in our table 3 worked better than the selection automatically made mutual info. However, a larger number of features, at least 200, reached the best results. That explains why our L2R method worked better using all features than using only the selected set of 10 top features. We can discuss it in the text and link a better version of this figure in the online page. THe experiments made here can be improved if I run everything with XGB instead of LR. I am planning to do it tomorrow when I wake up.}}
+\includegraphics[width=0.3\textwidth]{graphics/features}
+\end{figure}
+
+
+We start our experiments by showing at the top of Table~\ref{tab:experiments} (indices 1-3) the performance of the top 3 systems in CLEF eHealth 2016 together with a straightforward BM25 baseline run made with Terrier toolkit. Our further experiments will use not only these runs as a comparison base, but modify these runs when necessary.
 
 The first batch of experiments, indices 5-8, consists of reranking the top 20 documents based solely on the Dale-Chall index, as it was the metrics with highest correlation with human judgements for this collection.
 The topical relevance of the reranked resulting lists is immediately hurt in benefit of understandability. Note how $P_r@10$ and $P_r@10*$ decrease while $P_u@10$ and in special $P_u@10*$ increase.
