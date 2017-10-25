@@ -1,16 +1,17 @@
 \section{Integrating Understandability into Retrieval}
 \label{sec:experiments}
 
-Next, we investigated how understandability estimations could be used and integrated into retrieval methods to increase the quality of search result. 
+Next, we investigate how understandability estimations could be used and integrated into retrieval methods to increase the quality of search result. 
 
-
-To this aim we selected the top three systems at CLEF (based on their performance on \todo{XX?}). 
+To this aim we selected the top two systems at CLEF 2016 (based on their performance on $P@10$ \todo{see if they are the best systems in uRBP as well}). 
 
 Then, we approached the problem of providing results that are both relevant and understandable as a re-ranking problem. To achieve this, we applied selected understandability estimation approaches to improve the results of the selected retrieval runs. We explored both estimations based on readability formulas (we used Dale-Chall) and on machine learning regressors (we used linear regression). These methods were used for re-ranking the top 20 search results returned by the initial systems. 
 
 Next, we approached the problem of providing results that are both relevant and understandable as a result fusion. For this, we used the Reciprocal Rank Fusion (RRF) method, which combines two lists of search results based on the rank of documents in each list, rather than their score. Rank-fusion, rather than score-fusion, was more appropriate in our case because 
 
 In the following we report results for CLEF 2016. Results for CLEF 2015 are included in the online appendix: they show similar trends to the 2016 results.
+
+We tested a
 
 %Our experiments are based on the data collected during the Information Retrieval branch of CLEF eHealth. To the best of our knowledge that was the only venue in which topical and understandability assessments were collected. 
 %We show here experiments with the CLEF eHealth 2016 campaign leaving 2015 experiments offline\footnote{Link to experiments will be available upon acceptance of this manuscript}.
@@ -39,11 +40,14 @@ In the following we report results for CLEF 2016. Results for CLEF 2015 are incl
 
 We start our experiments by showing at the top of Table~\ref{tab:experiments} (indices 1-3) the performance of the top 3 systems in CLEF eHealth 2016 together with a straightforward BM25 baseline run made with Terrier toolkit. Our further experiments will use not only these runs as a comparison base, but modify these runs when necessary.
 
-The first batch of experiments, indices 5-8, consists of reranking the top 20 documents based solely on the Dale-Chall index, as it was the metrics with highest correlation with human judgements for this collection.
-The topical relevance of the reranked resulting lists is immediately hurt in benefit of understandability. Note how $P_r@10$ and $P_r@10*$ decrease while $P_u@10$ and in special $P_u@10*$ increase.
-The percentage of unassessed documents reach 10\% and, unfortunately, only looking at RBP and uRBP we cannot see the understandability benefits brought by the rerank method.
+The first batch of experiments, indices 4-6, consists of re-ranking the top 20 documents based solely on the Dale-Chall index, as it was the metrics with highest correlation with human judgements for this collection.
+The topical relevance of the re-ranked resulting lists is immediately hurt in benefit of understandability. Note how $P_r@10$ and $P_r@10^*$ decrease while $P_u@10$ and in special $P_u@10^*$ increase.
+The percentage of unassessed documents reach 10\% and, unfortunately, only looking at RBP and uRBP we cannot see the understandability benefits brought by the re-rank method.
 
-The next batch of experiments, indices 9-19, swaps the Dale-Chall Index by a Linear Regression (LR) learned using the top features of Table~\ref{tab:top_corr_metrics}\footnote{Experiments with various machine learning methods were performed as well and will be available in a website upon paper acceptance. The results of other methods are similar}. 
+The next batch of experiments swaps the Dale-Chall Index by a tree boosting method (aka. XGB or GBDT or GBM) learned using all features of Table~\ref{tab:doc_features}\footnote{Experiments with various Machine Learning methods and feature selection schemes were performed as well and are available in the online appendix. The results of other methods are similar. When using the set of top 10 features for each group from Table~\ref{tab:top_corr_metrics} results are always better than using an automatic method such as Chi Square to select 10 features to use.}.
+While the higher correlation of Dale-Chall was XXX (as reported in table Y), correlations using XGB reached YYY, the closest method to the human agreement in this task.
+
+Indices 7-15:
 We experiment with reranking the top 15 (more more conservative method), 20 and 50 (a more heterodox method). We clearly see the trade-off between understandability and relevance when we increase from top 15 to top 50: while the $P_r@10$ falls 5 points, $P_u@10$ increases 10. Nevertheless, $F_{ru}*$ shows that more conservative methods provide the best trade-offs.
 When comparing the use of Dale-Chall and Linear Regression reranking the same number of documents (indices 13-16), we notice that LR results for $P_u@10*$ are always superior to Dale-Chall, meaning it does a better job when bringing the easier documents to the top of the rank, but that not necessarily means the final rank is better, as we can see comparing the results for $F_{ru}*$.
 
