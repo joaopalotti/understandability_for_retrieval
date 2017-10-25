@@ -3,7 +3,7 @@
 \label{sec:proxies}
 %The previous results highlighted that surface level readability formulas only weakly correlate with human assessments of Web pages understandability (Figure~\ref{fig:bar_corr_clef15}). Next, we considered alternative methods of estimating understandability (Table~\ref{tab:doc_features}), which we present in the following, grouped into categories. 
 
-As reviewed in Section~\ref{}, several methods have been proposed and used to estimate the understandability of health Web pages, with the most popular methods (at least in the biomedical literature) being readability formulas based on surface level characteristics of text. Next, we outline the categories of methods to estimate understandability used in this work; an overview is shown in Table~\ref{tab:doc_features}). Some of the methods presented here further expand measured used in the literature. 
+As reviewed in Section~\ref{sec:related}, several methods have been proposed and used to estimate the understandability of health Web pages, with the most popular methods (at least in the biomedical literature) being readability formulas based on surface level characteristics of text. Next, we outline the categories of methods to estimate understandability used in this work; an overview is shown in Table~\ref{tab:doc_features}). Some of the methods presented here further expand measured used in the literature. 
 
 
  
@@ -13,7 +13,7 @@ As reviewed in Section~\ref{}, several methods have been proposed and used to es
 
 
 \textbf{Traditional Readability Formulas (RF):}
-These included the readability formulas used in Section~\ref{sec:related}, as well as other, less popular ones. A full list is provided in surveys by Collins-Thompson~\cite{collins2014computational} and Dubay~\cite{dubay04}.
+These included the readability formulas mentioned in Section~\ref{sec:related}, as well as other, less popular ones. A full list is provided in surveys by Collins-Thompson~\cite{collins2014computational} and Dubay~\cite{dubay04}.
 
 %Therefore, what unifies all methods listed in this section is the goal to automatically infer the understandability of a document, in our case, a Web page with medical content.
 %For sake of understanding, in Table~\ref{tab:doc_features} we list all the methods used in this chapter to estimate document understandability.
@@ -46,7 +46,7 @@ These included methods that count the number of words with a medical prefix or s
 
 \textbf{Consumer Medical Vocabulary (CMV):}
 The popular MetaMap~\cite{aronson10} tool was used to map the text content of Web pages to entries in the CHV vocabulary~\cite{zeng06}.
-We further used the MetaMap options to retain only concepts identified as symptoms or diseases. Similar approaches have been commonly used in the literature\todo{~\cite{}}.
+We further used the MetaMap semantic types to retain only concepts identified as symptoms or diseases. Similar approaches have been commonly used in the literature (e.g.,~\cite{pang16,agrafiotesA16,palotti16}).
 
 
 
@@ -61,7 +61,7 @@ These included commonly used natural language heuristics such as the ratio of pa
 
 
 \textbf{HTML Features (HF):}
-These included the identification of a large number of HTML tags, which were extracted with the Python library BeautifulSoap~\cite{bs4}. The intuition for these features is that Web pages rich of images of tabular content may well explain and summarise health content -- thus providing more understandable content to the general public. 
+These included the identification of a large number of HTML tags, which were extracted with the Python library BeautifulSoap~\cite{bs4}. The intuition for these features is that Web pages rich of images of tabular content may well explain and summarise health content, thus providing more understandable content to the general public. 
 %The aim of this group is to represent a web page by its HTML content.
 %We hypothesize that a Web page rich of images or with its content well summarized in tables can potentially ease hard subjects such as medicine. 
 %We identify a large number of HTML tags in this group with the Python library BeautifulSoap \cite{bs4}.
@@ -75,13 +75,13 @@ We modelled word frequencies in a corpus in a straightforward manner: we sorted 
 
 \begin{itemize}
 \item \underline{Medical Reddit:} Reddit~\cite{reddit} is a Web forum with a sizeable user community which is responsible for generating and moderating its content. Any user can start a discussion or reply to a discussion. This forum is intensively used for health purposes, for example in the Reddit community AskDocs~\cite{redditaskdocs} licensed nursers and doctors (subject to user identity verification) advise help seekers free of charge. We selected six of such communities
-    (medical, AskDocs, AskDoctorSmeeee, Health, WomensHealth, Mens\_Health) and downloaded all user interactions available until \todo{ DATE} using the Python library PRAW~\cite{redditapi}. In total 43,018 discussions were collected.
+    (medical, AskDocs, AskDoctorSmeeee, Health, WomensHealth, Mens\_Health) and downloaded all user interactions available until September 1st 2017 using the Python library PRAW~\cite{redditapi}. In total 43,018 discussions were collected.
 
 
 
 \item \underline{PubMed Central:} PubMed Central~\cite{pubmed} is an online  database of freely available full-text biomedical literature. We used the same collection distributed for the TREC 2014 and 2015 Clinical Decision Support Track (TREC-CDS)~\cite{roberts16,trec15}, consisting of 733,138 articles. 
  
-\item \underline{Medical English Wikipedia:} after obtaining a recent  Wikipedia dump~\cite{wikipedia} (May 1st 2017), we filtered articles to only those  containing an Infobox\footnote{A Wikipedia infobox is a template containing structured information that appears on the right of Wikipedia pages to summarize key aspects of articles.} in which at least one of the following words appeared as a property: ICD10, ICD9, DiseasesDB, MeSH, MeSHID, MeshName, MeshNumber, GeneReviewsName, Orphanet, eMedicine, MedlinePlus, drug\_name, Drugs.com, DailyMedID, LOINC.
+\item \underline{Medical English Wikipedia:} after obtaining a recent  Wikipedia dump~\cite{wikipedia} (May 1st 2017), we filtered articles to only those  containing an Infobox\footnote{A Wikipedia infobox is a structured template that appears on the right of Wikipedia pages summarizing key aspects of articles.} in which at least one of the following words appeared as a property: ICD10, ICD9, DiseasesDB, MeSH, MeSHID, MeshName, MeshNumber, GeneReviewsName, Orphanet, eMedicine, MedlinePlus, drug\_name, Drugs.com, DailyMedID, LOINC.
 %Figure~\ref{fig:hyperthermia} illustrates a Wikipedia page that is marked as medical because of its Infobox entries.
 In doing so, we followed the method by Soldaini et al.~\cite{soldaini15}, which favours precision over recall when identifying an health-related article. This resulted in a collection of 11,942 articles. 
 %Note that this procedure highly favors precision over recall. %\mytodo{In case we need space, I suggest we drop this figure}
@@ -110,16 +110,13 @@ A summary of the statistics of these three collections is reported in Table~\ref
 %We employed the three datasets described in Table~\ref{tab:collection_stats} and assume different labels according to the average difficulty of documents in these collections:
 
 
-
 \begin{itemize}
     \item Medical Reddit (label 1): Documents in this collection were expected to be written in a colloquial style, and thus the easiest to understand. All the conversations were in fact explicitly directed to assist inexpert health consumers;
     \item Medical English Wikipedia (label 2): Documents in this collection were expected to be less formal than scientific articles, but more formal than a Web forum like Reddit, thus somewhat more difficult ro understand;
     \item PubMed Central (label 3): Documents from this collection were expected to be written in a highly formal style, as the target audience were physicians and researchers in the biomedical domain.
 \end{itemize}
 
-Models were trained using Latent Semantic Analysis (LSA) with 10 dimensions (empirically set based on document word counts in the three collections).
-We modelled two different tasks: a classification and a regression task. \todo{this sentence about tasks is coming out the blue: what tasks? What do they do? For what?. Also, it is unclear what these regressors and classifiers are.}
-
+Models were learned using all documents from these collections after being features were extracted using Latent Semantic Analysis (LSA) with 10 dimensions (empirically set based on document word counts in the three collections). Each document in CLEF collection followed the same LSA transformation and a score was assigned. We modeled a classification task as well as a regression task using the same data.\todo{this sentence about tasks is coming out the blue: what tasks? What do they do? For what?. Also, it is unclear what these regressors and classifiers are. JP: better now?}
 
 %Different labels for the regression could be employed, for example, a label 6 to PubMed Central documents would emphasize that these documents are explicitly made for expert users, being 3 times harder than Wikipedia ones. We did not explore the effects of different labels in this work, it is left as future work.
 
