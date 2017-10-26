@@ -13,15 +13,16 @@ Next, we investigate how understandability estimations could be used and integra
 %To achieve this, we applied selected understandability estimation approaches to improve the results of the selected retrieval runs. 
 
 We introduce, as our first approach, a simple and effective method to explicitly increase understandability based on any understandability estimator. 
-This approach leaves the job of retrieving topically relevant documents to the underline search engine and, given a cut-off, it blindly sorts the top retrieved documents up to this cut-off by a understandability score.
+Given a pre-defined cut-off parameter, our approach blindly sorts the top retrieved documents up to this cut-off based on the understandability estimator.
+With the job of retrieving topically relevant documents is left to the underline search engine, our approach focus on retrieving understandable documents.
 
 An advantage of this approach is that it can be applied to any ranked list.
-We evaluated the best readability formula for 2016 collection (Dale Chall, Table~\ref{tab:top_corr_metrics}) and several machine learning methods trained on top of a subset (or all) estimators listed in Table~\ref{tab:doc_features}. We model the machine learning experiments here as regression task, which uses as training data the labels of documents assessed in CLEF 2016.
+We evaluated the best readability formula for 2016 collection (Dale Chall, Table~\ref{tab:top_corr_metrics}) and several machine learning methods trained on top of a subset (or all) estimators listed in Table~\ref{tab:doc_features}. We model the machine learning experiments here as a regression task, which uses as training data the labels of documents assessed in CLEF 2016.
 We predict scores for documents in the training set with a 10-fold cross validation and predict scores for documents outside the training set using all available data.
 
-Our hypothesis is that such re-rank based solely on a understandability score is able to increase the understandability of the results at the expenses of topical relevance. The understandability-relevance trade-off is primarily controlled by the cut-off. We experiment with cut-offs at 15, 20 and 50 documents. 
+Our hypothesis is that such re-rank based solely on a understandability score is able to increase the understandability of the results ($P_u@10$) at the expenses of topical relevance ($P_r@10$). The understandability-relevance trade-off is primarily controlled by the cut-off. A relatively large cut-off, fifty, for instance, would allow the re-rank method to move a document from the 5th resulting page (considering the default 10 results per page) to the first one depending on the understandability score assigned to that document. We experiment with cut-offs at 15, 20 and 50 documents. 
 
-Alternatively to the cut-off control, we propose to automatically fuse the results of the relevance-optimized-system and the understandability-optimized-system into a single fused one.
+Estimating a good cut-off parameter might be costly for a real world application...Alternatively to the cut-off control, we propose to automatically fuse the results of the relevance-optimized-system and the understandability-optimized-system into a single fused one.
 This merge aims to retain the best of both extremes into a single system. For this, we used the Reciprocal Rank Fusion (RRF) method~\cite{cormack09}, which effectively combines two lists of search results based on the position of the results in a ranking.
 
 Our second approach investigates how to blend understandability and relevance in a single step with learning to rank.
