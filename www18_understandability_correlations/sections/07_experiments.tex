@@ -7,13 +7,17 @@ Specifically, we considered three retrieval methods of differing quality for the
 
 If all the search results from a run were considered, then such a re-ranking method may place at early ranks Web pages highly likely to be understandable, but possibly less likely to be topically relevant. To balance relevance and understandability, we only re-ranked the first $k$ documents. We explored $k = 15, 20, 50$. Because evaluation was performed with respect to the first $n=10$ rank positions, the setting $k=15$ provided a conservative re-ranking of search results; while, $k=50$ provided a more speculative re-ranking approach. Results are presented in Section~\ref{results:reranking}.
 
-As an alternative strategy to the previous two-step ranking process for combining topical relevance and understandability, we explored the fusion of two search results lists separately obtained for topicality and understandability.  For this, we used the Reciprocal Rank Fusion (RRF) method~\cite{cormack09}, which has proven effective to combine two lists of search results based on their documents ranks, rather than scores. This approach was selected above score-based fusion methods because of the different scoring strategies and distributions employed when scoring for relevance compared to for understandability. For topical relevance, we used, separately, the three methods used for re-ranking (GUIR, ECNU and BM25). For understandability, we used, separately, the estimations from SMOG/Dale Chall and XGB. Also for this approach we studied limiting the ranking of results to be considered by the methods across the cut-offs $k=15, 20, 50$. Results are presented in Section~\ref{results:fusion}.
+As an alternative strategy to the previous two-step ranking process for combining topical relevance and understandability, we explored the fusion of two search results lists separately obtained for topicality and understandability.  For this, we used the Reciprocal Rank Fusion (RRF) method~\cite{cormack09}, which has proven effective to combine two lists of search results based on their documents ranks, rather than scores. This approach was selected above score-based fusion methods because of the different scoring strategies and distributions employed when scoring for relevance compared to for understandability. For topical relevance, we used, separately, the three methods used for re-ranking (\todo{XXX, XXX for CLEF 2015}; GUIR, ECNU for CLEF 2016; and BM25 for both collections). For understandability, we used, separately, the estimations from SMOG/Dale Chall and XGB. Also for this approach we studied limiting the ranking of results to be considered by the methods across the cut-offs $k=15, 20, 50$. Results are presented in Section~\ref{results:fusion}.
 
-Finally, we considered a third alternative to combine topical relevance and understandability: using learning to rank with features derived from the retrieval method and the understandability estimators. \todo{need more details}. Results are presented in Section~\ref{results:ltr}.
+Finally, we considered a third alternative to combine topical relevance and understandability: using learning to rank with features derived from the retrieval method and the understandability estimators. \todo{need more details: In the LTR we need to mention the combination of labels to make up the final document label which will be used by the method. Also, we need to say which method we used (pairwise tree boosting) and which are the features for each run.... Note, we only performed learning to rank on the BM25 baseline, because we do not have access to the retrieval features used in the CLEF submissions.}. Results are presented in Section~\ref{results:ltr}.
 
 \todo{arrived here}
 
 \section{Evaluation of Understandability Retrieval}
+We report the results obtained when experimenting with the retrieval methods described above in Table~\ref{tab:experiments}. We report only the results for CLEF 2016 (thus we use Dale Chall in place of SMOG) for brevity; those on CLEF 2015 exhibited similar trends and are included in the online appendix. The effectiveness of the top two submission to CLEF 2016 and the BM25 baseline are reported at indices 1-3 of the table. Statistical significant differences compared to GUIR are reported with $\diamond$; differences with ECNU are reported with $\dagger$ (paired, two-tail t-test, $p<0.05$).Note that the baseline BM25 is significantly worse than GUIR (but not ECNU) across all measures. 
+
+%We start our experiments by showing at the top of Table~\ref{tab:experiments} (indices 1-3) the performance of the top 3 systems in CLEF eHealth 2016 together with a straightforward BM25 baseline run made with Terrier toolkit. Our further experiments will use not only these runs as a comparison base, but modify these runs when necessary.
+
 \subsection{Re-ranking}
 \label{results:reranking}
 
@@ -34,35 +38,35 @@ Finally, we considered a third alternative to combine topical relevance and unde
 %
 %To achieve this, we applied selected understandability estimation approaches to improve the results of the selected retrieval runs. 
 
-We introduce, as our first approach, a simple and effective method to explicitly increase understandability based on any understandability estimator. 
-Given a pre-defined cut-off parameter, our approach blindly sorts the top retrieved documents up to this cut-off based on the understandability estimator.
-With the job of retrieving topically relevant documents is left to the underline search engine, our approach focus on retrieving understandable documents.
+%We introduce, as our first approach, a simple and effective method to explicitly increase understandability based on any understandability estimator. 
+%Given a pre-defined cut-off parameter, our approach blindly sorts the top retrieved documents up to this cut-off based on the understandability estimator.
+%With the job of retrieving topically relevant documents is left to the underline search engine, our approach focus on retrieving understandable documents.
 
-An advantage of this approach is that it can be applied to any ranked list.
-We evaluated the best readability formula for 2016 collection (Dale Chall, Table~\ref{tab:top_corr_metrics}) and several machine learning methods trained on top of a subset (or all) estimators listed in Table~\ref{tab:doc_features}. We model the machine learning experiments here as a regression task, which uses as training data the labels of documents assessed in CLEF 2016.
-We predict scores for documents in the training set with a 10-fold cross validation and predict scores for documents outside the training set using all available data.
+%An advantage of this approach is that it can be applied to any ranked list.
+%We evaluated the best readability formula for 2016 collection (Dale Chall, Table~\ref{tab:top_corr_metrics}) and several machine learning methods trained on top of a subset (or all) estimators listed in Table~\ref{tab:doc_features}. We model the machine learning experiments here as a regression task, which uses as training data the labels of documents assessed in CLEF 2016.
+%We predict scores for documents in the training set with a 10-fold cross validation and predict scores for documents outside the training set using all available data.
 
-Our hypothesis is that such re-rank based solely on a understandability score is able to increase the understandability of the results ($P_u@10$) at the expenses of topical relevance ($P_r@10$). The understandability-relevance trade-off is primarily controlled by the cut-off. A relatively large cut-off, fifty, for instance, would allow the re-rank method to move a document from the 5th resulting page (considering the default 10 results per page) to the first one depending on the understandability score assigned to that document. We experiment with cut-offs at 15, 20 and 50 documents. 
+%Our hypothesis is that such re-rank based solely on a understandability score is able to increase the understandability of the results ($P_u@10$) at the expenses of topical relevance ($P_r@10$). The understandability-relevance trade-off is primarily controlled by the cut-off. A relatively large cut-off, fifty, for instance, would allow the re-rank method to move a document from the 5th resulting page (considering the default 10 results per page) to the first one depending on the understandability score assigned to that document. We experiment with cut-offs at 15, 20 and 50 documents. 
 
-Estimating a good cut-off parameter might be costly for a real world application...Alternatively to the cut-off control, we propose to automatically fuse the results of the relevance-optimized-system and the understandability-optimized-system into a single fused one.
-This merge aims to retain the best of both extremes into a single system. For this, we used the Reciprocal Rank Fusion (RRF) method~\cite{cormack09}, which effectively combines two lists of search results based on the position of the results in a ranking.
+%Estimating a good cut-off parameter might be costly for a real world application...Alternatively to the cut-off control, we propose to automatically fuse the results of the relevance-optimized-system and the understandability-optimized-system into a single fused one.
+%This merge aims to retain the best of both extremes into a single system. For this, we used the Reciprocal Rank Fusion (RRF) method~\cite{cormack09}, which effectively combines two lists of search results based on the position of the results in a ranking.
 
-Our second approach investigates how to blend understandability and relevance in a single step with learning to rank.
+%Our second approach investigates how to blend understandability and relevance in a single step with learning to rank.
 
-\todo{--- Stopped Here ---}
-
-In the LTR we need to mention the combination of labels to make up the final document label which will be used by the method. Also, we need to say which method we used (pairwise tree boosting) and which are the features for each run....
+%\todo{--- Stopped Here ---}
 
 
-In our experiments, we selected the top two systems at CLEF 2016 (based on their performance on $P@10$ \todo{check if they are the best systems for uRBP as well. It is likely.}) 
-and created a plain BM25 system using the Terrier toolkit~\cite{terrier}. While we do not have access to the implementation of the first two systems, we have completely control over this BM25 system which will be useful later in our experiments.
+
+
+%In our experiments, we selected the top two systems at CLEF 2016 (based on their performance on $P@10$ \todo{check if they are the best systems for uRBP as well. It is likely.}) 
+%and created a plain BM25 system using the Terrier toolkit~\cite{terrier}. While we do not have access to the implementation of the first two systems, we have completely control over this BM25 system which will be useful later in our experiments.
 
 
 
 %We explored both estimations based on readability formulas (we used Dale-Chall) and on machine learning regressors (we used linear regression). 
 %These methods were used for re-ranking the top 20 search results returned by the initial systems. 
 
-In the following we report results for CLEF 2016. Results for CLEF 2015 are included in the online appendix: they show similar trends to the 2016 results.
+%In the following we report results for CLEF 2016. Results for CLEF 2015 are included in the online appendix: they show similar trends to the 2016 results.
 
 %Our experiments are based on the data collected during the Information Retrieval branch of CLEF eHealth. To the best of our knowledge that was the only venue in which topical and understandability assessments were collected. 
 %We show here experiments with the CLEF eHealth 2016 campaign leaving 2015 experiments offline\footnote{Link to experiments will be available upon acceptance of this manuscript}.
@@ -91,7 +95,7 @@ In the following we report results for CLEF 2016. Results for CLEF 2015 are incl
 %%%\end{figure}
 
 
-We start our experiments by showing at the top of Table~\ref{tab:experiments} (indices 1-3) the performance of the top 3 systems in CLEF eHealth 2016 together with a straightforward BM25 baseline run made with Terrier toolkit. Our further experiments will use not only these runs as a comparison base, but modify these runs when necessary.
+
 
 The first batch of experiments, indices 4-6, consists of re-ranking the top 20 documents based solely on the Dale-Chall index, as it was the metrics with highest correlation with human judgements for this collection.
 The topical relevance of the re-ranked resulting lists is immediately hurt in benefit of understandability. Note how $P_r@10$ and $P_r@10^*$ decrease while $P_u@10$ and in special $P_u@10^*$ increase.
