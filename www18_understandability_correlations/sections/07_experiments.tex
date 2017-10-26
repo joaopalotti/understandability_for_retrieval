@@ -14,6 +14,8 @@ In this experiment, we explored different label attribution and feature sets, ke
 
 \todo{need more details: In the LTR we need to mention the combination of labels to make up the final document label which will be used by the method. Also, we need to say which method we used (pairwise tree boosting) and which are the features for each run.... Note, we only performed learning to rank on the BM25 baseline, because we do not have access to the retrieval features used in the CLEF submissions.}. Results are presented in Section~\ref{results:ltr}.
 
+\input{tables/tab_experiments}
+
 \section{Evaluation of Understandability Retrieval}
 We report the results obtained when experimenting with the retrieval methods described above in Table~\ref{tab:experiments}. We report only the results for CLEF 2016 (thus we only report Dale Chall) for brevity; those on CLEF 2015 exhibited similar trends and are included in the online appendix. The effectiveness of the top two submission to CLEF 2016 and the BM25 baseline are reported at indices 1-3 of the table. Statistical significant differences compared to the best participating run, GUIR, are reported with $\diamond$; differences between the original run (indices 1-3) and its modification are reported with $\dagger$ (paired, two-tail t-test, $p<0.05$). Note that the baseline BM25 is significantly worse than GUIR across all measures. \todo{JP: actually note that the dagger IS NOT a comparison with ECNU, rather it is comparing a modified run with the original version} 
 
@@ -56,6 +58,6 @@ We evaluated three different settings based on the plain BM25 run shown in index
 \end{itemize}
 
 
-\input{tables/tab_experiments}
+
 
 

@@ -36,11 +36,11 @@ A common trend when comparing preprocessing pipelines, is that the Naive pipelin
 
 \begin{figure*}[h!]
    \centering
-   \includegraphics[width=0.70\textwidth]{graphics/box_spearman15_raw_values_mod}
+   \includegraphics[width=0.70\textwidth]{graphics/box_spearman15_raw_values_mod}\vspace{-20pt}
    \includegraphics[width=0.70\textwidth]{graphics/box_spearman16_raw_values}
    %\includegraphics[width=0.7\textwidth]{graphics/legendCorr}
    \vspace{-0.4cm}
-   \caption{Box plots divided by feature groups. Correlations are calculated using understandability labels from relevant documents assessed in CLEF eHealth 2015 (top) and 2016 (bottom).}
+   \caption{Correlations between understandability estimators and human assessments for CLEF 2015 (top) and 2016 (bottom).}
    \label{fig:boxplot_corr_docs}
 \end{figure*}
 
@@ -87,8 +87,6 @@ We further analysed the results by performing pairwise comparisons between the m
 We first examined the comparison between sentence ending heuristics (ForcePeriod (FP) and DoNotForcePeriod (DNFP)). Results showed that the two methods achieved comparable results. Then we examined the comparison between preprocessing pipelines. For these, results for CLEF 2015 were in contrast with those for CLEF 2016. While Naive was marginally better than Boilerpipe and Justext in 2015, it was the worst in the majority of comparisons for 2016. In turn, while Justext was significantly better than Boilerpipe in 2015, they showed balanced results in 2016.
 \todo{I think something could be said about ustext and Boilerpipe. Done.}
  
-
-\todo{ARRIVED HERE -- need to merge section 4 and 7.}
 
 
 %The upper part of Table~\ref{tab:comparison_preprocessing} shows results for the comparisons between ForcePeriod (FP) and DoNotForcePeriod (DNFP). Although the interpretation of readability formulas is drastically affected by this choice of preprocessing, as research indicates~\cite{palotti15}, the correlation results are not.

@@ -1,10 +1,6 @@
-\begin{table}
-\caption{Different batchs of experiments are shown below, all based in the
-runs listed in rows indices 1-3. The last row shows our best result
-based on learning to rank which modifies a simple BM25 baseline (row
-3) and reaches results that are higher than the best participating
-run at CLEF eHealth 2016.}
-\label{tab:experiments} \resizebox{.5\textwidth}{!}{ %
+\begin{table*}[t]
+\caption{Experimental results obtained by integrating understandability estimations within retrieval methods on CLEF 2016. Baseline runs are reported at table indices 1-3. Re-ranking experiments are reported at indices 4-15. Fusion experiments are reported at indices 16-24. Learning to rank experiments are reported at indices 25-27.}
+\label{tab:experiments} \resizebox{1\textwidth}{!}{ %
 \begin{tabular}{ccllllllllllll}
 \toprule 
 Index  & Rerank  & Run  & $NDCG_{r}@10$  & $NDCG_{u}@10$  & $H@10_{ru}$  & RBP  & uRBP  & Una@10  & $NDCG_{r}@10${*}  & $NDCG_{u}@10${*}  & $H_{ru}${*} & RBP{*}  & uRBP{*} \tabularnewline
@@ -46,4 +42,4 @@ Index  & Rerank  & Run  & $NDCG_{r}@10$  & $NDCG_{u}@10$  & $H@10_{ru}$  & RBP  
 27  &  & BM25 Bl. + All ReadFeat  & 24.85  & 41.13$^{\dagger\diamond}$ & 23.44  & 27.51  & 16.65$^{\diamond}$  & 0.22 & 29.76$^{\dagger\diamond}$ & 52.51  & 29.05$^{\dagger\diamond}$ & 33.32$^{\dagger\diamond}$ & 20.23$^{\dagger}$ \tabularnewline
 \bottomrule
 \end{tabular}} % end of resizebox
-\end{table}
+\end{table*}
