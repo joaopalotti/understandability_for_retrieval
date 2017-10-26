@@ -2,16 +2,44 @@
 \label{sec:experiments}
 
 Next, we investigate how understandability estimations could be used and integrated into retrieval methods to increase the quality of search result. 
+%
+%We investigate here two real-world scenarios depending on the control a developer/researcher has over their system: 
+%\begin{itemize}
+%    \item Partial control: the developer/researcher is running a retrieval system which retrieves a ranked list of documents (not necessarily the score of each document) for a user query. 
+%    \item Total control: the developer/researcher is an Information Retrieval expert and can implement/use a learning to rank system.
+%\end{itemize}
+%
+%
+%To achieve this, we applied selected understandability estimation approaches to improve the results of the selected retrieval runs. 
 
-To this aim we selected the top two systems at CLEF 2016 (based on their performance on $P@10$ \todo{see if they are the best systems in uRBP as well}). 
+We introduce, as our first approach, a simple and effective method to explicitly increase understandability based on any understandability estimator. 
+This approach leaves the job of retrieving topically relevant documents to the underline search engine and, given a cut-off, it blindly sorts the top retrieved documents up to this cut-off by a understandability score.
 
-Then, we approached the problem of providing results that are both relevant and understandable as a re-ranking problem. To achieve this, we applied selected understandability estimation approaches to improve the results of the selected retrieval runs. We explored both estimations based on readability formulas (we used Dale-Chall) and on machine learning regressors (we used linear regression). These methods were used for re-ranking the top 20 search results returned by the initial systems. 
+An advantage of this approach is that it can be applied to any ranked list.
+We evaluated the best readability formula for 2016 collection (Dale Chall, Table~\ref{tab:top_corr_metrics}) and several machine learning methods trained on top of a subset (or all) estimators listed in Table~\ref{tab:doc_features}. We model the machine learning experiments here as regression task, which uses as training data the labels of documents assessed in CLEF 2016.
+We predict scores for documents in the training set with a 10-fold cross validation and predict scores for documents outside the training set using all available data.
 
-Next, we approached the problem of providing results that are both relevant and understandable as a result fusion. For this, we used the Reciprocal Rank Fusion (RRF) method, which combines two lists of search results based on the rank of documents in each list, rather than their score. Rank-fusion, rather than score-fusion, was more appropriate in our case because runs that were fused had very differing score distributions.
+Our hypothesis is that such re-rank based solely on a understandability score is able to increase the understandability of the results at the expenses of topical relevance. The understandability-relevance trade-off is primarily controlled by the cut-off. We experiment with cut-offs at 15, 20 and 50 documents. 
+
+Alternatively to the cut-off control, we propose to automatically fuse the results of the relevance-optimized-system and the understandability-optimized-system into a single fused one.
+This merge aims to retain the best of both extremes into a single system. For this, we used the Reciprocal Rank Fusion (RRF) method~\cite{cormack09}, which effectively combines two lists of search results based on the position of the results in a ranking.
+
+Our second approach investigates how to blend understandability and relevance in a single step with learning to rank.
+
+\todo{--- Stopped Here ---}
+
+In the LTR we need to mention the combination of labels to make up the final document label which will be used by the method. Also, we need to say which method we used (pairwise tree boosting) and which are the features for each run....
+
+
+In our experiments, we selected the top two systems at CLEF 2016 (based on their performance on $P@10$ \todo{check if they are the best systems for uRBP as well. It is likely.}) 
+and created a plain BM25 system using the Terrier toolkit~\cite{terrier}. While we do not have access to the implementation of the first two systems, we have completely control over this BM25 system which will be useful later in our experiments.
+
+
+
+%We explored both estimations based on readability formulas (we used Dale-Chall) and on machine learning regressors (we used linear regression). 
+%These methods were used for re-ranking the top 20 search results returned by the initial systems. 
 
 In the following we report results for CLEF 2016. Results for CLEF 2015 are included in the online appendix: they show similar trends to the 2016 results.
-
-We tested a
 
 %Our experiments are based on the data collected during the Information Retrieval branch of CLEF eHealth. To the best of our knowledge that was the only venue in which topical and understandability assessments were collected. 
 %We show here experiments with the CLEF eHealth 2016 campaign leaving 2015 experiments offline\footnote{Link to experiments will be available upon acceptance of this manuscript}.
@@ -32,10 +60,12 @@ We tested a
 %When reranking runs, we risk to bring to the top of the rankings documents that were not assessed when the task took place. For this reason, we inform the average percentage of documents that were not assessed in the top 10 documents of each run (Unj@10) and we inform $P_r@10*$, $P_u@10*$ and $F_{ru}*$, modified measures that excluding all unassessed documents for the ranking list before evaluation.
 %These last three metrics showcase the potential of a run if it had been included in the pool set.
 
-\begin{figure}
-    \caption{\todo{Feature selection experiment: different ML models were evaluated with various number of features in a 10 Cross Validation experiment. Top feature selection were made with mutual info algo. With 10 features, the selection made in our table 3 worked better than the selection automatically made mutual info. However, a larger number of features, at least 200, reached the best results. That explains why our L2R method worked better using all features than using only the selected set of 10 top features. We can discuss it in the text and link a better version of this figure in the online page. THe experiments made here can be improved if I run everything with XGB instead of LR. I am planning to do it tomorrow when I wake up.}}
-\includegraphics[width=0.3\textwidth]{graphics/features}
-\end{figure}
+
+% MOVE TO ONLINE APPENDIX:
+%%%\begin{figure}
+%%%    \caption{\todo{Feature selection experiment: different ML models were evaluated with various number of features in a 10 Cross Validation experiment. Top feature selection were made with mutual info algo. With 10 features, the selection made in our table 3 worked better than the selection automatically made mutual info. However, a larger number of features, at least 200, reached the best results. That explains why our L2R method worked better using all features than using only the selected set of 10 top features. We can discuss it in the text and link a better version of this figure in the online page. THe experiments made here can be improved if I run everything with XGB instead of LR. I am planning to do it tomorrow when I wake up.}}
+%%%\includegraphics[width=0.3\textwidth]{graphics/features}
+%%%\end{figure}
 
 
 We start our experiments by showing at the top of Table~\ref{tab:experiments} (indices 1-3) the performance of the top 3 systems in CLEF eHealth 2016 together with a straightforward BM25 baseline run made with Terrier toolkit. Our further experiments will use not only these runs as a comparison base, but modify these runs when necessary.

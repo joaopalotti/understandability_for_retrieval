@@ -22,12 +22,12 @@ The drawback of uRBP is that relevance and understandability are combined into a
 	
 	\item $P_u@n$: counts the number of documents assessed as understandable in the top $n$ search results. In our experiments using CLEF data, we regarded a document as understandable if its assessed understandability score was smaller than a threshold $U$. We used $U = 40$ in our experiments.
 	
-	\item $F_{ru}@n = 2 \times \frac{P_r@n \times P_u@n}{P_r@n + P_u@n}$: combines the two previous precision-based measures into a unique measurement using the harmonic mean.
+    \item $HP_{ru}@n = 2 \times \frac{P_r@n \times P_u@n}{P_r@n + P_u@n}$: combines the two previous precision-based measures into a unique measurement using the harmonic mean (in the same fashion that $F_1$ measure combines recall and precision).
 \end{itemize}
 
 \noindent For all measures we set $n=10$ because  shallow pools were used in CLEF along with measures that focused on the top 10 search results (including $P_r@10$).
 
-Along with these measures of search effectiveness, we also reported the number of unassessed documents, the residuals for RBP and uRBP, and $P_r@10^*$, $P_u@10^*$ and $F_{ru}^*$, i.e. the corresponding measures calculated by ignoring unassessed documents. We did this to minimise pool bias since the pools built in CLEF were of limited size, and the investigated methods retrieved a substantial number of unassessed documents.
+Along with these measures of search effectiveness, we also reported the number of unassessed documents, the residuals for RBP and uRBP, and $P_r@10^*$, $P_u@10^*$ and $HP_{ru}^*$, i.e. the corresponding measures calculated by ignoring unassessed documents. We did this to minimise pool bias since the pools built in CLEF were of limited size, and the investigated methods retrieved a substantial number of unassessed documents.
 
 Because of space limitations, in this paper we only report a subsets of the results; the remaining results (which show similar trends to those reported here) are made available in an online appendix for completeness: {\url{https://sites.google.com/view/www2018-sub34}. All data and code will be shared on GitHub upon acceptance. 
 
