@@ -1,4 +1,6 @@
 
+cp /home/palotti/github/clef_readability/chapter7/cumdist.pdf graphics/.
+
 cp /home/palotti/github/clef_readability/chapter7/legendCorr.pdf graphics/.
 
 cp /home/palotti/github/clef_readability/chapter7/box_kendalltau16_raw_values.pdf graphics/.
