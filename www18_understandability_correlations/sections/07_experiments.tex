@@ -28,39 +28,38 @@ We report the results obtained when experimenting with the retrieval methods des
 \subsection{Re-ranking}
 \label{results:reranking}
 
-Indices 4-6 of Table~\ref{tab:experiments} report on our experiments re-ranking documents from runs listed at indices 1-3, up to rank 20, according to their Dale-Chall index.
-We find that the topical relevance of the re-ranked runs, represented by $NDCG_r$ significantly decreases when compared to their original runs. For example, the $NDCG_r$ of the re-ranked Dale-Chall version of BM25 decreased from 22.02 to 18.53. However, the re-ranked results were significantly more understandable, as reported by their $NDCG_u$. 
-Note a limitation of RBP or uRBP metrics to reveal such trend, as both relevance and understandability are tied together.
-% As the number of unassessed documents increases ($Una@10$)
+Indices 4-6 of Table~\ref{tab:experiments} report on the experiments re-ranking the top 20 documents from runs listed at indices 1-3. This re-rank was made based on the Dale-Chall index of each document calculated using the preprocessing combination of Boilerpipe ForcePeriod (best one according to Pearson correlation - Table~\ref{tab:top_corr_metrics}).
+We find that the topical relevance of the re-ranked runs, represented by $RBP_r$ significantly decreases when compared to their original runs. For example, the $RBP_r$ of the re-ranked Dale-Chall version of BM25 decreased from 25.28 to 22.19. However, the re-ranked results were significantly more understandable, as reported by their $RBP_u$: from 42.08 to 46.99. 
+Note a limitation of uRBP metrics to reveal such trend, as both relevance and understandability are tied together in one single score.
 
-Next, we swap the Dale-Chall Index by XGB regressor trained using all features of Table~\ref{tab:doc_features}\footnote{Experiments with various Machine Learning methods and feature selection schemes were performed as well and are available in the online appendix. The results of other methods are similar.}. % When using the set of top 10 features for each group from Table~\ref{tab:top_corr_metrics} results are always better than using an automatic method such as Chi Square to select 10 features to use.}.
+Next, we swap the Dale-Chall Index by XGB regressor trained using all features listed in Table~\ref{tab:doc_features}\footnote{Experiments with various Machine Learning methods and feature selection schemes were performed as well and are available in the online appendix. The results of other methods are similar.}. % When using the set of top 10 features for each group from Table~\ref{tab:top_corr_metrics} results are always better than using an automatic method such as Chi Square to select 10 features to use.}.
 %While the higher correlation of Dale-Chall was XXX (as reported in table Y), correlations using XGB reached YYY, the closest method to the human agreement in this task.
-We experiment with re-ranking at cut-off 15 (more more conservative method), 20 and 50 (a more heterodox method). 
+We experiment with re-ranking at cut-off 15 (a more conservative method), 20 and 50 (a more heterodox method). 
 A similar understandability-relevance trade-off is seen when using a machine learning regressor in place of the Dale-Chall index.
-Note that, for the same cut-off value\footnote{We shown here only Dale-Chall cut-off of 20 for brevity.}, the machine learning method consistently yields more understandable results (higher $NDCG_u$). 
+Note that, for the same cut-off value\footnote{We show here only Dale-Chall cut-off of 20 for brevity.}, the machine learning method consistently yields more understandable results (higher $RBP_u$ and $RBP_u^*$). 
 
 \subsection{Rank Fusion}
 \label{results:fusion}
 
 Next, from the index 16 to 24, we report the results of our approach to automatically combine topical relevance and understandability through rank fusion.
 Once more, allowing re-ranks at higher cut-offs result in larger gains in terms of understandability, but in small losses in terms of topical relevance.
-However, the combination of understandability and relevance, $H_ru$, is more stable now than for the previous re-rank methods. 
-For example, compare the $H_{ru}^*$ of 13 (21.97) and 22 (24.34) with the original run at index 1 (24.77).
+However, the combination of understandability and relevance, $H_{ru}$, is more stable now than the previous re-rank methods. 
+For example, compare the $H_{ru}^*$ of methods that re-rank the top 50 documents per topic, XGB at index 13 (21.97) and RRF at index 22 (24.34), with the original run at index 1 (24.77).
 
 \subsection{Learning to Rank}
 \label{results:ltr}
 
-Last, we evaluate our experiments with learning to rank. 
+Last, we evaluate the experiments with learning to rank, indices 25-29. Note that we do not impose a maximum rank at which the learning-to-rank methods can re-rank, therefore we focus the following analyse on the metrics that ignore unassessed documents (the ones signed with a $^*$).
 
+Combo 1 (index 25), which only uses Information Retrieval features\footnote{We devised 24 Information Retrieval features using the Terrier framework. The score of various retrieval models were extracted from a multi-field index composed of title, body and whole document.}, is trained only on topical relevance labels. Although simple, this is a typical learning to rank setting.
+No significant difference was found between this setting and the original BM baseline for any metric.
 
-Our final batch of experiments, indices 32-34, are based on learning-to-rank. We decided to use the pairwise implementation of the gradient boosting approach from the XGBoost framework~\cite{chen16} due to its recent good results in many machine learning tasks \todo{actually, I should use XGBoost method instead of LR}. Evaluating other learning to rank methods and frameworks are left as future work.
-We evaluated three different settings based on the plain BM25 run shown in index 4, each one with a different combination of feature set and relevance labels:
-\begin{itemize}
-    \item Index 32: we used as relevance labels only the topical labels and as feature set the score of different information retrieval models (BM25, Dirichlet LM and PL2). This represents the typical use of learning to rank aiming to optimize only the topical relevance results. Unfortunately that was not the case and not even the $P_r@10*$ was improved.
-    \item Index 33: we used as relevance labels the linear combination of topical relevance and understandability. Additionally to the IR features, we used the 10 features correspondent to the best features according to Kendall tau in Table~\ref{tab:top_corr_metrics}. Results show that this resulted in higher $F_{ur}*$ when compared to its correspondent approaches (indices 4, 8, 12, 16, 19, 23, 27 and 31) due to a high increase in $P_r@10*$, which reveals understandability features improving topicability.
-    \item Index 34: On top of our previous run, we included here all features shown in Table~\ref{tab:doc_features}. Note that despite the very high number of unassessed documents, this run shows improvements even in $P_r@10$ obtaining the same results as the third best run in the campaign (ECNU). In its turn, the $P_{r}*$ which ignores the unassessed documents is 8.4\% higher than the best system, while $F_{ru}*$ is 5.2\% higher.
-\end{itemize}
+Compared to Combo 1, Combo 2 (index 26) includes the understandability features listed in Table~\ref{tab:doc_features}. Although not statistically different from the baseline, the inclusion of understandability features was as beneficial to the understandability relevance as for the topical relevance.
 
+Combo 3 explores the use of understandability assessments of CLEF 16 in a straightforward and effective manner. As the goal is to retrieve very easy-to-read documents (those with understandability label 0), a penalty is proportionally given to documents as far as their understandability score was further from the target. A document with understandability label 100 would receive label 0, while another with label of 50 would have only half of its topical relevance score.
+
+Combos 4 and 5 were devised based on a pre-defined understandability threshold $T$. While Combo 4 takes in consideration only documents that are easy-to-read (understandability label $\le$ $T$), Combo 5 considers all documents, but boosts the relevance score of easy-to-read documents. In this work $T=40$, mimicking the evaluation formulas proposed in Section~\ref{sec:data}. While Combo 4 reaches the highest understandability score for the learning-to-rank approaches ($RBP_u^{*}$ of 50.06), it fails to retrieve topically relevant documents ($RBP_r^{*}$ of only 22.20). In turn, Combo 5 reaches the best understandability-relevance trade-off ($H_{ru}^{*}$ of 29.20), being able to largely increase the topical relevance from the BM 25 baseline in which it is based ($RBP_r^*$ from 26.01 to 32.60 - an 25\% increase), while also improving understandability ($RBP_u^*$ from 43.89 to 45.87 - a 4\% increase). Note that Combo 5 is also significatively better than the best participant run of CLEF
+2016 for both $RBP_r^{*}$ (15\% increase) and $H_ru^{*}$ (13\% increase).
 
 
 
