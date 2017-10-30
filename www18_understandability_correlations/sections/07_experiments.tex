@@ -9,18 +9,20 @@ If all the search results from a run were considered, then such a re-ranking met
 
 As an alternative to the previous two-step ranking strategy for combining topical relevance and understandability, we explored the fusion of two search results lists separately obtained for relevance and understandability. For this, we used the Reciprocal Rank Fusion (RRF) method~\cite{cormack09}, which has proven effective for combining two lists of search results based on their documents \textit{ranks}, rather than scores. This approach was selected above score-based fusion methods because of the different scoring strategies and distributions employed when scoring for relevance compared to for understandability. For topical relevance, we used, separately, the three methods used for re-ranking (ECNU~\cite{song15} and KISTI~\cite{oh15} for CLEF2015, GUIR~\cite{soldaini16} and ECNU~\cite{song16} for CLEF 2016, and BM25 for both collections). For understandability, we used, separately, the estimations from SMOG/Dale Chall and XGB. Also for this approach we studied limiting the ranking of results to be considered by the methods across the cut-offs $k=15, 20, 50$. Results are presented in Section~\ref{results:fusion}.
 
+
 Finally, we considered a third alternative to combine topical relevance and understandability: using learning to rank with features derived from retrieval methods and the understandability estimators.
 With CLEF 2016 collection, we explored five combinations of label attribution and feature sets, keeping the same pairwise learning to rank algorithm based on tree boosting (XGB).
 These combinations are listed in Table~\ref{tab:ltr}, with $R$ being the topical relevance of documents and $U$ their understandability assessments. 
 
-\input{tables/tab_ltr}
 
-\input{tables/tab_experiments}
 
 \vspace{-10pt}
 \section{Evaluation of Understandability Retrieval}
 \label{sec:results}
 
+\input{tables/tab_experiments}
+
+\input{tables/tab_ltr}
 We report the results obtained when experimenting with the retrieval methods described above in Table~\ref{tab:experiments}. We report only the results for CLEF 2016 (thus we only report Dale Chall) for brevity; those on CLEF 2015 exhibited similar trends and are included in the online appendix. The effectiveness of the top two submission to CLEF 2016 and the BM25 baseline are reported at indices 1-3 of the table. Statistical significant differences compared to the best participating run, GUIR, are reported with $\diamond$; differences between the original run (indices 1-3) and its modification are reported with $\dagger$ (paired, two-tail t-test, $p<0.05$). Note that the baseline BM25 is significantly worse than GUIR across all measures. 
 
 %We start our experiments by showing at the top of Table~\ref{tab:experiments} (indices 1-3) the performance of the top 3 systems in CLEF eHealth 2016 together with a straightforward BM25 baseline run made with Terrier toolkit. Our further experiments will use not only these runs as a comparison base, but modify these runs when necessary.

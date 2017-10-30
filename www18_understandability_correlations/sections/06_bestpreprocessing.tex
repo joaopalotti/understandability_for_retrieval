@@ -29,16 +29,14 @@ A common trend when comparing preprocessing pipelines, is that the Naive pipelin
 %Boxes extend from the lower to upper quartile values of the data, with a line at the median. Whiskers extend from the box to show the range of the data. Flier points are those past the end of the whiskers, usually interpreted as outlier values.
 
 
-
-
 %We also include in Figures~\ref{fig:boxplot_corr_docs_2015} and~\ref{fig:boxplot_corr_docs_2016} 
 %We also include in Figure~\ref{fig:boxplot_corr_docs} boxes for the summary of the 3 preprocessing procedures to remove HTML, the use of HTML features, which is done without any preprocessing and the comparison with other human assessors. For CLEF eHealth 2015, we used as human assessments the additional assessments made by unpaid medical students and health consumers (see~\cite{palotti16b}), while for CLEF eHealth 2016 data, we randomly selected 100 pages that were assessed by another assessor. \mytodo{add at least another person doing assessments}.
 %The correlations with human assessments provide important insights on how hard and subjective understandability assessments are.
 
 \begin{figure*}[h!]
    \centering
-   \includegraphics[width=0.70\textwidth]{graphics/box_spearman15_raw_values_mod}\vspace{-15pt}
-   \includegraphics[width=0.70\textwidth]{graphics/box_spearman16_raw_values}
+   \includegraphics[width=0.6\textwidth]{graphics/box_spearman15_raw_values_mod}\vspace{-7pt}
+   \includegraphics[width=0.6\textwidth]{graphics/box_spearman16_raw_values}
    %\includegraphics[width=0.7\textwidth]{graphics/legendCorr}
    \vspace{-0.4cm}
    \caption{Correlations between understandability estimators and human assessments for CLEF 2015 (top) and 2016 (bottom).}
@@ -81,22 +79,13 @@ A common trend when comparing preprocessing pipelines, is that the Naive pipelin
 
 %In order to further understand our experiments, we compared the median of each pair of preprocessing strategy showed in Figures~\ref{fig:boxplot_corr_docs_2015} and~\ref{fig:boxplot_corr_docs_2016} and present the results in Table~\ref{tab:comparison_preprocessing}. 
 
-We further analysed the results by performing pairwise comparisons between the median correlations across preprocessing pipelines and heuristics, and reporting the number of times the median correlation of a setting was better than another. These are reported in Table~\ref{tab:comparison_preprocessing}: in brackets we reported the number of comparisons that were statistically significant. 
+%%% Removed because of space:
+%%%We further analysed the results by performing pairwise comparisons between the median correlations across preprocessing pipelines and heuristics, and reporting the number of times the median correlation of a setting was better than another. These are reported in Table~\ref{tab:comparison_preprocessing}: in brackets we reported the number of comparisons that were statistically significant. 
 
-%In order to further understand our experiments, we present in Table~\ref{tab:comparison_preprocessing} the results of comparing the median of two-by-two for different preprocessing strategies shown in Figure~\ref{fig:boxplot_corr_docs}. We also include the results for Pearson and Kendall correlations.
-%For instance, the entry $\mathit{FP < DNFP}$ counts the number of times the median value for \textit{ForcePeriod} was superior to \textit{DoNotForcePeriod} when comparisons with the same HTML cleaning method was used, e.g. \textit{Naive ForcePeriod} versus \textit{Naive DoNotForcePeriod}. From all comparisons, the ones that were statistically significant according to a t-test are shown inside parentheses.
-
-We first examined the comparison between sentence ending heuristics (ForcePeriod (FP) and DoNotForcePeriod (DNFP)). Results showed that the two methods achieved comparable results. Then we examined the comparison between preprocessing pipelines. For these, results for CLEF 2015 were in contrast with those for CLEF 2016. While Naive was marginally better than Boilerpipe and Justext in 2015, it was the worst in the majority of comparisons for 2016. In turn, while Justext was significantly better than Boilerpipe in 2015, they showed balanced results in 2016.
-\todo{I think something could be said about ustext and Boilerpipe. Done.}
+%%% We first examined the comparison between sentence ending heuristics (ForcePeriod (FP) and DoNotForcePeriod (DNFP)). Results showed that the two methods achieved comparable results. Then we examined the comparison between preprocessing pipelines. For these, results for CLEF 2015 were in contrast with those for CLEF 2016. While Naive was marginally better than Boilerpipe and Justext in 2015, it was the worst in the majority of comparisons for 2016. In turn, while Justext was significantly better than Boilerpipe in 2015, they showed balanced results in 2016.
+% \todo{I think something could be said about ustext and Boilerpipe. Done.}
  
-
-
-%The upper part of Table~\ref{tab:comparison_preprocessing} shows results for the comparisons between ForcePeriod (FP) and DoNotForcePeriod (DNFP). Although the interpretation of readability formulas is drastically affected by this choice of preprocessing, as research indicates~\cite{palotti15}, the correlation results are not.
-%The number of times FP reached a higher correlation than DNFP is roughly the same that DNFP was higher than FP.
-%The bottom part of Table~\ref{tab:comparison_preprocessing} shows the comparisons made for Naive, Justext and Boilerpipe. Results for CLEF 2015 contrast with 2016, while Naive was sightly better than Boilerpipe and Justext in 2015, it was the worst in almost all 2016 comparisons. Also, the comparisons between Justext and Boilerpipe are exactly the opposite from 2015 to 2016.
-
-%
-\input{tables/tab_comparison_preprocessing}
+%\input{tables/tab_comparison_preprocessing}
 %
 
 

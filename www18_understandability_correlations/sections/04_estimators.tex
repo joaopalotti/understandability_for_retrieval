@@ -112,11 +112,12 @@ A summary of the statistics of these three collections is reported in Table~\ref
 
 \begin{itemize}
     \item Medical Reddit (label 1): Documents in this collection were expected to be written in a colloquial style, and thus the easiest to understand. All the conversations were in fact explicitly directed to assist inexpert health consumers;
-    \item Medical English Wikipedia (label 2): Documents in this collection were expected to be less formal than scientific articles, but more formal than a Web forum like Reddit, thus somewhat more difficult ro understand;
+    \item Medical English Wikipedia (label 2): Documents in this collection were expected to be less formal than scientific articles, but more formal than a Web forum like Reddit, thus somewhat more difficult to understand;
     \item PubMed Central (label 3): Documents from this collection were expected to be written in a highly formal style, as the target audience were physicians and researchers in the biomedical domain.
 \end{itemize}
 
-Models were learned using all documents from these collections after being features were extracted using Latent Semantic Analysis (LSA) with 10 dimensions (empirically set based on document word counts in the three collections). Each document in CLEF collection followed the same LSA transformation and a score was assigned. We modeled a classification task as well as a regression task using the same data.\todo{this sentence about tasks is coming out the blue: what tasks? What do they do? For what?. Also, it is unclear what these regressors and classifiers are. JP: better now?}
+Models were learned using all documents from these collections after features were extracted using Latent Semantic Analysis (LSA) with 10 dimensions (empirically set based on document word counts in the three collections). Each document in CLEF collection followed the same LSA transformation and a score was assigned. We modeled a classification task as well as a regression task using the same data.
+%\todo{this sentence about tasks is coming out the blue: what tasks? What do they do? For what?. Also, it is unclear what these regressors and classifiers are. JP: better now?}
 
 %Different labels for the regression could be employed, for example, a label 6 to PubMed Central documents would emphasize that these documents are explicitly made for expert users, being 3 times harder than Wikipedia ones. We did not explore the effects of different labels in this work, it is left as future work.
 
