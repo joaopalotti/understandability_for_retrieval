@@ -81,7 +81,7 @@ Finally, unless explicitly stated otherwise, we ignored out of vocabulary (OV) w
     \item PubMed Central (label 3): Documents from this collection are expected to be written in a highly formal style, as the target audience are physicians and researchers in the biomedical domain.
 \end{itemize}
 
-Models are learned using all documents from these collections after features are extracted using Latent Semantic Analysis (LSA) with 10 dimensions (empirically set based on document word counts in the three collections). Each document in CLEF collection follows the same LSA transformation and a score is assigned. We model a classification task as well as a regression task using the same data.
+Models are learned using all documents from these collections after features are extracted using Latent Semantic Analysis (LSA) with 10 dimensions (empirically set based on document word counts in the three collections). We model a classification task as well as a regression task using these collections. Thus, after applying the same LSA transformation to test document from CLEF collection, a continuous score is assigned to each document by a regressor\footnote{In principal the regressors should output a continuous value between 1 and 3, but no restrictions are set and potentially any value can be assigned to a document.}, while each classifier assigns the documents to one of the three classes.
 
 %Different labels for the regression could be employed, for example, a label 6 to PubMed Central documents would emphasize that these documents are explicitly made for expert users, being 3 times harder than Wikipedia ones. We did not explore the effects of different labels in this work, it is left as future work.
 

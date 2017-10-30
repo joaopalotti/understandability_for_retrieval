@@ -1,7 +1,7 @@
 \section{Integrating Understandability into Retrieval}
 \label{sec:experiments}
 
-Next, we investigate how understandability estimations could be used and integrated into retrieval methods to increase the quality of search result. To this aim, we first investigated re-ranking search results from an initial run purely based on understandability estimations. 
+We investigate how understandability estimations could be used and integrated into retrieval methods to increase the quality of search results. We first investigate re-ranking search results from an initial run purely based on understandability estimations. 
 
 Specifically, we considered three retrieval methods of differing quality for the initial retrieval. These included the best two runs submitted to each CLEF task (2015 and 2016), and a plain BM25 baseline (default Terrier parameters: $b=0.75$ and $k1=1.2$). As understandability estimators we used  eXtreme Gradient Boosting (XGB)\footnote{For assessed documents, we used 10-fold cross validation, so that we trained XGB on 90\% of the data, and used its predictions for the remaining 10\%. For unassessed documents, we trained XGB on all assessed data, and applied this model to generate predictions.} regressor, as well as SMOG for CLEF 2015 and Dale-Chall for CLEF 2016. These were the best performing approaches from Section~\ref{sec:beyond_readability}.
 
