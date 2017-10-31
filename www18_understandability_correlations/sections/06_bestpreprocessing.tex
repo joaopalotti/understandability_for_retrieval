@@ -2,11 +2,13 @@
 \label{sec:pipelines}
 
 %\section{Which Preprocessing Approach To Prefer}
-Next, we study the influence of the preprocessing of Web pages on the estimation of understandability when using the methods evaluated in the previous section. We do so by comparing the combination of a number of pre-processing pipelines, heuristics and understandability estimation methods with human assessments of web page understandability. 
-Our experiments extend those by Palotti et al.~\cite{palotti15}, who only evaluated surface level readability formulas and did not compare their results against human assessments. 
+Next, we studied the influence the preprocessing of Web pages had on the estimation of understandability when using the previously evaluated methods. We did so by comparing the combination of a number of pre-processing pipelines, heuristics, and understandability estimation methods with human assessments of Web page understandability. 
+Our experiments extended those by Palotti et al.~\cite{palotti15}, who only evaluated surface level readability formulas and did not compare their results against human assessments. 
 
-We employ the same three approaches used in Palotti et al.~\cite{palotti15} to extract the content of a Web page from the HTML source: BeautifulSoup~\cite{bs4} (\textit{Naive}), which just naively removes HTML tags, Boilerpipe~\cite{kohlschutter10} (\textit{Boilerpipe - Boi}) and Justext~\cite{jan11} ({Justext - Jst}), which eliminates boilerplate text together with HTML tags. 
-Palotti et al.'s data analysis highlighted that the text in HTML tags often missed a correct punctuation mark and thus the text extracted from HTML fields like titles, menus, tables and lists could be interpreted as many short sentences or few very long sentences, depending on whether a period was forced at the end of fields/sentences. We thus implement the same two heuristics devised by them to deal with this: \textit{ForcePeriod - FP} and \textit{DoNotForcePeriod - DNFP}. The \textit{ForcePeriod - FP} heuristics forces a period at the end of each extracted HTML field; while the \textit{DoNotForcePeriod - DNFP} does not. 
+%We employ the same three approaches used in Palotti et al.~\cite{palotti15} to extract the content of a Web page from the HTML source: 
+
+To extract the content of a Web page from the HTML source we tested: BeautifulSoup~\cite{bs4} (\textit{Naive}), which just naively removes HTML tags, Boilerpipe~\cite{kohlschutter10} (\textit{Boi}) and Justext~\cite{jan11} ({Jst}), which eliminate boilerplate text together with HTML tags. 
+Palotti et al.'s data analysis highlighted that the text in HTML tags often missed a correct punctuation mark and thus the text extracted from HTML fields like titles, menus, tables and lists could be interpreted as many short sentences or few very long sentences, depending on whether a period was forced at the end of fields/sentences. We thus implemented the same two heuristics devised by them to deal with this: \textit{ForcePeriod (FP)} and \textit{DoNotForcePeriod (DNFP)}. The FP heuristic forces a period at the end of each extracted HTML field; while the DNFP does not. 
 
 
 \section{Evaluation of Preprocessing Pipelines and Heuristics}
