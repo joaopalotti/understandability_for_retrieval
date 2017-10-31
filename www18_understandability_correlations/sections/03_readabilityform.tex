@@ -17,7 +17,7 @@ For the retrieval experiments in Section~\ref{sec:results}, we used evaluation m
 
 A drawback of uRBP is that relevance and understandability are combined into a unique evaluation score, thus making it difficult to interpret whether improvements are due to more understandable or more topical documents being retrieved. To overcome this, we first separately calculate an RBP value for relevance and another for understandability, and then combine them into a unique effectiveness measure:
 
-\begin{itemize} 
+\begin{itemize}[leftmargin=*]
 	\item $RBP_r@n(\rho)$: uses the relevance assessments for the top $n$ search results (i.e. this is the common RBP). In this paper, we regarded a document as topically relevant if assessed as somewhat relevant or highly relevant.
 	
     \item $RBP_u@n(\rho)$: uses the understandability assessments for the top $n$ search results. In this paper, we regarded a document as understandable (1) for CLEF 2015 if assessed easy or somewhat easy to understand; (2) for CLEF 2016 if its assessed understandability score was smaller than a threshold $U$ (we used $U = 40$ \footnote{This choice for $U$ is based on the distribution of understandability assessments. This distribution can be found in the online appendix.}).

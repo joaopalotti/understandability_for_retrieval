@@ -3,14 +3,14 @@
 \label{sec:proxies}
 %The previous results highlighted that surface level readability formulas only weakly correlate with human assessments of Web pages understandability (Figure~\ref{fig:bar_corr_clef15}). Next, we considered alternative methods of estimating understandability (Table~\ref{tab:doc_features}), which we present in the following, grouped into categories. 
 
-As reviewed in Section~\ref{sec:related}, several methods have been used to estimate the understandability of health Web pages, with the most popular methods (at least in the biomedical literature) being readability formulas based on surface level characteristics of text. Next, we outline the categories of methods to estimate understandability used in this work; an overview is shown in Table~\ref{tab:doc_features}. Some of the methods presented here further expand measured used in the literature. 
+As reviewed in Section~\ref{sec:related}, several methods have been used to estimate the understandability of health Web pages, with the most popular methods (at least in the biomedical literature) being readability formulas based on surface level characteristics of text. Next, we outline the categories of methods to estimate understandability used in this work; an overview is shown in Table~\ref{tab:doc_features}. Some of these methods further expand measures used in the literature. 
  
 %The correlation of readability formulas as shown in Figure~\ref{fig:bar_corr_clef15} %and~\ref{fig:bar_corr_clef16} is not strong, without any correlation coefficient being higher than 0.5.
 %Our next intent is comparing the correlation coefficient of the traditional readability formulas with other methods for understandability estimation, including an evaluation of other humans performing the same task.
 %For that, we devise and group several methods into semantically related groups which will be following presented. We summarize all methods in Table~\ref{tab:doc_features}.
 
 
-\textbf{Surface-level Readability Formulas (RF):}
+\textbf{Traditional Readability Formulas (RF):}
 These include the readability formulas mentioned in Section~\ref{sec:related}, as well as other, less popular ones. A full list is provided in surveys by Collins-Thompson \cite{collins2014computational} and Dubay~\cite{dubay04}.
 
 %Therefore, what unifies all methods listed in this section is the goal to automatically infer the understandability of a document, in our case, a Web page with medical content.
@@ -24,11 +24,11 @@ These include the readability formulas mentioned in Section~\ref{sec:related}, a
 These are formed by the ``building blocks'' used in the traditional readability formulas; examples of such building blocks include the average number of characters per word and the average number of syllables in a sentence. Words are divided into syllables using the Python package Pyphen~\cite{pyphen}.
 
 \textbf{General Medical Vocabularies (GMV):}
-These include methods that count the number of words with a medical prefix or suffix, i.e. beginning or ending with Latin or Greek particles (e.g., amni-, angi-, algia-, arteri-), text strings included in list of acronyms or medical vocabularies such as the International Statistical Classification of Diseases and Related Health Problems (ICD), Drugbank and the OpenMedSpel dictionary~\cite{openmedspel}. An acronym list from the ADAM database~\cite{zhou2006} is used and methods in this group are matched with documents using a simple keywords matching.
+These include methods that count the number of words with a medical prefix or suffix, i.e. beginning or ending with Latin or Greek particles (e.g., amni-, angi-, algia-, arteri-), text strings included in lists of acronyms or in medical vocabularies such as the International Statistical Classification of Diseases and Related Health Problems (ICD), Drugbank and the OpenMedSpel dictionary~\cite{openmedspel}. An acronym list from the ADAM database~\cite{zhou2006} is used and methods in this group are matched with documents using simple keywords matching.
 
 \textbf{Consumer Medical Vocabulary (CMV):}
-The popular MetaMap \cite{aronson10} tool is used to map the text content of Web pages to entries in the CHV vocabulary~\cite{zeng06}.
-We further use the MetaMap semantic types to retain only concepts identified as symptoms or diseases. Similar approaches have been commonly used in the literature (e.g.,~\cite{pang16,agrafiotesA16,palotti16,yates13}).
+The popular MetaMap \cite{aronson10} tool is used to map the text content of Web pages to entries in  CHV~\cite{zeng06}.
+We use the MetaMap semantic types to retain only concepts identified as symptoms or diseases. Similar approaches have been commonly used in the literature (e.g.,~\cite{pang16,agrafiotesA16,palotti16,yates13}).
 
 \textbf{Expert Medical Vocabulary (EMV):}
 Similarly to the CHV features, we use MetaMap to convert the content of Web pages into MeSH entities, studying symptoms and disease concepts separately. 
@@ -40,25 +40,26 @@ These include commonly used natural language heuristics such as the ratio of par
 These include the identification of a large number of HTML tags, which are extracted with the Python library BeautifulSoap~\cite{bs4}. The intuition for these features is that Web pages with many images and tables may explain and summarise health content better, thus providing more understandable content to the general public. 
 
 \textbf{Word Frequency Features (WFF):}
-Generally speaking, common and known words are usually frequent words, while unknown and obscure words are generally rare. This idea is implemented in readability formulas such as the Dale-Chall index which uses a list of common words and counts the number of words that fall outside this list (complex words)~\cite{dale48}.
+Generally speaking, common and known words are usually frequent words, while unknown and obscure words are generally rare. This idea is implemented in readability formulas such as the DCI, which uses a list of common words and counts the number of words that fall outside this list (complex words)~\cite{dale48}.
 We extend these observations by studying corpus-wide word frequencies. 
 We model word frequencies in a corpus in a straightforward manner: we sort the word frequencies and normalize word rankings such that values close to 100 are attributed to common words and values close to 0 to rare words. Three corpora are analysed to extract word frequencies:
 
-\begin{itemize}
+\begin{itemize}[leftmargin=*]
 \item \underline{Medical Reddit:} Reddit~\cite{reddit} is a Web forum with a sizeable user community which is responsible for generating and moderating its content. Any user can start a discussion or reply to a discussion. This forum is intensively used for health purposes, for example in the Reddit community AskDocs~\cite{redditaskdocs}, licensed nurses and doctors (subject to user identity verification) advise help seekers free of charge. We selected six of such communities
     (medical, AskDocs, AskDoctorSmeeee, Health, WomensHealth, Mens\_Health) and downloaded all user interactions available until September 1st 2017 using the Python library PRAW~\cite{redditapi}. In total 43,018 discussions were collected.
 
-\item \underline{PubMed Central:} PubMed Central~\cite{pubmed} is an online  database of freely available full-text biomedical literature. We used the same collection distributed for the TREC 2014 and 2015 Clinical Decision Support Track (TREC-CDS)~\cite{roberts16,trec15}, consisting of 733,138 articles. 
- 
 \item \underline{Medical English Wikipedia:} after obtaining a recent  Wikipedia dump~\cite{wikipedia} (May 1st 2017), we filtered articles to only those  containing an Infobox\footnote{A Wikipedia infobox is a structured template that appears on the right of Wikipedia pages summarizing key aspects of articles.} in which at least one of the following words appeared as a property: ICD10, ICD9, DiseasesDB, MeSH, MeSHID, MeshName, MeshNumber, GeneReviewsName, Orphanet, eMedicine, MedlinePlus, drug\_name, Drugs.com, DailyMedID, LOINC.
 %Figure~\ref{fig:hyperthermia} illustrates a Wikipedia page that is marked as medical because of its Infobox entries.
 In doing so, we followed the method by Soldaini et al.~\cite{soldaini15}, which favours precision over recall when identifying a health-related article. This resulted in a collection of 11,942 articles. 
 %Note that this procedure highly favors precision over recall. %\mytodo{In case we need space, I suggest we drop this figure}
+
+\item \underline{PubMed Central:} PubMed Central~\cite{pubmed} is an online  database of freely available full-text biomedical literature. We used the same collection distributed for the TREC 2014 and 2015 Clinical Decision Support Track~\cite{roberts16,trec15}, consisting of 733,138 articles. 
+ 
 \end{itemize}
 
 A summary of the statistics of these three collections is reported in Table~\ref{tab:collection_stats}. 
 %We removed words that occurred less than 5 times in a corpus.  %% We include this detail if necessary in the final version of this paper
-Finally, unless explicitly stated otherwise, we ignored out of vocabulary (OV) words in our feature calculations.
+Finally, unless explicitly stated otherwise, we ignored out of vocabulary words in our feature calculations.
 
 
 
@@ -71,15 +72,15 @@ Finally, unless explicitly stated otherwise, we ignored out of vocabulary (OV) w
 
 \input{tables/tab_collection_stats}
 
-\textbf{Machine Learning on Text - Regressors (MLR) and Classifiers (MLC):} These include machine learning methods for estimating Web page understandability. While Collins-Thompson highlighted the promise of estimating understandability using machine learning methods, a challenge is identifying the background corpus to be used for training~\cite{collins2014computational}. To this aim, we use the three corpora detailed above, and assume understandability labels according to the average (expected) difficulty of documents in these collections:
+\textbf{Machine Learning on Text - Regressors (MLR) and Classifiers (MLC):} These include machine learning methods for estimating Web page understandability. While Collins-Thompson highlighted the promise of estimating understandability using machine learning methods, a challenge is identifying the background corpus to be used for training~\cite{collins2014computational}. To this aim, we use the three corpora detailed above, and assume understandability labels according to the expected difficulty of documents in these collections:
 
-\begin{itemize}
+\begin{itemize}[leftmargin=*]
     \item Medical Reddit (label 1): Documents in this collection are expected to be written in a colloquial style, and thus the easiest to understand. All the conversations are in fact explicitly directed to assist inexpert health consumers;
     \item Medical English Wikipedia (label 2): Documents in this collection are expected to be less formal than scientific articles, but more formal than a Web forum like Reddit, thus somewhat more difficult to understand;
-    \item PubMed Central (label 3): Documents from this collection are expected to be written in a highly formal style, as the target audience are physicians and researchers in the biomedical domain.
+    \item PubMed Central (label 3): Documents from this collection are expected to be written in a highly formal style, as the target audience are physicians and biomedical researchers.
 \end{itemize}
 
-Models are learned using all documents from these collections after features are extracted using Latent Semantic Analysis (LSA) with 10 dimensions (empirically set based on document word counts in the three collections). We model a classification task as well as a regression task using these collections. Thus, after applying the same LSA transformation to test document from CLEF collection, a continuous score is assigned to each document by a regressor\footnote{In principal the regressors should output a continuous value between 1 and 3, but no restrictions are set and potentially any value can be assigned to a document.}, while each classifier assigns the documents to one of the three classes.
+Models are learned using all documents from these collections after features are extracted using Latent Semantic Analysis (LSA) with 10 dimensions (empirically set based on document word counts in the three collections). We model a classification task as well as a regression task using these collections. Thus, after applying the same LSA transformation to test documents from CLEF, a continuous score is assigned to each document by a regressor\footnote{In principal the regressors should output a continuous value between 1 and 3, but no restrictions are set and potentially any value can be assigned to a document.}, while each classifier assigns the documents to one of the three classes.
 
 %Different labels for the regression could be employed, for example, a label 6 to PubMed Central documents would emphasize that these documents are explicitly made for expert users, being 3 times harder than Wikipedia ones. We did not explore the effects of different labels in this work, it is left as future work.
 

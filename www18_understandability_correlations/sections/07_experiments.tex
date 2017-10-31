@@ -53,7 +53,7 @@ For example, compare the $H_{ru}^*$ of methods that re-rank the top 50 documents
 
 Last, we evaluate the experiments with learning to rank, indices 25-29. Note that we do not impose a maximum rank at which the learning-to-rank methods can re-rank, therefore we focus the following analysis on the metrics that ignore unassessed documents (the ones indicated with a $^*$).
 
-Combo 1 (index 25), which only uses Information Retrieval features\footnote{We devised 24 Information Retrieval features using the Terrier framework. The score of various retrieval models were extracted from a multi-field index composed of title, body and whole document.}, is trained only on topical relevance labels. Although simple, this is a typical learning to rank setting.
+Combo 1 (index 25), which only uses Information Retrieval features\footnote{We devised 24 IR features using the Terrier framework. The score of various retrieval models were extracted from a multi-field index composed of title, body and whole document.}, is trained only on topical relevance labels. Although simple, this is a typical learning to rank setting.
 No significant difference was found between this setting and the original BM25 baseline for any metric.
 
 Compared to Combo 1, Combo 2 (index 26) includes the understandability features listed in Table~\ref{tab:doc_features}. Although not statistically different from the baseline, the inclusion of understandability features was as beneficial to the understandability relevance as for the topical relevance.
