@@ -23,21 +23,25 @@ These combinations are listed in Table~\ref{tab:ltr}, with $R$ being the topical
 \input{tables/tab_experiments}
 
 \input{tables/tab_ltr}
-We report the results obtained when evaluating with the retrieval methods described above in Table~\ref{tab:experiments}. We report only the results for CLEF 2016 (thus we only report Dale Chall) for brevity; those on CLEF 2015 exhibited similar trends and are included in the online appendix. The effectiveness of the top two submission to CLEF 2016 and the BM25 baseline are reported at indices 1-3 of the table. Statistically significant differences compared to the best participating run, GUIR, are reported with $\diamond$; differences between the original run (indices 1-3) and its modification are reported with $\dagger$ (paired, two-tail t-test, $p<0.05$). Note that the baseline BM25 is significantly worse than GUIR across all measures. 
+Results for the considered retrieval methods are reported in Table~\ref{tab:experiments}. We report only the results for CLEF 2016 for brevity; those for CLEF 2015 exhibited similar trends and are included in the online appendix. The effectiveness of the top two submissions to CLEF 2016 and the BM25 baseline are reported at indices 1-3 of Table~\ref{tab:experiments}. Statistically significant differences compared to the best participating run, GUIR, are reported with $\diamond$; differences between the original run (indices 1-3) and its modifications are reported with $\dagger$ (paired, two-tail t-test, $p<0.05$). Note that the baseline BM25 is significantly worse than GUIR across all measures. 
 
 %We start our experiments by showing at the top of Table~\ref{tab:experiments} (indices 1-3) the performance of the top 3 systems in CLEF eHealth 2016 together with a straightforward BM25 baseline run made with Terrier toolkit. Our further experiments will use not only these runs as a comparison base, but modify these runs when necessary.
 
 \subsection{Re-ranking}
 \label{results:reranking}
 
-Indices 4-6 of Table~\ref{tab:experiments} report on the experiments re-ranking the top 20 documents from runs listed at indices 1-3. This re-rank was made based on the Dale-Chall index of each document calculated using the preprocessing combination of Boilerpipe ForcePeriod (best one according to Pearson correlation - Table~\ref{tab:top_corr_metrics}).
-We find that the topical relevance of the re-ranked runs, represented by $RBP_r$ significantly decreases when compared to their original runs. For example, the $RBP_r$ of the re-ranked Dale-Chall version of BM25 decreased from 25.28 to 22.19. However, the re-ranked results were significantly more understandable, as reported by their $RBP_u$: from 42.08 to 46.99. 
-Note a limitation of uRBP metrics to reveal such a trend, as both relevance and understandability are tied together in one single score.
+Indices 4-6 of Table~\ref{tab:experiments} report on the experiments re-ranking the top 20 documents from runs listed at indices 1-3. This re-rank was made based on the DCI score of each document calculated using the preprocessing combination of Boilerpipe and ForcePeriod (best according to Pearson correlation, from Table~\ref{tab:top_corr_metrics}).
+We find that the relevance of the re-ranked runs (as measured by $RBP_r$) significantly decreases, compared to the original runs: e.g., the $RBP_r$ of the re-ranked BM25 with DCI decreased from 25.28 to 22.19. However, these re-ranked results were significantly more understandable: for the previous example, $RBP_u$ passed from 42.08 of the baseline to 46.99 of the re-ranked. 
+%Note a limitation of uRBP metrics to reveal such a trend, as both relevance and understandability are tied together in one single score.
 
-Next, we swap the Dale-Chall Index by XGB regressor trained using all features listed in Table~\ref{tab:doc_features}. % When using the set of top 10 features for each group from Table~\ref{tab:top_corr_metrics} results are always better than using an automatic method such as Chi Square to select 10 features to use.}.
+
+
+Indices  7-15 refer to using the XGB regressor trained using all features listed in Table~\ref{tab:doc_features}. 
+
+%Next, we swap the Dale-Chall Index by XGB regressor trained using all features listed in Table~\ref{tab:doc_features}. % When using the set of top 10 features for each group from Table~\ref{tab:top_corr_metrics} results are always better than using an automatic method such as Chi Square to select 10 features to use.}.
 %While the higher correlation of Dale-Chall was XXX (as reported in table Y), correlations using XGB reached YYY, the closest method to the human agreement in this task.
-We experiment with re-ranking at cut-off 15 (a more conservative method), 20 and 50 (a less conservative method). 
-A similar understandability-relevance trade-off is seen when using a machine learning regressor in place of the Dale-Chall index.
+We experimented with different understandability-relevance trade-offs by re-ranking at cut-off 15 (a more conservative method), 20 and 50 (a less conservative method). 
+%A similar understandability-relevance trade-off is seen when using a machine learning regressor in place of the Dale-Chall index.
 Note that, for the same cut-off value\footnote{We show here only Dale-Chall cut-off of 20 for brevity.}, the machine learning method consistently yields more understandable results (higher $RBP_u$ and $RBP_u^*$). 
 
 \subsection{Rank Fusion}
