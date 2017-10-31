@@ -1,7 +1,7 @@
 \section{Data and Resources}
 \label{sec:data}
 
-\subsection{Data}
+\subsection{Data Collections}
 
 In this paper we investigate methods to estimate Web page understandability, including the effect HTML preprocessing pipelines and heuristics have, and their search effectiveness when employed within retrieval methods. To obtain both topical relevance\footnote{We refer to this simply as relevance in the reminder of the paper, when this does not cause confusion.} and  understandability assessments, we used the data from the CLEF 2015 and 2016 eHealth collections. 
 
@@ -15,7 +15,7 @@ In the experiments, we used Pearson, Kendall and Spearman correlations to compar
 
 \subsection{Evaluation Measures}
 
-For the retrieval experiments in Section~\ref{sec:results}, we used evaluation measures that used both  relevance and understandability. The uRBP measure~\cite{zuccon2016understandability} extends rank biased precision (RBP) to scenarios where multiple relevance dimensions are used. Formally, the measure is formulated as $uRBP(\rho) = (1 - \rho) \sum_{k=1}^{K} \rho^{k-1} r(d@k) u(d@k)$, where $r(d@k)$ is the gain for retrieving a relevant document at rank $k$ and $u(d@k)$ is the gain for retrieving a document of a certain understandability at rank $k$; $\rho$ is the RBP persistence parameter. This measure was an official metric used CLEF (we also set $\rho=0.8$). 
+For the retrieval experiments in Section~\ref{sec:results}, we use evaluation measures that use both relevance and understandability. The uRBP measure~\cite{zuccon2016understandability} extends rank biased precision (RBP) to scenarios where multiple relevance dimensions are used. Formally, the measure is formulated as $uRBP(\rho) = (1 - \rho) \sum_{k=1}^{K} \rho^{k-1} r(d@k) u(d@k)$, where $r(d@k)$ is the gain for retrieving a relevant document at rank $k$ and $u(d@k)$ is the gain for retrieving a document of a certain understandability at rank $k$; $\rho$ is the RBP persistence parameter. This measure was an official metric used in CLEF (we also set $\rho=0.8$). 
 
 A drawback of uRBP is that relevance and understandability are combined into a unique evaluation score, thus making it difficult to interpret whether improvements are due to more understandable or more topical documents being retrieved. To overcome this, we first separately calculate an RBP value for relevance and another for understandability, and then combine them into a unique effectiveness measure:
 
@@ -24,22 +24,25 @@ A drawback of uRBP is that relevance and understandability are combined into a u
 	
     \item $RBP_u@n(\rho)$: uses the understandability assessments for the top $n$ search results. In this paper, we regarded a document as understandable (1) for CLEF 2015 if assessed easy or somewhat easy to understand; (2) for CLEF 2016 if its assessed understandability score was smaller than a threshold $U$ (we used $U = 40$ \footnote{This choice for $U$ is based on the distribution of understandability assessments. This distribution can be found in the online appendix.}).
 	
-    \item $HRBP_{ru}@n(\rho) = 2 \times \frac{RBP_r@n \times RBP_u@n}{RBP_r@n + RBP_u@n}$: combines the previous two RBP values into a unique measurement using the harmonic mean (in the same fashion that the $F_1$ measure combines recall and precision).
+    \item $HRBP@n(\rho) = 2 \times \frac{RBP_r@n \times RBP_u@n}{RBP_r@n + RBP_u@n}$: combines the previous two RBP values into a unique measurement using the harmonic mean (in the same fashion that the $F_1$ measure combines recall and precision).
 \end{itemize}
 
 \noindent For all measures we set $n=10$ because shallow pools were used in CLEF along with measures that focused on the top 10 search results (including $RBP_r@10$).
 
-Along with these measures of search effectiveness, we also reported the number of unassessed documents, the RBP residual, and  $RBP_r@10^*$, $RBP_u@10^*$ and $HRBP_{ru}^*$, i.e. the corresponding measures calculated by ignoring unassessed documents. We did this to minimise pool bias since the pools built in CLEF were of limited size, and the investigated methods retrieved a substantial number of unassessed documents.
+Along with these measures of search effectiveness, we also reported the number of unassessed documents, the RBP residual, and  $RBP_r@10^*$, $RBP_u@10^*$ and $HRBP^*$, i.e. the corresponding measures calculated by ignoring unassessed documents. We did this to minimise pool bias since the pools built in CLEF were of limited size, and the investigated methods retrieved a substantial number of unassessed documents.
 
 
 \subsection{Preprocessing Pipelines and Heuristics}
 \label{sec:pipelines}
 
-We study the influence the preprocessing of Web pages have on the estimation of understandability when using the evaluated methods present in Section~\ref{sec:proxies}. We do so by comparing the combination of a number of pre-processing pipelines, heuristics, and understandability estimation methods with human assessments of Web page understandability. 
+We study the influence the preprocessing of Web pages have on the estimation of understandability when using the evaluated methods present in Section~\ref{sec:proxies}. We do so by comparing the combination of a number of preprocessing pipelines, heuristics, and understandability estimation methods with human assessments of Web page understandability. 
 Our experiments extend those by Palotti et al.~\cite{palotti15}, who only evaluated surface level readability formulas and did not compare their results against human assessments. 
 
 To extract the content of a Web page from the HTML source we test: BeautifulSoup~\cite{bs4} (\textit{Naive}), which just naively removes HTML tags, Boilerpipe~\cite{kohlschutter10} (\textit{Boi}) and Justext~\cite{jan11} ({Jst}), which eliminates boilerplate text together with HTML tags. 
-Palotti et al.'s data analysis highlighted that the text in HTML tags often missed a correct punctuation mark and thus the text extracted from HTML fields like titles, menus, tables and lists could be interpreted as many short sentences or few very long sentences, depending on whether a period was forced at the end of fields/sentences. We thus implement the same two heuristics devised by them to deal with this: \textit{ForcePeriod (FP)} and \textit{DoNotForcePeriod (DNFP)}. The FP heuristic forces a period at the end of each extracted HTML field; while the DNFP does not. 
+%Palotti et al.'s data analysis highlighted that the text in HTML tags often missed a correct punctuation mark and thus the text extracted from HTML fields like titles, menus, tables and lists could be interpreted as many short sentences or few very long sentences, depending on whether a period was forced at the end of fields/sentences. We thus implement the same two heuristics devised by them to deal with this: \textit{ForcePeriod (FP)} and \textit{DoNotForcePeriod (DNFP)}. The FP heuristic forces a period at the end of each extracted HTML field; while the DNFP does not. 
+Palotti et al.'s data analysis highlighted that the text in HTML fields like titles, menus, tables and lists often missed a correct punctuation mark and thus the text extracted from them
+could be interpreted as many short sentences or few very long sentences, depending on whether a period was forced at the end of fields/sentences. We thus implement the same two heuristics devised by Palotti et al. to deal with this: \textit{ForcePeriod (FP)} and \textit{DoNotForcePeriod (DNFP)}. The FP heuristic forces a period at the end of each extracted HTML field, while the DNFP does not. 
+
 
 \subsection{Additional Resources}
 

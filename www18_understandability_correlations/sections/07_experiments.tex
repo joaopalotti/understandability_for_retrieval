@@ -45,8 +45,8 @@ Note that, for the same cut-off value\footnote{We show here only Dale-Chall cut-
 
 Next, from the index 16 to 24, we report the results of our approach to automatically combine topical relevance and understandability through rank fusion.
 Once more, allowing re-ranks at higher cut-offs result in larger gains in terms of understandability, but in small losses in terms of topical relevance.
-However, the combination of understandability and relevance, $H_{ru}$, is more stable now than the previous re-rank methods. 
-For example, compare the $H_{ru}^*$ of methods that re-rank the top 50 documents per topic, XGB at index 13 (21.97) and RRF at index 22 (24.34), with the original run at index 1 (24.77).
+However, the combination of understandability and relevance, $HRBP$, is more stable now than the previous re-rank methods. 
+For example, compare the $HRBP^*$ of methods that re-rank the top 50 documents per topic, XGB at index 13 (21.97) and RRF at index 22 (24.34), with the original run at index 1 (24.77).
 
 \subsection{Learning to Rank}
 \label{results:ltr}
@@ -60,8 +60,8 @@ Compared to Combo 1, Combo 2 (index 26) includes the understandability features 
 
 Combo 3 explores the use of understandability assessments of CLEF 2016 in a straightforward and effective manner. As the goal is to retrieve very easy-to-read documents (those with understandability label 0), a penalty is proportionally given to documents as far as their understandability score is further from the target. A document with understandability label 100 would receive label 0, while another with label of 50 would have only half of its topical relevance score.
 
-Combos 4 and 5 were devised based on a pre-defined understandability threshold $U$. While Combo 4 takes into consideration only documents that are easy-to-read (understandability label $\le$ $U$), Combo 5 considers all documents, but boosts the relevance score of easy-to-read documents. In this work $U=40$, mimicking the evaluation formulas proposed in Section~\ref{sec:data}. While Combo 4 reaches the highest understandability score for the learning-to-rank approaches ($RBP_u^{*}$ of 50.06), it fails to retrieve topically relevant documents ($RBP_r^{*}$ of only 22.20). In turn, Combo 5 reaches the best understandability-relevance trade-off ($H_{ru}^{*}$ of 29.20), being able to largely increase the topical relevance from the BM 25 baseline in which it is based ($RBP_r^*$ from 26.01 to 32.60 - an 25\% increase), while also improving understandability ($RBP_u^*$ from 43.89 to 45.87 - a 4\% increase). Note that Combo 5 is also significatively better than the best participant run of CLEF
-2016 for both $RBP_r^{*}$ (15\% increase) and $H_ru^{*}$ (13\% increase).
+Combos 4 and 5 were devised based on a pre-defined understandability threshold $U$. While Combo 4 takes into consideration only documents that are easy-to-read (understandability label $\le$ $U$), Combo 5 considers all documents, but boosts the relevance score of easy-to-read documents. In this work $U=40$, mimicking the evaluation formulas proposed in Section~\ref{sec:data}. While Combo 4 reaches the highest understandability score for the learning-to-rank approaches ($RBP_u^{*}$ of 50.06), it fails to retrieve topically relevant documents ($RBP_r^{*}$ of only 22.20). In turn, Combo 5 reaches the best understandability-relevance trade-off ($HRB^{*}$ of 29.20), being able to largely increase the topical relevance from the BM 25 baseline in which it is based ($RBP_r^*$ from 26.01 to 32.60 - an 25\% increase), while also improving understandability ($RBP_u^*$ from 43.89 to 45.87 - a 4\% increase). Note that Combo 5 is also significatively better than the best participant run of CLEF
+2016 for both $RBP_r^{*}$ (15\% increase) and $HRBP^{*}$ (13\% increase).
 
 
 
