@@ -37,7 +37,7 @@ We found that the relevance of the re-ranked runs (as measured by $RBP_r$ and $R
 
 In the experiments, we also studied the influence of the numbers of documents considered for re-ranking (cut-off). Indices 4-6 refer to re-ranking only the top $n=15$ documents from the original runs; 7-9 refer to the first $n=20$; and 10-12 to the first $n=50$. The results show that the more documents are considered for re-ranking, the more degradation in $RBP_r$ effectiveness. Considering understandability-only in the evaluation, shows mixed results. Similar trends are observed for evaluation measures that consider understandability ($RBP$ and $RBP_u$), however with some exceptions. For example, an increase in $uRBP$ is observed when re-ranking ECNU using the top 50 results. 
 
-Note that with the increase of the number of documents considered for re-ranking, there is an increase in number of unassessed documents being considered by the evaluation measures. Both the RBP residuals and the column \textit{Unj} quantify the effect unassessed documents have on evaluation. Nevertheless, we note that if unassessed documents are excluded from the evaluation, similar trends are observed, e.g. compare findings with those for $uRBP^*$, $RBP_r^*$, $RBP_u^*$ and $HRBP^*$
+Note that with the increase of the number of documents considered for re-ranking, there is an increase in number of unassessed documents being considered by the evaluation measures. Both the RBP residuals and the column \textit{Unj} quantify the effect unassessed documents have on evaluation. Nevertheless, we note that if unassessed documents are excluded from the evaluation, similar trends are observed, e.g. compare findings with those for $uRBP^*$, $RBP_r^*$, $RBP_u^*$ and $HRBP^*$.
 
 
 Indices 13-21 refer to using the XGB regressor trained using all features listed in Table~\ref{tab:doc_features} to estimate understandability. Similarly to when using DCI, as the cut-off increases, e.g., from $n=15$ to $n=50$, documents returned are more understandable but less relevant. For the same cut-off value, e.g., $n=15$, the machine learning method used for estimating understandability consistently yielded more understandable results than DCI (higher $RBP_u$ and $RBP_u^*$). 
@@ -53,8 +53,7 @@ Indices 13-21 refer to using the XGB regressor trained using all features listed
 Next, we report the results of automatically combining topical relevance and understandability through rank fusion (indices 22 to 30). We used the XGB method for estimating understandability, as it was the one yielding highest effectiveness for the re-ranking method. (Results for DCI are in the appendix and confirm the superiority of XGB.) 
 
 Like as for re-ranking, also for rank fusion approaches we found that higher cut-offs were associated to higher effectiveness in terms of understandability measures on one hand, but higher losses in terms of relevance-oriented measures on the other. 
-
-However, the combination of understandability and relevance, $HRBP$, is more stable now than for the previous re-rank methods. 
+However, when combining relevance and understandability for evaluation ($HRBP$) is more stable now than for the previous re-rank methods. 
 For example, compare the $HRBP^*$ of methods that re-rank the top 50 documents per topic, XGB (22.17) and RRF (24.57), with the original BM25 run (23.93).
 
 \subsection{Learning to Rank}
