@@ -23,7 +23,7 @@ These combinations are listed in Table~\ref{tab:ltr}, with $R$ being the topical
 
 \input{tables/tab_ltr}
 
-Results for the considered retrieval methods are reported in Table~\ref{tab:experiments}. We reported only the results for CLEF 2016 for brevity; those for CLEF 2015 exhibited similar trends and are included in the online appendix. The effectiveness of the top two submissions to CLEF 2016 and the BM25 baseline are reported at indices 1-3 of Table~\ref{tab:experiments}. Statistically significant differences compared to the best participating run, GUIR, are reported with $\diamond$; differences between the original run (indices 1-3) and its modifications are reported with $\dagger$ (paired, two-tail t-test, $p<0.05$). Note that the baseline BM25 is significantly worse than GUIR across all measures. 
+Results for the considered retrieval methods are reported in Table~\ref{tab:experiments}. We reported only the results for CLEF 2016 for brevity; those for CLEF 2015 exhibited similar trends and are included in the online appendix. The effectiveness of the top two submissions to CLEF 2016 and the BM25 baseline are reported at indices 1-3 of Table~\ref{tab:experiments}. Statistically significant differences compared to the best CLEF 2016 run, GUIR, are reported with $\diamond$; differences between an original run (indices 1-3) and its modifications are reported with $\dagger$ (paired, two-tail t-test, $p<0.05$). Note that the baseline BM25 is significantly worse than GUIR across all measures. 
 
 %We start our experiments by showing at the top of Table~\ref{tab:experiments} (indices 1-3) the performance of the top 3 systems in CLEF eHealth 2016 together with a straightforward BM25 baseline run made with Terrier toolkit. Our further experiments will use not only these runs as a comparison base, but modify these runs when necessary.
 
@@ -31,11 +31,16 @@ Results for the considered retrieval methods are reported in Table~\ref{tab:expe
 \subsection{Re-ranking}
 \label{results:reranking}
 
-Indices 4-12 of Table~\ref{tab:experiments} report on the experiments re-ranking the top documents from runs listed at indices 1-3. This re-rank was made based on the DCI score of each document calculated using the preprocessing combination of Boilerpipe and ForcePeriod (best according to Pearson correlation, from Table~\ref{tab:top_corr_metrics}).
-We found that the relevance of the re-ranked runs (as measured by $RBP_r$ and $RBP_r^*$) significantly decreased, compared to the original runs: e.g., the first experiment with re-ranking using DCI at the top 15 reports the $RBP_r$ decreasing from 25.28 to 21.58. However, these re-ranked results were significantly more understandable: for the previous example, $RBP_u$ passed from 42.08 to 47.09.
-Also note the limitation of uRBP metrics to reveal such a effect, as both relevance and understandability are tied together in one single score.
+Indices 4-12 of Table~\ref{tab:experiments} report the results of re-ranking methods applied to the runs listed at indices 1-3. Re-ranking was applied based on the DCI score of each document calculated using the preprocessing combination of Boilerpipe and ForcePeriod (best according to Pearson correlation, from Table~\ref{tab:top_corr_metrics}).
+We found that the relevance of the re-ranked runs (as measured by $RBP_r$ and $RBP_r^*$) significantly decreased, compared to the original runs: e.g.,  re-ranking the top 15 search results using DCI  made $RBP_r$ decreasing from 25.28 to 21.58. However, these re-ranked results were significantly more understandable: for the previous example, $RBP_u$ passed from 42.08 to 47.09.
+%Also note the limitation of uRBP metrics to reveal such a effect, as both relevance and understandability are tied together in one single score.
 
-Indices 13-21 refer to using the XGB regressor trained using all features listed in Table~\ref{tab:doc_features}. Similarly to what happen with DCI, as the cut-off increases, e.g. from $n=15$ to $50$, 
+In the experiments, we also studied the influence of the numbers of documents considered for re-ranking. Indices 4-6 refer to re-ranking only the top 15 documents from the original runs; 7-9 refer to the first 20; and 10-12 to the first 50. The results show that the more documents are considered for re-ranking, the more degradation in $RBP_r$ effectiveness. Considering understandability-only in the evaluation, shows mixed results. Similar trends are observed for evaluation measures that consider understandability ($RBP$ and $RBP_u$), however with some exceptions. For example, an increase in $uRBP$ is observed when re-ranking ECNU using the top 50 results. 
+
+Note that with the increase of number of documents considered for re-ranking, there is an increase in number of unassessed documents being considered by the evaluation measures. Both the RBP residuals and the column \textit{Unj} quantify the effect unassessed documents have on evaluation. Nevertheless, we note that if unassessed documents are excluded from the evaluation, similar trends are observed. In fact, 
+
+
+Indices 13-21 refer to using the XGB regressor trained using all features listed in Table~\ref{tab:doc_features}. Similarly to when using DCI, as the cut-off increases, e.g. from $n=15$ to $50$, 
 documents returned are more understandably but less relevant. For the same cut-off value, e.g. $n=15$, the machine learning method consistently yielded more understandable results (higher $RBP_u$ and $RBP_u^*$). 
 
 %Next, we swap the Dale-Chall Index by XGB regressor trained using all features listed in Table~\ref{tab:doc_features}. % When using the set of top 10 features for each group from Table~\ref{tab:top_corr_metrics} results are always better than using an automatic method such as Chi Square to select 10 features to use.}.
