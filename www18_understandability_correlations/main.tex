@@ -1,5 +1,7 @@
 \documentclass[sigconf]{acmart}
 
+
+%\usepackage{arydshln}
 \usepackage{multirow}
 \usepackage{amssymb}
 \setcounter{tocdepth}{3}
@@ -10,6 +12,27 @@
 \usepackage{multirow}   % Allows table elements to span several rows.
 \usepackage{booktabs}   % Improves the typesettings of tables.
 \usepackage{hyperref}  % Enables cross linking in the electronic document version. This package has to be included second to last.
+
+\usepackage{booktabs,arydshln}
+
+
+\usepackage{booktabs,arydshln}
+
+\makeatletter
+\def\adl@drawiv#1#2#3{%
+        \hskip.5\tabcolsep
+        \xleaders#3{#2.5\@tempdimb #1{1}#2.5\@tempdimb}%
+                #2\z@ plus1fil minus1fil\relax
+        \hskip.5\tabcolsep}
+\newcommand{\cdashlinelr}[1]{%
+  \noalign{\vskip\aboverulesep
+           \global\let\@dashdrawstore\adl@draw
+           \global\let\adl@draw\adl@drawiv}
+  \cdashline{#1}
+  \noalign{\global\let\adl@draw\@dashdrawstore
+           \vskip\belowrulesep}}
+\makeatother
+
 
 % Copyright
 \setcopyright{none}
