@@ -62,18 +62,19 @@ $^{\star\diamondsuit\dagger}$ &  &  & \# of H5 tags\tabularnewline
  & \# of adpositions $^{\star\diamondsuit\dagger}$ &  &  & Mean R. Wiki.+Reddit+Pubmed \tabularnewline 
  & \# of conjunctions $^{\star\diamondsuit\dagger}$ & &  & Mean R. Wiki.+Reddit+Pubmed - w. OV \tabularnewline
 \cline{4-5} 
- & \# of determiners $^{\star\diamondsuit\dagger}$ & & \multirow{5}{*}{\textbf{MLR}} & Linear Regressor\tabularnewline  
+ & \# of determiners $^{\star\diamondsuit\dagger}$ & & \multirow{7}{*}{\textbf{MLR}} & Linear Regressor\tabularnewline  
  & \# of cardinal numbers $^{\star\diamondsuit\dagger}$ &  &  & Gradient Boosting Regressor\tabularnewline
  & \# of particles or other function words $^{\star\diamondsuit\dagger}$ &  &  & Multi-layer Perceptron Regressor\tabularnewline
  & \# of other POS (foreign words, typos) $^{\star\diamondsuit\dagger}$ &  &  & Random Forest Regressor\tabularnewline
  & \# of punctuation $^{\star\diamondsuit\dagger}$ &  &  & Support Vector Machine Regressor\tabularnewline
-\cline{4-5} 
- & Height of part-of-speech parser tree $^{\star\diamondsuit\dagger}$ &  &  \multirow{6}{*}{\textbf{MLC}} & Logistic Regression\tabularnewline
- & \# of Entities $^{\star\diamondsuit\dagger}$ &  &  & Gradient Boosting Classifier\tabularnewline
- & \# of Stopwords $^{\star\diamondsuit\dagger}$ &  &  & Multi-layer Perceptron Classifier\tabularnewline
+ & \# of Entities $^{\star\diamondsuit\dagger}$ &  &  & eXtreme Gradient Boosting (XGB) regressor
+ & Height of part-of-speech parser tree $^{\star\diamondsuit\dagger}$ &  &  & & Logistic Regression\tabularnewline
+ \cline{4-5} 
+ & \# of Stopwords $^{\star\diamondsuit\dagger}$ &  &   \multirow{5}{*}{\textbf{MLC}} & Multi-layer Perceptron Classifier\tabularnewline
  & \# of words not found in Aspell Eng. dict. $^{\star\diamondsuit\dagger}$ &  &  & Random Forest Classifier\tabularnewline
  &  &  &  & Support Vector Machine Classifier\tabularnewline
  &  &  &  & Multinomial Naive Bayes\tabularnewline
+ &  &  & & Gradient Boosting Classifier\tabularnewline
 \cline{1-2} \cline{4-5} 
 \end{tabular}
 }
