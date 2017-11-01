@@ -42,6 +42,8 @@ Note that with the increase of the number of documents considered for re-ranking
 
 Indices 13-21 refer to using the XGB regressor trained using all features listed in Table~\ref{tab:doc_features} to estimate understandability. Similarly to when using DCI, as the cut-off increases, e.g., from $n=15$ to $n=50$, documents returned are more understandable but less relevant. For the same cut-off value, e.g., $n=15$, the machine learning method used for estimating understandability consistently yielded more understandable results than DCI (higher $RBP_u$ and $RBP_u^*$). 
 
+Overall, statistical significant improvements over the baselines are observed for most configurations and measures.  
+
 %Next, we swap the Dale-Chall Index by XGB regressor trained using all features listed in Table~\ref{tab:doc_features}. % When using the set of top 10 features for each group from Table~\ref{tab:top_corr_metrics} results are always better than using an automatic method such as Chi Square to select 10 features to use.}.
 %While the higher correlation of Dale-Chall was XXX (as reported in table Y), correlations using XGB reached YYY, the closest method to the human agreement in this task.
 %We experimented with different understandability-relevance trade-offs by re-ranking at cut-off 15 (a more conservative method), 20 and 50 (a less conservative method). 
@@ -50,11 +52,11 @@ Indices 13-21 refer to using the XGB regressor trained using all features listed
 \subsection{Rank Fusion}
 \label{results:fusion}
 
-Next, we report the results of automatically combining topical relevance and understandability through rank fusion (indices 22 to 30). We used the XGB method for estimating understandability, as it was the one yielding highest effectiveness for the re-ranking method. (Results for DCI are in the appendix and confirm the superiority of XGB.) 
+Next, we report the results of automatically combining topical relevance and understandability through rank fusion (indices 22 to 30). We used the XGB method for estimating understandability, as it was the one yielding highest effectiveness for the re-ranking method. Runs were thus producing by fusing the re-ranking with XGB and the original run. (Results for DCI are in the appendix and confirm the superiority of XGB.) 
 
-Like as for re-ranking, also for rank fusion approaches we found that higher cut-offs were associated to higher effectiveness in terms of understandability measures on one hand, but higher losses in terms of relevance-oriented measures on the other. 
-However, when combining relevance and understandability for evaluation ($HRBP$) is more stable now than for the previous re-rank methods. 
-For example, compare the $HRBP^*$ of methods that re-rank the top 50 documents per topic, XGB (22.17) and RRF (24.57), with the original BM25 run (23.93).
+Like as for re-ranking, also for rank fusion approaches we found that, in general, higher cut-offs were associated to higher effectiveness in terms of understandability measures on one hand, but higher losses in terms of relevance-oriented measures on the other. Overall, results obtained with rank fusion are superior to those obtained with re-ranking only, though most differences are not statistically significant. Statistical significant improvements over the baselines are instead observed for most configurations and measures.  
+%However, when combining relevance and understandability for evaluation ($HRBP$) is more stable now than for the previous re-rank methods. 
+%For example, compare the $HRBP^*$ of methods that re-rank the top 50 documents per topic, XGB (22.17) and RRF (24.57), with the original BM25 run (23.93).
 
 \subsection{Learning to Rank}
 \label{results:ltr}
