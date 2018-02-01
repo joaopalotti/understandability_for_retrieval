@@ -1,0 +1,46 @@
+
+\section{A new Metric for Multi-Dimension IR Evaluation}
+\label{sec:extension}
+
+%A drawback of Zuccon's framework is that dimensions are combined into a unique evaluation score.
+Zuccon's framework for multi-dimension evaluation combines the results of all dimensions in \textbf{one} single step, providing a unique evaluation score~\cite{zuccon14,zuccon16}.
+While this unique score makes the comparison of different systems easy and direct, we argue that the combination of dimensions, as done in this framework, was premature.
+We propose instead, to separate the evaluation of each dimension, calculating first a unique value for each dimension separately and then combining scores into a unique effectiveness metric.
+Our proposal thus requires the possibility to evaluate each dimension separately and a function to combine the output of each dimension.
+
+The separated evaluation of topicality is trivial, it does not differ from the normal application of the standard evaluation metrics. 
+Each other dimension $D_i$ can be evaluated in the same fashion that $P(D_i|d@k)$ is assessed in Zuccon's framework~\cite{zuccon16}.
+For example, the binary calculation of the understandability metric $P(U|d@k)$ returns 1 if $P(U|d@k) \geq th_U$ and 0 otherwise, where $th_U$ is a threshold on the assessments of understandability. 
+
+In order to combine the outputs of each dimension, we propose the use of the harmonic mean, which is already successfully employed to combine recall and precision in the widely used $F$ metric.
+
+Given $D$ dimensions and $O_d$ the output of an evaluation metric $f$ in a particular dimension $d$, we define the harmonic mean for the evaluation metric $f$ as:
+%
+\begin{equation}
+%
+H_f = \Bigg(\frac{\sum\limits_{d=1}^{D} O_d^{-1} }{D} \Bigg)^{-1} = \Bigg(\frac{D}{\sum\limits_{d=1}^{D} O_d^{-1} } \Bigg) = \Bigg(\frac{ D \times \prod\limits_{d=1}^{D} O_d}{\sum\limits_{d=1}^{D} O_d } \Bigg)
+%
+\label{eq:RBP}
+\end{equation}
+%
+Without loss of generality, we instanciate $f = RBP$ through the following modification of RBP~\cite{moffat08}:
+\mytodo{It is likely that I wont need to cut the evaluation metrics to assess only N results}
+%, we propose the following metrics based on RBP that shall be used in \mytodo{Chapter XXX}:
+%As the official evaluation metric of CLEF eHealth has been based on 
+%
+\begin{itemize}[leftmargin=*]
+	\item $RBP@n_r(\rho)$: uses the relevance assessments for the top $n$ search results (i.e. this is the common RBP). In our experiments, we regard a document as topically relevant if assessed as somewhat relevant or highly relevant.
+%	
+    \item $RBP@n_u(\rho)$: uses the understandability assessments for the top $n$ search results. In our experiments, we regard a document as understandable (1) for CLEF 2015 if assessed easy or somewhat easy to understand; (2) for CLEF 2016 if its assessed understandability score was smaller than a threshold $U$ (we used $U = 40$ \footnote{This choice for $U$ was based on the distribution of understandability assessments shown in \mytodo{Figure~\ref{}}.}).
+%	
+    \item $H_{RBP@n(\rho)} = 2 \times \frac{RBP@n_r \times RBP@n_u}{RBP@n_r + RBP@n_u}$: combines the previous two RBP values into a unique metric using the harmonic mean 
+\end{itemize}
+%
+\mytodo{Need to change justification}
+For all metrics we set $n=10$ because shallow pools were used in CLEF along with metrics that focused on the top 10 search results (including $RBP_r@10$).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
