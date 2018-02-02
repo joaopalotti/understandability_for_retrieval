@@ -20,9 +20,11 @@ For binary relevance, this probability can simply be 1 for relevant documents an
 Zuccon~\cite{zuccon16} extends this framework to consider cases where relevance is modeled beyond topical aboutness and other dimensions, such as understandability, are explicitly modeled.
 This is done by modeling the probability of relevance $P(R|d@k)$ as the joint distribution over all considered dimensions of relevance $P(D_1, \cdots, D_n|d@k)$, where  each $D_i$ represents a dimension of relevance, e.g., topicality, understandability, trustworthiness, so on. The computation of this probability is simplified by assuming  that dimensions are compositional events and their probabilities independent (see~\cite{zuccon16} for more details). The gain function with respect to different dimensions of relevance can then be expressed within the gain-discount framework as:
 %
-\begin{equation}
-g(d@k) = f(P(R|d@k)) = f\big(P(D_1, \cdots, D_n|d@k)\big) = f\Big(\prod_{i=1}^n P(D_i|d@k)\Big) 
-\end{equation}
+\begin{eqnarray}
+    g(d@k) &=& f(P(R|d@k)) \\
+    &=& f\big(P(D_1, \cdots, D_n|d@k)\big) \\
+    &=& f\Big(\prod_{i=1}^n P(D_i|d@k)\Big) 
+\end{eqnarray}
 %
 
 Evaluation metrics developed within this framework differ by means of the instantiations of $f\big(P(D_1, \cdots, D_n|d@k)\big)$, other than by which dimensions are modeled. Zuccon~\cite{zuccon16} provided an instantiation that considers both topical relevance and understandability as follows:
@@ -62,9 +64,9 @@ For example, assessments collected in a Likert scale of 5 levels can be easily c
 Assessments collected in a scale from 0 to 100 (e.g., 0 being the lowest level of understandability), could be directly used as estimations of $P(U|d@k)$ or modified by a smoother function.
 These estimations are then plugged into the metric. In order to distinguish binary from graded metrics, Zuccon adds the suffix \textit{gr} to the graded version of the metrics~\cite{zuccon16}.
 
-\todo{maybe move this paragraph to the actual experimentation part}
-The settings used in CLEF eHealth 2015 was to attribute the value of 0.0 to $P(U|d@k)$ if a document was assessed as hard to understand, 0.4 if it was assessed as somewhat hard to understand, 0.8 for a somewhat easy-to-understand document and, finally, 1.0 if the document was assessed as easy to understand. In CLEF eHealth 2016, assessments were made in a 0-100 scale, with 0 being the easiest to read, thus $P(U|d@k)$ was assigned as (100 - understandability\_label)/100.
-Also, the RBP's $\rho$ parameter was set to 0.80~\cite{clef15,clef16}. We shall use the same definitions in \mytodo{Chapter XXX}.
+%\todo{maybe move this paragraph to the actual experimentation part}
+%The settings used in CLEF eHealth 2015 was to attribute the value of 0.0 to $P(U|d@k)$ if a document was assessed as hard to understand, 0.4 if it was assessed as somewhat hard to understand, 0.8 for a somewhat easy-to-understand document and, finally, 1.0 if the document was assessed as easy to understand. In CLEF eHealth 2016, assessments were made in a 0-100 scale, with 0 being the easiest to read, thus $P(U|d@k)$ was assigned as (100 - understandability\_label)/100.
+%Also, the RBP's $\rho$ parameter was set to 0.80~\cite{clef15,clef16}. We shall use the same definitions in \mytodo{Chapter XXX}.
 
 % The goal of CLEF eHealth 2015 and 2016 was to retrieve documents as easy as possible, but that might not always be the case. A user with larger health domain knowledge might accept -- or even want -- a harder document to read.
 
