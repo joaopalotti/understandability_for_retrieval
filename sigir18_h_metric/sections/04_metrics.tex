@@ -14,7 +14,7 @@ This way, we know exactly what to expect from each system and evaluation metric 
 
 Through the expected results of the simulated systems, we demonstrate how the proposed two-step framework, $H$ (Section~\ref{sec:extension}), fixes the main drawback found in Zuccon's modification of the gain-discount framework (Section~\ref{sec:understandability_metrics}). 
 
-Without loss of generality, we set our further experiments in the same context as Zuccon's framework was proposed: to evaluate both topicality and understandability of documents in the context of consumer health search. This decision helps the flow of this paper, but by no means these frameworks are limited to evaluate this specific dimensions. 
+Without loss of generality, we set our further experiments in the same context as UBIRE was proposed: to evaluate both topicality and understandability of documents in the context of consumer health search. This decision helps the flow of this paper, but by no means these frameworks are limited to evaluate this specific dimensions. 
 
 In our further experiments, we have full control over both topical and understandability relevance of documents. 
 The behaviour of the proposed evaluation metrics is investigated when we slightly increase/decrease the amount of topically relevant documents or when we increase/decrease the expected reading difficult of the retrieved documents. 
@@ -40,7 +40,7 @@ In Figure~\ref{fig:gaussians} we also include the threshold U used to compute $R
 
 In total, we generated 1,000 runs for each topical relevance level (topicality phase) and $mu$ value (understandability phase). 
 
-We calculated the $uRBP$ score from Zuccon's framework and the $H_{RBP}$ score from our proposed framework for each simulated system.
+We calculated the $uRBP$ score from UBIRE framework and the $H_{RBP}$ score from our proposed framework for each simulated system.
 The average result of selected scenarios is shown in Table~\ref{tab:simulations}.
 
 Each row of Table~\ref{tab:simulations} shows the results of simulations with different values for $T$, i.e., different expected number of relevant documents retrieved.
@@ -62,7 +62,7 @@ We modeling and experimenting with a retrieval system, a modification that aims 
 This situation could be translated in an initial system with results shown in blue in Table~\ref{tab:simulations} (i.e., $T=0.6$ and $\mathcal{N}(40,40)$) 
 being modified into the system with results shown in yellow ($T=0.5$ and $\mathcal{N}(30,40)$).
 
-If the person doing the system modification considers only the $RBP$ and the $uRBP$, she would definitely discard the new systems (marked in yellow in Table~\ref{tab:simulations}) as both $RBP$ and $uRBP$ decreased ($RBP$ decreased from 56 to 47 and $uRBP$ decreases from 32 to 30). Based only on $RBP$ and $uRBP$ from Zuccon's framework, it is not possible to notice the gains in the understandability dimension.
+If the person doing the system modification considers only the $RBP$ and the $uRBP$, she would definitely discard the new systems (marked in yellow in Table~\ref{tab:simulations}) as both $RBP$ and $uRBP$ decreased ($RBP$ decreased from 56 to 47 and $uRBP$ decreases from 32 to 30). Based only on $RBP$ and $uRBP$ from UBIRE framework, it is not possible to notice the gains in the understandability dimension.
 
 However, when separately measuring $RBP_t$ (which is the same as $RBP$) and $RBP_u$, we can understand better what is happening with each dimension: $RBP_t$ decreases from 56 to 47, but $RBP_u$ increases from 49 to 60, i.e., the trade-off between the two dimensions is clearly shown.
 Finally, $H_{RBP}$, which is instantiated to give the same importance to both dimensions, shows that, although very different, both system are equivalent. 

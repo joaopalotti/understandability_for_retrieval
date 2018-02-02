@@ -7,7 +7,7 @@ This was called \textit{topical relevance} by Eisenberg and Schamber~\cite{eisen
 Due to its simplicity and clear definition~\cite{borlund03}, this notion was adopted by most of the modern evaluation tasks, such as TREC\footnote{\url{http://trec.nist.gov}}, CLEF\footnote{\url{http://www.clef-initiative.eu/}} and NTCIR\footnote{\url{http://http://research.nii.ac.jp/ntcir/index-en.html}}, which heavily rely on evaluation metrics that exclusively measure the topical relevance of documents~\cite{voorhees05}.
 Recently extensions were made based on notions of novelty and diversity (e.g.,~\cite{clarke09}), but these new metrics still mainly consider relevance with respect to document topicality.
 
-However, document relevance cannot be attributed to just one factor such as topicality, instead it is multidimensional and situational~\cite{borlund03}.
+However, document relevance cannot be attributed to just one factor such as topicality, instead, it is multidimensional and situational~\cite{borlund03}.
 Early research~\cite{saracevic75,swanson86,harter92}, reviewed by Borlund divided relevance into two classes: (1) objective or system-based relevance and (2) subjective or human based relevance~\cite{borlund03}. 
 This first class of relevance exclusively refers to the document ``aboutness'' aforementioned and it is context-free, while the second one refers to the subjective factors in both user and documents and it is context dependent.
 A large body of subsequent research was dedicated to identifying the subjective aspects of relevance.
@@ -15,23 +15,20 @@ Park, for example, identified individual's subject knowledge, professional train
 Schamber published a compiling and non-exhaustive list of 80 relevance criteria suggested in the literature~\cite{schamber94}.
 %
 In the consumer health search domain, William Hersh highlighted two important factors to be considered by modern search engines~\cite{hersh08}: understandability and information trustworthiness. 
-This paper focus on the community efforts to integrate these two dimensions in the evaluation of consumer health search systems.
-%This thesis focus on the first one.
+While the frameworks described in this paper are broad enough to be used with any multidimensional evaluation, we use as example here the consumer health search scenario as early approaches have been developed in this context.
 
 Early efforts to integrate understandability into information retrieval evaluation was made by Zuccon and Koopman~\cite{zuccon14} and enhanced later by Zuccon~\cite{zuccon16}.
-Metrics such as $uRBP$ and $uRBPgr$, built upon the Rank Biased Precision metric (RBP)~\cite{moffat08}, were widely used in recent evaluation campaigns in the context of CLEF eHealth to combine understandability of documents with topical relevance.
-$uRBP$, short for understandability-biased RBP and its graded version, $uRBPgr$, merge the relevance and understandability scores of a document into a unique score following the gain-discount framework by Carterette~\cite{carterette11}.
+They refer to their framework as \textit{understandability-biased IR evaluation framework} (UBIRE).
+Under UBIRE, metrics such as $uRBP$ and $uRBPgr$ were built upon the Rank Biased Precision metric (RBP)~\cite{moffat08}. These metrics are used in recent evaluation campaigns in the context of CLEF eHealth to combine understandability of documents with topical relevance (and more recently they included a dimension for document trustworthiness~\cite{clef17}.
+$uRBP$, short for understandability-biased RBP and its graded version, $uRBPgr$, merge the relevance and understandability scores of a document into a unique score following the gain-discount framework by Carterette~\cite{carterette11}. We shall review UBIRE framework in Section~\ref{sec:understandability_metrics}. 
 
-While Zuccon's framework can be successfully used to compare results across systems, as intended by evaluation campaigns such as CLEF eHealth, it is not trivial to identify how the retrieval performance of different dimensions affect the final score outputted by this framework.
-We shall see in this paper that the early combination of scores make it difficult to interpret whether improvements (deterioration) are due to more (less) understandable or more (less) topical documents being retrieved.
+While UBIRE framework can be successfully used to compare results across systems, as intended by evaluation campaigns such as CLEF eHealth, it is not trivial to identify how the retrieval performance of different dimensions affect the final score outputted by metrics of this framework.
+We shall see Section~\ref{sec:simulations} that the early combination of scores make it difficult to interpret whether improvements (deterioration) are due to more (less) understandable or more (less) topical documents being retrieved.
 
-What We propose is an alternative metric $H$ which uses a harmonic mean function to combine scores earlier calculated for each dimension.
-In order to fairly compare our framework with Zuccon's, we also modify the RBP metric in our framework, resulting in the $H_{RBP}$ metric.
+What we propose is an alternative framework based on a later combination of intermediary results through a harmonic mean function.
+We describe our framework in Section~\ref{sec:extension} and, in order to fairly compare our framework to UBIRE, we modify the same RBP metric, resulting in a metric called $H_{RBP}$.
 
-We shall review Zuccon's framework in Section~\ref{sec:understandability_metrics}. 
-Our proposed alternative framework is presented in Section~\ref{sec:extension}.
-We compare both frameworks through simulations in Section~\ref{sec:simulations}.
-Finally, a summary is done in Section~\ref{sec:eval_summary}.
+Finally, we present our discussion and conclusions in Section~\ref{sec:eval_summary}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

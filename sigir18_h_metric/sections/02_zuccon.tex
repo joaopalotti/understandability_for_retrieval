@@ -1,7 +1,7 @@
 \section{Incorporating Understandability into Evaluation Metrics}
 \label{sec:understandability_metrics}
 
-The understandability based framework of Zuccon~\cite{zuccon16} is based on the gain-discount framework by Carterette~\cite{carterette11}, which can be generically defined as an evaluation metric $M$ as:
+UBIRE, the understandability-based IR evaluation framework of Zuccon~\cite{zuccon14,zuccon16}, is based on the gain-discount framework by Carterette~\cite{carterette11}, which can be generically defined as an evaluation metric $M$ as:
 %
 \begin{equation}
 M=\frac{1}{\mathcal{N}} \sum_{k=1}^{K} d(k) g(d@k)
@@ -39,7 +39,7 @@ Specifically, Zuccon~\cite{zuccon16} provided an instantiation of this multidime
 In the context of RBP, the gain function $r(d@k)$ is 1 if $d@k$ is relevant and 0 otherwise, the discount function is measured by a geometric function of the rank, i.e., $d(k) = \rho^{k-1}$ (with $\rho$ representing the user persistence), and $1-\rho$ acts as a normalization component. Putting all together, RBP is expressed by the following formula:
 %)
 \begin{equation}
-RBP = (1-\rho) \sum_{k=1}^{K} \rho^{k-1} r(d@k)
+    RBP(\rho) = (1-\rho) \sum_{k=1}^{K} \rho^{k-1} r(d@k)
 \label{eq:RBP}
 \end{equation}
 %
@@ -48,7 +48,7 @@ Note that $r(d@k)$ is an initialization of $f(P(T|d@k))$, where $f(.)$ is the id
 Extending RBP to cope with multidimensional relevance, Zuccon and Koopman~\cite{zuccon14} define the understandability-biased RBP, $uRBP$, as: 
 %
 \begin{eqnarray}
-uRBP &=& (1-\rho) \sum_{k=1}^{K} \rho^{k-1} P(T|d@k) \cdot P(U|d@k)\\ 
+    uRBP(\rho) &=& (1-\rho) \sum_{k=1}^{K} \rho^{k-1} P(T|d@k) \cdot P(U|d@k)\\ 
 &=& (1-\rho) \sum_{k=1}^{K} \rho^{k-1} r(d@k) \cdot u(d@k)
 \label{eq:RBP}
 \end{eqnarray}
@@ -62,7 +62,7 @@ While $r(d@k)$ is the same function as in the original version of RBP, i.e. the 
 For the graded version, we rely on the possibility to transform the understandability assessment collected into estimations of $P(U|d@k)$.
 For example, assessments collected in a Likert scale of 5 levels can be easily converted into estimations ranging from 0.0 to 1.0 with steps of 0.25 (0.0, 0.25, 0.50, 0.75 and 1.0).
 Assessments collected in a scale from 0 to 100 (e.g., 0 being the lowest level of understandability), could be directly used as estimations of $P(U|d@k)$ or modified by a smoother function.
-These estimations are then plugged into the metric. In order to distinguish binary from graded metrics, Zuccon adds the suffix \textit{gr} to the graded version of the metrics~\cite{zuccon16}.
+These estimations are then plugged into the metric. In order to distinguish binary from graded metrics, the suffix \textit{gr} was added to the graded version of the metrics~\cite{zuccon16}.
 
 %\todo{maybe move this paragraph to the actual experimentation part}
 %The settings used in CLEF eHealth 2015 was to attribute the value of 0.0 to $P(U|d@k)$ if a document was assessed as hard to understand, 0.4 if it was assessed as somewhat hard to understand, 0.8 for a somewhat easy-to-understand document and, finally, 1.0 if the document was assessed as easy to understand. In CLEF eHealth 2016, assessments were made in a 0-100 scale, with 0 being the easiest to read, thus $P(U|d@k)$ was assigned as (100 - understandability\_label)/100.
