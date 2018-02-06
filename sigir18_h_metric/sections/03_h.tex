@@ -3,25 +3,31 @@
 \label{sec:extension}
 
 %A drawback of Zuccon's framework is that dimensions are combined into a unique evaluation score.
-UBIRE framework for multi-dimension evaluation combines the results of all dimensions in \textbf{one} single step, providing a unique evaluation score~\cite{zuccon14,zuccon16}.
-While this unique score makes the comparison of different systems easy and direct, we argue that the combination of dimensions, as done in UBIRE, was premature.
-We propose instead, to separate the evaluation of each dimension, calculating first a unique value for each dimension separately and then combining scores into a unique effectiveness metric.
-Our proposal thus requires the possibility of evaluating each dimension separately and the existence of a function to combine the output of each dimension.
+A limitation of the UBIRE framework is that it combines the gains contributed by each dimension of relevance in \textbf{one} single step, providing a unique evaluation score~\cite{zuccon14,zuccon16}.
+While this allows for the comparison of systems, it does not permit to understand the contribution each dimension had on the evaluation measure. 
+\todo{Here I would make an example.}
+To overcome this limitation, we aim to create a measure which, while still allowing the modelling of multidimensional relevance, is of easy interpretation and for which it is straightforward to track the contribution each relevance dimension had on the final effectiveness score. This is achieve by separating the evaluation of each dimension such that a value for each dimension is calculate separately with respect to its gain and discount, and then these are combined into a unique effectiveness measure. Note that we assume that it is possible to evaluate each measure separately: while this is akin to the compositionality assumptions in UBIRE, if that failed, UBIRE would use mixture models to compute the related probabilities, while the proposed measure would be instead likely undefined. 
 
-The separated evaluation of each dimension is trivial, it consists in applying a pre-defined evaluation metric, $m$ (e.g. RBP), to each dimension $d \in D$.
+The evaluation of each relevance dimension separately is trivial, as it consists in applying the discount and gain function of the underlying evaluation measure, e.g. RBP, to each relevance dimension $\delta \in \mathcal{D}$, where the gains are those associated with the criteria for that specific dimension. 
+
+
+%While this unique score makes the comparison of different systems easy and direct, we argue that the combination of dimensions, as done in UBIRE, was premature.
+%We propose instead, to separate the evaluation of each dimension, calculating first a unique value for each dimension separately and then combining scores into a unique effectiveness metric.
+%Our proposal thus requires the possibility of evaluating each dimension separately and the existence of a function to combine the output of each dimension.
+
+%The separated evaluation of each dimension is trivial, it consists in applying a pre-defined evaluation metric, $m$ (e.g. RBP), to each dimension $d \in D$.
 %Each other dimension $D_i$ can be evaluated in the same fashion that $P(D_i|d@k)$ is assessed in UBIRE~\cite{zuccon16}.
 %For example, the binary calculation of the understandability metric $P(U|d@k)$ returns 1 if $P(U|d@k) \geq th_U$ and 0 otherwise, where $th_U$ is a threshold on the assessments of understandability. 
 
-In order to combine the outputs of each dimension, we propose the use of the weighted harmonic mean, which is already successfully employed to balance recall and precision in the widely used $F$ metric.
+In order to combine the outputs of each relevance dimension, we use of the weighted harmonic mean (akin to its use to combine recall and precision in the widely used $F$-measure). Given a (discount-gain) evaluation measure $\mathcal{M}$, we apply the measure to evaluate a list of  documents $l_\delta$ which have been labeled with respect to dimension $\delta$ (i.e., we compute $\mathcal{M}(l_\delta)$). Then, to compute the proposed measure $H_\mathcal{M}$, we combine all $\mathcal{M}(l_\delta)$ for each relevance dimension using the harmonic mean, where each dimension is weighted according to a preferential weight $w_\delta$ assigned to each dimension; formally:
 
-
-To define the weighted harmonic mean proposed, we need the aforementioned evaluation metric $m$, which will be applied to evaluate a list of labeled documents $l_d$ (i.e., $m(l_d)$).
-Also, we need a set of weights for each dimension, which control the importance of each dimension.
-We define the weighted harmonic mean $H(m)$ as:
+%To define the weighted harmonic mean proposed, we need the aforementioned evaluation metric $m$, which will be applied to evaluate a list of labeled documents $l_d$ (i.e., $m(l_d)$).
+%Also, we need a set of weights for each dimension, which control the importance of each dimension.
+%We define the weighted harmonic mean $H(m)$ as:
 
 \begin{equation}
-    H_m  = \left( \frac{\sum\limits_{d=1}^D w_d \cdot m(l_d)^{-1}}{\sum\limits_{d=1}^D w_d} \right)^{-1}
-          = \frac{\sum\limits_{i=1}^D w_i}{\sum\limits_{i=1}^D \frac{w_i}{m(l_d)}}
+    H_\mathcal{M}  = \left( \frac{\sum\limits_{\delta=1}^D w_\delta \cdot \mathcal{M}(l_\delta)^{-1}}{\sum\limits_{\delta=1}^D w_\delta} \right)^{-1}
+          = \frac{\sum\limits_{\delta=1}^D w_\delta}{\sum\limits_{\delta=1}^D \frac{w_\delta}{\mathcal{M}(l_\delta)}}
 \label{eq:H}
 \end{equation}
 
@@ -35,18 +41,18 @@ We define the weighted harmonic mean $H(m)$ as:
 
 
 %
-Without loss of generality, we instantiate $m = RBP$ and define the following modification of RBP~\cite{moffat08} for each dimension:
+Without loss of generality, we instantiate $\mathcal{M} = RBP$ and define the following modification of RBP~\cite{moffat08} for each dimension:
 %
 \begin{itemize}[leftmargin=*]
-	\item $RBP_r(\rho)$: uses the relevance assessments for the top $n$ search results (i.e. this is the regular RBP). 
+	\item $RBP_t(\rho)$: uses the topicality assessments (i.e. this is the usual RBP). 
 %	
-    \item $RBP_u(\rho)$: uses the understandability assessments for the top $n$ search results. In our experiments, we regard a document as understandable if its assessed understandability score was smaller than a threshold $U$ (we arbitrary choose $U = 40$ in our simulated experiments).
+    \item $RBP_u(\rho)$: uses the understandability assessments. In the experiments below, we regard a document as understandable if its assessed understandability score was smaller than a threshold $U$ (we arbitrary choose $U = 40$ in our simulated experiments).
 \end{itemize}
 
-We can rewrite Equation~\ref{eq:H} with the definitions above and same weights to both dimensions as:
+Thus Equation~\ref{eq:H} becomes (we assumed $w_t = w_u$):
 %
 \begin{equation}
- H_{RBP(\rho)} = 2 \cdot \frac{RBP_r(\rho) \cdot RBP_u(\rho)}{RBP_r(\rho) + RBP_u(\rho)}
+ H_{RBP(\rho)} = 2 \cdot \frac{RBP_t(\rho) \cdot RBP_u(\rho)}{RBP_t(\rho) + RBP_u(\rho)}
 \label{eq:Hrbp}
 \end{equation}
 
