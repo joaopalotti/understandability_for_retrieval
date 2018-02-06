@@ -1,19 +1,22 @@
 \section{Incorporating Understandability into Evaluation Metrics}
 \label{sec:understandability_metrics}
+The nderstandability-based IR evaluation framework (UBIRE)~\cite{zuccon14,zuccon16} is based on the gain-discount framework~\cite{carterette11} which models an evaluation measure $\mathcal{M}$ as:
 
-UBIRE, the understandability-based IR evaluation framework of Zuccon~\cite{zuccon14,zuccon16}, is based on the gain-discount framework by Carterette~\cite{carterette11}, which can be generically defined as an evaluation metric $M$ as:
+
+
+
+%UBIRE, the understandability-based IR evaluation framework of Zuccon~\cite{zuccon14,zuccon16}, is based on the gain-discount framework by Carterette~\cite{carterette11}, which can be generically defined as an evaluation metric $M$ as:
 %
 \begin{equation}
-M=\frac{1}{\mathcal{N}} \sum_{k=1}^{K} d(k) g(d@k)
+\mathcal{M} = \frac{1}{\mathcal{N}} \sum_{k=1}^{K} \mathtt{d}(k) \mathtt{g}(d@k)
 \end{equation}
 %
-where $g(d@k)$ and $d(k)$ are respectively the \textit{gain function} computed for the (relevance of the) document at rank $k$ and the \textit{discount function} computed for the rank $k$.
-$K$ is the depth of assessment at which the metric is evaluated, and $1/\mathcal{N}$ is an optional normalization factor, which serves to bound the value of the sum into the range [0,1] (details in \cite{smucker12}).
+where $\mathtt{g}(d@k)$ and $\mathtt{d}(k)$ are respectively the \textit{gain function} computed for the (relevance of the) document at rank $k$ (i.e. $d@k$) and the \textit{discount function} computed for the rank $k$.
+$K$ is the depth of assessment at which measure $\mathcal{M}$ is evaluated, and $1/\mathcal{N}$ is an optional normalization factor, which serves to bound the value of the sum into the range [0,1] (details in~\cite{carterette11}).
 
-The gain-discount framework encompasses metrics like the normalized Discounted Cumulative Gain (nDCG)~\cite{jarvelin02} with $g(d@k) = 2^{P(R|d@k)} - 1$ and $d(k) = 1/(log_2(1 + k))$ 
-and the expected reciprocal rank (ERR)~\cite{chapelle09} with $g(d@K) =  (2^{P (R|d@k)} - 1)/2^{max(P (R|d))}$ and $d(k) = 1/k$.
+The gain-discount framework encompasses measures such as the normalized Discounted Cumulative Gain (nDCG)~\cite{jarvelin02} with $\mathtt{g}(d@k) = 2^{P(R|d@k)} - 1$ and $\mathtt{d}(k) = 1/(log_2(1 + k))$; the expected reciprocal rank (ERR)~\cite{chapelle09} with $\mathtt{g}(d@K) =  (2^{P (R|d@k)} - 1)/2^{max(P (R|d))}$ and $\mathtt{d}(k) = 1/k$; and the Rank Biased Precision (RBP) with \todo{finish}.
 
-The gain provided by a document at rank $k$ can be expressed as a function of its probability of relevance. Without loss of generality, $g(d@k) = f(P(R|d@k))$, where $P(R|d@k)$ is the probability of relevance given the document at $k$. 
+The gain provided by a document at rank $k$ can be expressed as a function of its probability of relevance. Without loss of generality, $\mathtt{g}(d@k) = f(P(R|d@k))$, where $P(R|d@k)$ is the probability of relevance given the document at $k$. 
 When only topical relevance is modeled, $P(R|d@k) = P(T|d@k)$, i.e., the probability that the document at $k$ is topically relevant. 
 For binary relevance, this probability can simply be 1 for relevant documents and 0 for non-relevant documents. For non-binary cases, this probability can be distributed according to the number of relevance levels.
 
