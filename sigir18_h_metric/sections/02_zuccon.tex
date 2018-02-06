@@ -14,14 +14,14 @@ The nderstandability-based IR evaluation framework (UBIRE)~\cite{zuccon14,zuccon
 where $\mathtt{g}(d@k)$ and $\mathtt{d}(k)$ are respectively the \textit{gain function} computed for the (relevance of the) document at rank $k$ (i.e. $d@k$) and the \textit{discount function} computed for the rank $k$.
 $K$ is the depth of assessment at which measure $\mathcal{M}$ is evaluated, and $1/\mathcal{N}$ is an optional normalization factor, which serves to bound the value of the sum into the range [0,1] (details in~\cite{carterette11}).
 
-The gain-discount framework encompasses measures such as the normalized Discounted Cumulative Gain (nDCG)~\cite{jarvelin02} with $\mathtt{g}(d@k) = 2^{P(R|d@k)} - 1$ and $\mathtt{d}(k) = 1/(log_2(1 + k))$; the expected reciprocal rank (ERR)~\cite{chapelle09} with $\mathtt{g}(d@K) =  (2^{P (R|d@k)} - 1)/2^{max(P (R|d))}$ and $\mathtt{d}(k) = 1/k$; and the Rank Biased Precision (RBP) with \todo{finish}.
+The gain-discount framework encompasses measures such as the normalized Discounted Cumulative Gain (nDCG)~\cite{jarvelin02} with $\mathtt{g}(d@k) = 2^{P(R|d@k)} - 1$ and $\mathtt{d}(k) = 1/(log_2(1 + k))$; the expected reciprocal rank (ERR)~\cite{chapelle09} with $\mathtt{g}(d@K) =  (2^{P (R|d@k)} - 1)/2^{max(P (R|d))}$ and $\mathtt{d}(k) = 1/k$; and the Rank Biased Precision (RBP) with $\mathtt{g}(d@k)$ equal to 1 if $d@k$ is relevant and 0 otherwise and $\mathtt{d}(k) = \rho^{k-1}$ (with $\rho$ representing the user persistence).
 
 The gain provided by a document at rank $k$ can be expressed as a function of its probability of relevance. Without loss of generality, $\mathtt{g}(d@k) = f(P(R|d@k))$, where $P(R|d@k)$ is the probability of relevance given the document at $k$. 
-When only topical relevance is modeled, $P(R|d@k) = P(T|d@k)$, i.e., the probability that the document at $k$ is topically relevant. 
-For binary relevance, this probability can simply be 1 for relevant documents and 0 for non-relevant documents. For non-binary cases, this probability can be distributed according to the number of relevance levels.
+When only topical relevance is modelled, then $P(R|d@k) = P(T|d@k)$, i.e., the probability that the document at $k$ is topically relevant. 
+For binary relevance, this probability is 1 for relevant documents and 0 for non-relevant documents. For non-binary relevance, this probability can be distributed according to the number of relevance levels.
 
-Zuccon~\cite{zuccon16} extends this framework to consider cases where relevance is modeled beyond topical aboutness and other dimensions, such as understandability, are explicitly modeled.
-This is done by modeling the probability of relevance $P(R|d@k)$ as the joint distribution over all considered dimensions of relevance $P(D_1, \cdots, D_n|d@k)$, where  each $D_i$ represents a dimension of relevance, e.g., topicality, understandability, trustworthiness, so on. The computation of this probability is simplified by assuming  that dimensions are compositional events and their probabilities independent (see~\cite{zuccon16} for more details). The gain function with respect to different dimensions of relevance can then be expressed within the gain-discount framework as:
+UBIRE extends this framework to consider cases where relevance is modelled beyond topicality so as to explicitly model other dimensions, such as understandability.
+This is done by modelling the probability of relevance $P(R|d@k)$ as the joint distribution over all considered dimensions of relevance $P(D_1, \cdots, D_n|d@k)$, where each $D_i$ represents a dimension of relevance, e.g., topicality, understandability, trustworthiness, so on. The computation of this probability is simplified by assuming that dimensions are compositional events and their probabilities independent (see~\cite{zuccon16} for more details). The gain function with respect to different dimensions of relevance can then be expressed as:
 %
 \begin{eqnarray}
     g(d@k) &=& f(P(R|d@k)) \\
@@ -33,39 +33,51 @@ This is done by modeling the probability of relevance $P(R|d@k)$ as the joint di
 Evaluation metrics developed within this framework differ by means of the instantiations of $f\big(P(D_1, \cdots, D_n|d@k)\big)$, other than by which dimensions are modeled. Zuccon~\cite{zuccon16} provided an instantiation that considers both topical relevance and understandability as follows:
 %
 \begin{equation}
-g(d@k) = f(P(R|d@k)) = f\big(P(T|d@k) \cdot P(U|d@k)\big)
+\mathtt{g}(d@k) = f(P(R|d@k)) = f\big(P(T|d@k) \cdot P(U|d@k)\big)
 \end{equation}
 %
-with $P(R|d@k)$ as the joint $P(T,U|d@k)$ that is in turn computed as the product $P(T|d@k) \cdot P(U|d@k)$ following the assumptions discussed above.
+%with $P(R|d@k)$ as the joint $P(T,U|d@k)$ that is in turn computed as the product $P(T|d@k) \cdot P(U|d@k)$ following the assumptions discussed above.
 
-Specifically, Zuccon~\cite{zuccon16} provided an instantiation of this multidimensional evaluation approach on top of RBP~\cite{moffat08}, a well understood metric of retrieval effectiveness which also fits within the gain-discount framework. 
-In the context of RBP, the gain function $r(d@k)$ is 1 if $d@k$ is relevant and 0 otherwise, the discount function is measured by a geometric function of the rank, i.e., $d(k) = \rho^{k-1}$ (with $\rho$ representing the user persistence), and $1-\rho$ acts as a normalization component. Putting all together, RBP is expressed by the following formula:
-%)
-\begin{equation}
-    RBP(\rho) = (1-\rho) \sum_{k=1}^{K} \rho^{k-1} r(d@k)
-\label{eq:RBP}
-\end{equation}
-%
-Note that $r(d@k)$ is an initialization of $f(P(T|d@k))$, where $f(.)$ is the identity function and $r(d@k)$ estimates $P(T|d@k)$. 
-
-Extending RBP to cope with multidimensional relevance, Zuccon and Koopman~\cite{zuccon14} define the understandability-biased RBP, $uRBP$, as: 
+Specific implementations of the UBIRE framework that have been developed in previous work considered the basic gain and discount functions from RBP~\cite{moffat08}; an instantiation with understandability~\cite{zuccon14,zuccon16} has been later extended by jointly considering also trustworthiness~\cite{clef17}. For ease of explanation, we consider the formulation with topicality and understandability; similar considerations apply to when also trustworthiness is modelled (as well as other dimensions, as a matter of fact). In this case, the understandability-biased RBP, $uRBP$, is defined as: 
 %
 \begin{eqnarray}
     uRBP(\rho) &=& (1-\rho) \sum_{k=1}^{K} \rho^{k-1} P(T|d@k) \cdot P(U|d@k)\\ 
-&=& (1-\rho) \sum_{k=1}^{K} \rho^{k-1} r(d@k) \cdot u(d@k)
+&=& (1-\rho) \sum_{k=1}^{K} \rho^{k-1} \mathtt{g}_{RBP}(d@k) \cdot \mathtt{g}_{U}(d@k)
 \label{eq:RBP}
 \end{eqnarray}
+
+
+%%%Specifically, Zuccon~\cite{zuccon16} provided an instantiation of this multidimensional evaluation approach on top of RBP~\cite{moffat08}, a well understood metric of retrieval effectiveness which also fits within the gain-discount framework. 
+%%In the context of RBP, the gain function $r(d@k)$ is 1 if $d@k$ is relevant and 0 otherwise, the discount function is measured by a geometric function of the rank, i.e., $d(k) = \rho^{k-1}$ (with $\rho$ representing the user persistence), and $1-\rho$ acts as a normalization component. Putting all together, RBP is expressed by the following formula:
+%%%)
+%%\begin{equation}
+%%    RBP(\rho) = (1-\rho) \sum_{k=1}^{K} \rho^{k-1} r(d@k)
+%%\label{eq:RBP}
+%%\end{equation}
+%%%
+%%Note that $r(d@k)$ is an initialization of $f(P(T|d@k))$, where $f(.)$ is the identity function and $r(d@k)$ estimates $P(T|d@k)$. 
+
+%Extending RBP to cope with multidimensional relevance, Zuccon and Koopman~\cite{zuccon14} define the understandability-biased RBP, $uRBP$, as: 
+%%
+%\begin{eqnarray}
+%    uRBP(\rho) &=& (1-\rho) \sum_{k=1}^{K} \rho^{k-1} P(T|d@k) \cdot P(U|d@k)\\ 
+%&=& (1-\rho) \sum_{k=1}^{K} \rho^{k-1} r(d@k) \cdot u(d@k)
+%\label{eq:RBP}
+%\end{eqnarray}
 %
-In the $uRBP$, the function $r(d@k)$ transforms relevance values into the corresponding gains and, likewise, $u(d@k)$ transforms understandability values into the corresponding gains. 
-If $u(d@k)=1$ for every document, then only topical relevance would affect retrieval evaluation, i.e.,  then we obtain the original RBP metric.
+In the $uRBP$, the function $\mathtt{g}_{RBP}(d@k)$ is the same as the gain in RBP and transforms relevance values into the corresponding gains and, likewise, $\mathtt{g}_{U}(d@k)$ transforms understandability values into the corresponding gains. 
+If $\mathtt{g}_{U}(d@k)=1$ for every document, then only topical relevance affects retrieval evaluation, i.e. every document is considered as having equal understandability (and its highest value) and we obtain the original RBP. Two instantiations of the gain function $\mathtt{g}_{U}(d@k)$ have been explored in previous work: one binary (\textit{uRBP}) and the other graded (\textit{uRBPgr}). In the binary version $\mathtt{g}_{U}(d@k) = 1$ if $P(U|d@k) \geq th_U$, where $th_U$ is a threshold on the assessments of understandability (every assessment that is greater or equal than the threshold would generate a gain of 1), and $\mathtt{g}_{U}(d@k)=0$ otherwise. In the graded version, understandability assessment are transformed into estimations of the probability function $P(U|d@k)$.
+For example, assessments collected on a Likert scale of 5 levels have been converted into estimations ranging from 0.0 to 1.0 with steps of 0.25 (0.0, 0.25, 0.50, 0.75 and 1.0)\todo{~\cite{}}.
+Assessments collected on a scale $[0,100]$ have been directly used as estimations of $P(U|d@k)$ or modified using a smoothing function\todo{~\cite{}}.
+
 
 %Next we define how $r(d@k)$, $u(d@k)$ and $t(d@k)$ are computed.
-While $r(d@k)$ is the same function as in the original version of RBP, i.e. the binary function returning 1 if the document is relevant and 0 otherwise, $u(d@k)$ might have two different instantiations: one binary and the other graded. The binary version simply assumes $u(d@k)$ as a binary function that returns 1 if $P(U|d@k) \geq th_U$ and 0 otherwise, where $th_U$ is a threshold on the assessments of understandability. 
+%While $r(d@k)$ is the same function as in the original version of RBP, i.e. the binary function returning 1 if the document is relevant and 0 otherwise, $u(d@k)$ might have two different instantiations: one binary and the other graded. The binary version simply assumes $u(d@k)$ as a binary function that returns 1 if $P(U|d@k) \geq th_U$ and 0 otherwise, where $th_U$ is a threshold on the assessments of understandability. 
 %For the graded version, we rely on understandability assessment collected on a scale from 0\% to 100\% (0\% being the lowest level of understandability), convert these to probabilities and use the assessments as estimations of $P(U|d@k)$. These estimations are then directly plugged into the measure. In order to distinguish binary from graded measures, Zuccon adds the suffix \textit{gr} to the graded version of the measures~\cite{zuccon16}.
-For the graded version, we rely on the possibility to transform the understandability assessment collected into estimations of $P(U|d@k)$.
-For example, assessments collected in a Likert scale of 5 levels can be easily converted into estimations ranging from 0.0 to 1.0 with steps of 0.25 (0.0, 0.25, 0.50, 0.75 and 1.0).
-Assessments collected in a scale from 0 to 100 (e.g., 0 being the lowest level of understandability), could be directly used as estimations of $P(U|d@k)$ or modified by a smoother function.
-These estimations are then plugged into the metric. In order to distinguish binary from graded metrics, the suffix \textit{gr} was added to the graded version of the metrics~\cite{zuccon16}.
+%For the graded version, we rely on the possibility to transform the understandability assessment collected into estimations of $P(U|d@k)$.
+%For example, assessments collected in a Likert scale of 5 levels can be easily converted into estimations ranging from 0.0 to 1.0 with steps of 0.25 (0.0, 0.25, 0.50, 0.75 and 1.0).
+%Assessments collected in a scale from 0 to 100 (e.g., 0 being the lowest level of understandability), could be directly used as estimations of $P(U|d@k)$ or modified by a smoother function.
+%These estimations are then plugged into the metric. In order to distinguish binary from graded metrics, the suffix \textit{gr} was added to the graded version of the metrics~\cite{zuccon16}.
 
 %\todo{maybe move this paragraph to the actual experimentation part}
 %The settings used in CLEF eHealth 2015 was to attribute the value of 0.0 to $P(U|d@k)$ if a document was assessed as hard to understand, 0.4 if it was assessed as somewhat hard to understand, 0.8 for a somewhat easy-to-understand document and, finally, 1.0 if the document was assessed as easy to understand. In CLEF eHealth 2016, assessments were made in a 0-100 scale, with 0 being the easiest to read, thus $P(U|d@k)$ was assigned as (100 - understandability\_label)/100.
