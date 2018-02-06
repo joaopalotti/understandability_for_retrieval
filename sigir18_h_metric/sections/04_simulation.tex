@@ -7,55 +7,77 @@
 %In this section, we aim to evaluate uRBP and $H_{RBP}$, our proposed alternative, comparing each other with simulations.
 %\mytodo{Start by a reason to use simulations in this work}
 
-The aim of this section is to understand the behaviour of each evaluation framework when facing different types of Information Retrieval systems.
-In order to have a fine-grained control over our experiments, we employed synthetic/simulated systems.
-This way, we know exactly what to expect from each system and evaluation metric before calculating any score.
-\mytodo{Find some other paper that made their evaluation with simulated systems}.
+To understand the behaviour of UBIRE and H when facing different types of IR systems, we first employed synthetic/simulated systems so as to have a fine-grained control over our experiments. This allows to know a priori what has changes between two system instances and study the effect these changes had on evaluation. In our experiments, along with topicality, we consider understandability, leaving the (trivial) extension to other dimensions to later work. \mytodo{Find some other paper that made their evaluation with simulated systems}.
 
-Through the expected results of the simulated systems, we demonstrate how the proposed two-step framework, $H$ (Section~\ref{sec:extension}), fixes the main drawback found in Zuccon's modification of the gain-discount framework (Section~\ref{sec:understandability_metrics}). 
 
-Without loss of generality, we set our further experiments in the same context as UBIRE was proposed: to evaluate both topicality and understandability of documents in the context of consumer health search. This decision helps the flow of this paper, but by no means these frameworks are limited to evaluate this specific dimensions. 
+%The aim of this section is to understand the behaviour of each evaluation framework when facing different types of Information Retrieval systems.
+%In order to have a fine-grained control over our experiments, we employed synthetic/simulated systems.
+%This way, we know exactly what to expect from each system and evaluation metric before calculating any score.
 
-In our further experiments, we have full control over both topical and understandability relevance of documents. 
-The behaviour of the proposed evaluation metrics is investigated when we slightly increase/decrease the amount of topically relevant documents or when we increase/decrease the expected reading difficult of the retrieved documents. 
-For that, we generated simulated runs following the this two-phases procedure:
+
+%Through the expected results of the simulated systems, we demonstrate how the proposed two-step framework, $H$ (Section~\ref{sec:extension}), fixes the main drawback found in Zuccon's modification of the gain-discount framework (Section~\ref{sec:understandability_metrics}). 
+%
+%Without loss of generality, we set our further experiments in the same context as UBIRE was proposed: to evaluate both topicality and understandability of documents in the context of consumer health search. This decision helps the flow of this paper, but by no means these frameworks are limited to evaluate this specific dimensions. 
+
+%In our further experiments, we have full control over both topical and understandability relevance of documents. 
+%The behaviour of the proposed evaluation metrics is investigated when we slightly increase/decrease the amount of topically relevant documents or when we increase/decrease the expected reading difficult of the retrieved documents. 
+%For that, we generated simulated runs following the this two-phases procedure:
+
+
+In the following simulations we control the amount of topical documents and understandable documents retrieved. We do so by following this two-phase procedure:
 
 \begin{enumerate}
-\item \textbf{Topicality Phase:} In this phase, we exclusively control the amount of topical relevant documents in a simulated run. That is done with a simple random variable $T$, $0 \le T \le 1$. 
-We constructed a simulated run by drawing a real number $N$, $0 \le N \le 1$, for each position $i$ in a ranking. If $N \le T$, we mark the document at position $i$ as relevant, otherwise, we mark that document as not relevant. It is expected that a run generated with $T=0.1$ would have 10\% of the documents assessed as relevant and 90\% as non-relevant, while a run with $T=0.5$ will have as many relevant as non-relevant documents. 
+\item \textbf{Topicality Phase:} we exclusively controlled the amount of topical documents in a simulated run using a random variable $T$, $0 \le T \le 1$. 
+We constructed a simulated run by drawing a real number $N$, $0 \le N \le 1$, for each position $i$ in a ranking. If $N \le T$, we marked the document at position $i$ as relevant, otherwise, we marked it as not relevant. It is expected that a run generated with $T=0.1$ would have 10\% of the documents assessed as relevant (90\% as non-relevant), while a run with $T=0.5$ will have as many relevant as non-relevant documents. 
 
-\item \textbf{Understandability Phase:}  Once the previous phase is done, we start this one. Here, we control the level of understandability of the results. In order to create and control the randomness of our simulated systems, we generate understandability labels with a Gaussian distribution with pre-defined mean $\mu$ and variance $\sigma$. 
-As previously done in consumer health search collections~\cite{clefIR16,clefIR17}, we force the understandability labels generated to be in the interval from 0 to 100. 
-We fixed a relatively large variance, $\sigma=40$, to mimic results of previous collections in which the understandability labels have a large variance \cite{clefIR16}, and we vary the mean $\mu$ of the Gaussian from 0 to 100. Figure~\ref{fig:gaussians} shows the expected label distribution for $\mu=20, 50, 80$, i.e., $\mathcal{N}(20, 40)$, $\mathcal{N}(50, 80)$ and $\mathcal{N}(80, 40)$.
+\item \textbf{Understandability Phase:}  we controlled the level of understandability of the documents in a simulated run. In order to create and control the randomness of our simulated systems, we generated understandability labels using a Gaussian distribution with pre-defined mean $\mu$ and variance $\sigma$. 
+As previously done in consumer health search collections~\cite{clefIR16,clefIR17}, we forced the understandability labels to be in the interval $[0,100]$. 
+We fixed a relatively large variance, $\sigma=40$, to mimic results of previous collections in which the understandability labels had a large variance \cite{clefIR16}, and we varied the mean $\mu$ of the Gaussian from 0 to 100. Figure~\ref{fig:gaussians} shows the expected label distribution for $\mu=20, 50, 80$, i.e., $\mathcal{N}(20, 40)$, $\mathcal{N}(50, 80)$ and $\mathcal{N}(80, 40)$.
 In Figure~\ref{fig:gaussians} we also include the threshold U used to compute $RBP_u$ (Section~\ref{sec:extension}).
-
 \end{enumerate}
+
+We executed these two phases in succession. In total, we generated 1,000 runs for each topical level (topicality phase) and $\mu$ value (understandability phase). 
+
+
+%\begin{enumerate}
+%\item \textbf{Topicality Phase:} In this phase, we exclusively control the amount of topical relevant documents in a simulated run. That is done with a simple random variable $T$, $0 \le T \le 1$. 
+%We constructed a simulated run by drawing a real number $N$, $0 \le N \le 1$, for each position $i$ in a ranking. If $N \le T$, we mark the document at position $i$ as relevant, otherwise, we mark that document as not relevant. It is expected that a run generated with $T=0.1$ would have 10\% of the documents assessed as relevant and 90\% as non-relevant, while a run with $T=0.5$ will have as many relevant as non-relevant documents. 
+%
+%\item \textbf{Understandability Phase:}  Once the previous phase is done, we start this one. Here, we control the level of understandability of the results. In order to create and control the randomness of our simulated systems, we generate understandability labels with a Gaussian distribution with pre-defined mean $\mu$ and variance $\sigma$. 
+%As previously done in consumer health search collections~\cite{clefIR16,clefIR17}, we force the understandability labels generated to be in the interval from 0 to 100. 
+%We fixed a relatively large variance, $\sigma=40$, to mimic results of previous collections in which the understandability labels have a large variance \cite{clefIR16}, and we vary the mean $\mu$ of the Gaussian from 0 to 100. Figure~\ref{fig:gaussians} shows the expected label distribution for $\mu=20, 50, 80$, i.e., $\mathcal{N}(20, 40)$, $\mathcal{N}(50, 80)$ and $\mathcal{N}(80, 40)$.
+%In Figure~\ref{fig:gaussians} we also include the threshold U used to compute $RBP_u$ (Section~\ref{sec:extension}).
+%
+%\end{enumerate}
 
 \begin{figure}[t!]
   \centering
    \includegraphics[width=0.45\textwidth]{figs/gaussians}
-    \caption{Gaussian distribution for different $\mu$ values. A distribution with a higher $\mu$ generates higher understandability labels simulating that documents harder to read were retrieved. In the experiments in this paper, only documents with an understandability label lower than 40 are considered to easy-to-read, and therefore relevant in the understandability dimension. This understandability threshold is shown with a traced line.}
+    \caption{Gaussian distribution for different $\mu$ values: higher $\mu$ generates higher understandability labels (harder documents were retrieved). Here, only documents with an understandability label lower than 40 are considered easy-to-understand. This understandability threshold is shown with a dotted line.}
   \label{fig:gaussians}
 \end{figure}
 
-In total, we generated 1,000 runs for each topical relevance level (topicality phase) and $mu$ value (understandability phase). 
 
-We calculated the $uRBP$ score from UBIRE framework and the $H_{RBP}$ score from our proposed framework for each simulated system.
-The average result of selected scenarios is shown in Table~\ref{tab:simulations}.
 
-Each row of Table~\ref{tab:simulations} shows the results of simulations with different values for $T$, i.e., different expected number of relevant documents retrieved.
-We varied the $\mu$ parameter of the Gaussian distributions employed to create the understandability labels and show the results for $\mu = 50, 40, 30$.
+We calculated the $uRBP$ score using UBIRE and the $H_{RBP}$ score for each simulated system.
+The average result of the simulated runs is shown in Table~\ref{tab:simulations}.
+
+Each row of Table~\ref{tab:simulations} shows the results of simulations with different values for $T$, i.e., different expected number of topical documents retrieved.
+We varied $\mu$ which was used to create the understandability labels, and show the results for $\mu = 50, 40, 30$.
 A smaller $\mu$ means that more understandable documents are retrieved.
-In total, the results of fifteen experiments are shown in Table~\ref{tab:simulations}.
+%In total, the results of fifteen experiments are shown in Table~\ref{tab:simulations}.
 
-Table~\ref{tab:simulations} shows that as the expected number of relevant documents ($T$) is increased, $RBP$ increases.
-Likewise, $uRBP$ increases, as it is bounded with topical relevance.
-In turn, increasing $T$ has no effect on $RBP_u$, but increases $H_{RBP}$, as it also directly depends on $RBP$.
+Table~\ref{tab:simulations} shows that as the expected number of topical documents ($T$) increases, $RBP$ increases.
+Likewise, $uRBP$ increases, as it is bounded by topical relevance.
+In turn, increasing $T$ has no effect on $RBP_u$, but increases $H_{RBP}$, as it is also directly dependant on $RBP$.
 
-Increasing the number of understandable documents retrieved (i.e., decreasing $\mu$), $RBP$ stays constant, as it does not measure how understandable documents are.
+When the number of understandable documents retrieved is increased (i.e., decrease $\mu$), $RBP$ stays constant, as it does not measure how understandable documents are.
 In turn, $uRBP$, $RBP_u$ and $H_{RBP}$ increase.
 
-Those are the expected behaviour of the aforementioned metrics and only shows that our simulated runs produce sane results.
+Those are the expected behaviour of the considered measures. % aforementioned metrics and only shows that our simulated runs produce sane results.
+
+\todo{[Arrived here. Please do modify what is below to make it more understandable]}
+
 
 The trick part that we aim to show with these experiments is illustrated by the cells colored in blue and yellow in Table~\ref{tab:simulations}.
 We modeling and experimenting with a retrieval system, a modification that aims to increase the understandability of the documents retrieved by the system might hurt the topical relevance of the documents retrieved by the system.
