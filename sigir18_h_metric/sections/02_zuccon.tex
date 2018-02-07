@@ -30,7 +30,7 @@ This is done by modelling the probability of relevance $P(R|d@k)$ as the joint d
 \end{eqnarray}
 %
 
-Evaluation metrics developed within this framework differ by means of the instantiations of $f\big(P(D_1, \cdots, D_n|d@k)\big)$, other than by which dimensions are modeled. Zuccon~\cite{zuccon16} provided an instantiation that considers both topical relevance and understandability as follows:
+Evaluation metrics developed within this framework differ by means of the instantiations of $f\big(P(D_1, \cdots, D_n|d@k)\big)$, other than by which dimensions are modelled. Zuccon~\cite{zuccon16} provided an instantiation that considers both topical relevance and understandability as follows:
 %
 \begin{equation}
 \mathtt{g}(d@k) = f(P(R|d@k)) = f\big(P(T|d@k) \cdot P(U|d@k)\big)
@@ -38,7 +38,7 @@ Evaluation metrics developed within this framework differ by means of the instan
 %
 %with $P(R|d@k)$ as the joint $P(T,U|d@k)$ that is in turn computed as the product $P(T|d@k) \cdot P(U|d@k)$ following the assumptions discussed above.
 
-Specific implementations of the UBIRE framework that have been developed in previous work considered the basic gain and discount functions from RBP~\cite{moffat08}; an instantiation with understandability~\cite{zuccon14,zuccon16} has been later extended by jointly considering also trustworthiness~\cite{clef17}. For ease of explanation, we consider the formulation with topicality and understandability; similar considerations apply to when also trustworthiness is modelled (as well as other dimensions, as a matter of fact). In this case, the understandability-biased RBP, $uRBP$, is defined as: 
+Specific implementations of the UBIRE framework that have been developed in previous work considered the basic gain and discount functions from RBP~\cite{moffat08}; an instantiation with understandability~\cite{zuccon14,zuccon16} has been later extended by jointly considering also trustworthiness~\cite{clef17}. For ease of explanation, we consider the formulation with topicality and understandability; similar considerations apply when also trustworthiness is modelled (as well as other dimensions, as a matter of fact). In this case, the understandability-biased RBP, $uRBP$, is defined as: 
 %
 \begin{eqnarray}
     uRBP(\rho) &=& (1-\rho) \sum_{k=1}^{K} \rho^{k-1} P(T|d@k) \cdot P(U|d@k)\\ 
