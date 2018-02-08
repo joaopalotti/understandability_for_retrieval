@@ -10,7 +10,7 @@
 %In this section, we aim to evaluate uRBP and $H_{RBP}$, our proposed alternative, comparing each other with simulations.
 %\mytodo{Start by a reason to use simulations in this work}
 
-To understand the behaviour of UBIRE and H when facing different types of IR systems, we first employed synthetic/simulated systems so as to have a fine-grained control over our experiments. This allows to know a priori what has changed between two system instances and study the effect these changes had on evaluation. In our experiments, along with topicality, we consider understandability, leaving the (trivial) extension to other dimensions to later work. \mytodo{Find some other paper that made their evaluation with simulated systems}.
+To understand the behaviour of UBIRE and H when facing different types of IR systems, we first employed synthetic/simulated systems so as to have a fine-grained control over our experiments. This allows to know a priori what has changed between two system instances and study the effect these changes had on evaluation. In our experiments, along with topicality, we consider understandability, leaving the (trivial) extension to other dimensions to later work. %\mytodo{Find some other paper that made their evaluation with simulated systems}.
 
 
 %The aim of this section is to understand the behaviour of each evaluation framework when facing different types of Information Retrieval systems.
@@ -56,10 +56,10 @@ We executed these two phases in succession. In total, we generated 1,000 runs fo
 \begin{figure}[t!]
   \centering
    \includegraphics[width=0.45\textwidth]{figs/gaussians}
+    \vspace{-.2cm}
     \caption{Gaussian distribution for different $\mu$ values: higher $\mu$ generates higher understandability labels (harder documents were retrieved). Here, only documents with an understandability label lower than 40 are considered easy-to-understand. This understandability threshold is shown with a dotted line.}
   \label{fig:gaussians}
 \end{figure}
-
 
 
 We calculated the $uRBP$ score using UBIRE and the $H_{RBP}$ score for each simulated system.
