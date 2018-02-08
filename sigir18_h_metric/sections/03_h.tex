@@ -19,8 +19,10 @@ The evaluation of each relevance dimension separately is trivial, as it consists
 %Each other dimension $D_i$ can be evaluated in the same fashion that $P(D_i|d@k)$ is assessed in UBIRE~\cite{zuccon16}.
 %For example, the binary calculation of the understandability metric $P(U|d@k)$ returns 1 if $P(U|d@k) \geq th_U$ and 0 otherwise, where $th_U$ is a threshold on the assessments of understandability. 
 
-\todo{Briefly, mention why we did not use another function like linear combination instead of harmonic mean.}
-In order to combine the outputs of each relevance dimension, we ushe weighted harmonic mean (akin to its use to combine recall and precision in the widely used $F$-measure). Given a (discount-gain) evaluation measure $\mathcal{M}$, we apply the measure to evaluate a list of  documents $l_\delta$ which have been labeled with respect to dimension $\delta$ (i.e., we compute $\mathcal{M}(l_\delta)$). Then, to compute the proposed measure $H_\mathcal{M}$, we combine all $\mathcal{M}(l_\delta)$ for each relevance dimension using the harmonic mean, where each dimension is weighted according to a preferential weight $w_\delta$ assigned to each dimension; formally:
+%\todo{Briefly, mention why we did not use another function like linear combination instead of harmonic mean.}
+%In order to combine the outputs of each relevance dimension, we use weighted harmonic mean (akin to its use to combine recall and precision in the widely used $F$-measure). 
+While the outputs of each relevance dimension could be combined with a linear combination of values, we opt to use the weighted harmonic mean, akin to its use to combine recall and precision in the widely used $F$-measure. 
+Given a (discount-gain) evaluation measure $\mathcal{M}$, we apply the measure to evaluate a list of  documents $l_\delta$ which have been labeled with respect to dimension $\delta$ (i.e., we compute $\mathcal{M}(l_\delta)$). Then, to compute the proposed measure $H_\mathcal{M}$, we combine all $\mathcal{M}(l_\delta)$ for each relevance dimension using the harmonic mean, where each dimension is weighted according to a preferential weight $w_\delta$ assigned to each dimension; formally:
 
 %To define the weighted harmonic mean proposed, we need the aforementioned evaluation metric $m$, which will be applied to evaluate a list of labeled documents $l_d$ (i.e., $m(l_d)$).
 %Also, we need a set of weights for each dimension, which control the importance of each dimension.
