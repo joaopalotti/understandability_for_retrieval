@@ -3,10 +3,10 @@
 \label{sec:extension}
 
 %A drawback of Zuccon's framework is that dimensions are combined into a unique evaluation score.
-A limitation of the UBIRE framework is that it combines the gains contributed by each dimension of relevance in \textbf{one} single step, providing a unique evaluation score~\cite{zuccon14,zuccon16}.
+A limitation of UBIRE is that it combines the gains contributed by each dimension of relevance in \textbf{one} single step, providing a unique evaluation score~\cite{zuccon14,zuccon16}.
 While this allows for the comparison of systems, it does not permit to understand the contribution each dimension had on the evaluation measure. 
-\todo{Here I would make an example.}
-To overcome this limitation, we aim to create a measure which, while still allowing the modelling of multidimensional relevance, is of easy interpretation and for which it is straightforward to track the contribution each relevance dimension had on the final effectiveness score. This is achieved by separating the evaluation of each dimension such that a value for each dimension is calculated separately with respect to its gain and discount, and then these are combined into a unique effectiveness measure. Note that we assume that it is possible to evaluate each measure separately: while this is akin to the compositionality assumptions in UBIRE, if that failed, UBIRE would use mixture models to compute the related probabilities, while the proposed measure would be instead likely undefined. 
+%\todo{Here I would make an example.}
+To overcome this limitation, we aim to create a measure which, while still allowing the modelling of multidimensional relevance, is of easy interpretation and for which it is straightforward to track the contribution each relevance dimension had on the final effectiveness score. This is achieved by separating the evaluation of each dimension such that a value for each dimension is calculated separately with respect to its gain and discount, and then these are combined into a unique effectiveness measure. Note that we assume that it is possible to evaluate each measure separately: while this is akin to the compositionality assumption in UBIRE, if that failed, UBIRE would use mixture models to compute the related probabilities, while the proposed measure would be instead likely undefined. 
 
 The evaluation of each relevance dimension separately is trivial, as it consists in applying the discount and gain function of the underlying evaluation measure, e.g. RBP, to each relevance dimension $\delta \in \mathcal{D}$, where the gains are those associated with the criteria for that specific dimension. 
 
@@ -27,10 +27,10 @@ Given a (discount-gain) evaluation measure $\mathcal{M}$, we apply the measure t
 %To define the weighted harmonic mean proposed, we need the aforementioned evaluation metric $m$, which will be applied to evaluate a list of labeled documents $l_d$ (i.e., $m(l_d)$).
 %Also, we need a set of weights for each dimension, which control the importance of each dimension.
 %We define the weighted harmonic mean $H(m)$ as:
-
+\vspace{-4pt}
 \begin{equation}
-    H_\mathcal{M}  = \left( \frac{\sum\limits_{\delta=1}^D w_\delta \cdot \mathcal{M}(l_\delta)^{-1}}{\sum\limits_{\delta=1}^D w_\delta} \right)^{-1}
-          = \frac{\sum\limits_{\delta=1}^D w_\delta}{\sum\limits_{\delta=1}^D \frac{w_\delta}{\mathcal{M}(l_\delta)}}
+    H_\mathcal{M}  = \left( \frac{\sum\limits_{\delta=1}^n w_\delta \cdot \mathcal{M}(l_\delta)^{-1}}{\sum\limits_{\delta=1}^n w_\delta} \right)^{-1}
+          = \frac{\sum\limits_{\delta=1}^n w_\delta}{\sum\limits_{\delta=1}^n \frac{w_\delta}{\mathcal{M}(l_\delta)}}
 \label{eq:H}
 \end{equation}
 
@@ -49,10 +49,10 @@ Without loss of generality, we instantiate $\mathcal{M} = RBP$ and define the fo
 \begin{itemize}[leftmargin=*]
 	\item $RBP_t(\rho)$: uses binary topicality assessments (i.e. the usual RBP). 
 %	
-    \item $RBP_u(\rho)$: uses understandability assessments. In the experiments below, we regard a document as understandable if its assessed understandability score was smaller than a threshold $U$ (we arbitrary choose $U = 40$ based on the distribution of understandability assessments made at CLEF eHealth 2016~\cite{clefIR16}).
+    \item $RBP_u(\rho)$: uses understandability assessments (either graded or binary; see below for specific instantiations). %In the experiments below, we regard a document as understandable if its assessed understandability score was smaller than a threshold $U$ (we arbitrary choose $U = 40$ based on the distribution of understandability assessments made at CLEF eHealth 2016~\cite{clefIR16}).
 \end{itemize}
 
-Thus Equation~\ref{eq:H} becomes (we assumed $w_t = w_u$):
+\noindent Thus Equation~\ref{eq:H} becomes (we assumed $w_t = w_u$):
 %
 \begin{equation}
  H_{RBP(\rho)} = 2 \cdot \frac{RBP_t(\rho) \cdot RBP_u(\rho)}{RBP_t(\rho) + RBP_u(\rho)}
