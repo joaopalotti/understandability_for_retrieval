@@ -55,7 +55,7 @@ We executed these two phases in succession. In total, we generated 1,000 runs fo
 
 \begin{figure}[t!]
   \centering
-   \includegraphics[width=0.45\textwidth]{figs/gaussians}
+   \includegraphics[width=0.40\textwidth]{figs/gaussians}
     \vspace{-.2cm}
     \caption{Gaussian distribution for different $\mu$ values: higher $\mu$ generates higher understandability labels (harder documents were retrieved). Here, only documents with an understandability label lower than 40 are considered easy-to-understand. This understandability threshold is shown with a dotted line.}
   \label{fig:gaussians}
@@ -80,7 +80,7 @@ Those are the expected behaviour of the considered measures. % aforementioned me
 
 We further focused our attention to the results of specific experiments highlighted in blue and yellow in Table~\ref{tab:simulations}. These cases simulate an initial system S1 that exhibited the results in blue (condition $T=0.6$ and $\mathcal{N}(40,40)$) being modified to improve the understandability of retrieved documents ($\mathcal{N}(30,40)$) at the expenses of topicality ($T=0.5$), producing a new system S2. The effectiveness of S2 is highlighted in yellow. 
 
-If $RBP$ and $uRBP$ were used to decided whether S2 should be preferred over the initial system S1, then S2 would be discarded and S1 preferred, as S2 produces a $18\%$ reduction in $RBP$ and a $13\%$ reduction in $uRBP$. With these results, an IR researcher would conclude that the modifications in S2 did not pay off.
+If $RBP$ and $uRBP$ were used to decide whether S2 should be preferred over the initial system S1, then S2 would be discarded and S1 preferred, as S2 produces a $18\%$ reduction in $RBP$ and a $13\%$ reduction in $uRBP$. With these results, an IR researcher would conclude that the modifications in S2 did not pay off.
 
 If the $H$ measure was used instead, the IR researcher would have been able to gain more insights about system effectiveness and the trade off between understandability and topicality. To use $H_{RBP}$, $RBP_t$ ($=RBP$) and $RBP_u$ need to be computed. Between S1 and S2, there is a decrease in $RBP_t$ of $18\%$; but conversely $RBP_u$ increases of $24\%$: this clearly allows to gauge the trade-offs between topicality and understandability. 
 
