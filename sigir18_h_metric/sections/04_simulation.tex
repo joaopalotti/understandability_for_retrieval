@@ -30,7 +30,7 @@ In the following simulations we controlled the amount of topical documents and u
 
 \begin{enumerate}
 \item \textbf{Topicality Phase:} we exclusively controlled the amount of topical documents in a simulated run using a random variable $T$, $0 \le T \le 1$. 
-We constructed a synthetic run by drawing a real number $N$, $0 \le N \le 1$, for each position $i$ in a ranking. If $N \le T$, we marked the document at position $i$ as relevant, otherwise, we marked it as not relevant. It is expected that a run generated with $T=0.1$ has 10\% of the documents assessed as relevant (90\% as non-relevant), while a run with $T=0.5$ has as many relevant as non-relevant documents. 
+We constructed a synthetic run by drawing a real number $N_i$, $0 \le N_i \le 1$, for each position $i$ in a ranking. If $N_i \le T$, we marked the document at position $i$ as relevant, otherwise, we marked it as not relevant. It is expected that a run generated with $T=0.1$ has 10\% of the documents assessed as relevant (90\% as non-relevant), while a run with $T=0.5$ has as many relevant as non-relevant documents. 
 
 \item \textbf{Understandability Phase:}  we controlled the level of understandability of the documents in a synthetic run. In order to create and control the randomness of our synthetic systems, we generated understandability labels using a Gaussian distribution with pre-defined mean $\mu$ and variance $\sigma$. 
 As previously done in consumer health search collections~\cite{clefIR16,clefIR17}, we forced the understandability labels to be in the interval $[0,100]$. 
