@@ -18,14 +18,7 @@ For binary relevance, this probability is 1 for relevant documents and 0 for non
 
 UBIRE extends this framework to consider cases where relevance is modelled beyond topicality so as to explicitly model other dimensions, such as understandability.
 This is done by modelling the probability of relevance $P(R|d@k)$ as the joint distribution over all considered dimensions, $P(\delta_1, \cdots, \delta_n|d@k)$, where each $\delta_i \in \mathcal{D}$ represents a dimension of relevance, e.g., topicality, understandability. The computation is simplified by assuming that dimensions are compositional events and their probabilities independent (see~\cite{zuccon16} for more details). The gain function with respect to different dimensions of relevance can then be expressed as:
-%
-%\begin{eqnarray}
-%    g(d@k) &=& f(P(R|d@k)) \\
-%    &=& f\big(P(D_1, \cdots, D_n|d@k)\big) \\
-%    &=& f\Big(\prod_{i=1}^n P(D_i|d@k)\Big) 
-%\end{eqnarray}
-%
-% Alternative:
+
 \begin{eqnarray*}
     \mathtt{g}(d@k) &=& f(P(R|d@k)) \\
     &=& f\big(P(\delta_1, \cdots, \delta_n|d@k)\big) = f\Big(\prod_{i=1}^n P(\delta_i|d@k)\Big) 
@@ -37,8 +30,6 @@ Evaluation metrics developed within this framework differ by means of the instan
 \begin{equation*}
 \mathtt{g}(d@k) = f(P(R|d@k)) = f\big(P(T|d@k) \cdot P(U|d@k)\big)
 \end{equation*}
-%
-%with $P(R|d@k)$ as the joint $P(T,U|d@k)$ that is in turn computed as the product $P(T|d@k) \cdot P(U|d@k)$ following the assumptions discussed above.
 
 Specific implementations of the UBIRE framework that have been developed in previous work considered the basic gain and discount functions from RBP~\cite{moffat08}; an instantiation with understandability~\cite{zuccon14,zuccon16} has been later extended by jointly considering also trustworthiness~\cite{clefIR17}. For ease of explanation, we consider the formulation with topicality and understandability; similar considerations apply when also trustworthiness is modelled (as well as other dimensions, as a matter of fact). In this case, the understandability-biased RBP, $uRBP$, is defined as: 
 %
@@ -48,48 +39,8 @@ Specific implementations of the UBIRE framework that have been developed in prev
 \label{eq:RBP}
 \end{eqnarray*}
 
-
-%%%Specifically, Zuccon~\cite{zuccon16} provided an instantiation of this multidimensional evaluation approach on top of RBP~\cite{moffat08}, a well understood metric of retrieval effectiveness which also fits within the gain-discount framework. 
-%%In the context of RBP, the gain function $r(d@k)$ is 1 if $d@k$ is relevant and 0 otherwise, the discount function is measured by a geometric function of the rank, i.e., $d(k) = \rho^{k-1}$ (with $\rho$ representing the user persistence), and $1-\rho$ acts as a normalization component. Putting all together, RBP is expressed by the following formula:
-%%%)
-%%\begin{equation}
-%%    RBP(\rho) = (1-\rho) \sum_{k=1}^{K} \rho^{k-1} r(d@k)
-%%\label{eq:RBP}
-%%\end{equation}
-%%%
-%%Note that $r(d@k)$ is an initialization of $f(P(T|d@k))$, where $f(.)$ is the identity function and $r(d@k)$ estimates $P(T|d@k)$. 
-
-%Extending RBP to cope with multidimensional relevance, Zuccon and Koopman~\cite{zuccon14} define the understandability-biased RBP, $uRBP$, as: 
-%%
-%\begin{eqnarray}
-%    uRBP(\rho) &=& (1-\rho) \sum_{k=1}^{K} \rho^{k-1} P(T|d@k) \cdot P(U|d@k)\\ 
-%&=& (1-\rho) \sum_{k=1}^{K} \rho^{k-1} r(d@k) \cdot u(d@k)
-%\label{eq:RBP}
-%\end{eqnarray}
-%
 In the $uRBP$, the function $\mathtt{g}_{RBP}(d@k)$ is the same as the gain in RBP and transforms relevance values into the corresponding gains and, likewise, $\mathtt{g}_{U}(d@k)$ transforms understandability values into the corresponding gains. 
 If $\mathtt{g}_{U}(d@k)=1$ for every document, then only topical relevance affects retrieval evaluation, i.e. every document is considered as having equal understandability (and its highest value) and we obtain the original RBP. Two instantiations of the gain function $\mathtt{g}_{U}(d@k)$ have been explored in previous work: one binary (\textit{uRBP}) and the other graded (\textit{uRBPgr}). In the binary version $\mathtt{g}_{U}(d@k) = 1$ if $P(U|d@k) \geq th_U$, where $th_U$ is a threshold on the assessments of understandability (every assessment that is greater than or equal to $th_U$ would generate a gain of 1), and $\mathtt{g}_{U}(d@k)=0$ otherwise. In the graded version, understandability assessments are transformed into estimations of the probability function $P(U|d@k)$.
-% In case we need space, I would remove the following sentences:
-%\mytodo{Remove the following sentences?}
-%For example, assessments collected on a Likert scale of 5 levels have been converted into estimations ranging from 0.0 to 1.0 with steps of 0.25 (0.0, 0.25, 0.50, 0.75 and 1.0)\todo{~\cite{}}.
-%Assessments collected on a scale $[0,100]$ have been directly used as estimations of $P(U|d@k)$ or modified using a smoothing function\todo{~\cite{}}.
-
-
-%Next we define how $r(d@k)$, $u(d@k)$ and $t(d@k)$ are computed.
-%While $r(d@k)$ is the same function as in the original version of RBP, i.e. the binary function returning 1 if the document is relevant and 0 otherwise, $u(d@k)$ might have two different instantiations: one binary and the other graded. The binary version simply assumes $u(d@k)$ as a binary function that returns 1 if $P(U|d@k) \geq th_U$ and 0 otherwise, where $th_U$ is a threshold on the assessments of understandability. 
-%For the graded version, we rely on understandability assessment collected on a scale from 0\% to 100\% (0\% being the lowest level of understandability), convert these to probabilities and use the assessments as estimations of $P(U|d@k)$. These estimations are then directly plugged into the measure. In order to distinguish binary from graded measures, Zuccon adds the suffix \textit{gr} to the graded version of the measures~\cite{zuccon16}.
-%For the graded version, we rely on the possibility to transform the understandability assessment collected into estimations of $P(U|d@k)$.
-%For example, assessments collected in a Likert scale of 5 levels can be easily converted into estimations ranging from 0.0 to 1.0 with steps of 0.25 (0.0, 0.25, 0.50, 0.75 and 1.0).
-%Assessments collected in a scale from 0 to 100 (e.g., 0 being the lowest level of understandability), could be directly used as estimations of $P(U|d@k)$ or modified by a smoother function.
-%These estimations are then plugged into the metric. In order to distinguish binary from graded metrics, the suffix \textit{gr} was added to the graded version of the metrics~\cite{zuccon16}.
-
-%\todo{maybe move this paragraph to the actual experimentation part}
-%The settings used in CLEF eHealth 2015 was to attribute the value of 0.0 to $P(U|d@k)$ if a document was assessed as hard to understand, 0.4 if it was assessed as somewhat hard to understand, 0.8 for a somewhat easy-to-understand document and, finally, 1.0 if the document was assessed as easy to understand. In CLEF eHealth 2016, assessments were made in a 0-100 scale, with 0 being the easiest to read, thus $P(U|d@k)$ was assigned as (100 - understandability\_label)/100.
-%Also, the RBP's $\rho$ parameter was set to 0.80~\cite{clef15,clef16}. We shall use the same definitions in \mytodo{Chapter XXX}.
-
-% The goal of CLEF eHealth 2015 and 2016 was to retrieve documents as easy as possible, but that might not always be the case. A user with larger health domain knowledge might accept -- or even want -- a harder document to read.
-
-%The method we use to define the graded version of the multidimensional measures differs from that used in~\cite{zuccon16}, where instead categorical assessments of understandability were mapped to (arbitrary) gain values. We believe that our use of a continues scale to measure these dimensions and assign the corresponding gains is more appropriate to the task, provides a finer grained evaluation of the systems, and also better aligns with the original assessments captured in the CLEF eHealth 2016 collection, which used similar continuous assessments for understandability and trustworthiness. We leave the empirical comparison between using continuous assessments and mapping categorical assessments to gains for future work.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
