@@ -95,7 +95,9 @@
 \usepackage{booktabs}   % Improves the typesettings of tables.
 \usepackage{hyperref}  % Enables cross linking in the electronic document version. This package has to be included second to last.
 
-\usepackage{booktabs,arydshln}
+\usepackage{booktabs}
+\usepackage{arydshln}
+
 
 
 
@@ -413,17 +415,20 @@
 % journal papers have the author affiliations above the "Manuscript
 % received ..."  text while in non-compsoc journals this is reversed. Sigh.
 
-\author{Michael~Shell,~\IEEEmembership{Member,~IEEE,}
-        John~Doe,~\IEEEmembership{Fellow,~OSA,}
-        and~Jane~Doe,~\IEEEmembership{Life~Fellow,~IEEE}% <-this % stops a space
-\IEEEcompsocitemizethanks{\IEEEcompsocthanksitem M. Shell was with the Department
-of Electrical and Computer Engineering, Georgia Institute of Technology, Atlanta,
-GA, 30332.\protect\\
+\author{Joao~Palotti,~\IEEEmembership{Member,~IEEE,}
+        Guido~Zuccon,~\IEEEmembership{Fellow,~OSA,}
+        and~Allan~Hanbury,~\IEEEmembership{Life~Fellow,~IEEE}% <-this % stops a space
+\IEEEcompsocitemizethanks{\IEEEcompsocthanksitem J. Palotti and A. Hanbury are with Vienna University of Technology, Vienna, Austria.
+\protect\\
+Email: {palotti,hanbudy}@ifs.tuwien.ac.at
 % note need leading \protect in front of \\ to get a newline within \thanks as
 % \\ is fragile and will error, could use \hfil\break instead.
-E-mail: see http://www.michaelshell.org/contact.html
-\IEEEcompsocthanksitem J. Doe and J. Doe are with Anonymous University.}% <-this % stops an unwanted space
-\thanks{Manuscript received April 19, 2005; revised August 26, 2015.}}
+\IEEEcompsocthanksitem G. Zuccon is with Queensland University of Technology, Brisbane, Australia.% <-this % stops an unwanted space
+\protect\\
+Email: g.zuccon@qut.edu.au
+}
+\thanks{Manuscript submitted March 1, 2017}}
+%\thanks{Manuscript received March 1, 2017; revised August 26, 2015.}}
 
 % note the % following the last \IEEEmembership and also \thanks - 
 % these prevent an unwanted space from occurring between the last author name
@@ -443,10 +448,10 @@ E-mail: see http://www.michaelshell.org/contact.html
 % this is a minor point as most people would not even notice if the said evil
 % space somehow managed to creep in.
 
-
-
 % The paper headers
-\markboth{Journal of \LaTeX\ Class Files,~Vol.~14, No.~8, August~2015}%
+%\markboth{Journal of \LaTeX\ Class Files,~Vol.~14, No.~8, August~2015}%
+%{Shell \MakeLowercase{\textit{et al.}}: Bare Demo of IEEEtran.cls for Computer Society Journals}
+\markboth{Paper under revision to the IEEE Transactions on Knowledge and Data Engineering}%
 {Shell \MakeLowercase{\textit{et al.}}: Bare Demo of IEEEtran.cls for Computer Society Journals}
 % The only time the second header will appear is for the odd numbered pages
 % after the title page when using the twoside option.
@@ -455,8 +460,6 @@ E-mail: see http://www.michaelshell.org/contact.html
 % *** name in the headers of peer review papers.                   ***
 % You can use \ifCLASSOPTIONpeerreview for conditional compilation here if
 % you desire.
-
-
 
 % The publisher's ID mark at the bottom of the page is less important with
 % Computer Society journal papers as those publications place the marks
@@ -472,12 +475,8 @@ E-mail: see http://www.michaelshell.org/contact.html
 % column for its text to clear the IEEEpubid mark (Computer Society jorunal
 % papers don't need this extra clearance.)
 
-
-
 % use for special paper notices
 %\IEEEspecialpapernotice{(Invited Paper)}
-
-
 
 % for Computer Society papers, we must declare the abstract and index terms
 % PRIOR to the title within the \IEEEtitleabstractindextext IEEEtran
@@ -496,7 +495,7 @@ We found that machine learning techniques were more suitable to estimate health 
 
 % Note that keywords are not normally used for peerreview papers.
 \begin{IEEEkeywords}
-Computer Society, IEEE, IEEEtran, journal, \LaTeX, paper, template.
+Information Retrieval, User Behaviour, System Evaluation, Document Understandability.
 \end{IEEEkeywords}}
 
 
@@ -529,7 +528,7 @@ Computer Society, IEEE, IEEEtran, journal, \LaTeX, paper, template.
 
 
 
-\IEEEraisesectionheading{\section{Introduction}\label{sec:introduction}}
+%\IEEEraisesectionheading{\section{Introduction}\label{sec:introduction}}
 % Computer Society journal (but not conference!) papers do something unusual
 % with the very first section heading (almost always called "Introduction").
 % They place it ABOVE the main text! IEEEtran.cls does not automatically do
@@ -664,14 +663,14 @@ Computer Society, IEEE, IEEEtran, journal, \LaTeX, paper, template.
 %
 
 
-\appendices
-\section{Proof of the First Zonklar Equation}
-Appendix one text goes here.
+%\appendices
+%\section{Proof of the First Zonklar Equation}
+%Appendix one text goes here.
 
 % you can choose not to have a title for an appendix
 % if you want by leaving the argument blank
-\section{}
-Appendix two text goes here.
+%\section{}
+%Appendix two text goes here.
 
 
 % use section* for acknowledgment
@@ -719,7 +718,7 @@ The authors would like to thank...
 % (used to reserve space for the reference number labels box)
 
 \bibliographystyle{IEEEtran}
-\bibliography{main} 
+\bibliography{IEEEabrv,main}
 
 % biography section
 % 
