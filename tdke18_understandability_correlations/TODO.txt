@@ -1,0 +1,124 @@
+Reviewer 1:
+-----------
+
+
+The Tables and Figures are very difficult to read, and there are too many abbreviations and non-mnemonic names (e.g.
+"Combo X") to keep track of. Some summary plots/more synthesis would assist that.
+
+The understandability classification models are constructed using a LSA-reduced space of 10 dimensions; the authors
+state that this was empirically set based on document word counts. More detailed experimentation with the choices of the
+feature representation and methods for these classifiers is warranted. Some sense of how well the classifiers are doing
+against the "silver standard", e.g. in a cross-fold validation framework), would be interesting. I do realize that this is not
+the main point of the paper, but given that these models work quite well, relatively, it would be worthwhile to expand on
+this point.
+
+As a small comment: MeSH entities are not the complete Expert Medical Vocabulary in UMLS/MetaMap; why is MeSH
+singled out for this?
+
+Performance on CLEF 2016 generally seems to be worse than for CLEF 2015 (certainly for the regression/classification
+methods) -- why is this the case?
+
+I wasn't fully clear on how to interpret the box plots in Figure 2 -- the text indicates that this represents "variability in terms
+of correlation with human assessors" but what is the variability over given that each line on the x axis corresponds to a
+given pre-processing method + understandability estimator combination? Isn't a single ranking computed for each of
+these combinations over one data set? Perhaps I missed something.
+
+There are some minor typos:
+elderlies -> elderly
+natural language and language -> natural language processing and language
+correlations were archived by -> correlations were achieved by
+
+---------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------
+
+Reviewer 2:
+-----------
+
+
+the issues of understandability are well known and much of what the authors have to say has been told before.
+
+
+Although the paper is well-written and the study is relatively thorough, I have to disagree with the conclusion that
+“This paper makes a clear contribution to improving search engines tailored to consumer health search because it
+thoroughly investigates promises and pitfalls of understandability estimations and their integration into retrieval methods “
+The contribution is incremental at best!
+and no clear paths to improvements are demonstrated.
+
+---------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------
+
+Reviwer 3:
+----------
+
+I understand that this was a methods-focused paper and they were detailed in their approach; however, I was left wanting
+more of an implications or "so what" connection, more than the last paragraph relating back to figure 1. The three points
+described in the conclusion are good methodological contributions, and I would like to see these tied back to practical
+implications.
+
+---------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------
+
+Reviwer 4:
+----------
+
+The primary weakness of the paper is its novelty from a methods and from a task
+standpoint. While the authors are rigorous in their experiments, they do not
+contribute any novel approach to characterizing understandability/readability
+of a health page. The finding that machine learning techniques fare better than
+readability metrics has been known for a while when it comes to health texts as
+well as texts in the general news domain.
+
+
+Casting the task of understandability as a classification task, and
+engineering features has been the subject of a considerable amount of work
+across communities of NLP, IR, and Informatics. There is an opportunity for
+novel work here, and thinking of maybe more "actionable" assessment of
+understandability (e.g., would text simplification help?).
+
+
+- In the natural language features, the only features included are part of
+speech classes, sentiment polarity, and ratio of words found in English
+vocabulary. What is the motivation behind using sentiment polarity? 
+Further, work in readability/understandability in the general English domain has
+established that syntactic features and discourse features are particularly
+helpful for assessing understandability. 
+Why were these not considered? 
+
+In addition to the work cited in the manuscript, which refers to use of syntax,
+see these two papers about use of discourse features:
+
+* Feng, Lijun, et al. "A comparison of features for automatic readability
+assessment." Proceedings of the 23rd International Conference on Computational
+Linguistics: Posters. Association for Computational Linguistics, 2010.
+* Barzilay, Regina, and Mirella Lapata. "Modeling local coherence: An
+entity-based approach." Computational Linguistics 34.1 (2008): 1-34.
+
+
+- The word frequency features make sense, and has also been investigated in the
+context of readability of health texts, see for instance
+
+* Elhadad, Noemie. "Comprehending technical texts: Predicting and defining
+unfamiliar terms." AMIA annual symposium proceedings. Vol. 2006. American
+Medical Informatics Association, 2006.
+
+* Wu, Danny TY, et al. "Assessing the readability of ClinicalTrials. gov."
+Journal of the American Medical Informatics Association 23.2 (2015): 269-275.
+
+Another weakness of the paper concerns the understandability assessments
+obtained as part of the CLEF datasets. Can the authors explain better how valid
+the assessments are and how generalizable they would be?
+
+Another way to make the work more innovative would be to study the generalizability of the
+understandability assessment across health consumers with different levels of
+health literacy for instance.
+
+Finally, this is a small point, the Introduction motivates the need for
+understandability assessment by talking about misleading information. The two
+concepts are independent of each other. An easy-to-read document may or may not
+have any misleading information, and knowledge about one concept would not help
+towards knowing the others.
+
+
