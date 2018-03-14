@@ -11,7 +11,7 @@ These include the readability formulas mentioned in Section~\ref{sec:related}, a
 These are formed by the ``building blocks'' used in the traditional readability formulas; examples of such building blocks include the average number of characters per word and the average number of syllables in a sentence. % Words are divided into syllables using the Python package Pyphen~\cite{pyphen}.
 
 \textbf{General Medical Vocabularies (GMV):}
-These include methods that count the number of words with a medical prefix or suffix, i.e. beginning or ending with Latin or Greek particles (e.g., amni-, angi-, algia-, arteri-), and text strings included in lists of acronyms or in medical vocabularies such as the International Statistical Classification of Diseases and Related Health Problems (ICD), Drugbank and the OpenMedSpel dictionary~\cite{openmedspel}. An acronym list from the ADAM database~\cite{zhou2006} was used. Methods in this category were matched with documents using simple keywords matching.
+These include methods that count the number of words with a medical prefix or suffix, i.e. beginning or ending with Latin or Greek particles (e.g., amni-, angi-, algia-, arteri-), and text strings included in lists of acronyms or in medical vocabularies such as the International Statistical Classification of Diseases and Related Health Problems (ICD), Drugbank and the OpenMedSpel dictionary\footnote{\url{http://extensions.openoffice.org/en/project/openmedspel-en-us}}. An acronym list from the ADAM database~\cite{zhou2006} was used. Methods in this category were matched with documents using simple keywords matching.
 %An acronym list from the ADAM database~\cite{zhou2006} was used and methods in this group were matched with documents using simple keywords matching.
 
 \textbf{Consumer Medical Vocabulary (CMV):}
@@ -23,10 +23,10 @@ Similarly to the CHV features, we used MetaMap to convert the content of Web pag
 
 \textbf{Natural Language Features (NLF):}
 These included commonly used natural language heuristics such as the ratio of part-of-speech (POS) classes, %the number of entities in the text, 
-the sentiment polarity and the ratio of words found in English vocabularies. The Python package NLTK~\cite{nltk} was employed for sentiment analysis and POS tagging. The GNU Aspell~\cite{aspell} dictionary was used as a standard English vocabulary and a stop word list was built by merging those of Indri~\cite{indri} and Terrier~\cite{terrier}. 
+the sentiment polarity and the ratio of words found in English vocabularies. The Python package NLTK\footnote{\url{http://www.nltk.org/}} was employed for sentiment analysis and POS tagging. The GNU Aspell\footnote{\url{http://www.aspell.net/}} dictionary was used as a standard English vocabulary and a stop word list was built by merging those of Indri~\cite{indri} and Terrier~\cite{terrier}. 
 
 \textbf{HTML Features (HF):}
-These included the identification of a large number of HTML tags, which were extracted with the Python library BeautifulSoap~\cite{bs4}. The intuition for these features is that Web pages with many images and tables may explain and summarise health content better, thus providing more understandable content to the general public. 
+These included the identification of a large number of HTML tags, which were extracted with the Python library BeautifulSoap\footnote{\url{https://www.crummy.com/software/BeautifulSoup/}}. The intuition for these features is that Web pages with many images and tables may explain and summarise health content better, thus providing more understandable content to the general public. 
 
 \textbf{Word Frequency Features (WFF):}
 Generally speaking, common and known words are usually frequent words, while unknown and obscure words are generally rare. This idea is implemented in readability formulas such as the DCI, which uses a list of common words and counts the number of words that fall outside this list (complex words)~\cite{dale48}.
@@ -34,15 +34,15 @@ We extended these observations by studying corpus-wide word frequencies.
 We modelled word frequencies in a corpus in a straightforward manner: we sorted the word frequencies and normalized word rankings such that values close to 100 are attributed to common words and values close to 0 to rare words. Three corpora were analysed to extract word frequencies:
 
 \begin{itemize}[leftmargin=*]
-\item \underline{Medical Reddit:} Reddit~\cite{reddit} is a Web forum with a sizeable user community which is responsible for generating and moderating its content. Any user can start a discussion or reply to a discussion. This forum is intensively used for health purposes: for example in the Reddit community AskDocs~\cite{redditaskdocs}, licensed nurses and doctors (subject to user identity verification) advise help seekers free of charge. We selected six of such communities
-    (medical, AskDocs, AskDoctorSmeeee, Health, WomensHealth, Mens\_Health) and downloaded all user interactions available until September 1st 2017 using the Python library PRAW~\cite{redditapi}. In total 43,019 discussions were collected.
+\item \underline{Medical Reddit:} Reddit\footnote{\url{https://www.reddit.com}} is a Web forum with a sizeable user community which is responsible for generating and moderating its content. Any user can start a discussion or reply to a discussion. This forum is intensively used for health purposes: for example in the Reddit community AskDocs\footnote{\url{https://www.reddit.com/r/AskDocs/}}, licensed nurses and doctors (subject to user identity verification) advise help seekers free of charge. We selected six of such communities
+    (medical, AskDocs, AskDoctorSmeeee, Health, WomensHealth, Mens\_Health) and downloaded all user interactions available until September 1st 2017 using the Python library PRAW\footnote{\url{https://praw.readthedocs.io/}}. In total 43,019 discussions were collected.
 
-\item \underline{Medical English Wikipedia:} after obtaining a recent Wikipedia dump~\cite{wikipedia} (May 1st 2017), we filtered articles to only those containing an Infobox\footnote{A Wikipedia infobox is a structured template that appears on the right of Wikipedia pages summarizing key aspects of articles.} in which at least one of the following words appeared as a property: ICD10, ICD9, DiseasesDB, MeSH, MeSHID, MeshName, MeshNumber, GeneReviewsName, Orphanet, eMedicine, MedlinePlus, drug\_name, Drugs.com, DailyMedID, LOINC.
+\item \underline{Medical English Wikipedia:} after obtaining a recent Wikipedia dump\footnote{\url{https://dumps.wikimedia.org/enwiki/}} (May 1st 2017), we filtered articles to only those containing an Infobox\footnote{A Wikipedia infobox is a structured template that appears on the right of Wikipedia pages summarizing key aspects of articles.} in which at least one of the following words appeared as a property: ICD10, ICD9, DiseasesDB, MeSH, MeSHID, MeshName, MeshNumber, GeneReviewsName, Orphanet, eMedicine, MedlinePlus, drug\_name, Drugs.com, DailyMedID, LOINC.
 %Figure~\ref{fig:hyperthermia} illustrates a Wikipedia page that is marked as medical because of its Infobox entries.
 In doing so, we followed the method by Soldaini et al.~\cite{soldaini15}, which favours precision over recall when identifying a health-related article. This resulted in a collection of 11,868 articles. 
 %Note that this procedure highly favors precision over recall. %\mytodo{In case we need space, I suggest we drop this figure}
 
-\item \underline{PubMed Central:} PubMed Central~\cite{pubmed} is an online  database of biomedical literature. We used the collection distributed for the TREC 2014 and 2015 Clinical Decision Support Track~\cite{roberts16,trec15}, consisting of 733,191 articles. 
+\item \underline{PubMed Central:} PubMed Central\footnote{\url{https://www.ncbi.nlm.nih.gov/pmc/}} is an online  database of biomedical literature. We used the collection distributed for the TREC 2014 and 2015 Clinical Decision Support Track~\cite{roberts16,trec15}, consisting of 733,191 articles. 
  
 \end{itemize}
 
