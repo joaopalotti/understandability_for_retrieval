@@ -1,80 +1,58 @@
-\begin{table}[tb]
+\begin{table*}[tb]
 \caption{Methods used to estimate understandability. $\star$: raw values were
 used. $\diamondsuit$: values normalised by number of words in a document
 were used. $\dagger$: values normalised by number of sentences in
 a document were used.}
 \label{tab:doc_features} \vspace{-10pt}
- \resizebox{0.48\textwidth}{!}{ %
-\begin{tabular}{llcll}
+\centering
+\resizebox{0.9\textwidth}{!}{ %
+\begin{tabular}{llccll}
 \hline 
-\textbf{Cat.}  & \textbf{Method}  & \multirow{29}{*}{}  & \textbf{Cat.}  & \textbf{Method}\tabularnewline
+\textbf{Cat.}  & \textbf{Method}  & \textbf{Cat.}  & \textbf{Method}  & \textbf{Cat.}  & \textbf{Method}\tabularnewline
 \hline 
-\multirow{8}{*}{\textbf{\makecell{RF}}}  & Automated Readability Index (ARI) \cite{ari67}  &  & \multirow{26}{*}{\textbf{\makecell{HF}}}  & \# of Abbr tags\tabularnewline
- & Coleman-Liau Index (CLI) \cite{cli75}  &  &  & \# of A tags\tabularnewline
- & Dale Chall Index (DCI) \cite{dale48}  &  &  & \# of Blockquote tags\tabularnewline
- & Flesch-Kincaid Grade Level (FKGL) \cite{flesch75}  &  &  & \# of Bold tags\tabularnewline
- & Flesch Reading Ease (FRE) \cite{flesch75}  &  &  & \# of Cite tags\tabularnewline
- & Gunning Fog Index (GFI) \cite{gunning52}  &  &  & \# of Div tags\tabularnewline
- & Lasbarhetsindex (LIX) \cite{lix}  &  &  & \# of Forms tags\tabularnewline
- & Simple Measure of Gobbledygook (SMOG) \cite{smog69}  &  &  & \# of H1 tags\tabularnewline
-\cline{1-2}
-\multirow{10}{*}{\textbf{\makecell{CRF}}}  & \# of Characters $^{\star\diamondsuit\dagger}$  &  &  & \# of H2 tags\tabularnewline
- & \# of Words $^{\star\dagger}$  &  &  & \# of H3 tags\tabularnewline
- & \# of Sentences {$^{\star\diamondsuit}$}  &  &  & \# of H4 tags\tabularnewline
- & \# of Difficult Words (Dale Chall list \cite{dale48}) $^{\star\diamondsuit\dagger}$  &  &  & \# of H5 tags\tabularnewline
- & \# of Words Longer than 4 chars $^{\star\diamondsuit\dagger}$  &  &  & \# of H6 tags\tabularnewline
- & \# of Words Longer than 6 chars $^{\star\diamondsuit\dagger}$  &  &  & \# of Hs (any H above)\tabularnewline
- & \# of Words Longer than 10 chars $^{\star\diamondsuit\dagger}$  &  &  & \# of Img tags\tabularnewline
- & \# of Words Longer than 13 chars $^{\star\diamondsuit\dagger}$  &  &  & \# of Input tags\tabularnewline
- & \# of Number of Syllables $^{\star\diamondsuit\dagger}$  &  &  & \# of Link tags\tabularnewline
- & \# of Polysyllable Words (\textgreater{}3 Syllables) $^{\star\diamondsuit\dagger}$  &  &  & \# of DL tags\tabularnewline
-\cline{1-2}
-\multirow{6}{*}{\textbf{GMV}}  & \# of Words with Medical Prefix $^{\star\diamondsuit\dagger}$  &  &  & \# of UL tags\tabularnewline
- & \# of Words with Medical Suffix $^{\star\diamondsuit\dagger}$  &  &  & \# of OL tags\tabularnewline
- & \# of Acronyms $^{\star\diamondsuit\dagger}$  &  &  & \# of List (DL + UL + OL)\tabularnewline
- & \# of ICD Concepts $^{\star\diamondsuit\dagger}$  &  &  & \# of Q tags\tabularnewline
- & \# of Drugbank $^{\star\diamondsuit\dagger}$  &  &  & \# of Scripts tags\tabularnewline
- & \# of Words in medical dict. (OpenMedSpel) $^{\star\diamondsuit\dagger}$  &  &  & \# of Spans tags\tabularnewline
-\cline{1-2}
-\multirow{6}{*}{\textbf{\makecell{CMV}}}  & CHV Mean Score for all Concepts $^{\star\diamondsuit\dagger}$  &  &  & \# of Table tags\tabularnewline
- & \# of CHV Concepts $^{\star\diamondsuit\dagger}$  &  &  & \# of P tags\tabularnewline
-\cline{4-5}
- & CHV Mean Score for Symptom Concepts $^{\star\diamondsuit\dagger}$  &  & \multirow{20}{*}{\textbf{\makecell{WFF}}}  & 25th percentil English Wikipedia\tabularnewline
- & \# of CHV Symptom Concepts $^{\star\diamondsuit\dagger}$  &  &  & 50th percentil English Wikipedia\tabularnewline
- & CHV Mean Score for Disease Concepts $^{\star\diamondsuit\dagger}$  &  &  & 75th percentil English Wikipedia\tabularnewline
- & \# of CHV Disease Concepts $^{\star\diamondsuit\dagger}$  &  &  & Mean Rank English Wikip.\tabularnewline
+\multirow{8}{*}{\textbf{\makecell{RF}}}  & Automated Readability Index (ARI) \cite{ari67}  & \multirow{20}{*}{\textbf{\makecell{WFF}}}  & 25th percentil English Wikipedia & \multirow{26}{*}{\textbf{\makecell{HF}}}  & \# of Abbr tags\tabularnewline
+ & Coleman-Liau Index (CLI) \cite{cli75}  &  & 50th percentil English Wikipedia &  & \# of A tags\tabularnewline
+ & Dale Chall Index (DCI) \cite{dale48}  &  & 75th percentil English Wikipedia &  & \# of Blockquote tags\tabularnewline
+ & Flesch-Kincaid Grade Level (FKGL) \cite{flesch75}  &  & Mean Rank English Wikip. &  & \# of Bold tags\tabularnewline
+ & Flesch Reading Ease (FRE) \cite{flesch75}  &  & Mean Rank English Wikip. - Includes OV &  & \# of Cite tags\tabularnewline
+ & Gunning Fog Index (GFI) \cite{gunning52}  &  & 25th percentil Medical Reddit &  & \# of Div tags\tabularnewline
+ & Lasbarhetsindex (LIX) \cite{lix}  &  & 50th percentil Medical Reddit &  & \# of Forms tags\tabularnewline
+ & Simple Measure of Gobbledygook (SMOG) \cite{smog69}  &  & 75th percentil Medical Reddit &  & \# of H1 tags\tabularnewline
 \cline{1-2} 
-\multirow{6}{*}{\textbf{\makecell{EMV}}}  & \# of MeSH Concepts $^{\star\diamondsuit\dagger}$  &  &  & Mean Rank English Wikip. - Includes OV\tabularnewline
- & Average Tree of MeSH Concepts $^{\star\diamondsuit\dagger}$  &  &  & 25th percentil Medical Reddit\tabularnewline
- & \# of MeSH Symptom Concepts $^{\star\diamondsuit\dagger}$  &  &  & 50th percentil Medical Reddit\tabularnewline
- & Average Tree of MeSH Symptom Concepts $^{\star\diamondsuit\dagger}$  &  &  & 75th percentil Medical Reddit\tabularnewline
- & \# of MeSH Disease Concepts $^{\star\diamondsuit\dagger}$  &  &  & Mean Rank Medical Reddit\tabularnewline
- & Average Tree of MeSH Disease Concepts $^{\star\diamondsuit\dagger}$  &  &  & Mean Rank Medical Reddit - Includes OV\tabularnewline
+\multirow{10}{*}{\textbf{\makecell{CRF}}}  & \# of Characters $^{\star\diamondsuit\dagger}$  &  & Mean Rank Medical Reddit &  & \# of H2 tags\tabularnewline
+ & \# of Words $^{\star\dagger}$  &  & Mean Rank Medical Reddit - Includes OV &  & \# of H3 tags\tabularnewline
+ & \# of Sentences {$^{\star\diamondsuit}$}  &  & 25th percentil Pubmed &  & \# of H4 tags\tabularnewline
+ & \# of Difficult Words (Dale Chall list \cite{dale48}) $^{\star\diamondsuit\dagger}$  &  & 50th percentil Pubmed &  & \# of H5 tags\tabularnewline
+ & \# of Words Longer than 4 chars $^{\star\diamondsuit\dagger}$  &  & 75th percentil Pubmed &  & \# of H6 tags\tabularnewline
+ & \# of Words Longer than 6 chars $^{\star\diamondsuit\dagger}$  &  & Mean Rank Pubmed &  & \# of Hs (any H above)\tabularnewline
+ & \# of Words Longer than 10 chars $^{\star\diamondsuit\dagger}$  &  & Mean Rank Pubmed - Includes OV &  & \# of Img tags\tabularnewline
+ & \# of Words Longer than 13 chars $^{\star\diamondsuit\dagger}$  &  & 25th p. Wikipedia+Reddit+Pubmed  &  & \# of Input tags\tabularnewline
+ & \# of Number of Syllables $^{\star\diamondsuit\dagger}$  &  & 50th p. Wikipedia+Reddit+Pubmed  &  & \# of Link tags\tabularnewline
+ & \# of Polysyllable Words (\textgreater{}3 Syllables) $^{\star\diamondsuit\dagger}$  &  & 75th p. Wikipedia+Reddit+Pubmed  &  & \# of DL tags\tabularnewline
 \cline{1-2} 
-\multirow{20}{*}{\textbf{\makecell{NL}}}  & Positive Words $^{\star\diamondsuit\dagger}$  &  &  & 25th percentil Pubmed\tabularnewline
- & Negative Words $^{\star\diamondsuit\dagger}$  &  &  & 50th percentil Pubmed\tabularnewline
- & Neutral Words $^{\star\diamondsuit\dagger}$  &  &  & 75th percentil Pubmed\tabularnewline
- & \# of verbs $^{\star\diamondsuit\dagger}$  &  &  & Mean Rank Pubmed\tabularnewline
- & \# of nouns $^{\star\diamondsuit\dagger}$  &  &  & Mean Rank Pubmed - Includes OV\tabularnewline
- & \# of pronouns $^{\star\diamondsuit\dagger}$  &  &  & 25th p. Wikipedia+Reddit+Pubmed \tabularnewline
- & \# of adjectives $^{\star\diamondsuit\dagger}$  &  &  & 50th p. Wikipedia+Reddit+Pubmed \tabularnewline
- & \# of adverbs $^{\star\diamondsuit\dagger}$  &  &  & 75th p. Wikipedia+Reddit+Pubmed \tabularnewline
- & \# of adpositions $^{\star\diamondsuit\dagger}$  &  &  & Mean R. Wiki.+Reddit+Pubmed \tabularnewline
- & \# of conjunctions $^{\star\diamondsuit\dagger}$  &  &  & Mean R. Wiki.+Reddit+Pubmed - w. OV \tabularnewline
-\cline{4-5}
- & \# of determiners $^{\star\diamondsuit\dagger}$  &  & \multirow{6}{*}{\textbf{MLR}}  & Linear Regressor\tabularnewline
- & \# of cardinal numbers $^{\star\diamondsuit\dagger}$  &  &  & Multi-layer Perceptron Regressor\tabularnewline
- & \# of particles or other function words $^{\star\diamondsuit\dagger}$  &  &  & Random Forest Regressor\tabularnewline
- & \# of other POS (foreign words, typos) $^{\star\diamondsuit\dagger}$  &  &  & Support Vector Machine Regressor\tabularnewline
- & \# of punctuation $^{\star\diamondsuit\dagger}$  &  &  & Gradient Boosting Regressor\tabularnewline
- & \# of Entities $^{\star\diamondsuit\dagger}$  &  &  & Logistic Regression\tabularnewline
-\cline{4-5}
- & Height of part-of-speech parser tree $^{\star\diamondsuit\dagger}$  &  & \multirow{5}{*}{\textbf{MLC}}  & Multi-layer Perceptron Classifier\tabularnewline
- & \# of Stopwords $^{\star\diamondsuit\dagger}$  &  &  & Random Forest Classifier\tabularnewline
- & \# of words not found in Aspell Eng. dict. $^{\star\diamondsuit\dagger}$  &  &  & Support Vector Machine Classifier\tabularnewline
- &  &  &  & Multinomial Naive Bayes\tabularnewline
- &  &  &  & Gradient Boosting Classifier\tabularnewline
+\multirow{20}{*}{\textbf{\makecell{NL}}}  & Positive Words $^{\star\diamondsuit\dagger}$  &  & Mean R. Wiki.+Reddit+Pubmed  &  & \# of UL tags\tabularnewline
+ & Negative Words $^{\star\diamondsuit\dagger}$  &  & Mean R. Wiki.+Reddit+Pubmed - w. OV  &  & \# of OL tags\tabularnewline
+\cline{3-4} 
+ & Neutral Words $^{\star\diamondsuit\dagger}$  & \multirow{6}{*}{\textbf{GMV}}  & \# of Words with Medical Prefix $^{\star\diamondsuit\dagger}$  &  & \# of List (DL + UL + OL)\tabularnewline
+ & \# of verbs $^{\star\diamondsuit\dagger}$  &  & \# of Words with Medical Suffix $^{\star\diamondsuit\dagger}$  &  & \# of Q tags\tabularnewline
+ & \# of nouns $^{\star\diamondsuit\dagger}$  &  & \# of Acronyms $^{\star\diamondsuit\dagger}$  &  & \# of Scripts tags\tabularnewline
+ & \# of pronouns $^{\star\diamondsuit\dagger}$  &  & \# of ICD Concepts $^{\star\diamondsuit\dagger}$  &  & \# of Spans tags\tabularnewline
+ & \# of adjectives $^{\star\diamondsuit\dagger}$  &  & \# of Drugbank $^{\star\diamondsuit\dagger}$  &  & \# of Table tags\tabularnewline
+ & \# of adverbs $^{\star\diamondsuit\dagger}$  &  & \# of Words in medical dict. (OpenMedSpel) $^{\star\diamondsuit\dagger}$  &  & \# of P tags\tabularnewline
+\cline{3-6} 
+ & \# of adpositions $^{\star\diamondsuit\dagger}$  & \multirow{6}{*}{\textbf{\makecell{CMV}}}  & CHV Mean Score for all Concepts $^{\star\diamondsuit\dagger}$  & \multirow{6}{*}{\textbf{MLR}}  & Linear Regressor\tabularnewline
+ & \# of conjunctions $^{\star\diamondsuit\dagger}$  &  & \# of CHV Concepts $^{\star\diamondsuit\dagger}$  &  & Multi-layer Perceptron Regressor\tabularnewline
+ & \# of determiners $^{\star\diamondsuit\dagger}$  &  & CHV Mean Score for Symptom Concepts $^{\star\diamondsuit\dagger}$  &  & Random Forest Regressor\tabularnewline
+ & \# of cardinal numbers $^{\star\diamondsuit\dagger}$  &  & \# of CHV Symptom Concepts $^{\star\diamondsuit\dagger}$  &  & Support Vector Machine Regressor\tabularnewline
+ & \# of particles or other function words $^{\star\diamondsuit\dagger}$  &  & CHV Mean Score for Disease Concepts $^{\star\diamondsuit\dagger}$  &  & Gradient Boosting Regressor\tabularnewline
+ & \# of other POS (foreign words, typos) $^{\star\diamondsuit\dagger}$  &  & \# of CHV Disease Concepts $^{\star\diamondsuit\dagger}$  &  & Logistic Regression\tabularnewline
+\cline{3-6} 
+ & \# of punctuation $^{\star\diamondsuit\dagger}$  & \multirow{6}{*}{\textbf{\makecell{EMV}}}  & \# of MeSH Concepts $^{\star\diamondsuit\dagger}$  & \multirow{5}{*}{\textbf{MLC}}  & Multi-layer Perceptron Classifier\tabularnewline
+ & \# of Entities $^{\star\diamondsuit\dagger}$  &  & Average Tree of MeSH Concepts $^{\star\diamondsuit\dagger}$  &  & Random Forest Classifier\tabularnewline
+ & Height of part-of-speech parser tree $^{\star\diamondsuit\dagger}$  &  & \# of MeSH Symptom Concepts $^{\star\diamondsuit\dagger}$  &  & Support Vector Machine Classifier\tabularnewline
+ & \# of Stopwords $^{\star\diamondsuit\dagger}$  &  & Average Tree of MeSH Symptom Concepts $^{\star\diamondsuit\dagger}$  &  & Multinomial Naive Bayes\tabularnewline
+ & \# of words not found in Aspell Eng. dict. $^{\star\diamondsuit\dagger}$  &  & \# of MeSH Disease Concepts $^{\star\diamondsuit\dagger}$  &  & Gradient Boosting Classifier\tabularnewline
+ &  &  & Average Tree of MeSH Disease Concepts $^{\star\diamondsuit\dagger}$  &  & \tabularnewline
 \hline 
 \end{tabular}} \vspace{-12pt}
- 
-\end{table}
+\end{table*}
