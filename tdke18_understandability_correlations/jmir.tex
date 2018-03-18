@@ -1,0 +1,249 @@
+\documentclass[twoside,twocolumn]{article}
+\usepackage{amsfonts,amssymb,amsbsy,latexsym,amsmath,tabulary,graphicx,times,xcolor}
+
+\usepackage{multirow}
+\usepackage{amssymb}
+\setcounter{tocdepth}{3}
+\usepackage{graphicx}
+\usepackage{makecell}
+\usepackage{enumitem}
+%\usepackage{todonotes}
+\usepackage{multirow}   % Allows table elements to span several rows.
+\usepackage{booktabs}   % Improves the typesettings of tables.
+\usepackage{hyperref}  % Enables cross linking in the electronic document version. This package has to be included second to last.
+
+\usepackage{booktabs}
+\usepackage{arydshln}
+
+
+\usepackage[nonindentfirst]{titlesec}
+\usepackage{caption,abstract,fancyhdr}
+\usepackage[utf8]{inputenc}
+\usepackage[numbers,sort&compress]{natbib}
+%\def\NormalBaseline{\def\baselinestretch{1.1}}
+%\renewcommand{\bibnumfmt}[1]{\textbf{#1}.}
+
+%\usepackage[overload]{textcase}
+
+\def\oupIndent{1pt}
+
+\usepackage[T1]{fontenc}
+%\usepackage[paperheight=297mm,paperwidth=210mm,columnsep=1.93pc,right=17.5mm,left=20mm,top=20mm,bottom=20mm]{geometry}
+%\usepackage[margin=1.5cm,columnsep=1.93pc,top=1in,bottom=2cm]{geometry}
+\usepackage[paperheight=11.69in,paperwidth=8.27in,margin=1.5cm,headsep=.5cm,top=2cm,bottom=2.5cm,columnsep=12pt]{geometry}
+\linespread{1.2} \date{}
+\captionsetup[table]{labelfont={bf},labelsep=period}
+\captionsetup[figure]{labelfont={bf},labelsep=period}
+\def\abstractname{\fontsize{16pt}{19.2pt}\sffamily{Abstract}\selectfont}
+\renewenvironment{onecolabstract} {\vspace*{-1pc}\trivlist\item[]\leftskip\oupIndent\par\vskip4pt\noindent\textit{{\abstractname}}\mbox{\null}\\ \textcolor[cmyk]{.77,.49,.38,.11}{\rule[.5pc]{\textwidth}{2pt}} \newline}{\par\noindent\endtrivlist}
+
+\renewcommand{\bibnumfmt}[1]{#1.}
+
+
+\makeatletter
+\def\author#1{\gdef\@author{\hskip-\dimexpr(\tabcolsep)\hskip\oupIndent\parbox{\dimexpr\textwidth-\oupIndent}{#1}}}
+\def\title#1{\gdef\@title{\raggedright\sffamily\bfseries\ifx\@articleType\@empty\else\@articleType\\\fi#1}}
+\fancypagestyle{headings}{\renewcommand{\headrulewidth}{0pt}\renewcommand{\footrulewidth}{0pt}
+\fancyhf{}\fancyhead[R]{{\rule{\textwidth}{.1pt}} \\ \RunningAuthor }\fancyhead[L]{{\rule{\textwidth}{0pt}} \\ \MakeUppercase{\journalTitle} }\fancyfoot[R]{\thepage}}\pagestyle{headings}
+\fancypagestyle{plain}{\renewcommand{\headrulewidth}{0pt}\renewcommand{\footrulewidth}{0pt}\fancyhf{}\fancyhead[R]{{\rule{\textwidth}{.1pt}} \\ \RunningAuthor }\fancyhead[L]{{\rule{\textwidth}{0pt}} \\ \MakeUppercase{\journalTitle}}\fancyfoot[R]{\thepage}}
+\let\@articleType\@empty \def\articletype#1{\gdef\@articleType{{\normalfont\underline{#1}}}}
+
+\usepackage{titlesec}
+\setcounter{secnumdepth}{5}
+ \def\NormalBaseline{\def\baselinestretch{1.1}}
+\titleformat{\section}[hang]{\NormalBaseline\filright\large\fontsize{16pt}{19.2pt}\itshape\sffamily}
+{\large\thesection}
+{}
+{}
+[{\color[cmyk]{.77,.49,.38,.11}\rule[3pc]{\columnwidth}{2pt}}]
+\titleformat{\subsection}[hang]{\NormalBaseline\bfseries}
+{}
+{10pt}
+{}
+[]
+\titleformat{\subsubsection}[hang]{\NormalBaseline\bfseries}
+{}
+{10pt}
+{}
+[]
+\titleformat{\paragraph}[runin]{\NormalBaseline\bfseries}
+{}
+{10pt}
+{}
+[]
+\titleformat{\subparagraph}[runin]{\NormalBaseline\filright\bfseries}
+{}
+{10pt}
+{}
+[]
+
+
+
+\titlespacing{\section}{0pt}{1.5\baselineskip}{-2.5\baselineskip}
+\titlespacing{\subsection}{0pt}{1.5\baselineskip}{.2\baselineskip}
+\titlespacing{\subsubsection}{0pt}{1.5\baselineskip}{.2\baselineskip}
+\titlespacing{\paragraph}{0pt}{.5\baselineskip}{10pt}
+\titlespacing{\subparagraph}{0pt}{.5\baselineskip}{10pt}
+\makeatother
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Following additional macros are required to function some 
+% functions which are not available in the class used.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{url,multirow,morefloats,floatflt,cancel,tfrupee}
+\makeatletter
+\AtBeginDocument{\@ifpackageloaded{textcomp}{}{\usepackage{textcomp}}}
+\makeatother
+\usepackage{colortbl}
+\usepackage{xcolor}
+\usepackage{pifont}
+\usepackage[nointegrals]{wasysym}
+\urlstyle{rm}
+\makeatletter
+
+\AtBeginDocument{
+\expandafter\ifx\csname eqalign\endcsname\relax
+\def\eqalign#1{\null\vcenter{\def\\{\cr}\openup\jot\m@th
+  \ialign{\strut$\displaystyle{##}$\hfil&$\displaystyle{{}##}$\hfil
+      \crcr#1\crcr}}\,}
+\fi
+}
+
+\let\lt=<
+\let\gt=>
+\def\processVert{\ifmmode|\else\textbar\fi}
+\let\processvert\processVert
+
+\@ifundefined{subparagraph}{
+\def\subparagraph{\@startsection{paragraph}{5}{2\parindent}{0ex plus 0.1ex minus 0.1ex}%
+{0ex}{\normalfont\small\itshape}}%
+}{}
+
+% These are now gobbled, so won't appear in the PDF.
+\newcommand\role[1]{\unskip}
+\newcommand\aucollab[1]{\unskip}
+  
+\@ifundefined{tsGraphicsScaleX}{\gdef\tsGraphicsScaleX{1}}{}
+\@ifundefined{tsGraphicsScaleY}{\gdef\tsGraphicsScaleY{.9}}{}
+% To automatically resize figures to fit inside the text area
+\def\checkGraphicsWidth{\ifdim\Gin@nat@width>\textwidth
+	\tsGraphicsScaleX\textwidth\else\Gin@nat@width\fi}
+
+\def\checkGraphicsHeight{\ifdim\Gin@nat@height>.9\textheight
+	\tsGraphicsScaleY\textheight\else\Gin@nat@height\fi}
+
+\def\fixFloatSize#1{\@ifundefined{processdelayedfloats}{\setbox0=\hbox{\includegraphics{#1}}\ifnum\wd0<\columnwidth\relax\renewenvironment{figure*}{\begin{figure}}{\end{figure}}\fi}{}}
+\let\ts@includegraphics\includegraphics
+
+\def\inlinegraphic[#1]#2{{\edef\@tempa{#1}\edef\baseline@shift{\ifx\@tempa\@empty0\else#1\fi}\edef\tempZ{\the\numexpr(\numexpr(\baseline@shift*\f@size/100))}\protect\raisebox{\tempZ pt}{\ts@includegraphics{#2}}}}
+
+%\renewcommand{\includegraphics}[1]{\ts@includegraphics[width=\checkGraphicsWidth]{#1}}
+\AtBeginDocument{\def\includegraphics{\@ifnextchar[{\ts@includegraphics}{\ts@includegraphics[width=\checkGraphicsWidth,height=\checkGraphicsHeight,keepaspectratio]}}}
+
+\def\URL#1#2{\@ifundefined{href}{#2}{\href{#1}{#2}}}
+
+%%For url break
+\def\UrlOrds{\do\*\do\-\do\~\do\'\do\"\do\-}%
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\makeatother
+\def\floatpagefraction{0.8} 
+\def\dblfloatpagefraction{0.8}
+\def\style#1#2{#2}
+\def\xxxguillemotleft{\fontencoding{T1}\selectfont\guillemotleft}
+\def\xxxguillemotright{\fontencoding{T1}\selectfont\guillemotright}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\newcommand{\mytodo}[1]{\textcolor{red}{#1}}
+\newcommand{\todo}[1]{\textcolor{red}{#1}}
+
+
+\begin{document}
+
+\title{A Study of Web Page Understandability\\ for Consumer Health Search}
+\author{\textcolor{black}{\rule{\textwidth}{.1pt}}\vspace*{-.5pc} \textcolor{black}{\rule{\textwidth}{.1pt}} Joao Palotti\textsuperscript{1}, MSc;
+            Guido Zuccon\textsuperscript{2};
+            Allan Hanbury\textsuperscript{3}\vspace*{-.5pc}\\\vspace*{-1pc}\textcolor{black}{\rule{\textwidth}{.1pt}}~\\[-3pt]\normalsize 
+~\\\textsuperscript{1}{Qatar Computing Research Institute\unskip, Doha\unskip, Qatar}, Emails: jpalotti@hbku.edu.qa
+~\\\textsuperscript{2}{Queensland University\unskip, Brisbane\unskip, Australia}, Emails: g.zuccon@qut.edu.au
+~\\\textsuperscript{3}{Vienna University of Technology\unskip, Vienna\unskip, Austria}, Emails: hanbury@ifs.tuwien.ac.at}
+
+
+\def\RunningAuthor{Palotti, Zuccon and Hanbury}\def\journalTitle{Journal of Medical Internet Research}
+
+\twocolumn[ \maketitle {\begin{onecolabstract}
+Background:
+
+\textbf{Objective:}
+
+\textbf{Methods:}
+
+\textbf{Results:} (make sure to include relevant statistics here, such as sample sizes, response rates, P-values or Confidence Intervals. Do not just say "there were differences between the groups").
+
+\textbf{Conclusions:}
+
+\textit{OLD ABSTRACT: In this paper, we investigated methods to estimate the understandability of health Web pages and used these to improve the retrieval of information for people seeking health advice on the Web.  Understandability plays a key role in ensuring that people accessing health information are capable of gaining insights that can assist them with their health concerns and choices. The access to unclear or misleading information has been shown to negatively impact on the health decisions of the general public. Our investigation considered methods to automatically estimate the understandability of health information in Web pages, and it provided a thorough evaluation of these methods using human assessments as well as an analysis of pre-processing factors affecting understandability estimations, and associated pitfalls. Furthermore, lessons learnt for estimating Web page understandability were applied to the construction of retrieval methods with specific attention to retrieving information understandable by the general public. We found that machine learning techniques were more suitable to estimate health Web page understandability than traditional readability formulas, which are often used as guidelines and benchmarking by health information providers on the Web. Learning to rank effectively exploited these estimates to provide the general public with more understandable search results. These results are important for specialised search services tailored to support the general public in seeking health advice on the Web.}
+
+\textcolor{black}{\rule{\textwidth}{.2pt}} \\ \smallskip\noindent\textbf{KEYWORDS: }{Consumer Health Search; Another Keyword\newline}
+\end{onecolabstract}}]\saythanks 
+    
+\input{sections/01_intro}
+\input{sections/02_related}
+\input{sections/03_readabilityform}
+\input{sections/04_estimators}
+\input{sections/05_topmeasures}
+\input{sections/06_bestpreprocessing}
+\input{sections/07_experiments}
+\input{sections/08_conclusion}
+
+
+
+%\begin{table*}[h]
+%\caption{{Table bla} }
+%\label{table-wrap-df8d598d0d5e701e28990f03a1beab76}
+%\def\arraystretch{1}\ignorespaces
+%\centering 
+%\begin{tabulary}{\linewidth}{LLLL}
+%\hline 
+%h1 & h2 & h3 & h4\\
+%\hline 
+%v1 &
+%   &
+%   &
+%  \\
+%v2 &
+%   &
+%   &
+%  \\
+%v3 &
+%   &
+%   &
+%  \\
+%v4 &
+%   &
+%   &
+%  v16\\
+%\hline 
+%\end{tabulary}\par 
+%\end{table*}
+
+
+%\bgroup
+%\fixFloatSize{images/d85059db-a078-4ddc-9781-65cbdcf44979-ubar_corr_kendalltau15_values.png}
+%\begin{figure*}[!htbp]
+%\centering \makeatletter\IfFileExists{images/d85059db-a078-4ddc-9781-65cbdcf44979-ubar_corr_kendalltau15_values.png}{\includegraphics{images/d85059db-a078-4ddc-9781-65cbdcf44979-ubar_corr_kendalltau15_values.png}}{}
+%\makeatother 
+%\caption{{ Caption of figure 1....}}
+%\label{figure-37dbf235aca462438e60c953c38acd00}
+%\end{figure*}
+%\egroup
+
+\bibliographystyle{vancouver}
+\bibliography{main}
+
+%\section*{Author biography}
+%\textbf{Joao Palotti} Bla bla bla bla
+
+\end{document}

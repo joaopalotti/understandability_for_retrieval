@@ -1,4 +1,4 @@
-t=main
+t=jmir
 all: compile run
 	
 compile:
