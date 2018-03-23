@@ -29,7 +29,7 @@ the sentiment polarity and the ratio of words found in English vocabularies. The
 These included the identification of a large number of HTML tags, which were extracted with the Python library BeautifulSoap\footnote{\url{https://www.crummy.com/software/BeautifulSoup/}}. The intuition for these features is that Web pages with many images and tables may explain and summarise health content better, thus providing more understandable content to the general public. 
 
 \textbf{Word Frequency Features (WFF):}
-Generally speaking, common and known words are usually frequent words, while unknown and obscure words are generally rare. This idea is implemented in readability formulas such as the DCI, which uses a list of common words and counts the number of words that fall outside this list (complex words)~\cite{dale48}.
+Generally speaking, common and known words are usually frequent words, while unknown and obscure words are generally rare. This idea  is implemented in readability formulas such as the DCI, which uses a list of common words and counts the number of words that fall outside this list (complex words)~\cite{dale48} and has shown success in other recent approaches~\cite{elhadad06,wu15}.
 We extended these observations by studying corpus-wide word frequencies. 
 We modelled word frequencies in a corpus in a straightforward manner: we sorted the word frequencies and normalized word rankings such that values close to 100 are attributed to common words and values close to 0 to rare words. Three corpora were analysed to extract word frequencies:
 
