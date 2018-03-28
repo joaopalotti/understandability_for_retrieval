@@ -3,7 +3,7 @@
 
 \subsection{Data Collections}
 
-In this artcile we investigated methods to estimate Web page understandability, including the effect HTML preprocessing pipelines and heuristics have, and their search effectiveness when employed within retrieval methods. To obtain both topical relevance\footnote{We refer to this simply as relevance in the reminder of the paper, when this does not cause confusion.} and  understandability assessments, we used the data from the CLEF 2015 and 2016 eHealth collections. 
+In this artcile we investigated methods to estimate Web page understandability, including the effect HTML preprocessing pipelines and heuristics have, and their search effectiveness when employed within retrieval methods. To obtain both topical relevance and  understandability assessments, we used the data from the CLEF 2015 and 2016 eHealth collections. (Note that we refer to topical relevance simply as relevance in the reminder of the paper, when this does not cause confusion.)
 
 The CLEF 2015 collection contains 50 queries and 1,437 documents that have been assessed relevant by clinical experts and have an assessment for understandability~\cite{clef15}. Documents in this collection are a selected crawl of health Web sites, of which the majority are certified HON Web sites.
 The CLEF 2016 collection contains 300 queries and 3,298 relevant documents that also have been assessed with respect to understandability~\cite{clef16}. Documents in this collection belong to the ClueWeb12 B13 corpus, and thus are general English Web pages, not necessarily targeted to health topics, nor of a controlled quality (as are instead HON certified pages). 
@@ -24,7 +24,7 @@ A drawback of uRBP is that relevance and understandability are combined into a u
 \begin{itemize}[leftmargin=*]
 	\item $RBP_r@n(\rho)$: uses the relevance assessments for the top $n$ search results (i.e. this is the common RBP). We regarded a document as topically relevant if assessed as somewhat relevant or highly relevant.
 	
-    \item $RBP_u@n(\rho)$: uses the understandability assessments for the top $n$ search results. We regarded a document as understandable (1) for CLEF 2015 if assessed easy or somewhat easy to understand; (2) for CLEF 2016 if its assessed understandability score was smaller than a threshold $U$ (we used $U = 40$ \footnote{This choice for $U$ was based on the distribution of understandability assessments. This distribution can be found in the online appendix.}).
+    \item $RBP_u@n(\rho)$: uses the understandability assessments for the top $n$ search results. We regarded a document as understandable (1) for CLEF 2015 if assessed easy or somewhat easy to understand; (2) for CLEF 2016 if its assessed understandability score was smaller than a threshold $U$. We used $U = 40$, based on the distribution of understandability assessments. This distribution can be found in the online appendix.
 	
     \item $H_{RBP}@n(\rho) = 2 \times \frac{RBP_r@n \times RBP_u@n}{RBP_r@n + RBP_u@n}$: combines the previous two RBP values into a unique measurement using the harmonic mean (in the same fashion that the $F_1$ measure combines recall and precision).
 \end{itemize}
