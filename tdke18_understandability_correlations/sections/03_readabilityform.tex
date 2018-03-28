@@ -37,9 +37,9 @@ Along with these measures of search effectiveness, we also reported the number o
 \subsection{Preprocessing Pipelines and Heuristics}
 \label{sec:pipelines}
 
-As part of our study, we investigated the influence the preprocessing of Web pages has on the estimation of understandability, when this is estimated using the methods in Section~\ref{sec:proxies}. We did so by comparing the combination of a number of preprocessing pipelines, heuristics, and understandability estimation methods with human assessments of Web page understandability. 
-Our experiments extended those by Palotti et al.~\cite{palotti15}, who only evaluated surface level readability formulas and did not compare their results against human assessments. 
-\mytodo{NEW CONTRIBUTION FOUND...}
+As part of our study, we investigated the influence the preprocessing of Web pages has on the estimation of understandability, when this is estimated using the methods in \todo{Section~\ref{sec:proxies}}. We did so by comparing the combination of a number of preprocessing pipelines, heuristics, and understandability estimation methods with human assessments of Web page understandability. 
+Our experiments extended those by Palotti et al.~\cite{palotti15} and provided a much thorough analysis, as they only evaluated surface level readability formulas and did not compare their results against human assessments. 
+%\mytodo{NEW CONTRIBUTION FOUND...}
 
 To extract the content of a Web page from the HTML source we tested: BeautifulSoup\footnote{\url{https://www.crummy.com/software/BeautifulSoup/}} (\textit{Naive}), which just naively removes HTML tags, Boilerpipe~\cite{kohlschutter10} (\textit{Boi}) and Justext~\cite{jan11} ({Jst}), which eliminates boilerplate text together with HTML tags. 
 %Palotti et al.'s data analysis highlighted that the text in HTML tags often missed a correct punctuation mark and thus the text extracted from HTML fields like titles, menus, tables and lists could be interpreted as many short sentences or few very long sentences, depending on whether a period was forced at the end of fields/sentences. We thus implement the same two heuristics devised by them to deal with this: \textit{ForcePeriod (FP)} and \textit{DoNotForcePeriod (DNFP)}. The FP heuristic forces a period at the end of each extracted HTML field; while the DNFP does not. 
