@@ -154,22 +154,43 @@
 \def\xxxguillemotright{\fontencoding{T1}\selectfont\guillemotright}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-
 \newcommand{\mytodo}[1]{\textcolor{red}{#1}}
 \newcommand{\todo}[1]{\textcolor{red}{#1}}
 
+%{\hypersetup{colorlinks=false,linkcolor=green,urlcolor=red}}    
+
+\newcommand{\emaillink}{
+\hypersetup{%
+  colorlinks=false,% hyperlinks will be black
+  linkbordercolor=red,% hyperlink borders will be red
+  pdfborderstyle={/S/U/W 0.5}% border style will be underline of width 1pt
+}
+}
+\emaillink
 
 \begin{document}
 
 \title{A Study of Web Page Understandability\\ for Consumer Health Search}
-\author{\textcolor{black}{\rule{\textwidth}{.1pt}}\vspace*{-.5pc} \textcolor{black}{\rule{\textwidth}{.1pt}} Joao Palotti\textsuperscript{1}; %, MSc;
-            Guido Zuccon\textsuperscript{2};
-            Allan Hanbury\textsuperscript{3}\vspace*{-.5pc}\\\vspace*{-1pc}\textcolor{black}{\rule{\textwidth}{.1pt}}~\\[-3pt]\normalsize 
-~\\\textsuperscript{1}{Qatar Computing Research Institute\unskip, Doha\unskip, Qatar}, Email: jpalotti@hbku.edu.qa
-~\\\textsuperscript{2}{Queensland University\unskip, Brisbane\unskip, Australia}, Email: g.zuccon@qut.edu.au
-~\\\textsuperscript{3}{Vienna University of Technology\unskip, Vienna\unskip, Austria}, Email: hanbury@ifs.tuwien.ac.at}
-
+\author{\textcolor{black}{\rule{\textwidth}{.1pt}}\vspace*{-.5pc} \textcolor{black}{\rule{\textwidth}{.1pt}} Joao Palotti\textsuperscript{1,3}, MSc;
+            Guido Zuccon\textsuperscript{2}, PhD;
+            Allan Hanbury\textsuperscript{3}, PhD\vspace*{-.5pc}\\\vspace*{-1pc}\textcolor{black}{\rule{\textwidth}{.1pt}}~\\[-3pt]\normalsize 
+~\\\textsuperscript{1}{Qatar Computing Research Institute\unskip, Doha\unskip, Qatar} %, Email: jpalotti@hbku.edu.qa
+~\\\textsuperscript{2}{Queensland University\unskip, Brisbane\unskip, Australia} %, Email: g.zuccon@qut.edu.au
+~\\\textsuperscript{3}{Vienna University of Technology\unskip, Vienna\unskip, Austria} %, Email: hanbury@ifs.tuwien.ac.at}
+%
+\\
+%
+\\
+%
+\textbf{Corresponding Author:}\\
+Joao Palotti, MSc.\\
+Hamad Bin Khalifa University\\
+Qatar Computing Research Institute\\
+Education City\\
+Doha\\
+Qatar\\
+Email: \href{mailto:jpalotti@hbku.edu.qa}{jpalotti@hbku.edu.qa}
+}
 
 \def\RunningAuthor{Palotti, Zuccon and Hanbury}\def\journalTitle{Journal of Medical Internet Research}
 
@@ -184,12 +205,12 @@
 
 \textbf{Conclusions:} The findings reported in this article are important for specialised search services tailored to support the general public in seeking health advice on the Web, as they document and empirically validate state-of-the-art techniques and settings for this domain application.
 
-
 %\textit{OLD ABSTRACT: In this paper, we investigated methods to estimate the understandability of health Web pages and used these to improve the retrieval of information for people seeking health advice on the Web.  Understandability plays a key role in ensuring that people accessing health information are capable of gaining insights that can assist them with their health concerns and choices. The access to unclear or misleading information has been shown to negatively impact on the health decisions of the general public. Our investigation considered methods to automatically estimate the understandability of health information in Web pages, and it provided a thorough evaluation of these methods using human assessments as well as an analysis of pre-processing factors affecting understandability estimations, and associated pitfalls. Furthermore, lessons learnt for estimating Web page understandability were applied to the construction of retrieval methods with specific attention to retrieving information understandable by the general public. We found that machine learning techniques were more suitable to estimate health Web page understandability than traditional readability formulas, which are often used as guidelines and benchmarking by health information providers on the Web. Learning to rank effectively exploited these estimates to provide the general public with more understandable search results. These results are important for specialised search services tailored to support the general public in seeking health advice on the Web.}
 
-\textcolor{black}{\rule{\textwidth}{.2pt}} \\ \smallskip\noindent\textbf{KEYWORDS: }{Consumer Health Search; Another Keyword\newline}
+\textcolor{black}{\rule{\textwidth}{.2pt}} \\ \smallskip\noindent\textbf{KEYWORDS: }{Consumer Health Search; Document Understandability; Document Readability\newline}
 \end{onecolabstract}}]\saythanks 
-    
+
+
 \input{sections/01_intro}
 \input{sections/02_related}
 \input{sections/03_readabilityform}
