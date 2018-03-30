@@ -86,7 +86,6 @@ ENTRY
     url % urlbst
     lastchecked % urlbst
     updated % urlbst
-    isbn
   }
   {}
   { label }
@@ -815,11 +814,6 @@ FUNCTION {format.names.org}
 FUNCTION {format.names.ed}
 {
   format.names
-}
-
-FUNCTION {format.isbn}
-{
-  format.isbn
 }
 
 FUNCTION {format.authors}
@@ -1608,7 +1602,6 @@ FUNCTION {book}
     { format.editors "author and editor" output.check }
       'skip$
   if$
-  format.isbn output.check
   format.number.series output
   format.publisher.address output
   format.date "year" output.check
