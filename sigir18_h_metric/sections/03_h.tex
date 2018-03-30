@@ -2,7 +2,7 @@
 \section{A new Framework for Multidimensional IR Evaluation}
 \label{sec:extension}
 
-A limitation of UBIRE is that it combines the gains contributed by each dimension of relevance in \textbf{one} single step, providing a unique evaluation score~\cite{zuccon14,zuccon16}.
+A limitation of UBIRE is that it prematurely combines the gains contributed by each dimension of relevance in \textbf{one} single step, providing a unique evaluation score~\cite{zuccon14,zuccon16}.
 While this allows for the comparison of systems, it does not permit to understand the contribution each dimension had on the evaluation measure. 
 To overcome this limitation, we aim to create a measure which, while still allowing the modelling of multidimensional relevance, is of easy interpretation and for which it is straightforward to track the contribution each relevance dimension had on the final effectiveness score. This is achieved by separating the evaluation of each dimension such that a value for each dimension is calculated separately with respect to its gain and discount, and then these are combined into a unique effectiveness measure. Note that we assume that it is possible to evaluate each measure separately: while this is akin to the compositionality assumption in UBIRE, if that failed, UBIRE would use mixture models to compute the related probabilities, while the proposed measure would be instead likely undefined. 
 

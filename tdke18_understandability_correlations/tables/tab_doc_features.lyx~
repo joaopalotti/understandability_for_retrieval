@@ -1,9 +1,9 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX file created by tex2lyx 2.3
+\lyxformat 544
 \begin_document
 \begin_header
 \save_transient_properties true
-\origin unavailable
+\origin /home/palotti/github/understandability_for_retrieval/tdke18_understandability_correlations/tables/
 \textclass article
 \use_default_options false
 \maintain_unincluded_children false
@@ -21,6 +21,8 @@
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -50,6 +52,7 @@
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_minted 0
 \index Index
 \shortcut idx
 \color #008000
@@ -58,7 +61,10 @@
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language english
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -72,28 +78,28 @@
 \begin_body
 
 \begin_layout Standard
+
 \begin_inset Float table
 placement tb
 wide true
 sideways false
 status open
 
-\begin_layout Plain Layout
+
+\begin_layout Standard
+
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Methods used to estimate understandability.
- 
+Methods used to estimate understandability. 
 \begin_inset Formula $\star$
 \end_inset
 
-: raw values were used.
- 
+: raw values were used. 
 \begin_inset Formula $\diamondsuit$
 \end_inset
 
-: values normalised by number of words in a document were used.
- 
+: values normalised by number of words in a document were used. 
 \begin_inset Formula $\dagger$
 \end_inset
 
@@ -119,9 +125,20 @@ status collapsed
 
 \begin_layout Plain Layout
 
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
-resizebox{0.6
+resizebox{0.90
 \backslash
 textwidth}{!}{
 \end_layout
@@ -129,9 +146,9 @@ textwidth}{!}{
 \end_inset
 
  
-\begin_inset Tabular
+\begin_inset Tabular 
 <lyxtabular version="3" rows="39" columns="6">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle" tabularwidth="0pt">
 <column alignment="left" valignment="top">
 <column alignment="left" valignment="top">
 <column alignment="center" valignment="top">
@@ -142,11 +159,10 @@ textwidth}{!}{
 <cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 
 \series bold
 Cat.
-
 \series default
  
 \end_layout
@@ -156,7 +172,7 @@ Cat.
 <cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 
 \series bold
 Method
@@ -169,11 +185,10 @@ Method
 <cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 
 \series bold
 Cat.
-
 \series default
  
 \end_layout
@@ -183,7 +198,7 @@ Cat.
 <cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 
 \series bold
 Method
@@ -196,11 +211,10 @@ Method
 <cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 
 \series bold
 Cat.
-
 \series default
  
 \end_layout
@@ -210,10 +224,12 @@ Cat.
 <cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 
 \series bold
 Method
+\series default
+
 \end_layout
 
 \end_inset
@@ -223,12 +239,12 @@ Method
 <cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 multirow
@@ -241,7 +257,6 @@ multirow
 status collapsed
 
 \begin_layout Plain Layout
-
 {
 \end_layout
 
@@ -252,7 +267,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -263,7 +277,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
 {
 \end_layout
 
@@ -277,7 +290,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 makecell
 \end_layout
@@ -289,7 +301,6 @@ makecell
 status collapsed
 
 \begin_layout Plain Layout
-
 {
 \end_layout
 
@@ -300,7 +311,6 @@ RF
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -313,7 +323,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -327,11 +336,13 @@ status collapsed
 <cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 Automated Readability Index (ARI) 
 \begin_inset CommandInset citation
 LatexCommand cite
+after ""
 key "ari67"
+literal "true"
 
 \end_inset
 
@@ -343,12 +354,12 @@ key "ari67"
 <cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 multirow
@@ -361,18 +372,16 @@ multirow
 status collapsed
 
 \begin_layout Plain Layout
-
 {
 \end_layout
 
 \end_inset
 
-6
+20
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -383,7 +392,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
 {
 \end_layout
 
@@ -391,14 +399,45 @@ status collapsed
 
 
 \series bold
-GMV
-\series default
 
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
+\backslash
+makecell
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+WFF
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\series default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
 }
 \end_layout
 
@@ -412,12 +451,8 @@ status collapsed
 <cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-# of Words with Medical Prefix 
-\begin_inset Formula $^{\star\diamondsuit\dagger}$
-\end_inset
-
- 
+\begin_layout Standard
+25th percentil English Wikipedia 
 \end_layout
 
 \end_inset
@@ -425,12 +460,12 @@ status collapsed
 <cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 multirow
@@ -443,7 +478,6 @@ multirow
 status collapsed
 
 \begin_layout Plain Layout
-
 {
 \end_layout
 
@@ -454,7 +488,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -465,7 +498,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
 {
 \end_layout
 
@@ -479,7 +511,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 makecell
 \end_layout
@@ -491,7 +522,6 @@ makecell
 status collapsed
 
 \begin_layout Plain Layout
-
 {
 \end_layout
 
@@ -502,7 +532,6 @@ HF
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -515,7 +544,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -529,7 +557,7 @@ status collapsed
 <cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 # of Abbr tags
 \end_layout
 
@@ -540,20 +568,18 @@ status collapsed
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 Coleman-Liau Index (CLI) 
 \begin_inset CommandInset citation
 LatexCommand cite
+after ""
 key "cli75"
+literal "true"
 
 \end_inset
 
@@ -565,21 +591,13 @@ key "cli75"
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-# of Words with Medical Suffix 
-\begin_inset Formula $^{\star\diamondsuit\dagger}$
-\end_inset
-
- 
+\begin_layout Standard
+50th percentil English Wikipedia 
 \end_layout
 
 \end_inset
@@ -587,16 +605,12 @@ key "cli75"
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 # of A tags
 \end_layout
 
@@ -607,20 +621,18 @@ key "cli75"
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 Dale Chall Index (DCI) 
 \begin_inset CommandInset citation
 LatexCommand cite
+after ""
 key "dale48"
+literal "true"
 
 \end_inset
 
@@ -632,21 +644,13 @@ key "dale48"
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-# of Acronyms 
-\begin_inset Formula $^{\star\diamondsuit\dagger}$
-\end_inset
-
- 
+\begin_layout Standard
+75th percentil English Wikipedia 
 \end_layout
 
 \end_inset
@@ -654,16 +658,12 @@ key "dale48"
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 # of Blockquote tags
 \end_layout
 
@@ -674,20 +674,18 @@ key "dale48"
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 Flesch-Kincaid Grade Level (FKGL) 
 \begin_inset CommandInset citation
 LatexCommand cite
+after ""
 key "flesch75"
+literal "true"
 
 \end_inset
 
@@ -699,21 +697,13 @@ key "flesch75"
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-# of ICD Concepts 
-\begin_inset Formula $^{\star\diamondsuit\dagger}$
-\end_inset
-
- 
+\begin_layout Standard
+Mean Rank English Wikip. 
 \end_layout
 
 \end_inset
@@ -721,16 +711,12 @@ key "flesch75"
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 # of Bold tags
 \end_layout
 
@@ -741,20 +727,18 @@ key "flesch75"
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 Flesch Reading Ease (FRE) 
 \begin_inset CommandInset citation
 LatexCommand cite
+after ""
 key "flesch75"
+literal "true"
 
 \end_inset
 
@@ -766,21 +750,13 @@ key "flesch75"
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-# of Drugbank 
-\begin_inset Formula $^{\star\diamondsuit\dagger}$
-\end_inset
-
- 
+\begin_layout Standard
+Mean Rank English Wikip. - Includes OV 
 \end_layout
 
 \end_inset
@@ -788,16 +764,12 @@ key "flesch75"
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 # of Cite tags
 \end_layout
 
@@ -808,20 +780,18 @@ key "flesch75"
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 Gunning Fog Index (GFI) 
 \begin_inset CommandInset citation
 LatexCommand cite
+after ""
 key "gunning52"
+literal "true"
 
 \end_inset
 
@@ -833,22 +803,13 @@ key "gunning52"
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-# of Words in medical dict.
- (OpenMedSpel) 
-\begin_inset Formula $^{\star\diamondsuit\dagger}$
-\end_inset
-
- 
+\begin_layout Standard
+25th percentil Medical Reddit 
 \end_layout
 
 \end_inset
@@ -856,16 +817,12 @@ key "gunning52"
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 # of Div tags
 \end_layout
 
@@ -876,20 +833,18 @@ key "gunning52"
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 Lasbarhetsindex (LIX) 
 \begin_inset CommandInset citation
 LatexCommand cite
+after ""
 key "lix"
+literal "true"
 
 \end_inset
 
@@ -898,119 +853,16 @@ key "lix"
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-multirow
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-6
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-*
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-
-\series bold
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-makecell
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-CMV
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\series default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
- 
-\end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-CHV Mean Score for all Concepts 
-\begin_inset Formula $^{\star\diamondsuit\dagger}$
-\end_inset
-
- 
+\begin_layout Standard
+50th percentil Medical Reddit 
 \end_layout
 
 \end_inset
@@ -1018,16 +870,12 @@ CHV Mean Score for all Concepts
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 # of Forms tags
 \end_layout
 
@@ -1038,20 +886,18 @@ CHV Mean Score for all Concepts
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 Simple Measure of Gobbledygook (SMOG) 
 \begin_inset CommandInset citation
 LatexCommand cite
+after ""
 key "smog69"
+literal "true"
 
 \end_inset
 
@@ -1063,21 +909,13 @@ key "smog69"
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-# of CHV Concepts 
-\begin_inset Formula $^{\star\diamondsuit\dagger}$
-\end_inset
-
- 
+\begin_layout Standard
+75th percentil Medical Reddit 
 \end_layout
 
 \end_inset
@@ -1085,16 +923,12 @@ key "smog69"
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 # of H1 tags
 \end_layout
 
@@ -1105,12 +939,12 @@ key "smog69"
 <cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 multirow
@@ -1123,7 +957,6 @@ multirow
 status collapsed
 
 \begin_layout Plain Layout
-
 {
 \end_layout
 
@@ -1134,7 +967,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -1145,7 +977,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
 {
 \end_layout
 
@@ -1155,10 +986,9 @@ status collapsed
 \series bold
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 makecell
@@ -1171,7 +1001,6 @@ makecell
 status collapsed
 
 \begin_layout Plain Layout
-
 {
 \end_layout
 
@@ -1182,7 +1011,6 @@ CRF
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -1192,10 +1020,9 @@ status collapsed
 \series default
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -1209,7 +1036,7 @@ status open
 <cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 # of Characters 
 \begin_inset Formula $^{\star\diamondsuit\dagger}$
 \end_inset
@@ -1219,41 +1046,29 @@ status open
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
 
+\begin_layout Standard
+Mean Rank Medical Reddit 
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
-
-\begin_layout Plain Layout
-CHV Mean Score for Symptom Concepts 
-\begin_inset Formula $^{\star\diamondsuit\dagger}$
-\end_inset
-
- 
-\end_layout
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
+\begin_layout Standard
 # of H2 tags
 \end_layout
 
@@ -1264,16 +1079,12 @@ CHV Mean Score for Symptom Concepts
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 # of Words 
 \begin_inset Formula $^{\star\dagger}$
 \end_inset
@@ -1286,21 +1097,13 @@ CHV Mean Score for Symptom Concepts
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-# of CHV Symptom Concepts 
-\begin_inset Formula $^{\star\diamondsuit\dagger}$
-\end_inset
-
- 
+\begin_layout Standard
+Mean Rank Medical Reddit - Includes OV 
 \end_layout
 
 \end_inset
@@ -1308,16 +1111,12 @@ CHV Mean Score for Symptom Concepts
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 # of H3 tags
 \end_layout
 
@@ -1328,22 +1127,17 @@ CHV Mean Score for Symptom Concepts
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 # of Sentences 
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 {
 \end_layout
 
@@ -1358,7 +1152,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -1372,21 +1165,13 @@ status collapsed
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-CHV Mean Score for Disease Concepts 
-\begin_inset Formula $^{\star\diamondsuit\dagger}$
-\end_inset
-
- 
+\begin_layout Standard
+25th percentil Pubmed 
 \end_layout
 
 \end_inset
@@ -1394,16 +1179,12 @@ CHV Mean Score for Disease Concepts
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 # of H4 tags
 \end_layout
 
@@ -1414,20 +1195,18 @@ CHV Mean Score for Disease Concepts
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 # of Difficult Words (Dale Chall list 
 \begin_inset CommandInset citation
 LatexCommand cite
+after ""
 key "dale48"
+literal "true"
 
 \end_inset
 
@@ -1443,21 +1222,13 @@ key "dale48"
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-# of CHV Disease Concepts 
-\begin_inset Formula $^{\star\diamondsuit\dagger}$
-\end_inset
-
- 
+\begin_layout Standard
+50th percentil Pubmed 
 \end_layout
 
 \end_inset
@@ -1465,16 +1236,12 @@ key "dale48"
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 # of H5 tags
 \end_layout
 
@@ -1485,16 +1252,12 @@ key "dale48"
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 # of Words Longer than 4 chars 
 \begin_inset Formula $^{\star\diamondsuit\dagger}$
 \end_inset
@@ -1504,119 +1267,16 @@ key "dale48"
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-multirow
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-6
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-*
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-
-\series bold
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-makecell
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-EMV
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\series default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
- 
-\end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-# of MeSH Concepts 
-\begin_inset Formula $^{\star\diamondsuit\dagger}$
-\end_inset
-
- 
+\begin_layout Standard
+75th percentil Pubmed 
 \end_layout
 
 \end_inset
@@ -1624,16 +1284,12 @@ status collapsed
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 # of H6 tags
 \end_layout
 
@@ -1644,16 +1300,12 @@ status collapsed
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 # of Words Longer than 6 chars 
 \begin_inset Formula $^{\star\diamondsuit\dagger}$
 \end_inset
@@ -1666,21 +1318,13 @@ status collapsed
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-Average Tree of MeSH Concepts 
-\begin_inset Formula $^{\star\diamondsuit\dagger}$
-\end_inset
-
- 
+\begin_layout Standard
+Mean Rank Pubmed 
 \end_layout
 
 \end_inset
@@ -1688,16 +1332,12 @@ Average Tree of MeSH Concepts
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 # of Hs (any H above)
 \end_layout
 
@@ -1708,16 +1348,12 @@ Average Tree of MeSH Concepts
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 # of Words Longer than 10 chars 
 \begin_inset Formula $^{\star\diamondsuit\dagger}$
 \end_inset
@@ -1730,21 +1366,13 @@ Average Tree of MeSH Concepts
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-# of MeSH Symptom Concepts 
-\begin_inset Formula $^{\star\diamondsuit\dagger}$
-\end_inset
-
- 
+\begin_layout Standard
+Mean Rank Pubmed - Includes OV 
 \end_layout
 
 \end_inset
@@ -1752,16 +1380,12 @@ Average Tree of MeSH Concepts
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 # of Img tags
 \end_layout
 
@@ -1772,16 +1396,12 @@ Average Tree of MeSH Concepts
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 # of Words Longer than 13 chars 
 \begin_inset Formula $^{\star\diamondsuit\dagger}$
 \end_inset
@@ -1794,21 +1414,13 @@ Average Tree of MeSH Concepts
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-Average Tree of MeSH Symptom Concepts 
-\begin_inset Formula $^{\star\diamondsuit\dagger}$
-\end_inset
-
- 
+\begin_layout Standard
+25th p. Wikipedia+Reddit+Pubmed 
 \end_layout
 
 \end_inset
@@ -1816,16 +1428,12 @@ Average Tree of MeSH Symptom Concepts
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 # of Input tags
 \end_layout
 
@@ -1836,16 +1444,12 @@ Average Tree of MeSH Symptom Concepts
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 # of Number of Syllables 
 \begin_inset Formula $^{\star\diamondsuit\dagger}$
 \end_inset
@@ -1858,21 +1462,13 @@ Average Tree of MeSH Symptom Concepts
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-# of MeSH Disease Concepts 
-\begin_inset Formula $^{\star\diamondsuit\dagger}$
-\end_inset
-
- 
+\begin_layout Standard
+50th p. Wikipedia+Reddit+Pubmed 
 \end_layout
 
 \end_inset
@@ -1880,16 +1476,12 @@ Average Tree of MeSH Symptom Concepts
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 # of Link tags
 \end_layout
 
@@ -1900,22 +1492,17 @@ Average Tree of MeSH Symptom Concepts
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 # of Polysyllable Words (
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 textgreater
@@ -1928,7 +1515,6 @@ textgreater
 status collapsed
 
 \begin_layout Plain Layout
-
 {}
 \end_layout
 
@@ -1946,21 +1532,13 @@ status collapsed
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-Average Tree of MeSH Disease Concepts 
-\begin_inset Formula $^{\star\diamondsuit\dagger}$
-\end_inset
-
- 
+\begin_layout Standard
+75th p. Wikipedia+Reddit+Pubmed 
 \end_layout
 
 \end_inset
@@ -1968,16 +1546,12 @@ Average Tree of MeSH Disease Concepts
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 # of DL tags
 \end_layout
 
@@ -1988,12 +1562,12 @@ Average Tree of MeSH Disease Concepts
 <cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 multirow
@@ -2006,7 +1580,6 @@ multirow
 status collapsed
 
 \begin_layout Plain Layout
-
 {
 \end_layout
 
@@ -2017,7 +1590,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -2028,7 +1600,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
 {
 \end_layout
 
@@ -2042,7 +1613,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 makecell
 \end_layout
@@ -2054,7 +1624,6 @@ makecell
 status collapsed
 
 \begin_layout Plain Layout
-
 {
 \end_layout
 
@@ -2065,7 +1634,6 @@ NL
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -2078,7 +1646,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -2092,7 +1659,7 @@ status collapsed
 <cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 Positive Words 
 \begin_inset Formula $^{\star\diamondsuit\dagger}$
 \end_inset
@@ -2105,12 +1672,108 @@ Positive Words
 <cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Mean R. Wiki.+Reddit+Pubmed 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+# of UL tags
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Negative Words 
+\begin_inset Formula $^{\star\diamondsuit\dagger}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Mean R. Wiki.+Reddit+Pubmed - w. OV 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+# of OL tags
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Neutral Words 
+\begin_inset Formula $^{\star\diamondsuit\dagger}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 multirow
@@ -2123,18 +1786,16 @@ multirow
 status collapsed
 
 \begin_layout Plain Layout
-
 {
 \end_layout
 
 \end_inset
 
-20
+6
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -2145,7 +1806,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
 {
 \end_layout
 
@@ -2153,49 +1813,13 @@ status collapsed
 
 
 \series bold
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-makecell
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-WFF
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
+GMV
 \series default
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -2209,46 +1833,8 @@ status open
 <cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-25th percentil English Wikipedia
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-# of UL tags
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Negative Words 
+\begin_layout Standard
+# of Words with Medical Prefix 
 \begin_inset Formula $^{\star\diamondsuit\dagger}$
 \end_inset
 
@@ -2257,97 +1843,15 @@ Negative Words
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-50th percentil English Wikipedia
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-# of OL tags
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Neutral Words 
-\begin_inset Formula $^{\star\diamondsuit\dagger}$
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-75th percentil English Wikipedia
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
+\begin_layout Standard
 # of List (DL + UL + OL)
 \end_layout
 
@@ -2358,16 +1862,12 @@ Neutral Words
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 # of verbs 
 \begin_inset Formula $^{\star\diamondsuit\dagger}$
 \end_inset
@@ -2380,17 +1880,17 @@ Neutral Words
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-Mean Rank English Wikip.
+\begin_layout Standard
+# of Words with Medical Suffix 
+\begin_inset Formula $^{\star\diamondsuit\dagger}$
+\end_inset
+
+ 
 \end_layout
 
 \end_inset
@@ -2398,16 +1898,12 @@ Mean Rank English Wikip.
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 # of Q tags
 \end_layout
 
@@ -2418,16 +1914,12 @@ Mean Rank English Wikip.
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 # of nouns 
 \begin_inset Formula $^{\star\diamondsuit\dagger}$
 \end_inset
@@ -2440,18 +1932,17 @@ Mean Rank English Wikip.
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-Mean Rank English Wikip.
- - Includes OV
+\begin_layout Standard
+# of Acronyms 
+\begin_inset Formula $^{\star\diamondsuit\dagger}$
+\end_inset
+
+ 
 \end_layout
 
 \end_inset
@@ -2459,16 +1950,12 @@ Mean Rank English Wikip.
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 # of Scripts tags
 \end_layout
 
@@ -2479,16 +1966,12 @@ Mean Rank English Wikip.
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 # of pronouns 
 \begin_inset Formula $^{\star\diamondsuit\dagger}$
 \end_inset
@@ -2501,17 +1984,17 @@ Mean Rank English Wikip.
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-25th percentil Medical Reddit
+\begin_layout Standard
+# of ICD Concepts 
+\begin_inset Formula $^{\star\diamondsuit\dagger}$
+\end_inset
+
+ 
 \end_layout
 
 \end_inset
@@ -2519,16 +2002,12 @@ Mean Rank English Wikip.
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 # of Spans tags
 \end_layout
 
@@ -2539,16 +2018,12 @@ Mean Rank English Wikip.
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 # of adjectives 
 \begin_inset Formula $^{\star\diamondsuit\dagger}$
 \end_inset
@@ -2561,17 +2036,17 @@ Mean Rank English Wikip.
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-50th percentil Medical Reddit
+\begin_layout Standard
+# of Drugbank 
+\begin_inset Formula $^{\star\diamondsuit\dagger}$
+\end_inset
+
+ 
 \end_layout
 
 \end_inset
@@ -2579,16 +2054,12 @@ Mean Rank English Wikip.
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 # of Table tags
 \end_layout
 
@@ -2599,16 +2070,12 @@ Mean Rank English Wikip.
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 # of adverbs 
 \begin_inset Formula $^{\star\diamondsuit\dagger}$
 \end_inset
@@ -2621,17 +2088,17 @@ Mean Rank English Wikip.
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-75th percentil Medical Reddit
+\begin_layout Standard
+# of Words in medical dict. (OpenMedSpel) 
+\begin_inset Formula $^{\star\diamondsuit\dagger}$
+\end_inset
+
+ 
 \end_layout
 
 \end_inset
@@ -2639,16 +2106,12 @@ Mean Rank English Wikip.
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 # of P tags
 \end_layout
 
@@ -2656,19 +2119,15 @@ Mean Rank English Wikip.
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 # of adpositions 
 \begin_inset Formula $^{\star\diamondsuit\dagger}$
 \end_inset
@@ -2678,33 +2137,15 @@ Mean Rank English Wikip.
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Mean Rank Medical Reddit
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 multirow
@@ -2717,7 +2158,6 @@ multirow
 status collapsed
 
 \begin_layout Plain Layout
-
 {
 \end_layout
 
@@ -2728,7 +2168,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -2739,7 +2178,116 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
+{
+\end_layout
 
+\end_inset
+
+
+\series bold
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+makecell
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+CMV
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\series default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+CHV Mean Score for all Concepts 
+\begin_inset Formula $^{\star\diamondsuit\dagger}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+multirow
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+6
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+*
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
 {
 \end_layout
 
@@ -2754,7 +2302,6 @@ MLR
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -2768,7 +2315,7 @@ status collapsed
 <cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 Linear Regressor
 \end_layout
 
@@ -2779,16 +2326,12 @@ Linear Regressor
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 # of conjunctions 
 \begin_inset Formula $^{\star\diamondsuit\dagger}$
 \end_inset
@@ -2801,17 +2344,17 @@ Linear Regressor
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-Mean Rank Medical Reddit - Includes OV
+\begin_layout Standard
+# of CHV Concepts 
+\begin_inset Formula $^{\star\diamondsuit\dagger}$
+\end_inset
+
+ 
 \end_layout
 
 \end_inset
@@ -2819,16 +2362,12 @@ Mean Rank Medical Reddit - Includes OV
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 Multi-layer Perceptron Regressor
 \end_layout
 
@@ -2839,16 +2378,12 @@ Multi-layer Perceptron Regressor
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 # of determiners 
 \begin_inset Formula $^{\star\diamondsuit\dagger}$
 \end_inset
@@ -2861,17 +2396,17 @@ Multi-layer Perceptron Regressor
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-25th percentil Pubmed
+\begin_layout Standard
+CHV Mean Score for Symptom Concepts 
+\begin_inset Formula $^{\star\diamondsuit\dagger}$
+\end_inset
+
+ 
 \end_layout
 
 \end_inset
@@ -2879,16 +2414,12 @@ Multi-layer Perceptron Regressor
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 Random Forest Regressor
 \end_layout
 
@@ -2899,16 +2430,12 @@ Random Forest Regressor
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 # of cardinal numbers 
 \begin_inset Formula $^{\star\diamondsuit\dagger}$
 \end_inset
@@ -2921,17 +2448,17 @@ Random Forest Regressor
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-50th percentil Pubmed
+\begin_layout Standard
+# of CHV Symptom Concepts 
+\begin_inset Formula $^{\star\diamondsuit\dagger}$
+\end_inset
+
+ 
 \end_layout
 
 \end_inset
@@ -2939,16 +2466,12 @@ Random Forest Regressor
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 Support Vector Machine Regressor
 \end_layout
 
@@ -2959,16 +2482,12 @@ Support Vector Machine Regressor
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 # of particles or other function words 
 \begin_inset Formula $^{\star\diamondsuit\dagger}$
 \end_inset
@@ -2981,17 +2500,17 @@ Support Vector Machine Regressor
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-75th percentil Pubmed
+\begin_layout Standard
+CHV Mean Score for Disease Concepts 
+\begin_inset Formula $^{\star\diamondsuit\dagger}$
+\end_inset
+
+ 
 \end_layout
 
 \end_inset
@@ -2999,16 +2518,12 @@ Support Vector Machine Regressor
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 Gradient Boosting Regressor
 \end_layout
 
@@ -3019,16 +2534,12 @@ Gradient Boosting Regressor
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 # of other POS (foreign words, typos) 
 \begin_inset Formula $^{\star\diamondsuit\dagger}$
 \end_inset
@@ -3041,17 +2552,17 @@ Gradient Boosting Regressor
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-Mean Rank Pubmed
+\begin_layout Standard
+# of CHV Disease Concepts 
+\begin_inset Formula $^{\star\diamondsuit\dagger}$
+\end_inset
+
+ 
 \end_layout
 
 \end_inset
@@ -3059,16 +2570,12 @@ Mean Rank Pubmed
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 Logistic Regression
 \end_layout
 
@@ -3076,19 +2583,15 @@ Logistic Regression
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 # of punctuation 
 \begin_inset Formula $^{\star\diamondsuit\dagger}$
 \end_inset
@@ -3098,33 +2601,15 @@ Logistic Regression
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Mean Rank Pubmed - Includes OV
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 multirow
@@ -3137,18 +2622,16 @@ multirow
 status collapsed
 
 \begin_layout Plain Layout
-
 {
 \end_layout
 
 \end_inset
 
-5
+6
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -3159,7 +2642,116 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
+{
+\end_layout
 
+\end_inset
+
+
+\series bold
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+makecell
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+EMV
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\series default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+# of MeSH Concepts 
+\begin_inset Formula $^{\star\diamondsuit\dagger}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+multirow
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+5
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+*
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
 {
 \end_layout
 
@@ -3174,7 +2766,6 @@ MLC
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -3188,7 +2779,7 @@ status collapsed
 <cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 Multi-layer Perceptron Classifier
 \end_layout
 
@@ -3199,16 +2790,12 @@ Multi-layer Perceptron Classifier
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 # of Entities 
 \begin_inset Formula $^{\star\diamondsuit\dagger}$
 \end_inset
@@ -3221,18 +2808,17 @@ Multi-layer Perceptron Classifier
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-25th p.
- Wikipedia+Reddit+Pubmed 
+\begin_layout Standard
+Average Tree of MeSH Concepts 
+\begin_inset Formula $^{\star\diamondsuit\dagger}$
+\end_inset
+
+ 
 \end_layout
 
 \end_inset
@@ -3240,16 +2826,12 @@ Multi-layer Perceptron Classifier
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 Random Forest Classifier
 \end_layout
 
@@ -3260,16 +2842,12 @@ Random Forest Classifier
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 Height of part-of-speech parser tree 
 \begin_inset Formula $^{\star\diamondsuit\dagger}$
 \end_inset
@@ -3282,18 +2860,17 @@ Height of part-of-speech parser tree
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-50th p.
- Wikipedia+Reddit+Pubmed 
+\begin_layout Standard
+# of MeSH Symptom Concepts 
+\begin_inset Formula $^{\star\diamondsuit\dagger}$
+\end_inset
+
+ 
 \end_layout
 
 \end_inset
@@ -3301,16 +2878,12 @@ Height of part-of-speech parser tree
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 Support Vector Machine Classifier
 \end_layout
 
@@ -3321,16 +2894,12 @@ Support Vector Machine Classifier
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 # of Stopwords 
 \begin_inset Formula $^{\star\diamondsuit\dagger}$
 \end_inset
@@ -3343,18 +2912,17 @@ Support Vector Machine Classifier
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-75th p.
- Wikipedia+Reddit+Pubmed 
+\begin_layout Standard
+Average Tree of MeSH Symptom Concepts 
+\begin_inset Formula $^{\star\diamondsuit\dagger}$
+\end_inset
+
+ 
 \end_layout
 
 \end_inset
@@ -3362,16 +2930,12 @@ Support Vector Machine Classifier
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 Multinomial Naive Bayes
 \end_layout
 
@@ -3382,19 +2946,13 @@ Multinomial Naive Bayes
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-# of words not found in Aspell Eng.
- dict.
- 
+\begin_layout Standard
+# of words not found in Aspell Eng. dict. 
 \begin_inset Formula $^{\star\diamondsuit\dagger}$
 \end_inset
 
@@ -3406,18 +2964,17 @@ Multinomial Naive Bayes
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-Mean R.
- Wiki.+Reddit+Pubmed 
+\begin_layout Standard
+# of MeSH Disease Concepts 
+\begin_inset Formula $^{\star\diamondsuit\dagger}$
+\end_inset
+
+ 
 \end_layout
 
 \end_inset
@@ -3425,16 +2982,12 @@ Mean R.
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 Gradient Boosting Classifier
 \end_layout
 
@@ -3445,37 +2998,27 @@ Gradient Boosting Classifier
 <cell alignment="left" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
 
 \end_inset
 </cell>
 <cell alignment="center" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
 <cell alignment="center" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-Mean R.
- Wiki.+Reddit+Pubmed - w.
- OV 
+\begin_layout Standard
+Average Tree of MeSH Disease Concepts 
+\begin_inset Formula $^{\star\diamondsuit\dagger}$
+\end_inset
+
+ 
 \end_layout
 
 \end_inset
@@ -3483,18 +3026,10 @@ Mean R.
 <cell alignment="left" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+<cell alignment="none" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
 
 \end_inset
 </cell>
@@ -3508,7 +3043,6 @@ Mean R.
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -3518,7 +3052,7 @@ status collapsed
 \begin_inset VSpace -12pt
 \end_inset
 
-
+ 
 \end_layout
 
 \end_inset

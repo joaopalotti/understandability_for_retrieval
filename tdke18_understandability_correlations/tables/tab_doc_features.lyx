@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -21,6 +21,8 @@
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -50,6 +52,7 @@
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_minted 0
 \index Index
 \shortcut idx
 \color #008000
@@ -58,7 +61,10 @@
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language english
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -121,7 +127,20 @@ status collapsed
 
 
 \backslash
-resizebox{0.6
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+resizebox{0.90
 \backslash
 textwidth}{!}{
 \end_layout
@@ -130,7 +149,7 @@ textwidth}{!}{
 
  
 \begin_inset Tabular
-<lyxtabular version="3" rows="40" columns="6">
+<lyxtabular version="3" rows="39" columns="6">
 <features tabularvalignment="middle">
 <column alignment="left" valignment="top">
 <column alignment="left" valignment="top">
@@ -332,6 +351,7 @@ Automated Readability Index (ARI)
 \begin_inset CommandInset citation
 LatexCommand cite
 key "ari67"
+literal "true"
 
 \end_inset
 
@@ -417,7 +437,7 @@ status collapsed
 
 WFF
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -430,7 +450,7 @@ status open
 \series default
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -448,7 +468,7 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-25th percentil English Wikipedia
+25th percentil English Wikipedia 
 \end_layout
 
 \end_inset
@@ -585,6 +605,7 @@ Coleman-Liau Index (CLI)
 \begin_inset CommandInset citation
 LatexCommand cite
 key "cli75"
+literal "true"
 
 \end_inset
 
@@ -606,7 +627,7 @@ key "cli75"
 \begin_inset Text
 
 \begin_layout Plain Layout
-50th percentil English Wikipedia
+50th percentil English Wikipedia 
 \end_layout
 
 \end_inset
@@ -648,6 +669,7 @@ Dale Chall Index (DCI)
 \begin_inset CommandInset citation
 LatexCommand cite
 key "dale48"
+literal "true"
 
 \end_inset
 
@@ -669,7 +691,7 @@ key "dale48"
 \begin_inset Text
 
 \begin_layout Plain Layout
-75th percentil English Wikipedia
+75th percentil English Wikipedia 
 \end_layout
 
 \end_inset
@@ -711,6 +733,7 @@ Flesch-Kincaid Grade Level (FKGL)
 \begin_inset CommandInset citation
 LatexCommand cite
 key "flesch75"
+literal "true"
 
 \end_inset
 
@@ -733,6 +756,7 @@ key "flesch75"
 
 \begin_layout Plain Layout
 Mean Rank English Wikip.
+ 
 \end_layout
 
 \end_inset
@@ -774,6 +798,7 @@ Flesch Reading Ease (FRE)
 \begin_inset CommandInset citation
 LatexCommand cite
 key "flesch75"
+literal "true"
 
 \end_inset
 
@@ -796,7 +821,7 @@ key "flesch75"
 
 \begin_layout Plain Layout
 Mean Rank English Wikip.
- - Includes OV
+ - Includes OV 
 \end_layout
 
 \end_inset
@@ -838,6 +863,7 @@ Gunning Fog Index (GFI)
 \begin_inset CommandInset citation
 LatexCommand cite
 key "gunning52"
+literal "true"
 
 \end_inset
 
@@ -859,7 +885,7 @@ key "gunning52"
 \begin_inset Text
 
 \begin_layout Plain Layout
-25th percentil Medical Reddit
+25th percentil Medical Reddit 
 \end_layout
 
 \end_inset
@@ -901,6 +927,7 @@ Lasbarhetsindex (LIX)
 \begin_inset CommandInset citation
 LatexCommand cite
 key "lix"
+literal "true"
 
 \end_inset
 
@@ -922,7 +949,7 @@ key "lix"
 \begin_inset Text
 
 \begin_layout Plain Layout
-50th percentil Medical Reddit
+50th percentil Medical Reddit 
 \end_layout
 
 \end_inset
@@ -964,6 +991,7 @@ Simple Measure of Gobbledygook (SMOG)
 \begin_inset CommandInset citation
 LatexCommand cite
 key "smog69"
+literal "true"
 
 \end_inset
 
@@ -985,7 +1013,7 @@ key "smog69"
 \begin_inset Text
 
 \begin_layout Plain Layout
-75th percentil Medical Reddit
+75th percentil Medical Reddit 
 \end_layout
 
 \end_inset
@@ -1063,7 +1091,7 @@ status collapsed
 \series bold
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -1100,7 +1128,7 @@ status collapsed
 \series default
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -1127,7 +1155,7 @@ status open
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1136,16 +1164,16 @@ status open
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Mean Rank Medical Reddit
+Mean Rank Medical Reddit 
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1154,7 +1182,7 @@ Mean Rank Medical Reddit
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1200,7 +1228,7 @@ Mean Rank Medical Reddit
 \begin_inset Text
 
 \begin_layout Plain Layout
-Mean Rank Medical Reddit - Includes OV
+Mean Rank Medical Reddit - Includes OV 
 \end_layout
 
 \end_inset
@@ -1282,7 +1310,7 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Plain Layout
-25th percentil Pubmed
+25th percentil Pubmed 
 \end_layout
 
 \end_inset
@@ -1324,6 +1352,7 @@ status collapsed
 \begin_inset CommandInset citation
 LatexCommand cite
 key "dale48"
+literal "true"
 
 \end_inset
 
@@ -1349,7 +1378,7 @@ key "dale48"
 \begin_inset Text
 
 \begin_layout Plain Layout
-50th percentil Pubmed
+50th percentil Pubmed 
 \end_layout
 
 \end_inset
@@ -1409,7 +1438,7 @@ key "dale48"
 \begin_inset Text
 
 \begin_layout Plain Layout
-75th percentil Pubmed
+75th percentil Pubmed 
 \end_layout
 
 \end_inset
@@ -1469,7 +1498,7 @@ key "dale48"
 \begin_inset Text
 
 \begin_layout Plain Layout
-Mean Rank Pubmed
+Mean Rank Pubmed 
 \end_layout
 
 \end_inset
@@ -1529,7 +1558,7 @@ Mean Rank Pubmed
 \begin_inset Text
 
 \begin_layout Plain Layout
-Mean Rank Pubmed - Includes OV
+Mean Rank Pubmed - Includes OV 
 \end_layout
 
 \end_inset
@@ -1869,7 +1898,7 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Plain Layout
-Positive Words 
+# of Entities 
 \begin_inset Formula $^{\star\diamondsuit\dagger}$
 \end_inset
 
@@ -1878,7 +1907,7 @@ Positive Words
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1887,7 +1916,7 @@ Positive Words
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1897,7 +1926,7 @@ Mean R.
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1906,7 +1935,7 @@ Mean R.
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1930,7 +1959,7 @@ Mean R.
 \begin_inset Text
 
 \begin_layout Plain Layout
-Negative Words 
+# of verbs 
 \begin_inset Formula $^{\star\diamondsuit\dagger}$
 \end_inset
 
@@ -1979,7 +2008,7 @@ Mean R.
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1988,11 +2017,11 @@ Mean R.
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Neutral Words 
+# of nouns 
 \begin_inset Formula $^{\star\diamondsuit\dagger}$
 \end_inset
 
@@ -2083,7 +2112,7 @@ status collapsed
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2092,7 +2121,7 @@ status collapsed
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2116,7 +2145,7 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Plain Layout
-# of verbs 
+# of pronouns 
 \begin_inset Formula $^{\star\diamondsuit\dagger}$
 \end_inset
 
@@ -2180,7 +2209,7 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Plain Layout
-# of nouns 
+# of adjectives 
 \begin_inset Formula $^{\star\diamondsuit\dagger}$
 \end_inset
 
@@ -2244,7 +2273,7 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Plain Layout
-# of pronouns 
+# of adverbs 
 \begin_inset Formula $^{\star\diamondsuit\dagger}$
 \end_inset
 
@@ -2308,7 +2337,7 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Plain Layout
-# of adjectives 
+# of adpositions 
 \begin_inset Formula $^{\star\diamondsuit\dagger}$
 \end_inset
 
@@ -2372,7 +2401,7 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Plain Layout
-# of adverbs 
+# of conjunctions 
 \begin_inset Formula $^{\star\diamondsuit\dagger}$
 \end_inset
 
@@ -2424,7 +2453,7 @@ status collapsed
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2433,11 +2462,11 @@ status collapsed
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-# of adpositions 
+# of determiners 
 \begin_inset Formula $^{\star\diamondsuit\dagger}$
 \end_inset
 
@@ -2523,7 +2552,7 @@ status collapsed
 
 CMV
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -2656,7 +2685,7 @@ Linear Regressor
 \begin_inset Text
 
 \begin_layout Plain Layout
-# of conjunctions 
+# of cardinal numbers 
 \begin_inset Formula $^{\star\diamondsuit\dagger}$
 \end_inset
 
@@ -2720,7 +2749,7 @@ Multi-layer Perceptron Regressor
 \begin_inset Text
 
 \begin_layout Plain Layout
-# of determiners 
+# of particles or other function words 
 \begin_inset Formula $^{\star\diamondsuit\dagger}$
 \end_inset
 
@@ -2784,7 +2813,7 @@ Random Forest Regressor
 \begin_inset Text
 
 \begin_layout Plain Layout
-# of cardinal numbers 
+# of other POS (foreign words, typos) 
 \begin_inset Formula $^{\star\diamondsuit\dagger}$
 \end_inset
 
@@ -2848,7 +2877,7 @@ Support Vector Machine Regressor
 \begin_inset Text
 
 \begin_layout Plain Layout
-# of particles or other function words 
+# of punctuation 
 \begin_inset Formula $^{\star\diamondsuit\dagger}$
 \end_inset
 
@@ -2912,7 +2941,7 @@ Gradient Boosting Regressor
 \begin_inset Text
 
 \begin_layout Plain Layout
-# of other POS (foreign words, typos) 
+Height of part-of-speech parser tree 
 \begin_inset Formula $^{\star\diamondsuit\dagger}$
 \end_inset
 
@@ -2963,7 +2992,7 @@ Logistic Regression
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2972,11 +3001,11 @@ Logistic Regression
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-# of punctuation 
+# of Stopwords 
 \begin_inset Formula $^{\star\diamondsuit\dagger}$
 \end_inset
 
@@ -3195,11 +3224,13 @@ Multi-layer Perceptron Classifier
 \begin_inset Text
 
 \begin_layout Plain Layout
-# of Entities 
+# of words not found in Aspell Eng.
+ dict.
+ 
 \begin_inset Formula $^{\star\diamondsuit\dagger}$
 \end_inset
 
- 
+
 \end_layout
 
 \end_inset
@@ -3259,7 +3290,7 @@ Random Forest Classifier
 \begin_inset Text
 
 \begin_layout Plain Layout
-Height of part-of-speech parser tree 
+Positive Words 
 \begin_inset Formula $^{\star\diamondsuit\dagger}$
 \end_inset
 
@@ -3323,11 +3354,11 @@ Support Vector Machine Classifier
 \begin_inset Text
 
 \begin_layout Plain Layout
-# of Stopwords 
+Negative Words 
 \begin_inset Formula $^{\star\diamondsuit\dagger}$
 \end_inset
 
- 
+
 \end_layout
 
 \end_inset
@@ -3387,9 +3418,7 @@ Multinomial Naive Bayes
 \begin_inset Text
 
 \begin_layout Plain Layout
-# of words not found in Aspell Eng.
- dict.
- 
+Neutral Words 
 \begin_inset Formula $^{\star\diamondsuit\dagger}$
 \end_inset
 
@@ -3489,63 +3518,7 @@ Average Tree of MeSH Disease Concepts
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="none" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3574,7 +3547,7 @@ status collapsed
 \begin_inset VSpace -12pt
 \end_inset
 
-
+ 
 \end_layout
 
 \end_inset
