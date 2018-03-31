@@ -7,6 +7,20 @@ For each category of methods and combination of preprocessing and heuristics, we
 We further report the summary results across all understandability assessment methods and sentence ending heuristics for each of the preprocessing pipelines. 
 Finally, we also report the inter-assessor correlation (last box) when multiple assessors provided judgements about the understandability of Web pages (details about this data in Section~\ref{sec:data}). This provides an indication of the range of variability and subjectiveness when assessing understandability, along with the highest correlation we measured between human assessors. 
 
+\begin{figure*}[h!]
+   %\vspace{-0.2cm}
+   \centering
+   \includegraphics[width=0.85\textwidth]{graphics/box_spearman15_raw_values_joao}\vspace{-7pt}
+  % \includegraphics[width=0.65\textwidth]{graphics/box_spearman16_raw_values_joao}
+      \includegraphics[width=0.85\textwidth]{graphics/box_spearman16_raw_values}
+   %\includegraphics[width=0.7\textwidth]{graphics/legendCorr}
+   %\vspace{-0.4cm}
+    \caption{Correlations between understandability estimators and human assessments for CLEF 2015 (top) and 2016 (bottom). For example, the first boxplot in top part of this figure is the result of correlating with Spearman method each one of the features in the category Readability Features (Table~\ref{tab:doc_features}), obtained with the Naive \textit{ForcePeriod} preprocessing, with human assessments collected during CLEF 2015. Each box extends from the lower to the upper quartile values, with the red marker representing the median value for that category. Whiskers show the range of the data in each category and circles represent values considered outliers for the category (e.g. Spearman correlation for SMOG index was 0.296 and for ARI was 0.194, which were considered outliers for the example category which had a distribution of values highly close to the median value of 0.25).}
+   \label{fig:boxplot_corr_docs}
+   \vspace{-10pt}
+\end{figure*}
+
+
 
 We first examined the correlations between human assessments and readability formulas. We found that the \textit{Naive} preprocessing resulted in the lowest correlations, regardless of readability formula and heuristics (although \textit{DoNotForcePeriod} performed better than \textit{ForcePeriod}). Using Justext or Boilerplate resulted in higher correlations with human understandability assessments, and the \textit{ForcePeriod} heuristic was shown to be better than \textit{DoNotForcePeriod}. These results confirm the speculations of Palotti et al.~\cite{palotti15}: they found these settings to produce lower variances in understandability estimations and thus hypothesised that they were better suited to the task.
 
@@ -27,19 +41,6 @@ A common trend when comparing preprocessing pipelines is that the Naive pipeline
 %We also include in Figures~\ref{fig:boxplot_corr_docs_2015} and~\ref{fig:boxplot_corr_docs_2016} 
 %We also include in Figure~\ref{fig:boxplot_corr_docs} boxes for the summary of the 3 preprocessing procedures to remove HTML, the use of HTML features, which is done without any preprocessing and the comparison with other human assessors. For CLEF eHealth 2015, we used as human assessments the additional assessments made by unpaid medical students and health consumers (see~\cite{palotti16b}), while for CLEF eHealth 2016 data, we randomly selected 100 pages that were assessed by another assessor. \mytodo{add at least another person doing assessments}.
 %The correlations with human assessments provide important insights on how hard and subjective understandability assessments are.
-
-\begin{figure*}[h!]
-   %\vspace{-0.2cm}
-   \centering
-   \includegraphics[width=0.85\textwidth]{graphics/box_spearman15_raw_values_joao}\vspace{-7pt}
-  % \includegraphics[width=0.65\textwidth]{graphics/box_spearman16_raw_values_joao}
-      \includegraphics[width=0.85\textwidth]{graphics/box_spearman16_raw_values}
-   %\includegraphics[width=0.7\textwidth]{graphics/legendCorr}
-   %\vspace{-0.4cm}
-    \caption{Correlations between understandability estimators and human assessments for CLEF 2015 (top) and 2016 (bottom). For example, the first boxplot in top part of this figure is the result of correlating with Spearman method each one of the features in the category Readability Features (Table~\ref{tab:doc_features}), obtained with the Naive \textit{ForcePeriod} preprocessing, with human assessments collected during CLEF 2015. Each box extends from the lower to the upper quartile values, with the red marker representing the median value for that category. Whiskers show the range of the data in each category and circles represent values considered outliers for the category (e.g. Spearman correlation for SMOG index was 0.296 and for ARI was 0.194, which were considered outliers for the example category which had a distribution of values highly close to the median value of 0.25).}
-   \label{fig:boxplot_corr_docs}
-   \vspace{-10pt}
-\end{figure*}
 
 %
 %\begin{figure*}[th!]
