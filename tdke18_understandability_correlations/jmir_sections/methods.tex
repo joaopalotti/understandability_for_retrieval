@@ -2,7 +2,7 @@
 \section*{Methods}
 \label{sec:data}
 
-\subsection{Data Collections}
+\subsection{Data Collection}
 
 In this article we investigated methods to estimate Web page understandability, including the effect HTML preprocessing pipelines and heuristics have, and their search effectiveness when employed within retrieval methods. To obtain both topical relevance and  understandability assessments, we used the data from the CLEF 2015 and 2016 eHealth collections. (Note that we refer to topical relevance simply as relevance in the reminder of the paper, when this does not cause confusion.)
 
@@ -10,11 +10,11 @@ The CLEF 2015 collection contains 50 queries and 1,437 documents that have been 
 The CLEF 2016 collection contains 300 queries and 3,298 relevant documents that also have been assessed with respect to understandability~\cite{clef16}. Documents in this collection belong to the ClueWeb12 B13 corpus, and thus are general English Web pages, not necessarily targeted to health topics, nor of a controlled quality (as are instead HON certified pages). 
 Understandability assessments were provided on a 5-point Likert scale for CLEF 2015, and on a $[0,100]$ range for CLEF 2016 (0 indicates highest understandability). 
 
-To support the investigation on methods to automatically estimate the understandability of Web pages, 
+To support the investigation of methods to automatically estimate the understandability of Web pages, 
 %in Section~\ref{sec:which_preprocessing} (evaluation of preprocessing pipelines and heuristics), 
 we further considered correlations between multiple human assessors (inter-assessor agreement). For CLEF 2015, we used the publicly available additional assessments made by unpaid medical students and health consumers collected by Palotti et al.~\cite{palotti16b} in a study of how medical expertise affects assessments. For CLEF 2016 we  collected understandability assessments for 100 documents. 
 %Three members of our research team, which did not author this paper, were recruited to provide the assessments\footnote{The correlation of these additional assessments and CLEF's ground-truth is examined in Section~\ref{sec:which_preprocessing}}. 
-Three members of our research team, which did not author this paper, were recruited to provide the assessments (the correlation of these additional assessments and CLEF's ground-truth is examined further in this article).
+Three members of our research team, which did not author this article, were recruited to provide the assessments (the correlation of these additional assessments and CLEF's ground-truth is examined further in this article).
 The Relevation tool~\cite{koopman14} was used to assist with the assessments, mimicking the settings used in CLEF. %\mytodo{should we briefly show these results?}
 
 \subsection{Evaluation Measures}
@@ -22,7 +22,7 @@ The Relevation tool~\cite{koopman14} was used to assist with the assessments, mi
 In the experiments, we used Pearson, Kendall and Spearman correlations to compare the understandability assessments of human assessors with estimations obtained by the considered approaches, under all combinations of pipelines and heuristics. Pearson correlation is used to calculate the strength of the linear relation between two variables, while Kendall and Spearman measure the rank correlations between the variables. We opted to report all three correlation coefficients to allow for a thorough comparison to other work, as they are equally used in the literature. 
 
 %For the retrieval experiments in Section~\ref{sec:results}, we used evaluation measures that use both relevance and understandability. 
-For the forthcoming retrieval experiments, we shall use evaluation measures that use both relevance and understandability. 
+For the retrieval experiments, we used evaluation measures that rely on both (topical) relevance and understandability. 
 The uRBP measure~\cite{zuccon2016understandability} extends rank biased precision (RBP) to scenarios where multiple relevance dimensions are used. The measure is formulated as $uRBP(\rho) = (1 - \rho) \sum_{k=1}^{K} \rho^{k-1} r(d@k) u(d@k)$, where $r(d@k)$ is the gain for retrieving a relevant document at rank $k$ and $u(d@k)$ is the gain for retrieving a document of a certain understandability at rank $k$; $\rho$ is the RBP persistence parameter. This measure was an official evaluation measure used in CLEF (we also set $\rho=0.8$). 
 
 A drawback of uRBP is that relevance and understandability are combined into a unique evaluation score, thus making it difficult to interpret whether improvements are due to more understandable or more topical documents being retrieved. To overcome this, we first separately calculated an RBP value for relevance and another for understandability, and then combined them into a unique effectiveness measure:
