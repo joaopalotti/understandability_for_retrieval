@@ -10,12 +10,12 @@ of each set of experiments is reported in bold face.}
  \label{tab:experiments} \resizebox{1.00\textwidth}{!}{ %
 \begin{tabular}{lcllllHlllHlllHlllHllllllllll}
 \toprule 
-\multirow{2}{*}{Index }  & \multirow{2}{*}{\multirow{2}{*}{Rerank } } & \multirow{2}{*}{\multirow{2}{*}{Run } } & \multicolumn{8}{l}{CLEF 2016 Measures} & \multicolumn{18}{l}{New Measures to Evaluate Underst. in Retrieval }\tabularnewline
+\multirow{2}{*}{Idx}  & \multirow{2}{*}{\multirow{2}{*}{Rerank} } & \multirow{2}{*}{\multirow{2}{*}{Run} } & \multicolumn{8}{l}{CLEF 2016 Measures} & \multicolumn{18}{l}{New Measures to Evaluate Underst. in Retrieval }\tabularnewline
 \cmidrule(l{2pt}r{2pt}){4-7} \cmidrule(l{2pt}r{2pt}){8-29}  &  &  & $RBP$  & $P_{bl}$ & $P_{g}$ & Res.  & uRBP  & $P_{bl}$ & $P_{g}$ & Res.  & $RBP_{u}$  & $P_{bl}$ & $P_{g}$ & Res.  & $H_{rbp}$ & $P_{bl}$ & $P_{g}$ & Res.  & Unj  & $RBP_{r}^{*}$  & $P_{bl}$ & $P_{g}$ & $RBP_{u}^{*}$  & $P_{bl}$ & $P_{g}$ & $H_{rbp}^{*}$ & $P_{bl}$ & $P_{g}$\tabularnewline
 \midrule 
 1  & \multirow{3}{*}{No Rerank}  & GUIR~\cite{soldaini16} (Best Run)  & \textbf{28.11}  & - & - & 7.65  & \textbf{18.12}  & - & - & 7.19  & \textbf{45.69}  & - & - & 8.86  & \textbf{25.61}  & - & - & 6.50  & 0.01  & \textbf{28.29}  & - & - & \textbf{46.03}  & - & - & \textbf{25.79}  & - & -\tabularnewline
-2  &  & ECNU~\cite{song16} (2nd Best)  & 27.70  & .946 & - & 7.37  & 17.55  & - & .208 & \textbf{7.34}  & 43.89 & - & .012 & 8.66  & 25.35  & - & .763 & 6.26  & 0.01  & 27.77  & - & .635 & 44.18 & - & .009 & 25.48  & - & .660\tabularnewline
-3  &  & Plain BM25 Baseline  & 25.28 & .001 & - & \textbf{8.24}  & 16.05  & - & .000 & 6.94  & 42.08 & - & .000 & \textbf{10.97}  & 22.97 & - & .000 & \textbf{7.19}  & \textbf{0.06}  & 26.01  & - & .003 & 43.89  & - & .005 & 23.93  & - & .002\tabularnewline
+    2  &  & ECNU~\cite{song16} (2nd Best)  & 27.70  & - & .946 & 7.37  & 17.55  & - & .208 & \textbf{7.34}  & 43.89 & - & .012 & 8.66  & 25.35  & - & .763 & 6.26  & 0.01  & 27.77  & - & .635 & 44.18 & - & .009 & 25.48  & - & .660\tabularnewline
+    3  &  & Plain BM25 Baseline  & 25.28 & - & .001 & \textbf{8.24}  & 16.05  & - & .000 & 6.94  & 42.08 & - & .000 & \textbf{10.97}  & 22.97 & - & .000 & \textbf{7.19}  & \textbf{0.06}  & 26.01  & - & .003 & 43.89  & - & .005 & 23.93  & - & .002\tabularnewline
 \midrule 
 4  & \multirow{3}{*}{\makecell{Dale-Chall \\Top 15}}  & Based on GUIR  & 24.29 & .000 & .000 & 8.89 & 16.62 & .001 & .001 & \textbf{7.27} & 48.96 & .000 & .000 & 11.05 & 24.76 & .193 & .193 & 7.61 & 0.03 & 24.83 & .000 & .000 & 50.56 & .000 & .000 & 25.38 & .521 & .521\tabularnewline
 5  &  & Based on ECNU  & 24.38 & .000 & .000 & 8.19 & 16.45 & .042 & .003 & 7.16 & 48.96 & .000 & .001 & 10.10 & 24.68 & .376 & .285 & 6.86 & 0.03 & 24.88 & .000 & .000 & 49.99 & .000 & .000 & 25.24 & .743 & .575\tabularnewline
