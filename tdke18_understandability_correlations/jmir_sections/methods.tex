@@ -4,11 +4,11 @@
 
 \subsection{Data Collection}
 
-In this article we investigated methods to estimate Web page understandability, including the effect HTML preprocessing pipelines and heuristics have, and their search effectiveness when employed within retrieval methods. To obtain both topical relevance and  understandability assessments, we used the data from the CLEF 2015 and 2016 eHealth collections. (Note that we refer to topical relevance simply as relevance in the reminder of the paper, when this does not cause confusion.)
+In this article, we investigated methods to estimate Web page understandability, including the effect HTML preprocessing pipelines and heuristics have, and their search effectiveness when employed within retrieval methods. To obtain both topical relevance and  understandability assessments, we used the data from the CLEF 2015 and 2016 eHealth collections. (Note that we refer to topical relevance simply as relevance in the reminder of the paper, when this does not cause confusion.)
 
 The CLEF 2015 collection contains 50 queries and 1,437 documents that have been assessed relevant by clinical experts and have an assessment for understandability~\cite{clef15}. Documents in this collection are a selected crawl of health Web sites, of which the majority are certified HON Web sites.
 The CLEF 2016 collection contains 300 queries and 3,298 relevant documents that also have been assessed with respect to understandability~\cite{clef16}. Documents in this collection belong to the ClueWeb12 B13 corpus, and thus are general English Web pages, not necessarily targeted to health topics, nor of a controlled quality (as are instead HON certified pages). 
-Understandability assessments were provided on a 5-point Likert scale for CLEF 2015, and on a $[0,100]$ range for CLEF 2016 (0 indicates highest understandability). 
+Understandability assessments were provided on a 5-point Likert scale for CLEF 2015, and on a $[0,100]$ range for CLEF 2016 (0 indicates the highest understandability). 
 
 To support the investigation of methods to automatically estimate the understandability of Web pages, 
 %in Section~\ref{sec:which_preprocessing} (evaluation of preprocessing pipelines and heuristics), 
@@ -19,7 +19,7 @@ The Relevation tool~\cite{koopman14} was used to assist with the assessments, mi
 
 \subsection{Evaluation Measures}
 
-In the experiments, we used Pearson, Kendall and Spearman correlations to compare the understandability assessments of human assessors with estimations obtained by the considered approaches, under all combinations of pipelines and heuristics. Pearson correlation is used to calculate the strength of the linear relation between two variables, while Kendall and Spearman measure the rank correlations between the variables. We opted to report all three correlation coefficients to allow for a thorough comparison to other work, as they are equally used in the literature. 
+In the experiments, we used Pearson, Kendall and Spearman correlations to compare the understandability assessments of human assessors with estimations obtained by the considered approaches, under all combinations of pipelines and heuristics. Pearson correlation is used to calculate the strength of the linear relationship between two variables, while Kendall and Spearman measure the rank correlations between the variables. We opted to report all three correlation coefficients to allow for a thorough comparison to other work, as they are equally used in the literature. 
 
 %For the retrieval experiments in Section~\ref{sec:results}, we used evaluation measures that use both relevance and understandability. 
 For the retrieval experiments, we used evaluation measures that rely on both (topical) relevance and understandability. 
@@ -35,7 +35,7 @@ A drawback of uRBP is that relevance and understandability are combined into a u
     \item $H_{RBP}@n(\rho) = 2 \times \frac{RBP_r@n \times RBP_u@n}{RBP_r@n + RBP_u@n}$: combines the previous two RBP values into a unique measurement using the harmonic mean (in the same fashion that the $F_1$ measure combines recall and precision).
 \end{itemize}
 
-\noindent For all measures we set $n=10$ because shallow pools were used in CLEF along with measures that focused on the top 10 search results (including $RBP_r@10$).
+\noindent For all measures, we set $n=10$ because shallow pools were used in CLEF along with measures that focused on the top 10 search results (including $RBP_r@10$).
 
 Along with these measures of search effectiveness, we also reported the number of unassessed documents, the RBP residuals,  $RBP^*_r@10$, $RBP^*_u@10$ and $H_{RBP}^*$, i.e. the corresponding measures calculated by ignoring unassessed documents. We did this to minimise pool bias since the pools built in CLEF were of limited size, and the investigated methods retrieved a substantial number of unassessed documents.
 
@@ -44,7 +44,7 @@ Along with these measures of search effectiveness, we also reported the number o
 \label{sec:proxies}
 
 %As reviewed in Section~\ref{sec:related}, 
-Several methods have been used to estimate the understandability of health Web pages, with the most popular methods (at least in the biomedical literature) being readability formulas based on surface level characteristics of text. Next, we outline the categories of methods to estimate understandability used in this work; an overview is shown in Table~\ref{tab:doc_features}. Some of these methods further expand measures used in the literature. 
+Several methods have been used to estimate the understandability of health Web pages, with the most popular methods (at least in the biomedical literature) being readability formulas based on surface level characteristics of the text. Next, we outline the categories of methods to estimate understandability used in this work; an overview is shown in Table~\ref{tab:doc_features}. Some of these methods further expand measures used in the literature. 
  
 \input{tables/tab_doc_features}
 
@@ -67,7 +67,8 @@ Similarly to the CHV features, we used MetaMap to convert the content of Web pag
 
 \textit{Natural Language Features (NLF):}
 These included commonly used natural language heuristics such as the ratio of part-of-speech (POS) classes, the height of the POS parser tree, the number of entities in the text, 
-the sentiment polarity and the ratio of words found in English vocabularies. The Python package NLTK~\cite{nltk} was employed for sentiment analysis, POS tagging and entity recognition. The GNU Aspell~\cite{aspell} dictionary was used as a standard English vocabulary and a stop word list was built by merging those of Indri~\cite{indri} and Terrier~\cite{terrier}. Discourse features, such as the distribution of POS classes and density of entity in a text, were previously studied in the task of understandability prediction~\cite{feng10} yielding being superior to complex features such as entity co-reference and entity grid (\cite{barzilay08}). To the best of our knowledge, sentiment polarity were never investigated. Our intuition is that laypeople produced content (patient forums or blogs) might content a larger number of emotional content, whereas scientific publications might not
+the sentiment polarity and the ratio of words found in English vocabularies. The Python package NLTK~\cite{nltk} was employed for sentiment analysis, POS tagging and entity recognition. The GNU Aspell~\cite{aspell} dictionary was used as a standard English vocabulary and a stop word list was built by merging those of Indri~\cite{indri} and Terrier~\cite{terrier}. 
+Discourse features, such as the distribution of POS classes and density of entity in a text, were previously studied in the task of understandability prediction~\cite{feng10} being superior to complex features such as entity co-reference and entity grid~\cite{barzilay08}. To the best of our knowledge, sentiment polarity was never investigated in this task. Our intuition is that the content produced by laypeople in patient forums or blogs (easy-to-read) is potentially more emotional than scientific publications (hard-to-read).
 
 \textit{HTML Features (HF):}
 These included the identification of a large number of HTML tags, which were extracted with the Python library BeautifulSoap~\cite{bs4}. The intuition for these features is that Web pages with many images and tables may explain and summarise health content better, thus providing more understandable content to the general public. 
@@ -116,7 +117,7 @@ Models were learnt using all documents from these collections after features wer
 \label{sec:pipelines}
 
 %As part of our study, we investigated the influence the preprocessing of Web pages has on the estimation of understandability, when this is estimated using the methods in \todo{Section~\ref{sec:proxies}}. 
-As part of our study, we investigated the influence the preprocessing of Web pages has on the estimation of understandability, when this is estimated using the methods described above.
+As part of our study, we investigated the influence the preprocessing of Web pages has on the estimation of understandability when this is estimated using the methods described above.
 We did so by comparing the combination of a number of preprocessing pipelines, heuristics, and understandability estimation methods with human assessments of Web page understandability. 
 Our experiments extended those by Palotti et al.~\cite{palotti15} and provided a much thorough analysis, as they only evaluated surface level readability formulas and did not compare their results against human assessments. 
 %\mytodo{NEW CONTRIBUTION FOUND...}
@@ -133,7 +134,7 @@ We then investigated how understandability estimations can be integrated into re
 Specifically, we considered three retrieval methods of differing quality for the initial retrieval. These included the best two runs submitted to each CLEF task, and a plain BM25 baseline (default Terrier parameters: $b=0.75$ and $k_1=1.2$). As understandability estimators we used the eXtreme Gradient Boosting (XGB) regressor~\cite{chen16}, as well as SMOG for CLEF 2015 and DCI for CLEF 2016. 
 %These were the best performing approaches \todo{from Section~\ref{sec:beyond_readability}}. 
 These were the selected as they were best performing readability formulas and machine learning method for each collection (details in the evaluation of understandability estimators in Results section).
-Note that for XGB, for assessed documents we used 10-fold cross validation, training XGB on 90\% of the data, and used its predictions for the remaining 10\%. For unassessed documents, we trained XGB on all assessed data, and applied this model to generate predictions. Different machine learning methods and feature selection schemes were experimented with; results are available in the online appendix. XGB was selected because its results were the best, although other methods followed similar trends.
+Note that for XGB, for assessed documents we used 10-fold cross validation, training XGB on 90\% of the data, and used its predictions for the remaining 10\%. For unassessed documents, we trained XGB on all assessed data and applied this model to generate predictions. Different machine learning methods and feature selection schemes were experimented with; results are available in the online appendix. XGB was selected because its results were the best, although other methods followed similar trends.
 
 
 To integrate understandability estimators into the retrieval process, we first investigated \textit{re-ranking} search results retrieved by the initial runs purely based on the understandability estimations. 
