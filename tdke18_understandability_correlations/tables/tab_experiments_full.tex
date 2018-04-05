@@ -8,19 +8,19 @@ All measures were calculated up to rank $n=10$. The highest result
 of each set of experiments is reported in bold face.}
 %\vspace{-0.2cm}
  \label{tab:experiments} \resizebox{1.00\textwidth}{!}{ %
-\begin{tabular}{cclllllllllllllllllllllllllll}
+\begin{tabular}{lcllllHlllHlllHlllHllllllllll}
 \toprule 
-\multirow{2}{*}{Idx}  & \multirow{2}{*}{Rerank}  & \multirow{2}{*}{Run}  & \multicolumn{8}{l}{Official CLEF 2016 Metrics} & \multicolumn{18}{l}{New Metrics to Evaluate Underst. in Retrieval }\tabularnewline
+\multirow{2}{*}{Index }  & \multirow{2}{*}{\multirow{2}{*}{Rerank } } & \multirow{2}{*}{\multirow{2}{*}{Run } } & \multicolumn{8}{l}{CLEF 2016 Measures} & \multicolumn{18}{l}{New Measures to Evaluate Underst. in Retrieval }\tabularnewline
 \cmidrule(l{2pt}r{2pt}){4-7} \cmidrule(l{2pt}r{2pt}){8-29}  &  &  & $RBP$  & $P_{bl}$ & $P_{g}$ & Res.  & uRBP  & $P_{bl}$ & $P_{g}$ & Res.  & $RBP_{u}$  & $P_{bl}$ & $P_{g}$ & Res.  & $H_{rbp}$ & $P_{bl}$ & $P_{g}$ & Res.  & Unj  & $RBP_{r}^{*}$  & $P_{bl}$ & $P_{g}$ & $RBP_{u}^{*}$  & $P_{bl}$ & $P_{g}$ & $H_{rbp}^{*}$ & $P_{bl}$ & $P_{g}$\tabularnewline
 \midrule 
 1  & \multirow{3}{*}{No Rerank}  & GUIR~\cite{soldaini16} (Best Run)  & \textbf{28.11}  & - & - & 7.65  & \textbf{18.12}  & - & - & 7.19  & \textbf{45.69}  & - & - & 8.86  & \textbf{25.61}  & - & - & 6.50  & 0.01  & \textbf{28.29}  & - & - & \textbf{46.03}  & - & - & \textbf{25.79}  & - & -\tabularnewline
 2  &  & ECNU~\cite{song16} (2nd Best)  & 27.70  & .946 & - & 7.37  & 17.55  & - & .208 & \textbf{7.34}  & 43.89 & - & .012 & 8.66  & 25.35  & - & .763 & 6.26  & 0.01  & 27.77  & - & .635 & 44.18 & - & .009 & 25.48  & - & .660\tabularnewline
 3  &  & Plain BM25 Baseline  & 25.28 & .001 & - & \textbf{8.24}  & 16.05  & - & .000 & 6.94  & 42.08 & - & .000 & \textbf{10.97}  & 22.97 & - & .000 & \textbf{7.19}  & \textbf{0.06}  & 26.01  & - & .003 & 43.89  & - & .005 & 23.93  & - & .002\tabularnewline
 \midrule 
-4  & \multirow{3}{*}{\makecell{Dale-Chall\\Top 15}}  & Based on GUIR  & 24.29 & .000 & .000 & 8.89 & 16.62 & .001 & .001 & \textbf{7.27} & 48.96 & .000 & .000 & 11.05 & 24.76 & .193 & .193 & 7.61 & 0.03 & 24.83 & .000 & .000 & 50.56 & .000 & .000 & 25.38 & .521 & .521\tabularnewline
+4  & \multirow{3}{*}{\makecell{Dale-Chall \\Top 15}}  & Based on GUIR  & 24.29 & .000 & .000 & 8.89 & 16.62 & .001 & .001 & \textbf{7.27} & 48.96 & .000 & .000 & 11.05 & 24.76 & .193 & .193 & 7.61 & 0.03 & 24.83 & .000 & .000 & 50.56 & .000 & .000 & 25.38 & .521 & .521\tabularnewline
 5  &  & Based on ECNU  & 24.38 & .000 & .000 & 8.19 & 16.45 & .042 & .003 & 7.16 & 48.96 & .000 & .001 & 10.10 & 24.68 & .376 & .285 & 6.86 & 0.03 & 24.88 & .000 & .000 & 49.99 & .000 & .000 & 25.24 & .743 & .575\tabularnewline
 6  &  & Based on BM25  & 23.22 & .003 & .000 & 8.78 & 15.85 & .669 & .001 & 6.94 & 47.09 & .000 & .032 & 11.83 & 24.01 & .157 & .146 & 7.42 & 0.07 & 24.04 & .007 & .000 & 48.60 & .000 & .001 & 24.82 & .209 & .342\tabularnewline
-\hdashline 7  & \multirow{3}{*}{\makecell{Dale-Chall\\Top 20}}  & Based on GUIR  & 21.86 & .000 & .000 & 10.04 & 15.15 & .000 & .000 & 7.05 & 48.54 & .004 & .004 & 13.13 & 22.94 & .000 & .000 & 8.68 & 0.06 & 23.23 & .000 & .000 & 51.78 & .000 & .000 & 24.44 & .048 & .048\tabularnewline
+\hdashline 7  & \multirow{3}{*}{\makecell{Dale-Chall\\ Top 20}}  & Based on GUIR  & 21.86 & .000 & .000 & 10.04 & 15.15 & .000 & .000 & 7.05 & 48.54 & .004 & .004 & 13.13 & 22.94 & .000 & .000 & 8.68 & 0.06 & 23.23 & .000 & .000 & 51.78 & .000 & .000 & 24.44 & .048 & .048\tabularnewline
 8  &  & Based on ECNU  & 22.61 & .000 & .000 & 9.24 & 15.41 & .001 & .000 & 6.94 & 48.45 & .000 & .007 & 12.31 & 23.43 & .022 & .012 & 8.06 & 0.05 & 23.62 & .000 & .000 & 50.86 & .000 & .000 & 24.58 & .264 & .177\tabularnewline
 9  &  & Based on BM25  & 21.58 & .000 & .000 & 9.51 & 14.83 & .020 & .000 & 7.02 & 46.99 & .000 & .108 & 13.00 & 22.89 & .849 & .009 & 8.06 & 0.09 & 22.93 & .000 & .000 & 49.55 & .000 & .000 & 24.26 & .769 & .125\tabularnewline
 \hdashline 10  & \multirow{3}{*}{\makecell{Dale-Chall\\ Top 50}}  & Based on GUIR  & 16.07 & .000 & .000 & 15.31 & 11.50 & .000 & .000 & 6.80 & 41.41 & .001 & .001 & 24.34 & 17.95 & .000 & .000 & 14.48 & 0.23 & 20.80 & .000 & .000 & 53.07 & .000 & .000 & 23.14 & .011 & .011\tabularnewline
@@ -47,11 +47,12 @@ of each set of experiments is reported in bold face.}
 30  &  & Based on BM25  & 22.32 & .000 & .000 & 8.82 & 15.51 & .425 & .000 & 6.73 & 48.78 & .000 & .001 & 12.84 & 23.14 & .787 & .008 & 7.78 & 0.10 & 23.45 & .001 & .000 & 51.85 & .000 & .000 & 24.53 & .358 & .127\tabularnewline
 \midrule 
 31  & \multirow{5}{*}{XGB LeToR}  & Combo 1 on BM25  & 20.42 & .000 & .000 & 17.61 & 13.00 & .000 & .000 & 7.41 & 32.17 & .000 & .000 & 24.61 & 18.39 & .000 & .000 & 14.41 & 0.28 & 25.25 & .200 & .003 & 43.19 & .214 & .001 & 23.83 & .685 & .038\tabularnewline
-32  &  & Combo 2 on BM25  & 25.16 & .129 & .000 & 19.95 & 15.85 & 0.096 &  & 8.09 & 34.31 & .000 & .000 & 24.95 & 21.69 & .109 & .000 & 17.43 & 0.28 & 30.60 & .008 & .370 & 45.37 & .378 & .147 & 27.57 & .001 & .062\tabularnewline
-33  &  & Combo 3 on BM25  & 26.35 & .115 & .005 & \textbf{20.48} & 15.88 & 0.023 &  & 8.16 & 34.73 & .000 & .000 & 24.69 & 21.81 & .075 & .000 & 17.41 & 0.22 & 32.25 & .006 & .126 & 45.44 & .728 & .059 & 28.22 & .000 & .021\tabularnewline
-34  &  & Combo 4 on BM25  & 16.16 & .000 & .000 & 19.48 & 10.76 & 0.000 &  & 7.27 & \textbf{36.75} & .000 & .000 & \textbf{28.51} & 16.77 & .000 & .000 & \textbf{17.80} & \textbf{0.29} & 22.20 & .000 & .000 & \textbf{50.06} & .000 & .042 & 23.32 & .343 & .031\tabularnewline
-35  &  & Combo 5 on BM25  & \textbf{26.76} & .196 & .002 & \textbf{20.48} & \textbf{16.19} & 0.067 &  & \textbf{8.34} & 35.26 & .000 & .000 & 24.13 & \textbf{22.96} & .559 & .008 & 17.59 & 0.22 & \textbf{32.60} & .003 & .120 & 45.87 & .375 & .228 & \textbf{29.20} & .000 & .001\tabularnewline
+32  &  & Combo 2 on BM25  & 25.16 & .129 & .000 & 19.95 & 15.85 & .096 & .000 & 8.09 & 34.31 & .000 & .000 & 24.95 & 21.69 & .109 & .000 & 17.43 & 0.28 & 30.60 & .008 & .370 & 45.37 & .378 & .147 & 27.57 & .001 & .062\tabularnewline
+33  &  & Combo 3 on BM25  & 26.35 & .115 & .005 & \textbf{20.48} & 15.88 & .023 & .000 & 8.16 & 34.73 & .000 & .000 & 24.69 & 21.81 & .075 & .000 & 17.41 & 0.22 & 32.25 & .006 & .126 & 45.44 & .728 & .059 & 28.22 & .000 & .021\tabularnewline
+34  &  & Combo 4 on BM25  & 16.16 & .000 & .000 & 19.48 & 10.76 & .000 & .000 & 7.27 & \textbf{36.75} & .000 & .000 & \textbf{28.51} & 16.77 & .000 & .000 & \textbf{17.80} & \textbf{0.29} & 22.20 & .000 & .000 & \textbf{50.06} & .000 & .042 & 23.32 & .343 & .031\tabularnewline
+35  &  & Combo 5 on BM25  & \textbf{26.76} & .196 & .002 & \textbf{20.48} & \textbf{16.19} & .067 & .000 & \textbf{8.34} & 35.26 & .000 & .000 & 24.13 & \textbf{22.96} & .559 & .008 & 17.59 & 0.22 & \textbf{32.60} & .003 & .120 & 45.87 & .375 & .228 & \textbf{29.20} & .000 & .001\tabularnewline
 \bottomrule
 \end{tabular}} % end of resizebox
 \end{table*}
 
+\end{document}
