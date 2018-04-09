@@ -1,6 +1,6 @@
 \begin{table}[!t]
 \centering
-\caption{Learning to rank settings. }
+\caption{Learning to rank (LTR) settings. }
 %\vspace{-0.3cm}
 \label{tab:ltr}
 \resizebox{0.45\textwidth}{!}{
@@ -8,11 +8,11 @@
 \toprule 
 Name & Feature Set & Labeling Function\tabularnewline
 \midrule 
-Combo 1 & IR features & F(R,U) = $R$\tabularnewline
-Combo 2 & IR + Unders. features & F(R,U) = $R$ \tabularnewline
-Combo 3 & IR + Unders. features & F(R,U) = $R \times (100 - U)/100$ \tabularnewline
-Combo 4 & IR + Unders. features & F(R,U) = $\begin{cases} R & \text{if } U \le 40\\ 0 & \text{otherwise}  \end{cases}$ \tabularnewline
-Combo 5 & IR + Unders. features & F(R,U) = $\begin{cases} 2 \times R & \text{if } U \le 40\\ R & \text{otherwise}  \end{cases}$\tabularnewline
+LTR 1 & IR features & F(R,U) = $R$\tabularnewline
+LTR 2 & IR + Unders. features & F(R,U) = $R$ \tabularnewline
+LTR 3 & IR + Unders. features & F(R,U) = $R \times (100 - U)/100$ \tabularnewline
+LTR 4 & IR + Unders. features & F(R,U) = $\begin{cases} R & \text{if } U \le 40\\ 0 & \text{otherwise}  \end{cases}$ \tabularnewline
+LTR 5 & IR + Unders. features & F(R,U) = $\begin{cases} 2 \times R & \text{if } U \le 40\\ R & \text{otherwise}  \end{cases}$\tabularnewline
 \bottomrule
 \end{tabular}
 }% end resizebox

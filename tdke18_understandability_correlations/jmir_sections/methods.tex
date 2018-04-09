@@ -37,7 +37,7 @@ A drawback of uRBP is that relevance and understandability are combined into a u
 
 \noindent For all measures, we set $n=10$ because shallow pools were used in CLEF along with measures that focused on the top 10 search results (including $RBP_r@10$).
 
-Along with these measures of search effectiveness, we also recorded the number of unassessed documents, the RBP residuals,  $RBP^*_r@10$, $RBP^*_u@10$ and $H_{RBP}^*$, i.e. the corresponding measures calculated by ignoring unassessed documents. We did this to minimise pool bias since the pools built in CLEF were of limited size, and the investigated methods retrieved a substantial number of unassessed documents.
+Along with these measures of search effectiveness, we also recorded the number of unassessed documents, the RBP residuals,  $RBP^*_r@10$, $RBP^*_u@10$ and $H_{RBP}^*$, i.e. the corresponding measures calculated by ignoring unassessed documents. These latter measures implement the condensed measures approach proposed by Sakai as a way to deal with unassessed documents~\cite{sakai2007alternatives}. We did this to minimise pool bias since the pools built in CLEF were of limited size, and the investigated methods retrieved a substantial number of unassessed documents.
 
 
 \subsection*{Understandability Estimators}
@@ -149,10 +149,7 @@ results to be considered by the methods across the cut-offs $k=15, 20, 50$. % Re
 
 Finally, we considered a third alternative to combine relevance and understandability: using \textit{learning to rank} with features derived from retrieval methods (IR features) and understandability estimators.
 With the CLEF 2016 collection, we explored five combinations of label attribution and feature sets, maintaining the same pairwise learning to rank algorithm based on tree boosting (XGB).
-These combinations are listed in Table~\ref{tab:ltr}, with $R$ being the relevance of documents and $U$ their understandability estimation. While the definitions of Combo 1 and 2 are straightforward, the other methods deserve some further explanation. In Combo 3, a penalty was proportionally assigned to documents according to how far their understandability score was from a target score $U$ (we used $U=40$). For example, a document with understandability 100 received no penalty, as 100 was the easiest level of understanding, while another with understandability 50 received a 50\% penalty, meaning that its relevance score was halved. Combo 4 and 5 were based on a fixed threshold applied to the understandability score: if the score was higher than the threshold $U=40$, then the original relevance score (for Combo 4) or a boosted value (for Combo 5) was assigned to the corresponding document.
+These combinations are listed in Table~\ref{tab:ltr}, with $R$ being the relevance of documents and $U$ their understandability estimation. While the definitions of LTR 1 and 2 are straightforward, the other methods deserve some further explanation. In LTR 3, a penalty was proportionally assigned to documents according to how far their understandability score was from a target score $U$ (we used $U=40$). For example, a document with understandability 100 received no penalty, as 100 was the easiest level of understanding, while another with understandability 50 received a 50\% penalty, meaning that its relevance score was halved. LTR 4 and 5 were based on a fixed threshold applied to the understandability score: if the score was higher than the threshold $U=40$, then the original relevance score (for LTR 4) or a boosted value (for LTR 5) was assigned to the corresponding document.
 
 
-\subsection{Additional Resources}
-%\todo{Move this section to the discussion part?}
-In order to keep this article as succinct as possible, we only reported a subset of the results. The remaining results (which show similar trends to those reported here) are made available in an online supplementary appendix for completeness: \url{https://sites.google.com/view/understandabilityontheweb/}. All data and code will be shared on GitHub upon acceptance.
 
