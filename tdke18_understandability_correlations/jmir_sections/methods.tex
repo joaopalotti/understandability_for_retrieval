@@ -79,11 +79,11 @@ We extended these observations by studying corpus-wide word frequencies.
 We modelled word frequencies in a corpus in a straightforward manner: we sorted the word frequencies and normalised word rankings such that values close to 100 are attributed to common words and values close to 0 to rare words. Three corpora were analysed to extract word frequencies:
 
 \begin{itemize}[leftmargin=*]
-    \item \underline{Medical Reddit:} Reddit~\cite{reddit} is a Web forum with a sizeable user community which is responsible for generating and moderating its content. Any user can start a discussion or reply to a discussion. This forum is intensively used for health purposes: for example in the Reddit community AskDocs~\cite{redditaskdocs}, licensed nurses and doctors (subject to user identity verification) advise help seekers free of charge. We selected six of such communities
+    \item \underline{Medical Reddit:} Reddit~\cite{reddit} is a Web forum with a sizeable user community which is responsible for generating and moderating its content. %Any user can start a discussion or reply to a discussion. 
+    This forum is intensively used for health purposes: for example in the Reddit community AskDocs~\cite{redditaskdocs}, licensed nurses and doctors (subject to user identity verification) advise help seekers free of charge. We selected six of such communities
         (medical, AskDocs, AskDoctorSmeeee, Health, WomensHealth, Mens\_Health) and downloaded all user interactions available until September 1st 2017 using the Python library PRAW~\cite{redditapi}. In total 43,019 discussions were collected.
 
-\item \underline{Medical English Wikipedia:} after obtaining a recent Wikipedia dump~\cite{wikipedia} (May 1st 2017), we filtered articles to only those containing an Infobox in which at least one of the following words appeared as a property: ICD10, ICD9, DiseasesDB, MeSH, MeSHID, MeshName, MeshNumber, GeneReviewsName, Orphanet, eMedicine, MedlinePlus, drug\_name, Drugs.com, DailyMedID, LOINC. A Wikipedia infobox is a structured template that appears on the right of Wikipedia pages summarising key aspects of articles.
-
+\item \underline{Medical English Wikipedia:} after obtaining a recent Wikipedia dump~\cite{wikipedia} (May 1st 2017), we filtered articles to only those containing an Infobox in which at least one of the following words appeared as a property: ICD10, ICD9, DiseasesDB, MeSH, MeSHID, MeshName, MeshNumber, GeneReviewsName, Orphanet, eMedicine, MedlinePlus, drug\_name, Drugs.com, DailyMedID, LOINC. A Wikipedia infobox is a structured template that appears on the right of Wikipedia pages summarising key aspects of articles. 
 %Figure~\ref{fig:hyperthermia} illustrates a Wikipedia page that is marked as medical because of its Infobox entries.
 This process followed the method by Soldaini et al.~\cite{soldaini15}, which favours precision over recall when identifying a health-related article. This resulted in a collection of 11,868 articles. 
 %Note that this procedure highly favors precision over recall. %\mytodo{In case we need space, I suggest we drop this figure}
@@ -92,22 +92,22 @@ This process followed the method by Soldaini et al.~\cite{soldaini15}, which fav
  
 \end{itemize}
 
-A summary of the statistics of these three collections is reported in Table~\ref{tab:collection_stats}. 
+A summary of the statistics of the corpora is reported in Table~\ref{tab:collection_stats}. 
 %We removed words that occurred less than 5 times in a corpus.  %% We include this detail if necessary in the final version of this paper
 %Finally, 
-Unless explicitly stated otherwise, we ignored out of vocabulary words in our feature calculations.
+Unless explicitly stated otherwise, we ignored out of vocabulary words in the feature calculations.
 
 \input{tables/tab_collection_stats}
 
 \textit{Machine Learning on Text - Regressors (MLR) and Classifiers (MLC):} These include machine learning methods for estimating Web page understandability. While Collins-Thompson highlighted the promise of estimating understandability using machine learning methods, a challenge is identifying the background corpus to be used for training~\cite{collins2014computational}. To this aim, we used the three corpora detailed above, and assumed understandability labels according to the expected difficulty of documents in these collections:
 
 \begin{itemize}[leftmargin=*]
-    \item Medical Reddit (label 1): Documents in this collection are expected to be written in a colloquial style, and thus the easiest to understand. All the conversations are in fact explicitly directed to assist inexpert health consumers;
-    \item Medical English Wikipedia (label 2): Documents in this collection are expected to be less formal than scientific articles, but more formal than a Web forum like Reddit, thus somewhat more difficult to understand;
-    \item PubMed Central (label 3): Documents from this collection are expected to be written in a highly formal style, as the target audience are physicians and biomedical researchers.
+    \item Medical Reddit (label 1): Documents in this corpus are expected to be written in a colloquial style, and thus the easiest to understand. All the conversations are in fact explicitly directed to assist inexpert health consumers;
+    \item Medical English Wikipedia (label 2): Documents in this corpus are expected to be less formal than scientific articles, but more formal than a Web forum like Reddit, thus somewhat more difficult to understand;
+    \item PubMed Central (label 3): Documents in this corpus are expected to be written in a highly formal style, as the target audience are physicians and biomedical researchers.
 \end{itemize}
 
-Models were learnt using all documents from these collections after features were extracted using Latent Semantic Analysis (LSA) with 10 dimensions (this number of dimensions was chosen based on preliminary experiments with the Random Forest algorithm; we leave as future work a detailed study on the impact of different number of dimensions on other machine learning algorithms). We modelled a classification task as well as a regression task using these collections. Thus, after applying the same LSA transformation to test documents from CLEF, a continuous score was assigned to each document by a regressor, while each classifier assigned the documents to one of the three classes. %\footnote{In principle, regressors should output a continuous value between 1 and 3, but no restrictions are set and potentially any value can be assigned to a document.}
+Models were learnt using all documents from these corpora after features were extracted using Latent Semantic Analysis (LSA) with 10 dimensions (this number of dimensions was chosen based on preliminary experiments with the Random Forest algorithm; we leave as future work a detailed study on the impact of different number of dimensions on other machine learning algorithms). We modelled a classification task as well as a regression task using these corpora. Thus, after applying the same LSA transformation to test documents from CLEF, a continuous score was assigned to each document by a regressor, while each classifier assigned the documents to one of the three classes. %\footnote{In principle, regressors should output a continuous value between 1 and 3, but no restrictions are set and potentially any value can be assigned to a document.}
 
 %Different labels for the regression could be employed, for example, a label 6 to PubMed Central documents would emphasize that these documents are explicitly made for expert users, being 3 times harder than Wikipedia ones. We did not explore the effects of different labels in this work, it is left as future work.
 
@@ -117,7 +117,7 @@ Models were learnt using all documents from these collections after features wer
 \label{sec:pipelines}
 
 %As part of our study, we investigated the influence the preprocessing of Web pages has on the estimation of understandability, when this is estimated using the methods in \todo{Section~\ref{sec:proxies}}. 
-As part of our study, we investigated the influence the preprocessing of Web pages has on the estimation of understandability when this is estimated using the methods described above.
+As part of our study, we investigated the influence the preprocessing of Web pages has on the estimation of understandability computed using the methods described above.
 We did so by comparing the combination of a number of preprocessing pipelines, heuristics, and understandability estimation methods with human assessments of Web page understandability. 
 Our experiments extended those by Palotti et al.~\cite{palotti15} and provided a much thorough analysis, as they only evaluated surface level readability formulas and did not compare their results against human assessments. 
 %\mytodo{NEW CONTRIBUTION FOUND...}
@@ -133,7 +133,7 @@ Palotti et al.'s data analysis highlighted that the text in HTML fields like tit
 We then investigated how understandability estimations can be integrated into retrieval methods to increase the quality of search results. %We start by evaluating re-ranking search results purely basing on understandability estimations. 
 Specifically, we considered three retrieval methods of differing quality for the initial retrieval. These included the best two runs submitted to each CLEF task, and a plain BM25 baseline (default Terrier parameters: $b=0.75$ and $k_1=1.2$). As understandability estimators we used the eXtreme Gradient Boosting (XGB) regressor~\cite{chen16}, as well as SMOG for CLEF 2015 and DCI for CLEF 2016. 
 %These were the best performing approaches \todo{from Section~\ref{sec:beyond_readability}}. 
-These were the selected as they were best performing readability formulas and machine learning method for each collection (details in the evaluation of understandability estimators in Results section).
+These were selected as they were the best performing readability formulas and machine learning method for each collection (details in the evaluation of understandability estimators in the Results section).
 Note that for XGB, for assessed documents we used 10-fold cross validation, training XGB on 90\% of the data, and used its predictions for the remaining 10\%. For unassessed documents, we trained XGB on all assessed data and applied this model to generate predictions. Different machine learning methods and feature selection schemes were experimented with; results are available in the online appendix. XGB was selected because its results were the best, although other methods followed similar trends.
 
 
