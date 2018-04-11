@@ -1,4 +1,3 @@
-%\subsection{Data and Resources}
 \section*{Methods}
 \label{sec:data}
 
@@ -11,17 +10,14 @@ The CLEF 2016 collection contains 300 queries and 3,298 relevant documents that 
 Understandability assessments were provided on a 5-point Likert scale for CLEF 2015, and on a $[0,100]$ range for CLEF 2016 (0 indicates the highest understandability). 
 
 To support the investigation of methods to automatically estimate the understandability of Web pages, 
-%in Section~\ref{sec:which_preprocessing} (evaluation of preprocessing pipelines and heuristics), 
 we further considered correlations between multiple human assessors (inter-assessor agreement). For CLEF 2015, we used the publicly available additional assessments made by unpaid medical students and health consumers collected by Palotti et al.~\cite{palotti16b} in a study of how medical expertise affects assessments. For CLEF 2016 we  collected understandability assessments for 100 documents. 
-%Three members of our research team, which did not author this paper, were recruited to provide the assessments\footnote{The correlation of these additional assessments and CLEF's ground-truth is examined in Section~\ref{sec:which_preprocessing}}. 
 Three members of our research team, which did not author this article and were not medical experts, were recruited to provide the assessments (the correlation of these additional assessments and CLEF's ground-truth is examined further in this article).
-The Relevation tool~\cite{koopman14} was used to assist with the assessments, mimicking the settings used in CLEF. %\mytodo{should we briefly show these results?}
+The Relevation tool~\cite{koopman14} was used to assist with the assessments, mimicking the settings used in CLEF. 
 
 \subsection{Evaluation Measures}
 
 In the experiments, we used Pearson, Kendall and Spearman correlations to compare the understandability assessments of human assessors with estimations obtained by the considered approaches, under all combinations of pipelines and heuristics. Pearson correlation is used to calculate the strength of the linear relationship between two variables, while Kendall and Spearman measure the rank correlations between the variables. We opted to report all three correlation coefficients to allow for a thorough comparison to other work, as they are equally used in the literature. 
 
-%For the retrieval experiments in Section~\ref{sec:results}, we used evaluation measures that use both relevance and understandability. 
 For the retrieval experiments, we used evaluation measures that rely on both (topical) relevance and understandability. 
 The uRBP measure~\cite{zuccon2016understandability} extends rank biased precision (RBP) to situations where multiple relevance dimensions are used. The measure is formulated as $uRBP(\rho) = (1 - \rho) \sum_{k=1}^{K} \rho^{k-1} r(d@k) u(d@k)$, where $r(d@k)$ is the gain for retrieving a relevant document at rank $k$ and $u(d@k)$ is the gain for retrieving a document of a certain understandability at rank $k$; $\rho$ is the RBP persistence parameter. This measure was an official evaluation measure used in CLEF (we also set $\rho=0.8$). 
 
@@ -43,20 +39,18 @@ Along with these measures of search effectiveness, we also recorded the number o
 \subsection*{Understandability Estimators}
 \label{sec:proxies}
 
-%As reviewed in Section~\ref{sec:related}, 
 Several methods have been used to estimate the understandability of health Web pages, with the most popular methods (at least in the biomedical literature) being readability formulas based on surface level characteristics of the text. Next, we outline the categories of methods to estimate understandability used in this work; an overview is shown in Table~\ref{tab:doc_features}. Some of these methods further expand measures used in the literature. 
  
 \input{tables/tab_doc_features}
 
 \textit{Traditional Readability Formulas (RF):}
-%These include the readability formulas mentioned in Section~\ref{sec:related}, as well as other, less popular ones. A full list is provided in surveys by Collins-Thompson \cite{collins2014computational} and Dubay~\cite{dubay04}.
 These include the most popular readability formulas~\cite{cli75,dale48,flesch75}, as well as other, less popular ones~\cite{ari67,gunning52,lix,smog69}. A full list is provided in surveys by Collins-Thompson \cite{collins2014computational} and Dubay~\cite{dubay04}.
 
 \textit{Raw Components of Readability Formulas (CRF):}
 These are formed by the ``building blocks'' used in the traditional readability formulas. Examples include the average number of characters per word and the average number of syllables in a sentence. Words are divided into syllables using the Python package Pyphen~\cite{pyphen}.
 
 \textit{General Medical Vocabularies (GMV):}
-These include methods that count the number of words with a medical prefix or suffix, i.e. beginning or ending with Latin or Greek particles (e.g., amni-, angi-, algia-, arteri-), and text strings included in lists of acronyms or in medical vocabularies such as the International Statistical Classification of Diseases and Related Health Problems (ICD), Drugbank and the OpenMedSpel dictionary~\cite{openmedspel}. An acronym list from the ADAM database~\cite{zhou2006} was used. Methods in this category were matched with documents using simple keywords matching. %An acronym list from the ADAM database~\cite{zhou2006} was used and methods in this group were matched with documents using simple keywords matching.
+These include methods that count the number of words with a medical prefix or suffix, i.e. beginning or ending with Latin or Greek particles (e.g., amni-, angi-, algia-, arteri-), and text strings included in lists of acronyms or in medical vocabularies such as the International Statistical Classification of Diseases and Related Health Problems (ICD), Drugbank and the OpenMedSpel dictionary~\cite{openmedspel}. An acronym list from the ADAM database~\cite{zhou2006} was used. Methods in this category were matched with documents using simple keywords matching. 
 
 \textit{Consumer Medical Vocabulary (CMV):}
 The popular MetaMap \cite{aronson10} tool was used to map the text content of Web pages to entries in  CHV~\cite{zeng06}.
@@ -79,22 +73,16 @@ We extended these observations by studying corpus-wide word frequencies.
 We modelled word frequencies in a corpus in a straightforward manner: we sorted the word frequencies and normalised word rankings such that values close to 100 are attributed to common words and values close to 0 to rare words. Three corpora were analysed to extract word frequencies:
 
 \begin{itemize}[leftmargin=*]
-    \item \underline{Medical Reddit:} Reddit~\cite{reddit} is a Web forum with a sizeable user community which is responsible for generating and moderating its content. %Any user can start a discussion or reply to a discussion. 
-    This forum is intensively used for health purposes: for example in the Reddit community AskDocs~\cite{redditaskdocs}, licensed nurses and doctors (subject to user identity verification) advise help seekers free of charge. We selected six of such communities
-        (medical, AskDocs, AskDoctorSmeeee, Health, WomensHealth, Mens\_Health) and downloaded all user interactions available until September 1st 2017 using the Python library PRAW~\cite{redditapi}. In total 43,019 discussions were collected.
+    \item \underline{Medical Reddit:} Reddit~\cite{reddit} is a Web forum with a sizeable user community which is responsible for generating and moderating its content. This forum is intensively used for health purposes: for example in the Reddit community AskDocs~\cite{redditaskdocs}, licensed nurses and doctors (subject to user identity verification) advise help seekers free of charge. We selected six of such communities (medical, AskDocs, AskDoctorSmeeee, Health, WomensHealth, Mens\_Health) and downloaded all user interactions available until September 1st 2017 using the Python library PRAW~\cite{redditapi}. In total 43,019 discussions were collected.
 
 \item \underline{Medical English Wikipedia:} after obtaining a recent Wikipedia dump~\cite{wikipedia} (May 1st 2017), we filtered articles to only those containing an Infobox in which at least one of the following words appeared as a property: ICD10, ICD9, DiseasesDB, MeSH, MeSHID, MeshName, MeshNumber, GeneReviewsName, Orphanet, eMedicine, MedlinePlus, drug\_name, Drugs.com, DailyMedID, LOINC. A Wikipedia infobox is a structured template that appears on the right of Wikipedia pages summarising key aspects of articles. 
-%Figure~\ref{fig:hyperthermia} illustrates a Wikipedia page that is marked as medical because of its Infobox entries.
 This process followed the method by Soldaini et al.~\cite{soldaini15}, which favours precision over recall when identifying a health-related article. This resulted in a collection of 11,868 articles. 
-%Note that this procedure highly favors precision over recall. %\mytodo{In case we need space, I suggest we drop this figure}
 
 \item \underline{PubMed Central:} PubMed Central~\cite{pubmed} is an online  database of biomedical literature. We used the collection distributed for the TREC 2014 and 2015 Clinical Decision Support Track~\cite{roberts16,trec15}, consisting of 733,191 articles. 
  
 \end{itemize}
 
 A summary of the statistics of the corpora is reported in Table~\ref{tab:collection_stats}. 
-%We removed words that occurred less than 5 times in a corpus.  %% We include this detail if necessary in the final version of this paper
-%Finally, 
 Unless explicitly stated otherwise, we ignored out of vocabulary words in the feature calculations.
 
 \input{tables/tab_collection_stats}
@@ -107,49 +95,39 @@ Unless explicitly stated otherwise, we ignored out of vocabulary words in the fe
     \item PubMed Central (label 3): Documents in this corpus are expected to be written in a highly formal style, as the target audience are physicians and biomedical researchers.
 \end{itemize}
 
-Models were learnt using all documents from these corpora after features were extracted using Latent Semantic Analysis (LSA) with 10 dimensions (this number of dimensions was chosen based on preliminary experiments with the Random Forest algorithm; we leave as future work a detailed study on the impact of different number of dimensions on other machine learning algorithms). We modelled a classification task as well as a regression task using these corpora. Thus, after applying the same LSA transformation to test documents from CLEF, a continuous score was assigned to each document by a regressor, while each classifier assigned the documents to one of the three classes. %\footnote{In principle, regressors should output a continuous value between 1 and 3, but no restrictions are set and potentially any value can be assigned to a document.}
-
-%Different labels for the regression could be employed, for example, a label 6 to PubMed Central documents would emphasize that these documents are explicitly made for expert users, being 3 times harder than Wikipedia ones. We did not explore the effects of different labels in this work, it is left as future work.
-
+Models were learnt using all documents from these corpora after features were extracted using Latent Semantic Analysis (LSA) with 10 dimensions (this number of dimensions was chosen based on preliminary experiments with the Random Forest algorithm; we leave as future work a detailed study on the impact of different number of dimensions on other machine learning algorithms). We modelled a classification task as well as a regression task using these corpora. Thus, after applying the same LSA transformation to test documents from CLEF, a continuous score was assigned to each document by a regressor, while each classifier assigned the documents to one of the three classes. 
 
 
 \subsection{Preprocessing Pipelines and Heuristics}
 \label{sec:pipelines}
 
-%As part of our study, we investigated the influence the preprocessing of Web pages has on the estimation of understandability, when this is estimated using the methods in \todo{Section~\ref{sec:proxies}}. 
 As part of our study, we investigated the influence the preprocessing of Web pages has on the estimation of understandability computed using the methods described above.
 We did so by comparing the combination of a number of preprocessing pipelines, heuristics, and understandability estimation methods with human assessments of Web page understandability. 
 Our experiments extended those by Palotti et al.~\cite{palotti15} and provided a much thorough analysis, as they only evaluated surface level readability formulas and did not compare their results against human assessments. 
-%\mytodo{NEW CONTRIBUTION FOUND...}
 
 To extract the content of a Web page from the HTML source we tested: BeautifulSoup~\cite{bs4} (\textit{Naive}), which just naively removes HTML tags, Boilerpipe~\cite{kohlschutter10} (\textit{Boi}) and Justext~\cite{jan11} (\textit{Jst}), which eliminates boilerplate text together with HTML tags. 
-%Palotti et al.'s data analysis highlighted that the text in HTML tags often missed a correct punctuation mark and thus the text extracted from HTML fields like titles, menus, tables and lists could be interpreted as many short sentences or few very long sentences, depending on whether a period was forced at the end of fields/sentences. We thus implement the same two heuristics devised by them to deal with this: \textit{ForcePeriod (FP)} and \textit{DoNotForcePeriod (DNFP)}. The FP heuristic forces a period at the end of each extracted HTML field; while the DNFP does not. 
 Palotti et al.'s data analysis highlighted that the text in HTML fields like titles, menus, tables and lists often missed a correct punctuation mark and thus the text extracted from them could be interpreted as many short sentences or few very long sentences, depending on whether a period was forced at the end of fields/sentences. We thus implemented the same two heuristics devised by Palotti et al. to deal with this: \textit{ForcePeriod (FP)} and \textit{DoNotForcePeriod (DNFP)}. The FP heuristic forces a period at the end of each extracted HTML field, while the DNFP does not. 
 
 
 \subsection{Integrating Understandability into Retrieval}
 \label{sec:method_ltr}
 
-We then investigated how understandability estimations can be integrated into retrieval methods to increase the quality of search results. %We start by evaluating re-ranking search results purely basing on understandability estimations. 
+We then investigated how understandability estimations can be integrated into retrieval methods to increase the quality of search results.
 Specifically, we considered three retrieval methods of differing quality for the initial retrieval. These included the best two runs submitted to each CLEF task, and a plain BM25 baseline (default Terrier parameters: $b=0.75$ and $k_1=1.2$). As understandability estimators we used the eXtreme Gradient Boosting (XGB) regressor~\cite{chen16}, as well as SMOG for CLEF 2015 and DCI for CLEF 2016. 
-%These were the best performing approaches \todo{from Section~\ref{sec:beyond_readability}}. 
 These were selected as they were the best performing readability formulas and machine learning method for each collection (details in the evaluation of understandability estimators in the Results section).
 Note that for XGB, for assessed documents we used 10-fold cross validation, training XGB on 90\% of the data, and used its predictions for the remaining 10\%. For unassessed documents, we trained XGB on all assessed data and applied this model to generate predictions. Different machine learning methods and feature selection schemes were experimented with; results are available in the appendix. XGB was selected because its results were the best, although other methods followed similar trends.
 
 
 To integrate understandability estimators into the retrieval process, we first investigated \textit{re-ranking} search results retrieved by the initial runs purely based on the understandability estimations. 
 If all the search results from a run were to be considered, then such a re-ranking method may place at early ranks Web pages highly likely to be understandable, but possibly less likely to be topically relevant. To balance relevance and understandability, we only re-ranked the first $k$ documents. We explored rank cut-offs $k = 15, 20, 50$. Because evaluation was performed with respect to the first $n=10$ rank positions, the setting $k=15$ provided a conservative re-ranking of search results, while, $k=50$ provided a less conservative re-ranking approach.
-%Results are presented in Section~\ref{results:reranking}.
 
 As an alternative to the previous two-step ranking strategy for combining topical relevance and understandability, we explored the \textit{fusion} of two search results lists separately obtained for relevance and understandability. For this, we used the Reciprocal Rank Fusion (RRF) method~\cite{cormack09}, which was shown effective for combining two lists of search results based on their documents \textit{ranks}, rather than scores. This approach was selected above score-based fusion methods
 because of the different scoring strategies and distributions employed when scoring for relevance compared to for understandability. For relevance, we used, separately, the three methods used for re-ranking (ECNU~\cite{song15} and KISTI~\cite{oh15} for CLEF2015, GUIR~\cite{soldaini16} and ECNU~\cite{song16} for CLEF 2016, and BM25 for both collections). For understandability, we used, separately, the estimations from SMOG/DCI and XGB. Also for this approach, we studied limiting the ranking of
-results to be considered by the methods across the cut-offs $k=15, 20, 50$. % Results are presented in Section~\ref{results:fusion}.
+results to be considered by the methods across the cut-offs $k=15, 20, 50$. 
 
 \input{tables/tab_ltr}
 
 Finally, we considered a third alternative to combine relevance and understandability: using \textit{learning to rank} with features derived from retrieval methods (IR features) and understandability estimators.
 With the CLEF 2016 collection, we explored five combinations of label attribution and feature sets, maintaining the same pairwise learning to rank algorithm based on tree boosting (XGB).
 These combinations are listed in Table~\ref{tab:ltr}, with $R$ being the relevance of documents and $U$ their understandability estimation. While the definitions of LTR 1 and 2 are straightforward, the other methods deserve some further explanation. In LTR 3, a penalty was proportionally assigned to documents according to how far their understandability score was from a target score $U$ (we used $U=40$). For example, a document with understandability 100 received no penalty, as 100 was the easiest level of understanding, while another with understandability 50 received a 50\% penalty, meaning that its relevance score was halved. LTR 4 and 5 were based on a fixed threshold applied to the understandability score: if the score was higher than the threshold $U=40$, then the original relevance score (for LTR 4) or a boosted value (for LTR 5) was assigned to the corresponding document.
-
-
 
