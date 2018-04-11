@@ -21,9 +21,6 @@ Figure~\ref{fig:dist} reports the cumulative distribution of understandability s
 We report also the scores for the ``optimal'' search results (Oracle), as found in CLEF 2016 (relevant results that have the highest understandability scores), along with the scores for the baseline method (BM25) and our best retrieval method (XGB). 
 The results clearly indicate that, despite solutions like HON being explicitly aimed at supporting access to understandable health information, they often fail to do so.
 
-%In this article we proposed and investigated methods for the estimation of the understandability of health information in Web pages. In doing so, we also studied the influence of HTML processing methods on these estimations, and their pitfalls. Then, we investigated how understandability estimations can be integrated into retrieval methods to enhance the quality of the retrieved health information, with particular attention to its understandability by the general public. 
-%This paper makes a concrete contribution to practice, as it informs health search engines specifically tailored to the general public about the best methods they should adopt. 
-
 In this article, we aim to establish methods and best practice for developing search engines that retrieve \textit{relevant and understandable} health advice from the Web. The overall contributions of this article can be summarised as:
 \begin{enumerate}
 \item We propose and investigate methods for the estimation of the understandability of health information in Web pages: a large number of medically-focused features are grouped in meaningful categories and their contribution to the understandability estimation task is carefully measured;
@@ -32,8 +29,6 @@ In this article, we aim to establish methods and best practice for developing se
 \end{enumerate}
 
 This paper makes concrete contributions to practice, as it informs health search engines specifically tailored to the general public (for example the HON or HealthDirect services referred to above) about the best methods they should adopt, but they currently don't. These are novel and significant contributions, as no previous work has systematically analysed the influence of the components at play in this study and we show that these greatly influence retrieval effectiveness and thus delivery of relevant and understandable health advice.
-%\todo{The famous Reviewer 2 complained about this sentence specifically.}
-%\todo{In general we still need here a strong novelty claim}
 
 \begin{figure}[t!]
    \centering
@@ -63,9 +58,7 @@ A common finding of these studies is that, in general, health content available 
 Previous Linguistics and Information Retrieval research has attempted to devise computational methods for the automatic estimation of text readability and understandability, and for the inclusion of these within search methods or their evaluation. Computational approaches to understandability estimations include (1) \textit{readability formulas}, which generally exploit word surface characteristics of the text, (2) \textit{machine learning} approaches, (3) matching with specialised \textit{dictionaries or terminologies}, often compiled with information about understandability difficulty.
 
 Measures such as Coleman-Liau Index (CLI)~\cite{cli75}, Dale-Chall Index (DCI)~\cite{dale48} and Flesch Reading Easy (FRE)~\cite{flesch75}
-%, Simple Measure of Gobbledygook~\cite{smog69} 
 belong to the first category. These measures generally rely on surface-level characteristics of text, such as characters, syllables and word counts~\cite{dubay04}. While these measures have been widely used in studies investigating the understandability of health content retrieved by search engines (e.g.,~\cite{becker04,graber99,fitzsimmons10,stossel12,wiener13,patel13,meillier17}), 
-%Palotti et al. found that they are heavily affected by the methods used to extract text from the HTML source~\cite{palotti15}. They were able to identify specific settings of an HTML preprocessing pipeline that provided consistent estimates. We shall revisit this work in more details in the Methods section, as we further investigate this problem by comparing the effect of HTML preprocessing on text understandability estimations in light of explicit human assessments. 
 our preliminary work found that these measures are heavily affected by the methods used to extract text from the HTML source~\cite{palotti15}. We were able to identify specific settings of an HTML preprocessing pipeline that provided consistent estimates, but due to the lack of human assessments, we were not able to investigate how well each HTML preprocessing pipeline correlated with human assessments.
 In this article, we revisited and extended this work in more details, as we further investigated this problem by comparing the effect of HTML preprocessing on text understandability estimations in light of explicit human assessments. 
 
@@ -76,8 +69,7 @@ The hierarchy of MeSH was previously used in the literature to identify hard con
 
 In this work, we investigated approaches to estimate understandability from each of these categories, including measure the influence of HTML preprocessing on automatic understandability methods and establish best practices. 
 
-Some prior work has attempted to use understandability estimations for improving search results in consumer health search; as well as methods to evaluate retrieval systems that do account for understandability along with topical relevance. Palotti et al.~\cite{palotti2016ranking} have used learning to rank with standard retrieval features along with features based on readability formulas and medical lexical aspects to determine understandability. Van Doorn et al.~\cite{van2016balancing} have shown that learning a set of rankers that provide trade-offs across a number of relevance criteria, including readability/understandability, increases overall system effectiveness.   
+Some prior work has attempted to use understandability estimations for improving search results in consumer health search; as well as methods to evaluate retrieval systems that do account for understandability along with topical relevance. Palotti et al. have used learning to rank with standard retrieval features along with features based on readability formulas and medical lexical aspects to determine understandability~\cite{palotti2016ranking}. Van Doorn et al. have shown that learning a set of rankers that provide trade-offs across a number of relevance criteria, including readability/understandability, increases overall system effectiveness~\cite{van2016balancing}.
 Zuccon and Koopman~\cite{zuccon14}, and later Zuccon~\cite{zuccon2016understandability}, have proposed and investigated a family of measures based on the gain-discount framework, where the gain of a document is influenced by both its topical relevance and its understandability. They showed that, although generally correlated, topical-relevance evaluation alone provides differing system rankings compared to understandability-biased evaluation measures. 
 In this work, we further explored the development of retrieval methods that combine signals about topical relevance and understandability. 
-
 
