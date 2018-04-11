@@ -2,10 +2,7 @@
 \section*{Results}
 
 
-%\subsection{Additional Resources}
-%\todo{Move this section to the discussion part?}
 In order to keep this article  succinct, in the following we only report a subset of the results. The remaining results (which show similar trends to those reported here) are made available in the appendix material  for completeness.  \textit{All data and code will be shared on GitHub upon acceptance.}
-
 %\url{https://sites.google.com/view/understandabilityontheweb/}.
 
 \subsection*{Evaluation of understandability estimators}
@@ -14,14 +11,11 @@ In order to keep this article  succinct, in the following we only report a subse
 
 \input{tables/tab_top_corr_metrics}
 
-Using the CLEF eHealth 2015 and 2016 collections, we studied the correlations of methods to estimate Web page understandability (Table~\ref{tab:doc_features}), compared with human assessments. For each category of understandability estimation, Table~\ref{tab:top_corr_metrics} reports the methods with highest Pearson, Spearman or Kendall correlations. For each method, we used the best preprocessing settings; 
-a study of the impact of preprocessing is reported in the next subsection.
-%a study of the impact of preprocessing is reported in Section~\ref{sec:which_preprocessing}.
+Using the CLEF eHealth 2015 and 2016 collections, we studied the correlations of methods to estimate Web page understandability (Table~\ref{tab:doc_features}), compared with human assessments. For each category of understandability estimation, Table~\ref{tab:top_corr_metrics} reports the methods with highest Pearson, Spearman or Kendall correlations. For each method, we used the best preprocessing settings; a study of the impact of preprocessing is reported in the next subsection.
 
 Overall, Spearman and Kendall correlations obtained similar results (in terms of which methods exhibited the highest correlations): this was expected as, unlike Pearson, they are both rank-based correlations.
 
-%For surface level readability measures, SMOG had the highest correlations for CLEF 2015 and DCI for CLEF 2016, regardless of correlation measure. These results resonated with those obtained for the category of raw components of readability formulas. In fact, the polysyllable words measure, which is the main feature used in SMOG, had the highest correlation for CLEF 2015 among these methods. Similarly, the number of difficult words, which is the main feature used in DCI, had the highest correlation for CLEF 2016 among these methods.
-For traditional readability measures, SMOG had the highest correlations for CLEF 2015 and DCI for CLEF 2016, regardless of correlation measure. These results resonate with those obtained for the category of raw components of readability formulas. %In fact, the polysyllable words measure and the number of difficult words are, respectively, part of the SMOG and DCI formulas, which had the highest correlation for CLEF 2015 and 2016 among these methods.
+For traditional readability measures, SMOG had the highest correlations for CLEF 2015 and DCI for CLEF 2016, regardless of correlation measure. These results resonate with those obtained for the category of raw components of readability formulas. 
 In fact, the polysyllable words measure, which is the main feature used in SMOG, had the highest correlation for CLEF 2015 among methods in this category. Similarly, the number of difficult words, which is the main feature used in DCI, had the highest correlation for CLEF 2016 among methods in this category.
 
 When examining the expert vocabulary category, we found that the number of MeSH concepts obtained the highest correlations with human assessments; however, its correlations were substantially lower than those achieved by the best method from the consumer medical vocabularies category, i.e. the scores of CHV concepts. For the natural language category, we found that the number of pronouns, the number of stop words and the number of out of vocabulary words had the highest correlations -- and these were even higher than those obtained with MeSH and CHV based methods. In turn, the methods that obtained the highest correlations among the HTML category (counts of P tags and list tags) exhibited overall the lowest correlations compared to methods in the other categories. P tags are used to create paragraphs in a Web page, being thus a rough proxy for text length. 
@@ -39,14 +33,10 @@ Finally, we also report the inter-assessor correlation (last box) when multiple 
 This provides an indication of the range of variability and subjectiveness when assessing understandability, along with the highest correlation we measured between human assessors. 
 
 \begin{figure*}[h!]
-   %\vspace{-0.2cm}
    \centering
    \includegraphics[width=0.85\textwidth]{graphics/box_spearman15_raw_values_joao}\vspace{-7pt}
-  % \includegraphics[width=0.65\textwidth]{graphics/box_spearman16_raw_values_joao}
       \includegraphics[width=0.85\textwidth]{graphics/box_spearman16_raw_values}
-   %\includegraphics[width=0.7\textwidth]{graphics/legendCorr}
-   %\vspace{-0.4cm}
-    \caption{Correlations between understandability estimators and human assessments for CLEF 2015 (top) and 2016 (bottom). For example, the first boxplot on the top represents the distribution of Spearman correlations with human assessments across all features in the category Readability Features (Table~\ref{tab:doc_features}), obtained with the Naive \textit{ForcePeriod} preprocessing, for CLEF 2015. Each box extends from the lower to the upper quartile values, with the red marker representing the median value for that category. Whiskers show the range of the data in each category and circles represent values considered outliers for the category (e.g., Spearman correlation for SMOG index was 0.296 and for ARI was 0.194: these were outliers for that category.} % which had a distribution of values highly close to the median value of 0.25).}
+    \caption{Correlations between understandability estimators and human assessments for CLEF 2015 (top) and 2016 (bottom). For example, the first boxplot on the top represents the distribution of Spearman correlations with human assessments across all features in the category Readability Features (Table~\ref{tab:doc_features}), obtained with the Naive \textit{ForcePeriod} preprocessing, for CLEF 2015. Each box extends from the lower to the upper quartile values, with the red marker representing the median value for that category. Whiskers show the range of the data in each category and circles represent values considered outliers for the category (e.g., Spearman correlation for SMOG index was 0.296 and for ARI was 0.194: these were outliers for that category.} 
    \label{fig:boxplot_corr_docs}
    \vspace{-10pt}
 \end{figure*}
@@ -61,7 +51,6 @@ When considering methods beyond those based on readability formulas, we found th
 A common trend when comparing preprocessing pipelines is that the Naive pipeline provided the weakest correlations with human assessments for CLEF 2016, regardless of estimation methods and heuristics. This result, however, was not confirmed for CLEF 2015, where the Naive preprocessing negatively influenced correlations for the readability formula category (RF), but not for other categories, although it was generally associated with larger variances for the correlation coefficients.
 
 
-%\vspace{-10pt}
 \subsection*{Evaluation of Understandability Retrieval}
 \label{sec:results}
 
@@ -74,17 +63,8 @@ As both the RBP residuals and the column \textit{Unj} quantify the effect unasse
 
 in Table~\ref{tab:experiments}, statistical significance was measured with respect to the best CLEF 2016 run, GUIR (p-values indicated with $P_g$), and the BM25 baseline (p-values indicated with $P_{bl}$). A two-tailed paired t-test was used to compute statistical significance; note that the baseline BM25 is significantly worse than GUIR across all measures.
  
-%Statistically significant differences compared to the best CLEF 2016 run, GUIR, are indicated with $\diamond$; differences between an original run (indices 1-3) and its modifications are indicated with $\dagger$ (paired, two-tail t-test, $P<0.05$). Note that the baseline BM25 is significantly worse than GUIR across all measures.
-%$P$ values comparing any run to the best CLEF 2016 run, GUIR, are indicated in the columns $P_g$, while $P$ values comparing an original run (indices 1-3) and its modifications are indicated in the columns $P_{bl}$. Tests of significance were made with a two-tailed paired t-test. Note that the baseline BM25 is significantly worse than GUIR across all measures.
-
 The effectiveness of the top two submissions to CLEF 2016 and the BM25 baseline are reported at indices 1-3 of Table~\ref{tab:experiments}. 
 In turn, we report the results of each sub-experiment: \textit{Simple re-ranking} (indices 4-21), \textit{Fusion Experiments} (indices 22-30), \textit{Learning to rank} (indices 31-35).
-
-%We start our experiments by showing at the top of Table~\ref{tab:experiments} (indices 1-3) the performance of the top 3 systems in CLEF eHealth 2016 together with a straightforward BM25 baseline run made with Terrier toolkit. Our further experiments will use not only these runs as a comparison base, but modify these runs when necessary.
-
-%\vspace{-6pt}
-%\subsubsection{Re-ranking}
-%\label{results:reranking}
 
 \textbf{\textit{Simple Re-ranking:}} Indices 4-12 of Table~\ref{tab:experiments} report the results of re-ranking methods applied to the runs listed at indices 1-3. Re-ranking was applied based on the DCI score of each document calculated using the preprocessing combination of Boilerpipe and ForcePeriod (best according to Pearson correlation, from Table~\ref{tab:top_corr_metrics}).
 We found that the relevance of the re-ranked runs (as measured by $RBP_r$ and $RBP_r^*$) significantly decreased, compared to the original runs: e.g., re-ranking the top 15 search results using DCI  made $RBP_r$ decreasing from 25.28 to 21.58. However, as expected, these re-ranked results were significantly more understandable: for the previous example, $RBP_u$ passed from 42.08 to 47.09.
@@ -100,27 +80,13 @@ Indices 13-21 refer to using the XGB regressor trained with all features listed 
 
 Overall, statistically significant improvements over the baselines were observed for most configurations and measures.  
 
-%\vspace{-6pt}
-%\subsection{Rank Fusion}
-%\label{results:fusion}
-%\vspace{-2pt}
-
 \textit{\textbf{Rank Fusion:}} Next, we report the results of automatically combining topical relevance and understandability through rank fusion (indices 22 to 30). We used the XGB method for estimating understandability, as it was the one yielding highest effectiveness for the re-ranking method. Runs were thus produced by fusing the re-ranking with XGB and the original run. (Results for DCI are reported in the appendix and confirm the superiority of XGB.) 
 
 Like as for re-ranking, also for the rank fusion approaches we found that, in general, higher cut-offs were associated to higher effectiveness in terms of understandability measures on one hand, but higher losses in terms of relevance-oriented measures on the other. Overall, results obtained with rank fusion were superior to those obtained with re-ranking only, though most differences were not statistically significant. Statistically significant improvements over the baselines were instead observed for most configurations and measures.  
-%However, when combining relevance and understandability for evaluation ($H_{RBP}$) is more stable now than for the previous re-rank methods. 
-%For example, compare the $H_{RBP}^*$ of methods that re-rank the top 50 documents per topic, XGB (22.17) and RRF (24.57), with the original BM25 run (23.93).
-
-%\vspace{-6pt}
-%\subsection{Learning to Rank}
-%\label{results:ltr}
-%\vspace{-2pt}
 
 \textit{\textbf{Learning to Rank:}} Last, we analyse the results obtained by the learning to rank methods (indices 31-35). Unlike with the previous methods, we did not impose a rank cut-off on learning to rank. Learning to rank was only applied to the BM25 baseline, as we had no access to the IR features for the runs submitted at CLEF (i.e. GUIR and ECNU for CLEF 2016).
 
 When considering $RBP_r$ and $uRBP$, learning to rank exhibited effectiveness that was significantly inferior to that of the GUIR and ECNU baseline runs, though higher than those for the BM25 baseline (for some configurations). The examination of the number of unassessed documents (and the RBP residuals, see appendix) revealed that this may have been because measures were affected by the large number of unassessed documents retrieved in the top 10 ranks. For example, the $RBP_r$ residual for learning to rank methods was about double than that of the baselines or other approaches (see appendix). In fact, among the documents retrieved in the top 10 results by learning to rank, there were 20\% that were unassessed, compared to an average of 3\% for the other methods. (Excluding XGB with cut-off 50, which also exhibited high residuals). 
-
-%We did not impose a maximum rank at which the learning-to-rank methods can re-rank, therefore we focus the following analysis on the metrics that ignore unassessed documents (the ones indicated with a $^*$).
 
 We thus should carefully account for unassessed documents through considering the residuals of RBP measures, as well as the condensed measures. When this was done, we observed that learning to rank methods overall provided substantial gains over the original runs and other methods (when considering $RBP^*_r$, $RBP^*_u$ and $H_{RBP}^*$), or large potential gains over these methods (when considering the residuals). Next, we analyse these results in more detail. 
 
@@ -130,5 +96,4 @@ Compared to LTR 1, LTR 2 (index 32) included the understandability features list
 
 LTRs 4 and 5 were devised based on a set understandability threshold $U=40$. While LTR 4 took into consideration only documents that were easy-to-read (understandability label $\le$ $U$), LTR 5 considered all documents, but boosted the relevance score. LTR 4 reached the highest understandability score for the learning-to-rank approaches ($RBP_u^{*}=50.06$), but it failed to retrieve a substantial number of relevant documents ($RBP_r^{*}=22.20$). In turn, LTR 5 reached the highest
 understandability-relevance trade-off ($H_{RBP}^{*}=29.20$). Compared to the BM25 baseline (on which it was based), LTR 5  largely increased both relevance ($RBP_r^*$ from 26.01 to 32.60 -- a 25\% increase, $P_{bl}=0.003$) and understandability ($RBP_u^*$ from 43.89 to 45.87 -- a 4\% increase, $P_{bl}<0.000$). Note that LTR 5 was also significantly better than the best run submitted to CLEF 2016 for both $RBP_r^{*}$ (15\% increase, $P_{g}=0.120$) and $H_{RBP}^{*}$ (13\% increase, $P_{g}=0.001$).
-
 
