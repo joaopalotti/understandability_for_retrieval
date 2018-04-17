@@ -1,0 +1,24 @@
+\begin{table}
+\caption{Raw Components of Readability Features (CRF) used to estimate understandability.
+$\star$: raw values were used. $\diamondsuit$: values normalised
+by number of words in a document were used. $\dagger$: values normalised
+by number of sentences in a document were used.}
+\label{tab:doc_features_rf} \vspace{-10pt}
+ %
+\begin{tabular}{c}
+\toprule 
+\textbf{Components of Readability Feature (CRF)}\tabularnewline
+\midrule 
+\# of Characters $^{\star\diamondsuit\dagger}$ \tabularnewline
+\# of Words $^{\star\dagger}$ \tabularnewline
+\# of Sentences {$^{\star\diamondsuit}$} \tabularnewline
+\# of Difficult Words (Dale-Chall list \cite{dale48}) $^{\star\diamondsuit\dagger}$ \tabularnewline
+\# of Words Longer than 4 chars $^{\star\diamondsuit\dagger}$ \tabularnewline
+\# of Words Longer than 6 chars $^{\star\diamondsuit\dagger}$ \tabularnewline
+\# of Words Longer than 10 chars $^{\star\diamondsuit\dagger}$ \tabularnewline
+\# of Words Longer than 13 chars $^{\star\diamondsuit\dagger}$ \tabularnewline
+\# of Number of Syllables $^{\star\diamondsuit\dagger}$ \tabularnewline
+\# of Polysyllable Words (\textgreater{}3 Syllables) $^{\star\diamondsuit\dagger}$ \tabularnewline
+\bottomrule
+\end{tabular}
+\end{table}
