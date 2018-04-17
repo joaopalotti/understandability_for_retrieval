@@ -1,0 +1,35 @@
+\begin{table*}[t]
+\centering \caption{Methods with the highest correlation per category for CLEF 2015 eHealth
+collection. Bold is used to highlight the best result of each group.}
+\label{tab:top_corr_metrics} \resizebox{.55\textwidth}{!}{ %%%%
+\begin{tabular}{lccccc}
+\toprule 
+\textbf{Cat.}  & \textbf{Method}  & \textbf{Preproc.}  & \textbf{Pears.} & \textbf{Spear.}  & \textbf{Kend.} \tabularnewline
+\midrule 
+\textbf{RF} & SMOG Index & Jst NFP  & \textbf{.438} & \textbf{.388} & \textbf{.286}\tabularnewline
+\midrule 
+\multirow{2}{*}{\textbf{CRF}}  & Avg. Num. of Polysyl. Words per Word  & Jst FP  & \textbf{.429} & .364 & .268\tabularnewline
+ & Avg. N. of Polysyl. Words per Sentence  & Jst NFP  & .192 & \textbf{.388} & \textbf{.286}\tabularnewline
+\midrule 
+\multirow{2}{*}{\textbf{GMV}}  & Avg. N. Medical Prefixes per Word  & \multirow{2}{*}{Naive FP}  & \textbf{.314} & .312 & .229 \tabularnewline
+ & Number of Medical Prefixes  &  & .131 & \textbf{.368} & \textbf{.272} \tabularnewline
+\midrule 
+\textbf{CMV} & CHV Mean Score for all Concepts & Naive FP & \textbf{.371} & \textbf{.314} & \textbf{.228}\tabularnewline
+\midrule 
+\textbf{EMV}  & Number of MeSH Concepts & Naive FP  & \textbf{.227} & \textbf{.249} & \textbf{.178} \tabularnewline
+\midrule 
+\multirow{2}{*}{\textbf{NLF}}  & N. of words not found in Aspell Dict.  & Jst NFP  & \textbf{.351}  & .276  & .203 \tabularnewline
+ & Number of Pronouns per Word  & Naive FP  & .271  & \textbf{.441}  & \textbf{.325} \tabularnewline
+\midrule 
+\textbf{HF} & Number of P Tags & None & \textbf{.219} & \textbf{.196}  & \textbf{.142} \tabularnewline
+\midrule 
+\multirow{2}{*}{\textbf{WFF}}  & Mean Rank Medical Reddit - Includes OV  & Jst NFP  & \textbf{.435}  & .277  & .197 \tabularnewline
+ & 25th percentil Pubmed  & Jst NFP  & .330  & \textbf{.347}  & \textbf{.256} \tabularnewline
+\midrule 
+\multirow{2}{*}{\textbf{MLR}}  & \multirow{2}{*}{eXtreme Gradient Boosting (XGB) Regressor}  & Boi NFP  & \textbf{.602}  & .394  & .287 \tabularnewline
+ &  & Jst FP  & .565  & \textbf{.438}  & \textbf{.324} \tabularnewline
+\midrule 
+\textbf{MLC}  & Multinomial Naive Bayes  & Naive FP  & \textbf{.573}  & \textbf{.477}  & \textbf{.416} \tabularnewline
+\bottomrule
+\end{tabular}} %%%%% ---- 
+\end{table*}

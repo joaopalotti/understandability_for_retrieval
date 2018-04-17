@@ -1,0 +1,38 @@
+\begin{table*}[t]
+\centering \caption{Methods with the highest correlation per category for CLEF 2016 eHealth
+collection. Bold is used to highlight the best result of each group.}
+\label{tab:top_corr_metrics} \resizebox{.55\textwidth}{!}{ %%%%
+\begin{tabular}{lccccc}
+\toprule 
+\textbf{Cat.}  & \textbf{Method}  & \textbf{Preproc.}  & \textbf{Pears.}  & \textbf{Spear.}  & \textbf{Kend.}\tabularnewline
+\midrule 
+\multirow{2}{*}{\textbf{RF}}  & \multirow{2}{*}{Dale-Chall Index }  & Jst FP  & \textbf{.439}  & .381  & .264\tabularnewline
+ &  & Boi FP  & .437  & \textbf{.382}  & \textbf{.264}\tabularnewline
+\midrule 
+\textbf{CRF} & Avg. Difficult Words Per Word & Boi FP  & \textbf{.431}  & \textbf{.379}  & \textbf{.262}\tabularnewline
+\midrule 
+\multirow{2}{*}{\textbf{GMV}}  & Avg. Prefixes per Sentence  & Jst FP  & \textbf{.263}  & .242  & .164\tabularnewline
+ & ICD Concepts Per Sentence  & Jst NFP  & .014  & \textbf{.253}  & \textbf{.172}\tabularnewline
+\midrule 
+\multirow{2}{*}{\textbf{CMV}}  & CHV Mean Score for all Concepts  & Jst FP  & \textbf{.329}  & .313  & .216\tabularnewline
+ & CHV Mean Score for all Concepts  & Boi FP  & .329  & \textbf{.325}  & \textbf{.224}\tabularnewline
+\midrule 
+\multirow{2}{*}{\textbf{EMV}}  & Number of MeSH Concepts  & \multirow{2}{*}{Boi NFP }  & \textbf{.201}  & .166  & .113\tabularnewline
+ & Number of MeSH Disease Concepts  &  & .179  & \textbf{.192}  & \textbf{.132}\tabularnewline
+\midrule 
+\multirow{2}{*}{\textbf{NLF}}  & Avg. Stopword Per Word  & \multirow{2}{*}{Boi FP }  & \textbf{.344}  & .312  & .213\tabularnewline
+ & Number of Pronouns  &  & .341  & \textbf{.364}  & \textbf{.252}\tabularnewline
+\midrule 
+\multirow{2}{*}{\textbf{HF}}  & Number of Lists  & \multirow{2}{*}{None}  & \textbf{.114}  & .021  & .015\tabularnewline
+ & Number of P Tags  &  & .110  & \textbf{.123}  & \textbf{.084}\tabularnewline
+\midrule 
+\multirow{2}{*}{\textbf{WFF}}  & Mean Rank Medical Reddit  & Boi NFP  & \textbf{.387}  & .312  & .214\tabularnewline
+ & 50th percentil Medical Reddit  & Jst NFP  & .351  & \textbf{.315}  & \textbf{.216}\tabularnewline
+\midrule 
+\multirow{2}{*}{\textbf{MLR}}  & eXtreme Gradient Boosting (XGB) Regressor  & Jst NFP  & \textbf{.454}  & \textbf{.373}  & .258\tabularnewline
+ & Random Forest Regressor  & Boi NFP  & .389  & .355  & \textbf{.264}\tabularnewline
+\midrule 
+\textbf{MLC}  & Multinomial Naive Bayes  & Jst FP  & \textbf{.461}  & \textbf{.391}  & \textbf{.318}\tabularnewline
+\bottomrule
+\end{tabular}} %%%%% ---- 
+\end{table*}
