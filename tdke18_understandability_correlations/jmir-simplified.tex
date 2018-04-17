@@ -169,7 +169,7 @@ Along with these measures of search effectiveness, we also recorded the number o
 \subsection*{Understandability Estimators}
 \label{sec:proxies}
 
-Several methods have been used to estimate the understandability of health Web pages, with the most popular methods (at least in the biomedical literature) being readability formulas based on surface level characteristics of the text. Next, we outline the categories of methods to estimate understandability used in this work; an overview is shown in Table~\ref{tab:doc_features}. Some of these methods further expand measures used in the literature. 
+Several methods have been used to estimate the understandability of health Web pages, with the most popular methods (at least in the biomedical literature) being readability formulae based on surface level characteristics of the text. Next, we outline the categories of methods to estimate understandability used in this work; an overview is shown in Table~\ref{tab:doc_features}. Some of these methods further expand measures used in the literature. \todo{Not clear what this means. }
 
 \begin{table*}[tb]
 	\caption{Methods used to estimate understandability. $\star$: raw values were
@@ -238,7 +238,7 @@ These include the most popular readability formulas~\cite{cli75,dale48,flesch75}
 These are formed by the ``building blocks'' used in the traditional readability formulas. Examples include the average number of characters per word and the average number of syllables in a sentence. Words are divided into syllables using the Python package Pyphen~\cite{pyphen}.
 
 \textit{General Medical Vocabularies (GMV):}
-These include methods that count the number of words with a medical prefix or suffix, i.e. beginning or ending with Latin or Greek particles (e.g., amni-, angi-, algia-, arteri-), and text strings included in lists of acronyms or in medical vocabularies such as the International Statistical Classification of Diseases and Related Health Problems (ICD), Drugbank and the OpenMedSpel dictionary~\cite{openmedspel}. An acronym list from the ADAM database~\cite{zhou2006} was used. Methods in this category were matched with documents using simple keywords matching. 
+These include methods that count the number of words with a medical prefix or suffix, i.e. beginning or ending with Latin or Greek particles (e.g., amni-, angi-, algia-, arteri-), and text strings included in lists of acronyms or in medical vocabularies such as the International Statistical Classification of Diseases and Related Health Problems (ICD), Drugbank and the OpenMedSpel dictionary~\cite{openmedspel}. An acronym list from the ADAM database~\cite{zhou2006} was used. Methods in this category were matched with documents using simple keyword matching. 
 
 \textit{Consumer Medical Vocabulary (CMV):}
 The popular MetaMap \cite{aronson10} tool was used to map the text content of Web pages to entries in  CHV~\cite{zeng06}.
@@ -249,14 +249,14 @@ Similarly to the CHV features, we used MetaMap to convert the content of Web pag
 
 \textit{Natural Language Features (NLF):}
 These included commonly used natural language heuristics such as the ratio of part-of-speech (POS) classes, the height of the POS parser tree, the number of entities in the text, 
-the sentiment polarity and the ratio of words found in English vocabularies. The Python package NLTK~\cite{nltk} was employed for sentiment analysis, POS tagging and entity recognition. The GNU Aspell~\cite{aspell} dictionary was used as a standard English vocabulary and a stop word list was built by merging those of Indri~\cite{indri} and Terrier~\cite{terrier}. 
+the sentiment polarity \todo{include citation} and the ratio of words found in English vocabularies. The Python package NLTK~\cite{nltk} was employed for sentiment analysis, POS tagging and entity recognition. The GNU Aspell~\cite{aspell} dictionary was used as a standard English vocabulary and a stop word list was built by merging those of Indri~\cite{indri} and Terrier~\cite{terrier}. 
 Discourse features, such as the distribution of POS classes and density of entity in a text, were previously studied in the task of understandability prediction~\cite{feng10} and found superior to complex features such as entity co-reference and entity grid~\cite{barzilay08}. To the best of our knowledge, sentiment polarity was never investigated in this task. Our intuition is that the content produced by laypeople in patient forums or blogs (easy-to-read) is potentially more emotional than scientific publications (hard-to-read).
 
 \textit{HTML Features (HF):}
-These included the identification of a large number of HTML tags, which were extracted with the Python library BeautifulSoap~\cite{bs4}. The intuition for these features is that Web pages with many images and tables may explain and summarise health content better, thus providing more understandable content to the general public. 
+These include the identification of a large number of HTML tags, which were extracted with the Python library BeautifulSoup~\cite{bs4}. The intuition for these features is that Web pages with many images and tables may explain and summarise health content better, thus providing more understandable content to the general public. 
 
 \textit{Word Frequency Features (WFF):}
-Generally speaking, common and known words are usually frequent words, while unknown and obscure words are generally rare. This idea  is implemented in readability formulas such as the DCI, which uses a list of common words and counts the number of words that fall outside this list (complex words)~\cite{dale48} and has shown success in other recent approaches~\cite{elhadad06,wu15}.
+Generally speaking, common and known words are usually frequent words, while unknown and obscure words are generally rare. This idea  is implemented in readability formulae such as the DCI, which uses a list of common words and counts the number of words that fall outside this list (complex words)~\cite{dale48} and has shown success in other recent approaches~\cite{elhadad06,wu15}.
 We extended these observations by studying corpus-wide word frequencies. 
 We modelled word frequencies in a corpus in a straightforward manner: we sorted the word frequencies and normalised word rankings such that values close to 100 are attributed to common words and values close to 0 to rare words. Three corpora were analysed to extract word frequencies:
 
@@ -271,7 +271,7 @@ We modelled word frequencies in a corpus in a straightforward manner: we sorted 
 \end{itemize}
 
 A summary of the statistics of the corpora is reported in Table~\ref{tab:collection_stats}. 
-Unless explicitly stated otherwise, we ignored out of vocabulary words in the feature calculations.
+Unless explicitly stated otherwise, we ignored out of vocabulary words in the feature calculations \todo{How were the features calculated?} .
 
 
 \begin{table*}[!tb]
@@ -297,11 +297,11 @@ Unless explicitly stated otherwise, we ignored out of vocabulary words in the fe
 \end{table*}
 
 
-
+\todo{What did you do with these statistics to calculate readability? I'm a bit confused by this section.}
 \textit{Machine Learning on Text - Regressors (MLR) and Classifiers (MLC):} These include machine learning methods for estimating Web page understandability. While Collins-Thompson highlighted the promise of estimating understandability using machine learning methods, a challenge is identifying the background corpus to be used for training~\cite{collins2014computational}. To this aim, we used the three corpora detailed above, and assumed understandability labels according to the expected difficulty of documents in these collections:
 
 \begin{itemize}[leftmargin=*]
-	\item Medical Reddit (label 1): Documents in this corpus are expected to be written in a colloquial style, and thus the easiest to understand. All the conversations are in fact explicitly directed to assist inexpert health consumers;
+    \item Medical Reddit (label 1 \todo{What are these labels?}): Documents in this corpus are expected to be written in a colloquial style, and thus the easiest to understand. All the conversations are in fact explicitly directed to assist inexpert health consumers;
 	\item Medical English Wikipedia (label 2): Documents in this corpus are expected to be less formal than scientific articles, but more formal than a Web forum like Reddit, thus somewhat more difficult to understand;
 	\item PubMed Central (label 3): Documents in this corpus are expected to be written in a highly formal style, as the target audience are physicians and biomedical researchers.
 \end{itemize}
@@ -312,28 +312,28 @@ Models were learnt using all documents from these corpora after features were ex
 \subsection{Preprocessing Pipelines and Heuristics}
 \label{sec:pipelines}
 
-As part of our study, we investigated the influence the preprocessing of Web pages has on the estimation of understandability computed using the methods described above.
+As part of our study, we investigated the influence that the preprocessing of Web pages has on the estimation of understandability computed using the methods described above.
 We did so by comparing the combination of a number of preprocessing pipelines, heuristics, and understandability estimation methods with human assessments of Web page understandability. 
-Our experiments extended those by Palotti et al.~\cite{palotti15} and provided a much thorough analysis, as they only evaluated surface level readability formulas and did not compare their results against human assessments. 
+Our experiments extended those by Palotti et al.~\cite{palotti15} and provided a much more thorough analysis, as they only evaluated surface level readability formulas and did not compare their results against human assessments. 
 
 To extract the content of a Web page from the HTML source we tested: BeautifulSoup~\cite{bs4} (\textit{Naive}), which just naively removes HTML tags, Boilerpipe~\cite{kohlschutter10} (\textit{Boi}) and Justext~\cite{jan11} (\textit{Jst}), which eliminates boilerplate text together with HTML tags. 
-Palotti et al.'s data analysis highlighted that the text in HTML fields like titles, menus, tables and lists often missed a correct punctuation mark and thus the text extracted from them could be interpreted as many short sentences or few very long sentences, depending on whether a period was forced at the end of fields/sentences. We thus implemented the same two heuristics devised by Palotti et al. to deal with this: \textit{ForcePeriod (FP)} and \textit{DoNotForcePeriod (DNFP)}. The FP heuristic forces a period at the end of each extracted HTML field, while the DNFP does not. 
+Palotti et al.'s data analysis highlighted that the text in HTML fields like titles, menus, tables and lists often missed a correct punctuation mark and thus the text extracted from them could be interpreted as many short sentences or few very long sentences, depending on whether a period was forced at the end of fields/sentences. We thus implemented the same two heuristics devised by Palotti et al. to deal with this: \textit{ForcePeriod (FP)} and \textit{DoNotForcePeriod (DNFP)}. The FP heuristic forces a period at the end of each extracted HTML field, while the DNFP does not \todo{Does it always remove periods, or does it do nothing and leave things as they are?}. 
 
 
 \subsection{Integrating Understandability into Retrieval}
 \label{sec:method_ltr}
 
 We then investigated how understandability estimations can be integrated into retrieval methods to increase the quality of search results.
-Specifically, we considered three retrieval methods of differing quality for the initial retrieval. These included the best two runs submitted to each CLEF task, and a plain BM25 baseline (default Terrier parameters: $b=0.75$ and $k_1=1.2$). As understandability estimators we used the eXtreme Gradient Boosting (XGB) regressor~\cite{chen16}, as well as SMOG for CLEF 2015 and DCI for CLEF 2016. 
+Specifically, we considered three retrieval methods of differing quality for the initial retrieval. These included the best two runs submitted to each CLEF task, and a plain BM25 baseline (default Terrier \todo{Again, explain and reference for non-IR readers.} parameters: $b=0.75$ and $k_1=1.2$). As understandability estimators we used the eXtreme Gradient Boosting (XGB) regressor~\cite{chen16}, as well as SMOG for CLEF 2015 and DCI for CLEF 2016. 
 These were selected as they were the best performing readability formulas and machine learning method for each collection (details in the evaluation of understandability estimators in the Results section).
-Note that for XGB, for assessed documents we used 10-fold cross validation, training XGB on 90\% of the data, and used its predictions for the remaining 10\%. For unassessed documents, we trained XGB on all assessed data and applied this model to generate predictions. Different machine learning methods and feature selection schemes were experimented with; results are available in the appendix. XGB was selected because its results were the best, although other methods followed similar trends.
+Note that for XGB, for assessed documents we used 10-fold cross validation, training XGB on 90\% of the data, and used its predictions for the remaining 10\%. For unassessed documents, we trained XGB on all assessed data and applied this model to generate predictions. Different machine learning methods and feature selection schemes were experimented with; results are available in the appendix. XGB was selected because its results were the best, although other methods followed similar trends \todo{Very vague.}.
 
 
 To integrate understandability estimators into the retrieval process, we first investigated \textit{re-ranking} search results retrieved by the initial runs purely based on the understandability estimations. 
 If all the search results from a run were to be considered, then such a re-ranking method may place at early ranks Web pages highly likely to be understandable, but possibly less likely to be topically relevant. To balance relevance and understandability, we only re-ranked the first $k$ documents. We explored rank cut-offs $k = 15, 20, 50$. Because evaluation was performed with respect to the first $n=10$ rank positions, the setting $k=15$ provided a conservative re-ranking of search results, while, $k=50$ provided a less conservative re-ranking approach.
 
-As an alternative to the previous two-step ranking strategy for combining topical relevance and understandability, we explored the \textit{fusion} of two search results lists separately obtained for relevance and understandability. For this, we used the Reciprocal Rank Fusion (RRF) method~\cite{cormack09}, which was shown effective for combining two lists of search results based on their documents \textit{ranks}, rather than scores. This approach was selected above score-based fusion methods
-because of the different scoring strategies and distributions employed when scoring for relevance compared to for understandability. For relevance, we used, separately, the three methods used for re-ranking (ECNU~\cite{song15} and KISTI~\cite{oh15} for CLEF2015, GUIR~\cite{soldaini16} and ECNU~\cite{song16} for CLEF 2016, and BM25 for both collections). For understandability, we used, separately, the estimations from SMOG/DCI and XGB. Also for this approach, we studied limiting the ranking of
+As an alternative to the previous two-step ranking strategy for combining topical relevance and understandability, we explored the \textit{fusion} of two search results lists separately obtained for relevance and understandability. For this, we used the Reciprocal Rank Fusion (RRF) method~\cite{cormack09}, which was shown effective for combining two lists of search results based on their documents' \textit{ranks}, rather than scores. This approach was selected above score-based fusion methods
+because of the different scoring strategies and distributions employed when scoring for relevance compared to for understandability \todo{Confusing sentence. }. For relevance, we used, separately, the three methods used for re-ranking (ECNU~\cite{song15} and KISTI~\cite{oh15} for CLEF2015, GUIR~\cite{soldaini16} and ECNU~\cite{song16} for CLEF 2016, and BM25 for both collections). For understandability, we used, separately, the estimations from SMOG/DCI and XGB. Also for this approach, we studied limiting the ranking of
 results to be considered by the methods across the cut-offs $k=15, 20, 50$. 
 
 
@@ -362,7 +362,7 @@ results to be considered by the methods across the cut-offs $k=15, 20, 50$.
 
 Finally, we considered a third alternative to combine relevance and understandability: using \textit{learning to rank} with features derived from retrieval methods (IR features) and understandability estimators.
 With the CLEF 2016 collection, we explored five combinations of label attribution and feature sets, maintaining the same pairwise learning to rank algorithm based on tree boosting (XGB).
-These combinations are listed in Table~\ref{tab:ltr}, with $R$ being the relevance of documents and $U$ their understandability estimation. While the definitions of LTR 1 and 2 are straightforward, the other methods deserve some further explanation. In LTR 3, a penalty was proportionally assigned to documents according to how far their understandability score was from a target score $U$ (we used $U=40$). For example, a document with understandability 100 received no penalty, as 100 was the easiest level of understanding, while another with understandability 50 received a 50\% penalty, meaning that its relevance score was halved. LTR 4 and 5 were based on a fixed threshold applied to the understandability score: if the score was higher than the threshold $U=40$, then the original relevance score (for LTR 4) or a boosted value (for LTR 5) was assigned to the corresponding document.
+These combinations are listed in Table~\ref{tab:ltr}, with $R$ being the relevance of documents and $U$ their understandability estimation. While the definitions of LTR 1 and 2 are straightforward, the other methods deserve some further explanation. In LTR 3, a penalty was proportionally assigned to documents according to how far their understandability score was from a target score $U$ (we used $U=40$ \todo{I don't understand this, U seems to be a parameter of the equation. If it were fixed to 40, everything would be multiplied by 0.6. }) \todo{The examples don't have anything to do with a target score. }. For example, a document with understandability 100 received no penalty, as 100 was the easiest level of understanding, while another with understandability 50 received a 50\% penalty, meaning that its relevance score was halved. LTR 4 and 5 were based on a fixed threshold applied to the understandability score: if the score was higher than the threshold $U=40$, then the original relevance score (for LTR 4) or a boosted value (for LTR 5) was assigned to the corresponding document.
 
 
 
@@ -410,7 +410,7 @@ In order to keep this article  succinct, in the following we only report a subse
 			\multirow{2}{*}{\textbf{HF}} & \multirow{2}{*}{Number of P Tags } & \multirow{2}{*}{None } & \multirow{2}{*}{\textbf{.219} } & \multirow{2}{*}{\textbf{.196} } & \multirow{2}{*}{\textbf{.142}} & Number of Lists  & \multirow{2}{*}{None} & \textbf{.114}  & .021  & .015\tabularnewline
 			&  &  &  &  &  & Number of P Tags  &  & .110  & \textbf{.123}  & \textbf{.084}\tabularnewline
 			\midrule 
-			\multirow{2}{*}{\textbf{WFF}} & Mean Rank Medical Reddit - Includes OV  & Jst NFP  & \textbf{.435}  & .277  & .197 & Mean Rank Medical Reddit  & Boi NFP  & \textbf{.387}  & .312  & .214\tabularnewline
+            \multirow{2}{*}{\textbf{WFF}} & Mean Rank Medical Reddit - Includes OV  & Jst NFP  & \textbf{.435}  & .277  & .197 & Mean Rank Medical Reddit  & Boi NFP  & \textbf{.387}  & .312  & .214\tabularnewline
 			& 25th percentil Pubmed  & Jst NFP  & .330  & \textbf{.347}  & \textbf{.256} & 50th percentil Medical Reddit  & Jst NFP  & .351  & \textbf{.315}  & \textbf{.216}\tabularnewline
 			\midrule 
 			\multirow{2}{*}{\textbf{MLR}} & eXtreme Gradient Boosting (XGB) Regressor  & Boi NFP  & \textbf{.602}  & .394  & .287 & eXtreme Gradient Boosting (XGB) Regressor  & Jst NFP  & \textbf{.454}  & \textbf{.373}  & .258\tabularnewline
@@ -430,7 +430,7 @@ Overall, Spearman and Kendall correlations obtained similar results (in terms of
 For traditional readability measures, SMOG had the highest correlations for CLEF 2015 and DCI for CLEF 2016, regardless of correlation measure. These results resonate with those obtained for the category of raw components of readability formulas. 
 In fact, the polysyllable words measure, which is the main feature used in SMOG, had the highest correlation for CLEF 2015 among methods in this category. Similarly, the number of difficult words, which is the main feature used in DCI, had the highest correlation for CLEF 2016 among methods in this category.
 
-When examining the expert vocabulary category, we found that the number of MeSH concepts obtained the highest correlations with human assessments; however, its correlations were substantially lower than those achieved by the best method from the consumer medical vocabularies category, i.e. the scores of CHV concepts. For the natural language category, we found that the number of pronouns, the number of stop words and the number of out of vocabulary words had the highest correlations -- and these were even higher than those obtained with MeSH and CHV based methods. In turn, the methods that obtained the highest correlations among the HTML category (counts of P tags and list tags) exhibited overall the lowest correlations compared to methods in the other categories. P tags are used to create paragraphs in a Web page, being thus a rough proxy for text length. 
+When examining the expert vocabulary category, we found that the number of MeSH concepts obtained the highest correlations with human assessments; however, its correlations were substantially lower than those achieved by the best method from the consumer medical vocabularies category, i.e. the scores of CHV concepts. For the natural language category, we found that the number of pronouns, the number of stop words and the number of out of vocabulary (OV) words had the highest correlations -- and these were even higher than those obtained with MeSH and CHV based methods. In turn, the methods that obtained the highest correlations among the HTML category (counts of P tags and list tags) exhibited overall the lowest correlations compared to methods in the other categories. P tags are used to create paragraphs in a Web page, being thus a rough proxy for text length. 
 Among methods in the word frequency category, the use of Medical Reddit (but also of PubMed) showed the highest correlations, and these were comparable to those obtained by the readability formulas. 
 
 Finally, regressors and classifiers exhibited the highest correlations amongst all methods: in this  category, the  eXtreme Gradient Boosting (XGB) regressor and the multinomial Naive Bayes best correlated with human assessments. 
