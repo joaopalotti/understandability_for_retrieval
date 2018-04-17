@@ -133,15 +133,15 @@ In this work, we further explored the development of retrieval methods that comb
 
 \subsection{Data Collection}
 
-In this article, we investigated methods to estimate Web page understandability, including the effect HTML preprocessing pipelines and heuristics have, and their search effectiveness when employed within retrieval methods. To obtain both topical relevance and  understandability assessments, we used the data from the CLEF 2015 and 2016 eHealth collections. (We refer to topical relevance simply as relevance in the reminder of the paper, when this does not cause confusion.)
+In this article, we investigated methods to estimate Web page understandability, including the effect HTML preprocessing pipelines and heuristics have, and their search effectiveness when employed within retrieval methods. To obtain both topical relevance and  understandability assessments, we used the data from the CLEF 2015 and 2016 eHealth collections (we refer to topical relevance simply as relevance in the reminder of the paper, when this does not cause confusion.) \todo{Too long and convoluted. Maybe make two sentences. } \todo{As this is not an IR journal, add a few sentences explaining what CLEF eHealth is, does, and is for.}
 
 The CLEF 2015 collection contains 50 queries and 1,437 documents that have been assessed relevant by clinical experts and have an assessment for understandability~\cite{clef15}. Documents in this collection are a selected crawl of health Web sites, of which the majority are certified HON Web sites.
-The CLEF 2016 collection contains 300 queries and 3,298 relevant documents that also have been assessed with respect to understandability~\cite{clef16}. Documents in this collection belong to the ClueWeb12 B13 corpus, and thus are general English Web pages, not necessarily targeted to health topics, nor of a controlled quality (as are instead HON certified pages). 
+The CLEF 2016 collection contains 300 queries and 3,298 relevant documents that also have been assessed with respect to understandability~\cite{clef16}. Documents in this collection belong to the ClueWeb12 B13 corpus~\cite{clueweb12}, and thus are general English Web pages, not necessarily targeted to health topics, nor of a controlled quality (as are the HON certified pages). 
 Understandability assessments were provided on a 5-point Likert scale for CLEF 2015, and on a $[0,100]$ range for CLEF 2016 (0 indicates the highest understandability). 
 
 To support the investigation of methods to automatically estimate the understandability of Web pages, 
 we further considered correlations between multiple human assessors (inter-assessor agreement). For CLEF 2015, we used the publicly available additional assessments made by unpaid medical students and health consumers collected by Palotti et al.~\cite{palotti16b} in a study of how medical expertise affects assessments. For CLEF 2016 we  collected understandability assessments for 100 documents. 
-Three members of our research team, which did not author this article and were not medical experts, were recruited to provide the assessments (the correlation of these additional assessments and CLEF's ground-truth is examined further in this article).
+Three members of our research team, who did not author this article and are not medical experts, were recruited to provide the assessments (the correlation of these additional assessments and CLEF's ground-truth is examined further in this article).
 The Relevation tool~\cite{koopman14} was used to assist with the assessments, mimicking the settings used in CLEF. 
 
 \subsection{Evaluation Measures}
@@ -608,7 +608,12 @@ The methods investigated here do not provide a fully personalised search, with r
     \newblock \href {http://doi.org/10.2196/jmir.3831}
     {10.2196/jmir.3831}.
 
-
+	\bibitem{clueweb12}
+	The ClueWeb12 Dataset.
+	\newblock [Online: accessed 21-October-2017] WebCitation:
+	\url{http://www.webcitation.org/6ykSxv4Hp}.
+	\newblock \url{http://lemurproject.org/clueweb12/}.
+	
 	\bibitem{zhang2014multidimensional}
 	Zhang Y, Zhang J, Lease M, Gwizdka J.
 	\newblock Multidimensional relevance modeling via psychometrics and
