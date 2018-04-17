@@ -146,9 +146,9 @@ The Relevation tool~\cite{koopman14} was used to assist with the assessments, mi
 
 \subsection{Evaluation Measures}
 
-In the experiments, we used Pearson, Kendall and Spearman correlations to compare the understandability assessments of human assessors with estimations obtained by the considered approaches, under all combinations of pipelines and heuristics. Pearson correlation is used to calculate the strength of the linear relationship between two variables, while Kendall and Spearman measure the rank correlations between the variables. We opted to report all three correlation coefficients to allow for a thorough comparison to other work, as they are equally used in the literature. 
+In the experiments, we used Pearson, Kendall and Spearman correlations to compare the understandability assessments of human assessors with estimations obtained by the considered automated approaches, under all combinations of pipelines and heuristics \todo{It's a bit difficult to understand this before the methods have been explained.}. Pearson correlation is used to calculate the strength of the linear relationship between two variables, while Kendall and Spearman measure the rank correlations between the variables. We opted to report all three correlation coefficients to allow for a thorough comparison to other work, as they are equally used in the literature. 
 
-For the retrieval experiments, we used evaluation measures that rely on both (topical) relevance and understandability. 
+For the retrieval experiments \todo{Again, difficult to follow without knowing what the experiments are. I think especially difficult for people outside IR.}, we used evaluation measures that rely on both (topical) relevance and understandability. 
 The uRBP measure~\cite{zuccon2016understandability} extends rank biased precision (RBP) to situations where multiple relevance dimensions are used. The measure is formulated as $uRBP(\rho) = (1 - \rho) \sum_{k=1}^{K} \rho^{k-1} r(d@k) u(d@k)$, where $r(d@k)$ is the gain for retrieving a relevant document at rank $k$ and $u(d@k)$ is the gain for retrieving a document of a certain understandability at rank $k$; $\rho$ is the RBP persistence parameter. This measure was an official evaluation measure used in CLEF (we also set $\rho=0.8$). 
 
 A drawback of uRBP is that relevance and understandability are combined into a unique evaluation score, thus making it difficult to interpret whether improvements are due to more understandable or more topical documents being retrieved. To overcome this, we first separately calculated an RBP value for relevance and another for understandability, and then combined them into a unique effectiveness measure:
@@ -161,9 +161,9 @@ A drawback of uRBP is that relevance and understandability are combined into a u
 	\item $H_{RBP}@n(\rho) = 2 \times \frac{RBP_r@n \times RBP_u@n}{RBP_r@n + RBP_u@n}$: combines the previous two RBP values into a unique measurement using the harmonic mean (in the same fashion that the $F_1$ measure combines recall and precision).
 \end{itemize}
 
-\noindent For all measures, we set $n=10$ because shallow pools were used in CLEF along with measures that focused on the top 10 search results (including $RBP_r@10$).
+\noindent For all measures, we set $n=10$ because shallow pools \todo{Also difficult for non-IR people to follow.} were used in CLEF along with measures that focused on the top 10 search results (including $RBP_r@10$).
 
-Along with these measures of search effectiveness, we also recorded the number of unassessed documents, the RBP residuals,  $RBP^*_r@10$, $RBP^*_u@10$ and $H_{RBP}^*$, i.e. the corresponding measures calculated by ignoring unassessed documents. These latter measures implement the condensed measures approach proposed by Sakai as a way to deal with unassessed documents~\cite{sakai2007alternatives}. We did this to minimise pool bias since the pools built in CLEF were of limited size, and the investigated methods retrieved a substantial number of unassessed documents.
+Along with these measures of search effectiveness, we also recorded the number of unassessed documents, the RBP residuals,  $RBP^*_r@10$, $RBP^*_u@10$ and $H_{RBP}^*$, i.e. the corresponding measures calculated by ignoring unassessed documents. These latter measures implement the condensed measures approach proposed by Sakai as a way to deal with unassessed documents~\cite{sakai2007alternatives}. We did this to minimise pool bias since the pools built in CLEF were of limited size \todo{Again, maybe explain a bit more for non-IR people.}, and the investigated methods retrieved a substantial number of unassessed documents.
 
 
 \subsection*{Understandability Estimators}
