@@ -296,8 +296,8 @@ We did so by comparing the combination of a number of preprocessing pipelines, h
 Our experiments extended those by Palotti et al.~\cite{palotti15} and provided a much more thorough analysis, as they only evaluated surface level readability formulae and did not compare their results against human assessments. 
 
 To extract the content of a Web page from the HTML source we tested: BeautifulSoup~\cite{bs4} (\textit{Naive}), which just naively removes HTML tags, Boilerpipe~\cite{kohlschutter10} (\textit{Boi}) and Justext~\cite{jan11} (\textit{Jst}), which eliminates boilerplate text together with HTML tags. 
-Palotti et al.'s data analysis highlighted that the text in HTML fields like titles, menus, tables and lists often missed a correct punctuation mark and thus the text extracted from them could be interpreted as many short sentences or few very long sentences, depending on whether a period was forced at the end of fields/sentences. We thus implemented the same two heuristics devised by Palotti et al. to deal with this: \textit{ForcePeriod (FP)} and \textit{DoNotForcePeriod (DNFP)}. The FP heuristic forces a period at the end of each extracted HTML field, while the DNFP does not \todo{13- Does it always remove periods, or does it do nothing and leave things as they are?}. 
-
+Palotti et al.'s data analysis highlighted that the text in HTML fields like titles, menus, tables and lists often missed a correct punctuation mark and thus the text extracted from them could be interpreted as many short sentences or few very long sentences, depending on whether a period was forced at the end of fields/sentences. We thus implemented the same two heuristics devised by Palotti et al. to deal with this: \textit{ForcePeriod (FP)} and \textit{DoNotForcePeriod (DNFP)}. 
+If a punctuation mark is found at the end of a field/sentence, it is kept as it is. However, if no punctuation mark is not found at the end of a field/sentence, the FP heuristic forces the insertion of a period at the end of that extracted HTML field, while the DNFP does not.
 
 \subsection*{Integrating Understandability into Retrieval}
 \label{sec:method_ltr}
