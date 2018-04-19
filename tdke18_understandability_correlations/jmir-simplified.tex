@@ -313,35 +313,52 @@ If all the search results from a run were to be considered, then such a re-ranki
 
 As an alternative to the previous two-step ranking strategy for combining topical relevance and understandability, we explored the \textit{fusion} of two search results lists separately obtained for relevance and understandability. For this, we used the Reciprocal Rank Fusion (RRF) method~\cite{cormack09}, which was shown effective for combining two lists of search results based on their documents' \textit{ranks}, rather than scores. This approach was selected above score-based fusion methods
 because the distribution of relevance scores for the retrieved documents different sensibly (both in magnitude and spread) with that of understandability scores: in such a case score-based fusion is not appropriate. 
-%of the different scoring strategies and distributions employed when scoring for relevance compared to for understandability \todo{16 - Confusing sentence. }. 
 For relevance, we used, separately, the three methods used for re-ranking (ECNU~\cite{song15} and KISTI~\cite{oh15} for CLEF2015, GUIR~\cite{soldaini16} and ECNU~\cite{song16} for CLEF 2016, and BM25 for both collections). For understandability, we used, separately, the estimations from SMOG/DCI and XGB. Also for this approach, we studied limiting the ranking of
 results to be considered by the methods across the cut-offs $k=15, 20, 50$. 
 
+%\begin{table}[!t]
+%	\centering
+%	\caption{Learning to rank (LTR) settings. }
+%	\label{tab:ltr}
+%	\resizebox{0.45\textwidth}{!}{
+%		\begin{tabular}{l|l|l}
+%			\toprule 
+%			Name & Feature Set & Labelling Function\tabularnewline
+%			\midrule 
+%			LTR 1 & IR features & F(R,U) = $R$\tabularnewline
+%			LTR 2 & IR + Unders. features & F(R,U) = $R$ \tabularnewline
+%			LTR 3 & IR + Unders. features & F(R,U) = $R \times (100 - U)/100$ \tabularnewline
+%			LTR 4 & IR + Unders. features & F(R,U) = $\begin{cases} R & \text{if } U \le 40\\ 0 & \text{otherwise}  \end{cases}$ \tabularnewline
+%			LTR 5 & IR + Unders. features & F(R,U) = $\begin{cases} 2 \times R & \text{if } U \le 40\\ R & \text{otherwise}  \end{cases}$\tabularnewline
+%			\bottomrule
+%		\end{tabular}
+%	}% end resizebox
+%\end{table}
 
 \begin{table}[!t]
-	\centering
-	\caption{Learning to rank (LTR) settings. }
-	%\vspace{-0.3cm}
-	\label{tab:ltr}
-	\resizebox{0.45\textwidth}{!}{
-		\begin{tabular}{l|l|l}
-			\toprule 
-			Name & Feature Set & Labelling Function\tabularnewline
-			\midrule 
-			LTR 1 & IR features & F(R,U) = $R$\tabularnewline
-			LTR 2 & IR + Unders. features & F(R,U) = $R$ \tabularnewline
-			LTR 3 & IR + Unders. features & F(R,U) = $R \times (100 - U)/100$ \tabularnewline
-			LTR 4 & IR + Unders. features & F(R,U) = $\begin{cases} R & \text{if } U \le 40\\ 0 & \text{otherwise}  \end{cases}$ \tabularnewline
-			LTR 5 & IR + Unders. features & F(R,U) = $\begin{cases} 2 \times R & \text{if } U \le 40\\ R & \text{otherwise}  \end{cases}$\tabularnewline
-			\bottomrule
-		\end{tabular}
-	}% end resizebox
-	%\vspace{-14pt}
+    \centering \caption{Learning to rank settings. }
+    \label{tab:ltr} \resizebox{.99\textwidth}{!}{ %
+        \begin{tabular}{llll}
+            \toprule 
+            \multirow{2}{*}{\textbf{Name}} & \multirow{2}{*}{\textbf{Explanation}} & \multicolumn{2}{l}{\textbf{Labeling Function}}\tabularnewline
+            \cmidrule{3-4} 
+            &  & \textbf{CLEF 2015} & \textbf{CLEF 2016}\tabularnewline
+            \midrule 
+            LTR 1  & Builds a model \textit{only} on the topicality labels w. IR features & F(R,U) = $R$ & F(R,U) = $R$\tabularnewline
+            LTR 2  & Builds a model \textit{only} on the topicality labels w. IR and Unders. features & F(R,U) = $R$  & F(R,U) = $R$ \tabularnewline
+            LTR 3  & Directly combines unders. and topicality labels. Uses IR and unders. features & F(R,U) = $R\times U/3.$  & F(R,U) = $R\times(100-U)/100$ \tabularnewline
+            LTR 4  & Builds the model \textit{only} on easy-to-read docs. Uses IR and unders. features & F(R,U) = $\begin{cases} R & \text{if }U\geq2\\ 0 & \text{otherwise} \end{cases}$  & F(R,U) = $\begin{cases} R & \text{if }U\le40\\ 0 & \text{otherwise} \end{cases}$ \tabularnewline
+                LTR 5  & Boosts easy-to-read documents. Uses IR and unders. features & F(R,U) = $\begin{cases} 2\times R & \text{if }U\geq2\\ R & \text{otherwise} \end{cases}$ & F(R,U) = $\begin{cases} 2\times R & \text{if }U\le40\\ R & \text{otherwise}
+        \end{cases}$\tabularnewline
+    \bottomrule
+\end{tabular}
+}% end resizebox
 \end{table}
 
 Finally, we considered a third alternative to combine relevance and understandability: using \textit{learning to rank} with features derived from retrieval methods (IR features) and understandability estimators.
 With the CLEF 2016 collection, we explored five combinations of label attribution and feature sets, maintaining the same pairwise learning to rank algorithm based on tree boosting (XGB).
-These combinations are listed in Table~\ref{tab:ltr}, with $R$ being the relevance of documents and $U$ their understandability estimation. While the definitions of LTR 1 and 2 are straightforward, the other methods deserve some further explanation. In LTR 3, a penalty was proportionally assigned to documents according to how far their understandability score was from a target score $U$ (we used $U=40$ \todo{17 - I don't understand this, U seems to be a parameter of the equation. If it were fixed to 40, everything would be multiplied by 0.6. }) \todo{18 - The examples don't have anything to do with a target score. }. For example, a document with understandability 100 received no penalty, as 100 was the easiest level of understanding, while another with understandability 50 received a 50\% penalty, meaning that its relevance score was halved. LTR 4 and 5 were based on a fixed threshold applied to the understandability score: if the score was higher than the threshold $U=40$, then the original relevance score (for LTR 4) or a boosted value (for LTR 5) was assigned to the corresponding document.
+These combinations are listed in Table~\ref{tab:ltr}, with $R$ being the relevance of documents and $U$ their understandability estimation. While the definitions of LTR 1 and 2 are straightforward, the other methods deserve some further explanation. In LTR 3, a penalty was proportionally assigned to documents according to their understandability score $U$. For example, for CLEF 2016, a document with understandability $U=0$ received no penalty, as 0 was the easiest level of understanding, while another with understandability 50 received a 50\% penalty, meaning that its relevance score was halved. LTR 4 and 5 were based on a fixed threshold applied to the understandability score: if the score was higher than the threshold ($U=2$ for CLEF 2015 and $U=40$ for CLEF 2016), then the original relevance score (for LTR 4) or a boosted value (for LTR 5) was assigned to the corresponding document. We used the thresholds $U=2$ for CLEF 2015 and $U=40$ for CLEF 2016 based on the distribution of
+understandability assessments and the semantic of understandability labels~\cite{clef15,clef16}.
 
 
 \subsection*{Evaluation Measures}
@@ -356,7 +373,7 @@ A drawback of uRBP is that relevance and understandability are combined into a u
 \begin{itemize}[leftmargin=*]
 	\item $RBP_r@n(\rho)$: uses the relevance assessments for the top $n$ search results (i.e. this is the common RBP). We regarded a document as topically relevant if assessed as somewhat relevant or highly relevant.
 	
-	\item $RBP_u@n(\rho)$: uses the understandability assessments for the top $n$ search results. We regarded a document as understandable (1) for CLEF 2015 if assessed easy or somewhat easy to understand; (2) for CLEF 2016 if its assessed understandability score was smaller than a threshold $U$. We used $U = 40$, based on the distribution of understandability assessments. This distribution can be found in the appendix.
+    \item $RBP_u@n(\rho)$: uses the understandability assessments for the top $n$ search results. We regarded a document as understandable (1) for CLEF 2015 if assessed easy or somewhat easy to understand; (2) for CLEF 2016 if its assessed understandability score was smaller than a threshold $U$. We used $U=40$, based on the distribution of understandability assessments. Assessors were presented with a slider for understandability assessment and $U=50$ was labeled as average understandability. This created a bi-modal distribution of understandability assessments with $U=40$ being a good upper limit for easy-to-read documents. The understandability distribution can be found in the appendix.
 	
 	\item $H_{RBP}@n(\rho) = 2 \times \frac{RBP_r@n \times RBP_u@n}{RBP_r@n + RBP_u@n}$: combines the previous two RBP values into a unique measurement using the harmonic mean (in the same fashion that the $F_1$ measure combines recall and precision).
 \end{itemize}
@@ -364,30 +381,6 @@ A drawback of uRBP is that relevance and understandability are combined into a u
 \noindent For all measures, we set $n=10$ because shallow pools were used in CLEF along with measures that focused on the top 10 search results (including $RBP_r@10$). Shallow pools refer to the selection of a limited number of documents to be assessed for relevance, among the documents retrieved at the top ranks by a search engine.
 
 Along with these measures of search effectiveness, we also recorded the number of unassessed documents, the RBP residuals,  $RBP^*_r@10$, $RBP^*_u@10$ and $H_{RBP}^*$, i.e. the corresponding measures calculated by ignoring unassessed documents. These latter measures implement the condensed measures approach proposed by Sakai as a way to deal with unassessed documents~\cite{sakai2007alternatives}. We did this to minimise pool bias since the pools built in CLEF were of limited size, and the investigated methods retrieved a substantial number of unassessed documents. Pool bias refers to the possible bias in the evaluation towards systems that have contributed documents to the assessment pool: these erroneously receive higher evaluation scores compared to systems that did not contribute to the pool (i.e. that were not sampled to create the set of documents to be judged for relevance). 
-
-
-\subsection*{Evaluation Measures}
-
-In the experiments, we used Pearson, Kendall and Spearman correlations to compare the understandability assessments of human assessors with estimations obtained by the considered automated approaches, under all combinations of pipelines and heuristics \todo{4 - It's a bit difficult to understand this before the methods have been explained.}. Pearson correlation is used to calculate the strength of the linear relationship between two variables, while Kendall and Spearman measure the rank correlations between the variables. We opted to report all three correlation coefficients to allow for a thorough comparison to other work, as they are equally used in the literature. 
-
-For the retrieval experiments \todo{5 - Again, difficult to follow without knowing what the experiments are. I think especially difficult for people outside IR.}, we used evaluation measures that rely on both (topical) relevance and understandability. 
-The uRBP measure~\cite{zuccon2016understandability} extends rank biased precision (RBP) to situations where multiple relevance dimensions are used. The measure is formulated as $uRBP(\rho) = (1 - \rho) \sum_{k=1}^{K} \rho^{k-1} r(d@k) u(d@k)$, where $r(d@k)$ is the gain for retrieving a relevant document at rank $k$ and $u(d@k)$ is the gain for retrieving a document of a certain understandability at rank $k$; $\rho$ is the RBP persistence parameter. This measure was an official evaluation measure used in CLEF (we also set $\rho=0.8$). 
-
-A drawback of uRBP is that relevance and understandability are combined into a unique evaluation score, thus making it difficult to interpret whether improvements are due to more understandable or more topical documents being retrieved. To overcome this, we first separately calculated an RBP value for relevance and another for understandability, and then combined them into a unique effectiveness measure:
-
-\begin{itemize}[leftmargin=*]
-	\item $RBP_r@n(\rho)$: uses the relevance assessments for the top $n$ search results (i.e. this is the common RBP). We regarded a document as topically relevant if assessed as somewhat relevant or highly relevant.
-	
-	\item $RBP_u@n(\rho)$: uses the understandability assessments for the top $n$ search results. We regarded a document as understandable (1) for CLEF 2015 if assessed easy or somewhat easy to understand; (2) for CLEF 2016 if its assessed understandability score was smaller than a threshold $U$. We used $U = 40$, based on the distribution of understandability assessments. This distribution can be found in the appendix.
-	
-	\item $H_{RBP}@n(\rho) = 2 \times \frac{RBP_r@n \times RBP_u@n}{RBP_r@n + RBP_u@n}$: combines the previous two RBP values into a unique measurement using the harmonic mean (in the same fashion that the $F_1$ measure combines recall and precision).
-\end{itemize}
-
-\noindent For all measures, we set $n=10$ because shallow pools were used in CLEF along with measures that focused on the top 10 search results (including $RBP_r@10$). Shallow pools refer to the selection of a limited number of documents to be assessed for relevance, among the documents retrieved at the top ranks by a search engine.
-
-Along with these measures of search effectiveness, we also recorded the number of unassessed documents, the RBP residuals,  $RBP^*_r@10$, $RBP^*_u@10$ and $H_{RBP}^*$, i.e. the corresponding measures calculated by ignoring unassessed documents. These latter measures implement the condensed measures approach proposed by Sakai as a way to deal with unassessed documents~\cite{sakai2007alternatives}. We did this to minimise pool bias since the pools built in CLEF were of limited size, and the investigated methods retrieved a substantial number of unassessed documents. Pool bias refers to the possible bias in the evaluation towards systems that have contributed documents to the assessment pool: these erroneously receive higher evaluation scores compared to systems that did not contribute to the pool (i.e. that were not sampled to create the set of documents to be judged for relevance). 
-
-
 
 
 
