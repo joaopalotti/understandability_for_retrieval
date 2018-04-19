@@ -235,9 +235,9 @@ Discourse features, such as the distribution of POS classes and density of entit
 These include the identification of a large number of HTML tags, which were extracted with the Python library BeautifulSoup~\cite{bs4}. The intuition for these features is that Web pages with many images and tables may explain and summarise health content better, thus providing more understandable content to the general public. 
 
 \textit{Word Frequency Features (WFF):}
-Generally speaking, common and known words are usually frequent words, while unknown and obscure words are generally rare. This idea  is implemented in readability formulae such as the DCI, which uses a list of common words and counts the number of words that fall outside this list (complex words)~\cite{dale48} and has shown success in other recent approaches~\cite{elhadad06,wu15}.
+Generally speaking, common and known words are usually frequent words, while unknown and obscure words are generally rare. This idea is implemented in readability formulae such as the DCI, which uses a list of common words and counts the number of words that fall outside this list (complex words)~\cite{dale48} and has shown success in other recent approaches~\cite{elhadad06,wu15}.
 We extended these observations by studying corpus-wide word frequencies. 
-We modelled word frequencies in a corpus in a straightforward manner: we sorted the word frequencies and normalised word rankings such that values close to 100 are attributed to common words and values close to 0 to rare words. Three corpora were analysed to extract word frequencies:
+Three corpora were analysed to extract word frequencies:
 
 \begin{itemize}[leftmargin=*]
 	\item \underline{Medical Reddit:} Reddit~\cite{reddit} is a Web forum with a sizeable user community which is responsible for generating and moderating its content. This forum is intensively used for health purposes: for example in the Reddit community AskDocs~\cite{redditaskdocs}, licensed nurses and doctors (subject to user identity verification) advise help seekers free of charge. We selected six of such communities (medical, AskDocs, AskDoctorSmeeee, Health, WomensHealth, Mens\_Health) and downloaded all user interactions available until September 1st 2017 using the Python library PRAW~\cite{redditapi}. In total 43,019 discussions were collected.
@@ -250,8 +250,9 @@ We modelled word frequencies in a corpus in a straightforward manner: we sorted 
 \end{itemize}
 
 A summary of the statistics of the corpora is reported in Table~\ref{tab:collection_stats}. 
-Unless explicitly stated otherwise, we ignored out of vocabulary (OV) words in the feature calculations \todo{10 - How were the features calculated?} .
-
+We modelled word frequencies in a corpus in a straightforward manner: we sorted the word frequencies and normalised word rankings such that values close to 100 are attributed to common words and values close to 0 to rare words. Then we replace each word in a document by a number ranging from 0 to 100 which represents the frequency of that word in the corpus. 
+Finally, we extract features based on the word frequency distribution for that document. For example, in order to calculate the feature \textit{25th percentil English Wikipedia} of a document, we need first to extract the frequency of each word in the Wikipedia corpus for that document and then extract the 25th percentil of the frequency distribution of that document. 
+Unless explicitly stated otherwise, we ignored out of vocabulary (OV) words in the corpus.
 
 \begin{table*}[!tb]
 	\centering    
