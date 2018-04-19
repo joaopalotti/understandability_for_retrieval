@@ -181,7 +181,7 @@ Several methods have been used to estimate the understandability of health Web p
 			& \# of Number of Syllables $^{\star\diamondsuit\dagger}$  &  & 50th p. Wikipedia+Reddit+Pubmed  &  & \# of Link tags\tabularnewline
 			& \# of Polysyllable Words (\textgreater{}3 Syllables) $^{\star\diamondsuit\dagger}$  &  & 75th p. Wikipedia+Reddit+Pubmed  &  & \# of DL tags\tabularnewline
 			\cline{1-2}
-			\multirow{20}{*}{\textbf{\makecell{NL}}}  & \# of Entities $^{\star\diamondsuit\dagger}$  &  & Mean R. Wiki.+Reddit+Pubmed  &  & \# of UL tags\tabularnewline
+			\multirow{20}{*}{\textbf{\makecell{NLF}}}  & \# of Entities $^{\star\diamondsuit\dagger}$  &  & Mean R. Wiki.+Reddit+Pubmed  &  & \# of UL tags\tabularnewline
 			& \# of verbs $^{\star\diamondsuit\dagger}$  &  & Mean R. Wiki.+Reddit+Pubmed - w. OV  &  & \# of OL tags\tabularnewline
 			\cline{3-4} 
 			& \# of nouns $^{\star\diamondsuit\dagger}$  & \multirow{6}{*}{\textbf{GMV}}  & \# of Words with Medical Prefix $^{\star\diamondsuit\dagger}$  &  & \# of List (DL + UL + OL)\tabularnewline
@@ -277,7 +277,6 @@ Unless explicitly stated otherwise, we ignored out of vocabulary (OV) words in t
 \end{table*}
 
 
-\todo{11 - What did you do with these statistics to calculate readability? I'm a bit confused by this section.}
 \textit{Machine Learning on Text - Regressors (MLR) and Classifiers (MLC):} These include machine learning methods for estimating Web page understandability. While Collins-Thompson highlighted the promise of estimating understandability using machine learning methods, a challenge is identifying the background corpus to be used for training~\cite{collins2014computational}. To this aim, we used the three corpora detailed above, and assumed understandability labels according to the expected difficulty of documents in these collections:
 
 \begin{itemize}[leftmargin=*]
