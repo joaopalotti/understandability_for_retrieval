@@ -73,7 +73,7 @@ These queries are part of the CLEF 2016 eHealth collection~\cite{clef16}, which 
 The understandability score of the retrieved pages was estimated with the most effective readability formula and preprocessing settings analysed in this article (low scores correspond to easy to understand Web pages).
 Figure~\ref{fig:dist} reports the cumulative distribution of understandability scores for these search results (note, we did not assess their topical relevance here). 
 We report also the scores for the ``optimal'' search results (Oracle), as found in CLEF 2016 (relevant results that have the highest understandability scores), along with the scores for the baseline method (BM25) and our best retrieval method (XGB). 
-The results clearly indicate that, despite solutions like HON being explicitly aimed at supporting access to high quality health information that can aid the user to take well informed health decisions, they often fail to direct the users to information they can understand.
+The results clearly indicate that, despite solutions like HON being explicitly aimed at supporting access to high-quality health information that can aid the user to take well-informed health decisions, they often fail to direct the users to information they can understand.
 
 In this article, we aim to establish methods and best practice for developing search engines that retrieve \textit{relevant and understandable} health advice from the Web. The overall contributions of this article can be summarised as:
 \begin{enumerate}
@@ -89,7 +89,7 @@ This paper makes concrete contributions to practice, as it informs health search
 	%\vspace{-0.5cm}
 	\includegraphics[width=.51\textwidth]{graphics/cumdist}
 	%\vspace{-0.2cm}
-	\caption{Distribution of Dale-Chall Index (DCI) of search results. DCI measures the years of schooling required to understand a document. The average US resident reads at or below an 8th grade level (dashed line) \cite{cowan04,wallace04,davis04,stossel12}, which is the level suggested by NIH for health information on the Web~\cite{clear94}. The distribution for HON is similar to that of the baseline used in this article (BM25). Our best method (XGB) re-ranks documents to provide more understandable results; its distribution is similar to that of an ``Oracle'' system.}
+	\caption{Cumulative distribution of Dale-Chall Index (DCI) of search results. DCI measures the years of schooling required to understand a document. The average US resident reads at or below an 8th grade level (dashed line) \cite{cowan04,wallace04,davis04,stossel12}, which is the level suggested by NIH for health information on the Web~\cite{clear94}. The distribution for HON is similar to that of the baseline used in this article (BM25). Our best method (XGB) re-ranks documents to provide more understandable results; its distribution is similar to that of an ``Oracle'' system.}
 	\label{fig:dist}
 \end{figure}
 
@@ -101,18 +101,18 @@ This paper makes concrete contributions to practice, as it informs health search
 % =================================================================================================================================== %
 
 
-\subsection{Related Work}
+\subsection*{Related Work}
 
 \label{sec:related}
 Understandability refers to the ease of comprehension of the information presented to a user. Put in other words, health information is understandable ``when consumers of diverse backgrounds and varying levels of health literacy can process and explain key messages''~\cite{shoemaker2014development}. Often the terms understandability and readability are used interchangeably: we use readability to refer to formulae that estimate how easy is to understand a text, usually based on its words and sentences. We use understandability to refer to the broader concept of ease of understanding: this is affected by text readability (as increasing readability tends to improve understanding), but may also be influenced by how legible a text is and its layout, including e.g., the use of images to explain difficult concepts.
 
 There is a large body of literature that has examined the understandability of Web health content when the information seeker is a member of the general public. For example, Becker reported that the majority of health Web sites are not well designed for the elderly~\cite{becker04}, while Stossel et al. found that  health education material on the Web is not written at an adequate reading level~\cite{stossel12}. Zheng and Yu have reported on the readability of electronic health records compared to Wikipedia pages related to diabetes and found that readability measures often do not align with user ratings of readability~\cite{zheng2017readability}. 
-A common finding of these studies is that, in general, health content available on Web pages is often hard to understand by the general public; this includes content that is retrieved in top-ranked positions by current commercial search engines~\cite{graber99,fitzsimmons10,wiener13,patel13,meillier17}.
+A common finding of these studies is that, in general, health content available on Web pages is often hard to understand by the general public; this includes content that is retrieved in top-ranked positions by current commercial search engines~\cite{graber99,fitzsimmons10,wiener13,patel13,meillier17,ellimoottil12}.
 
 Previous Linguistics and Information Retrieval research has attempted to devise computational methods for the automatic estimation of text readability and understandability, and for the inclusion of these within search methods or their evaluation. Computational approaches to understandability estimations include (1) \textit{readability formulae}, which generally exploit word surface characteristics of the text, (2) \textit{machine learning} approaches, (3) matching with specialised \textit{dictionaries or terminologies}, often compiled with information about understandability difficulty.
 
 Measures such as Coleman-Liau Index (CLI)~\cite{cli75}, Dale-Chall Index (DCI)~\cite{dale48} and Flesch Reading Easy (FRE)~\cite{flesch75}
-belong to the first category. These measures generally rely on surface-level characteristics of text, such as characters, syllables and word counts~\cite{dubay04}. While these measures have been widely used in studies investigating the understandability of health content retrieved by search engines (e.g.,~\cite{becker04,graber99,fitzsimmons10,stossel12,wiener13,patel13,meillier17}), 
+belong to the first category. These measures generally rely on surface-level characteristics of text, such as characters, syllables and word counts~\cite{dubay04}. While these measures have been widely used in studies investigating the understandability of health content retrieved by search engines (e.g.,~\cite{graber99,fitzsimmons10,wiener13,patel13,meillier17,ellimoottil12,stossel12,becker04}), 
 our preliminary work found that these measures are heavily affected by the methods used to extract text from the HTML source~\cite{palotti15}. We were able to identify specific settings of an HTML preprocessing pipeline that provided consistent estimates, but due to the lack of human assessments, we were not able to investigate how well each HTML preprocessing pipeline correlated with human assessments.
 In this article, we revisited and extended this work in more detail, as we further investigated this problem by comparing the effect of HTML preprocessing on text understandability estimations in light of explicit human assessments. 
 
@@ -133,7 +133,7 @@ In this work, we further explored the development of retrieval methods that comb
 
 \subsection*{Data Collection}
 
-In this article, we investigated methods to estimate Web page understandability, including the effect HTML preprocessing pipelines and heuristics have, and their search effectiveness when employed within retrieval methods. To obtain both topical relevance and  understandability assessments, we used the data from the CLEF 2015 and 2016 eHealth collections. The CLEF eHealth initiative is a research community shared task aimed at creating resources for evaluating health search engines aimed at the general public.  Note, in the reminder of this article, we refer to topical relevance simply as relevance, when this does not cause confusion.
+In this article, we investigated methods to estimate Web page understandability, including the effect HTML preprocessing pipelines and heuristics have, and their search effectiveness when employed within retrieval methods. To obtain both topical relevance and  understandability assessments, we used the data from the CLEF 2015 and 2016 eHealth collections. The CLEF eHealth initiative is a research community shared task aimed at creating resources for evaluating health search engines aimed at the general public~\cite{clefWebSite}. Note, in the reminder of this article, we refer to topical relevance simply as relevance, when this does not cause confusion.
 
 The CLEF 2015 collection contains 50 queries and 1,437 documents that have been assessed relevant by clinical experts and have an assessment for understandability~\cite{clef15}. Documents in this collection are a selected crawl of health Web sites, of which the majority are certified HON Web sites.
 The CLEF 2016 collection contains 300 queries and 3,298 relevant documents that also have been assessed with respect to understandability~\cite{clef16}. Documents in this collection belong to the ClueWeb12 B13 corpus~\cite{clueweb12}, and thus are general English Web pages, not necessarily targeted to health topics, nor of a controlled quality (as are the HON certified pages). 
@@ -148,7 +148,7 @@ The Relevation tool~\cite{koopman14} was used to assist with the assessments, mi
 \subsection*{Understandability Estimators}
 \label{sec:proxies}
 
-Several methods have been used to estimate the understandability of health Web pages, with the most popular methods (at least in the biomedical literature) being readability formulae based on surface level characteristics of the text. Next, we outline the categories of methods to estimate understandability used in this work; an overview is shown in Table~\ref{tab:doc_features}. Some of these features stem from common aspects used by readability measures, e.g., number of words longer than a set length in characters.
+Several methods have been used to estimate the understandability of health Web pages, with the most popular methods (at least in the biomedical literature) being readability formulae based on surface level characteristics of the text. Next, we outline the categories of methods to estimate understandability used in this work; an overview is shown in Table~\ref{tab:doc_features}. % Some of these features stem from common aspects used by readability measures, e.g., number of words longer than a set length in characters. 
 
 \begin{table*}[tb]
 	\caption{Methods used to estimate understandability. $\star$: raw values were
@@ -211,7 +211,7 @@ Several methods have been used to estimate the understandability of health Web p
 
 
 \textit{Traditional Readability Formulae (RF):}
-These include the most popular readability formulae~\cite{cli75,dale48,flesch75}, as well as other, less popular ones~\cite{ari67,gunning52,lix,smog69}. A full list is provided in surveys by Collins-Thompson \cite{collins2014computational} and Dubay~\cite{dubay04}.
+These include the most popular readability formulae~\cite{cli75,dale48,flesch75}, as well as other, less popular ones~\cite{ari67,gunning52,lix,smog69}. An extensive description of these readability formulas is provided in surveys by Collins-Thompson \cite{collins2014computational} and Dubay~\cite{dubay04}.
 
 \textit{Raw Components of Readability Formulae (CRF):}
 These are formed by the ``building blocks'' used in the traditional readability formulae. Examples include the average number of characters per word and the average number of syllables in a sentence. Words are divided into syllables using the Python package Pyphen~\cite{pyphen}.
@@ -251,7 +251,8 @@ Three corpora were analysed to extract word frequencies:
 
 A summary of the statistics of the corpora is reported in Table~\ref{tab:collection_stats}. 
 We modelled word frequencies in a corpus in a straightforward manner: we sorted the word frequencies and normalised word rankings such that values close to 100 are attributed to common words and values close to 0 to rare words. Then we replace each word in a document by a number ranging from 0 to 100 which represents the frequency of that word in the corpus. 
-Finally, we extract features based on the word frequency distribution for that document. For example, in order to calculate the feature \textit{25th percentil English Wikipedia} of a document, we need first to extract the frequency of each word in the Wikipedia corpus for that document and then extract the 25th percentil of the frequency distribution of that document. 
+Finally, we extract features based on the word frequency distribution for that document. 
+For example, the feature \textit{75th percentil English Wikipedia} is a number between 0 and 100 representing how frequent is the word at the 75th percentil of a document in which word frequencies were extracted from the English Wikipedia corpus.
 Unless explicitly stated otherwise, we ignored out of vocabulary (OV) words in the corpus.
 
 \begin{table*}[!tb]
@@ -307,7 +308,6 @@ Specifically, we considered three retrieval methods of differing quality for the
 These were selected as they were the best performing readability formulae and machine learning method for each collection (details in the evaluation of understandability estimators in the Results section).
 Note that for XGB, for assessed documents we used 10-fold cross validation, training XGB on 90\% of the data, and used its predictions for the remaining 10\%. For unassessed documents, we trained XGB on all assessed data and applied this model to generate predictions. Different machine learning methods and feature selection schemes were experimented with; results are available in the appendix. XGB was selected because its results were the best among the Machine Learning test (which include all Machine Learning methods listed in Table~\ref{tab:doc_features}.
 
-
 To integrate understandability estimators into the retrieval process, we first investigated \textit{re-ranking} search results retrieved by the initial runs purely based on the understandability estimations. 
 If all the search results from a run were to be considered, then such a re-ranking method may place at early ranks Web pages highly likely to be understandable, but possibly less likely to be topically relevant. To balance relevance and understandability, we only re-ranked the first $k$ documents. We explored rank cut-offs $k = 15, 20, 50$. Because evaluation was performed with respect to the first $n=10$ rank positions, the setting $k=15$ provided a conservative re-ranking of search results, while, $k=50$ provided a less conservative re-ranking approach.
 
@@ -344,11 +344,11 @@ results to be considered by the methods across the cut-offs $k=15, 20, 50$.
             \cmidrule{3-4} 
             &  & \textbf{CLEF 2015} & \textbf{CLEF 2016}\tabularnewline
             \midrule 
-            LTR 1  & Builds a model \textit{only} on the topicality labels w. IR features & F(R,U) = $R$ & F(R,U) = $R$\tabularnewline
-            LTR 2  & Builds a model \textit{only} on the topicality labels w. IR and Unders. features & F(R,U) = $R$  & F(R,U) = $R$ \tabularnewline
-            LTR 3  & Directly combines unders. and topicality labels. Uses IR and unders. features & F(R,U) = $R\times U/3.$  & F(R,U) = $R\times(100-U)/100$ \tabularnewline
-            LTR 4  & Builds the model \textit{only} on easy-to-read docs. Uses IR and unders. features & F(R,U) = $\begin{cases} R & \text{if }U\geq2\\ 0 & \text{otherwise} \end{cases}$  & F(R,U) = $\begin{cases} R & \text{if }U\le40\\ 0 & \text{otherwise} \end{cases}$ \tabularnewline
-                LTR 5  & Boosts easy-to-read documents. Uses IR and unders. features & F(R,U) = $\begin{cases} 2\times R & \text{if }U\geq2\\ R & \text{otherwise} \end{cases}$ & F(R,U) = $\begin{cases} 2\times R & \text{if }U\le40\\ R & \text{otherwise}
+            LTR 1  & Model built \textit{only} on the topicality labels w. IR features & F(R,U) = $R$ & F(R,U) = $R$\tabularnewline
+            LTR 2  & Model built \textit{only} on the topicality labels w. IR and Unders. features & F(R,U) = $R$  & F(R,U) = $R$ \tabularnewline
+            LTR 3  & Model combines unders. and topicality labels. Uses IR and unders. features & F(R,U) = $R\times U/3.$  & F(R,U) = $R\times(100-U)/100$ \tabularnewline
+            LTR 4  & Model built \textit{only} on easy-to-read docs. Uses IR and unders. features & F(R,U) = $\begin{cases} R & \text{if }U\geq2\\ 0 & \text{otherwise} \end{cases}$  & F(R,U) = $\begin{cases} R & \text{if }U\le40\\ 0 & \text{otherwise} \end{cases}$ \tabularnewline
+            LTR 5  & Model built boosting easy-to-read documents. Uses IR and unders. features & F(R,U) = $\begin{cases} 2\times R & \text{if }U\geq2\\ R & \text{otherwise} \end{cases}$ & F(R,U) = $\begin{cases} 2\times R & \text{if }U\le40\\ R & \text{otherwise}
         \end{cases}$\tabularnewline
     \bottomrule
 \end{tabular}
@@ -382,10 +382,7 @@ A drawback of uRBP is that relevance and understandability are combined into a u
 
 Along with these measures of search effectiveness, we also recorded the number of unassessed documents, the RBP residuals,  $RBP^*_r@10$, $RBP^*_u@10$ and $H_{RBP}^*$, i.e. the corresponding measures calculated by ignoring unassessed documents. These latter measures implement the condensed measures approach proposed by Sakai as a way to deal with unassessed documents~\cite{sakai2007alternatives}. We did this to minimise pool bias since the pools built in CLEF were of limited size, and the investigated methods retrieved a substantial number of unassessed documents. Pool bias refers to the possible bias in the evaluation towards systems that have contributed documents to the assessment pool: these erroneously receive higher evaluation scores compared to systems that did not contribute to the pool (i.e. that were not sampled to create the set of documents to be judged for relevance). 
 
-
-
 \section*{Results}
-
 
 In order to keep this article  succinct, in the following we only report a subset of the results. The remaining results (which show similar trends to those reported here) are made available in the appendix material  for completeness.  \textit{All data and code will be shared on GitHub upon acceptance.}
 %\url{https://sites.google.com/view/understandabilityontheweb/}.
@@ -444,13 +441,13 @@ Using the CLEF eHealth 2015 and 2016 collections, we studied the correlations of
 
 Overall, Spearman and Kendall correlations obtained similar results (in terms of which methods exhibited the highest correlations): this was expected as, unlike Pearson, they are both rank-based correlations.
 
-For traditional readability measures, SMOG had the highest correlations for CLEF 2015 and DCI for CLEF 2016, regardless of correlation measure. These results resonate with those obtained for the category of raw components of readability formulae. 
+For traditional readability measures (RF), SMOG had the highest correlations for CLEF 2015 and DCI for CLEF 2016, regardless of correlation measure. These results resonate with those obtained for the category of raw components of readability formulae (CRF). 
 In fact, the polysyllable words measure, which is the main feature used in SMOG, had the highest correlation for CLEF 2015 among methods in this category. Similarly, the number of difficult words, which is the main feature used in DCI, had the highest correlation for CLEF 2016 among methods in this category.
 
-When examining the expert vocabulary category, we found that the number of MeSH concepts obtained the highest correlations with human assessments; however, its correlations were substantially lower than those achieved by the best method from the consumer medical vocabularies category, i.e. the scores of CHV concepts. For the natural language category, we found that the number of pronouns, the number of stop words and the number of out of vocabulary (OV) words had the highest correlations -- and these were even higher than those obtained with MeSH and CHV based methods. In turn, the methods that obtained the highest correlations among the HTML category (counts of P tags and list tags) exhibited overall the lowest correlations compared to methods in the other categories. P tags are used to create paragraphs in a Web page, being thus a rough proxy for text length. 
-Among methods in the word frequency category, the use of Medical Reddit (but also of PubMed) showed the highest correlations, and these were comparable to those obtained by the readability formulae. 
+When examining the expert vocabulary category (EMV), we found that the number of MeSH concepts obtained the highest correlations with human assessments; however, its correlations were substantially lower than those achieved by the best method from the consumer medical vocabularies category (CMV), i.e. the scores of CHV concepts. For the natural language category (NLF), we found that the number of pronouns, the number of stop words and the number of out of vocabulary words had the highest correlations -- and these were even higher than those obtained with MeSH and CHV based methods. In turn, the methods that obtained the highest correlations among the HTML category (HF), counts of P tags and list tags, exhibited overall the lowest correlations compared to methods in the other categories. P tags are used to create paragraphs in a Web page, being thus a rough proxy for text length. 
+Among methods in the word frequency category (WFF), the use of Medical Reddit (but also of PubMed) showed the highest correlations, and these were comparable to those obtained by the readability formulae. 
 
-Finally, regressors and classifiers exhibited the highest correlations amongst all methods: in this  category, the  eXtreme Gradient Boosting (XGB) regressor and the multinomial Naive Bayes best correlated with human assessments. 
+Finally, regressors (MLR) and classifiers (MLC) exhibited the highest correlations amongst all methods: in this category, the  eXtreme Gradient Boosting (XGB) regressor and the multinomial Naive Bayes best correlated with human assessments. 
 
 \subsection*{Evaluation of Preprocessing Pipelines and Heuristics}
 \label{sec:which_preprocessing}
@@ -495,6 +492,7 @@ A common trend when comparing preprocessing pipelines is that the Naive pipeline
 	%\vspace{-0.2cm}
 	\label{tab:experiments} \resizebox{1.00\textwidth}{!}{ %
 		\begin{tabular}{lcllll|clllclllclllcllllllllll}
+        % \begin{tabular}{lclllH|lllHlllHlllHllllllllll}
 			\toprule 
 			\multirow{2}{*}{Idx}  & \multirow{2}{*}{\multirow{2}{*}{Rerank} } & \multirow{2}{*}{\multirow{2}{*}{Run} } & \multicolumn{8}{l}{Official CLEF 2016 Measures} & \multicolumn{18}{l}{New Measures to Evaluate Understandability in Retrieval }\tabularnewline
 			\cmidrule(l{2pt}r{2pt}){4-10} \cmidrule(l{2pt}r{2pt}){11-29}  &  &  & $RBP$  & $P_{bl}$ & $P_{g}$ & Res.  & uRBP  & $P_{bl}$ & $P_{g}$ & Res.  & $RBP_{u}$  & $P_{bl}$ & $P_{g}$ & Res.  & $H_{rbp}$ & $P_{bl}$ & $P_{g}$ & Res.  & Unj  & $RBP_{r}^{*}$  & $P_{bl}$ & $P_{g}$ & $RBP_{u}^{*}$  & $P_{bl}$ & $P_{g}$ & $H_{rbp}^{*}$ & $P_{bl}$ & $P_{g}$\tabularnewline
@@ -569,7 +567,7 @@ As for re-ranking, also for the rank fusion approaches we found that, in general
 
 \textit{\textbf{Learning to Rank:}} Last, we analyse the results obtained by the learning to rank methods (indices 31-35). Unlike with the previous methods, we did not impose a rank cut-off on learning to rank. Learning to rank was only applied to the BM25 baseline, as we had no access to the IR features for the runs submitted at CLEF (i.e. GUIR and ECNU for CLEF 2016).
 
-When considering $RBP_r$ and $uRBP$, learning to rank exhibited effectiveness that was significantly inferior to that of the GUIR and ECNU baseline runs, though higher than those for the BM25 baseline (for some configurations). The examination of the number of unassessed documents (and the RBP residuals, see appendix) revealed that this may have been because measures were affected by the large number of unassessed documents retrieved in the top 10 ranks. For example, the $RBP_r$ residual for learning to rank methods was about double that of the baselines or other approaches (see appendix). In fact, among the documents retrieved in the top 10 results by learning to rank, there were 20\% that were unassessed, compared to an average of 3\% for the other methods. (Excluding XGB with cut-off 50, which also exhibited high residuals). 
+When considering $RBP_r$ and $uRBP$, learning to rank exhibited effectiveness that was significantly inferior to that of the GUIR and ECNU baseline runs, though higher than those for the BM25 baseline (for some configurations). The examination of the number of unassessed documents (and the RBP residuals, see appendix) revealed that this may have been because measures were affected by the large number of unassessed documents retrieved in the top 10 ranks. For example, the $RBP_r$ residual for learning to rank methods was about double that of the baselines or other approaches (see appendix). In fact, among the documents retrieved in the top 10 results by learning to rank, there were 20\% that were unassessed, compared to an average of 3\% for the other methods (excluding XGB with cut-off 50, which also exhibited high residuals). 
 
 We thus should carefully account for unassessed documents through considering the residuals of RBP measures, as well as the condensed measures. When this was done, we observed that learning to rank methods overall provided substantial gains over the original runs and other methods (when considering $RBP^*_r$, $RBP^*_u$ and $H_{RBP}^*$), or large potential gains over these methods (when considering the residuals). Next, we analyse these results in more detail. 
 
@@ -692,7 +690,7 @@ The authors acknowledge the TU Wien University Library for financial support thr
 	WebCitation: \url{http://www.webcitation.org/6yHTeM33k}.
 	\newblock Available from:
 	\url{http://plg2.cs.uwaterloo.ca/~avtyurin/WebQA2016/}.
-	
+
     \bibitem{boyer15}
     Boyer, C, Dolamic, L.
     \newblock Automated detection of HONcode website conformity compared to manual 
@@ -925,6 +923,11 @@ The authors acknowledge the TU Wien University Library for financial support thr
 	\newblock \href {http://dx.doi.org/10.1007/978-3-319-30671-1\_21}
 	{doi:10.1007/978-3-319-30671-1\_21}.
 	
+    \bibitem{clefWebSite}
+    CLEF eHealth Initiative Homepage.
+    \newblock WebCitation: \url{http://www.webcitation.org/6ytaboB6c}
+    \newblock Available from: \url{https://sites.google.com/site/clefehealth/}
+
 	\bibitem{clef15}
 	Palotti J, Zuccon G, Goeuriot L, Kelly L, Hanbury A, Jones GJF, et~al.
 	\newblock {ShARe/CLEF eHealth Evaluation Lab 2015, Task 2: User-centred Health
