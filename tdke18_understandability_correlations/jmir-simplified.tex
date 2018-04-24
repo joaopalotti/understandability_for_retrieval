@@ -268,22 +268,158 @@ These are formed by the ``building blocks'' used in the traditional readability 
 \end{table}
 
 \textit{General Medical Vocabularies (GMV):}
-These include methods that count the number of words with a medical prefix or suffix, i.e. beginning or ending with Latin or Greek particles (e.g., amni-, angi-, algia-, arteri-), and text strings included in lists of acronyms or in medical vocabularies such as the International Statistical Classification of Diseases and Related Health Problems (ICD), Drugbank and the OpenMedSpel dictionary~\cite{openmedspel}. An acronym list from the ADAM database~\cite{zhou2006} was used. Methods in this category were matched with documents using simple keyword matching. A complete list of methods is provided \todo{in Table~\ref{}}.
+These include methods that count the number of words with a medical prefix or suffix, i.e. beginning or ending with Latin or Greek particles (e.g., amni-, angi-, algia-, arteri-), and text strings included in lists of acronyms or in medical vocabularies such as the International Statistical Classification of Diseases and Related Health Problems (ICD), Drugbank and the OpenMedSpel dictionary~\cite{openmedspel}. An acronym list from the ADAM database~\cite{zhou2006} was used. Methods in this category were matched with documents using simple keyword matching. A complete list of methods is provided in Table~\ref{tab:doc_features_gmv}.
+
+\begin{table}
+\caption{General Medical Vocabularies features used to estimate understandability.
+$\star$: raw values were used. $\diamondsuit$: values normalised
+by number of words in a document were used. $\dagger$: values normalised
+by number of sentences in a document were used.}
+\label{tab:doc_features_gmv} \vspace{-10pt}
+ %
+\begin{tabular}{c}
+\toprule 
+\textbf{General Medical Vocabularies (GMV)}\tabularnewline
+\midrule 
+\# of Words with Medical Prefix  $^{\star\diamondsuit\dagger}$ \tabularnewline
+\# of Words with Medical Suffix  $^{\star\diamondsuit\dagger}$ \tabularnewline
+\# of Acronyms  $^{\star\diamondsuit\dagger}$                  \tabularnewline
+\# of ICD Concepts $^{\star\diamondsuit\dagger}$               \tabularnewline
+\# of Drugbank  $^{\star\diamondsuit\dagger}$                  \tabularnewline
+\# of Words in medical dict. (OpenMedSpel)  $^{\star\diamondsuit\dagger}$ \tabularnewline
+\bottomrule
+\end{tabular}
+\end{table}
 
 \textit{Consumer Medical Vocabulary (CMV):}
 The popular MetaMap \cite{aronson10} tool was used to map the text content of Web pages to entries in  CHV~\cite{zeng06}.
-We used the MetaMap semantic types to retain only concepts identified as symptoms or diseases. Similar approaches have been commonly used in the literature (e.g.,~\cite{pang16,agrafiotesA16,palotti16,yates13}). A complete list of methods is provided \todo{in Table~\ref{}}.
+We used the MetaMap semantic types to retain only concepts identified as symptoms or diseases. Similar approaches have been commonly used in the literature (e.g.,~\cite{pang16,agrafiotesA16,palotti16,yates13}). A complete list of methods is provided in Table~\ref{tab:doc_features_cmv}.
+
+\begin{table}
+\caption{Consumer Medical Vocabularies features used to estimate understandability.
+$\star$: raw values were used. $\diamondsuit$: values normalised
+by number of words in a document were used. $\dagger$: values normalised
+by number of sentences in a document were used.}
+\label{tab:doc_features_cmv} \vspace{-10pt}
+ %
+\begin{tabular}{c}
+\toprule 
+\textbf{Consumer Medical Vocabularies (CMV)}\tabularnewline
+\midrule 
+CHV Mean Score for all Concepts  $^{\star\diamondsuit\dagger}$ \tabularnewline
+\# of CHV Concepts $^{\star\diamondsuit\dagger}$ \tabularnewline
+CHV Mean Score for Symptom Concepts $^{\star\diamondsuit\dagger}$ \tabularnewline
+\# of CHV Symptom Concepts $^{\star\diamondsuit\dagger}$ \tabularnewline
+CHV Mean Score for Disease Concepts $^{\star\diamondsuit\dagger}$ \tabularnewline
+\# of CHV Disease Concepts$^{\star\diamondsuit\dagger}$ \tabularnewline
+\bottomrule
+\end{tabular}
+\end{table}
 
 \textit{Expert Medical Vocabulary (EMV):}
-Similarly to the CHV features, we used MetaMap to convert the content of Web pages into MeSH entities, studying symptom and disease concepts separately.  A complete list of methods is provided \todo{in Table~\ref{}}.
+Similarly to the CHV features, we used MetaMap to convert the content of Web pages into MeSH entities, studying symptom and disease concepts separately.  A complete list of methods is provided in Table~\ref{tab:doc_features_emv}.
+
+\begin{table}
+\caption{Expert Medical Vocabulary features used to estimate understandability.
+$\star$: raw values were used. $\diamondsuit$: values normalised
+by number of words in a document were used. $\dagger$: values normalised
+by number of sentences in a document were used.}
+\label{tab:doc_features_emv} \vspace{-10pt}
+ %
+\begin{tabular}{c}
+\toprule 
+\textbf{Expert Medical Vocabulary (EMV)}\tabularnewline
+\midrule 
+\# of MeSH Concepts $^{\star\diamondsuit\dagger}$ \tabularnewline
+Average Tree of MeSH Concepts $^{\star\diamondsuit\dagger}$ \tabularnewline
+\# of MeSH Symptom Concepts$^{\star\diamondsuit\dagger}$ \tabularnewline
+Average Tree of MeSH Symptom Concepts$^{\star\diamondsuit\dagger}$ \tabularnewline
+\# of MeSH Disease Concepts $^{\star\diamondsuit\dagger}$ \tabularnewline
+Average Tree of MeSH Disease Concepts$^{\star\diamondsuit\dagger}$ \tabularnewline
+\bottomrule
+\end{tabular}
+\end{table}
 
 \textit{Natural Language Features (NLF):}
 These included commonly used natural language heuristics such as the ratio of part-of-speech (POS) classes, the height of the POS parser tree, the number of entities in the text, 
 the sentiment polarity~\cite{pang08} and the ratio of words found in English vocabularies. The Python package NLTK~\cite{nltk} was employed for sentiment analysis, POS tagging and entity recognition. The GNU Aspell~\cite{aspell} dictionary was used as a standard English vocabulary and a stop word list was built by merging those of Indri~\cite{indri} and Terrier~\cite{terrier}. 
-Discourse features, such as the distribution of POS classes and density of entity in a text, were previously studied in the task of understandability prediction~\cite{feng10} and found superior to complex features such as entity co-reference and entity grid~\cite{barzilay08}. To the best of our knowledge, sentiment polarity was never investigated in this task. Our intuition is that the content produced by laypeople in patient forums or blogs (easy-to-read) is potentially more emotional than scientific publications (hard-to-read). A complete list of methods is provided \todo{in Table~\ref{}}.
+Discourse features, such as the distribution of POS classes and density of entity in a text, were previously studied in the task of understandability prediction~\cite{feng10} and found superior to complex features such as entity co-reference and entity grid~\cite{barzilay08}. To the best of our knowledge, sentiment polarity was never investigated in this task. Our intuition is that the content produced by laypeople in patient forums or blogs (easy-to-read) is potentially more emotional than scientific publications (hard-to-read). A complete list of methods is provided in Table~\ref{tab:doc_features_nlf}.
+
+\begin{table}
+\caption{Natural Language Features used to estimate understandability. $\star$:
+raw values were used. $\diamondsuit$: values normalised by number
+of words in a document were used. $\dagger$: values normalised by
+number of sentences in a document were used.}
+\label{tab:doc_features_nlf} \vspace{-10pt}
+ %
+\begin{tabular}{c}
+\toprule 
+\textbf{Natural Language Features (NLF)}\tabularnewline
+\midrule 
+Positive Words $^{\star\diamondsuit\dagger}$ \tabularnewline
+Negative Words $^{\star\diamondsuit\dagger}$ \tabularnewline
+Neutral Words$^{\star\diamondsuit\dagger}$ \tabularnewline
+\# of verbs$^{\star\diamondsuit\dagger}$ \tabularnewline
+\# of nouns$^{\star\diamondsuit\dagger}$ \tabularnewline
+\# of pronouns$^{\star\diamondsuit\dagger}$ \tabularnewline
+\# of adjectives$^{\star\diamondsuit\dagger}$ \tabularnewline
+\# of adverbs$^{\star\diamondsuit\dagger}$ \tabularnewline
+\# of adpositions$^{\star\diamondsuit\dagger}$ \tabularnewline
+\# of conjunctions$^{\star\diamondsuit\dagger}$ \tabularnewline
+\# of determiners$^{\star\diamondsuit\dagger}$ \tabularnewline
+\# of cardinal numbers$^{\star\diamondsuit\dagger}$ \tabularnewline
+\# of particles or other function words$^{\star\diamondsuit\dagger}$ \tabularnewline
+\# of other POS (foreign words, typos)$^{\star\diamondsuit\dagger}$ \tabularnewline
+\# of punctuation$^{\star\diamondsuit\dagger}$ \tabularnewline
+\# of Entities$^{\star\diamondsuit\dagger}$ \tabularnewline
+Height of part-of-speech parser tree$^{\star\diamondsuit\dagger}$ \tabularnewline
+\# of Stopwords$^{\star\diamondsuit\dagger}$ \tabularnewline
+\# of words not found in Aspell Eng. dict.$^{\star\diamondsuit\dagger}$ \tabularnewline
+Average Tree of MeSH Disease Concepts$^{\star\diamondsuit\dagger}$ \tabularnewline
+\bottomrule
+\end{tabular}
+\end{table}
 
 \textit{HTML Features (HF):}
-These include the identification of a large number of HTML tags, which were extracted with the Python library BeautifulSoup~\cite{bs4}. The intuition for these features is that Web pages with many images and tables may explain and summarise health content better, thus providing more understandable content to the general public.  A complete list of methods is provided \todo{in Table~\ref{}}.
+These include the identification of a large number of HTML tags, which were extracted with the Python library BeautifulSoup~\cite{bs4}. The intuition for these features is that Web pages with many images and tables may explain and summarise health content better, thus providing more understandable content to the general public.  A complete list of methods is provided in Table~\ref{tab:doc_features_hf}.
+
+\begin{table}
+\caption{HTML Features used to estimate understandability.}
+\label{tab:doc_features_hf} \vspace{-10pt}
+ %
+\begin{tabular}{c}
+\toprule 
+\textbf{HTML Features (HF)}\tabularnewline
+\midrule 
+\# of Abbr tags\tabularnewline
+\# of A tags\tabularnewline
+\# of Blockquote tags\tabularnewline
+\# of Bold tags\tabularnewline
+\# of Cite tags\tabularnewline
+\# of Div tags\tabularnewline
+\# of Forms tags\tabularnewline
+\# of H1 tags\tabularnewline
+\# of H2 tags\tabularnewline
+\# of H3 tags\tabularnewline
+\# of H4 tags\tabularnewline
+\# of H5 tags\tabularnewline
+\# of H6 tags\tabularnewline
+\# of Hs (any H above)\tabularnewline
+\# of Img tags\tabularnewline
+\# of Input tags\tabularnewline
+\# of Link tags\tabularnewline
+\# of DL tags\tabularnewline
+\# of UL tags\tabularnewline
+\# of OL tags\tabularnewline
+\# of List (DL + UL + OL)\tabularnewline
+\# of Q tags\tabularnewline
+\# of Scripts tags\tabularnewline
+\# of Spans tags\tabularnewline
+\# of Table tags\tabularnewline
+\# of P tags\tabularnewline
+\bottomrule
+\end{tabular}
+\end{table}
 
 \textit{Word Frequency Features (WFF):}
 Generally speaking, common and known words are usually frequent words, while unknown and obscure words are generally rare. This idea is implemented in readability formulae such as the DCI, which uses a list of common words and counts the number of words that fall outside this list (complex words)~\cite{dale48} and has shown success in other recent approaches~\cite{elhadad06,wu15}.
@@ -304,7 +440,7 @@ A summary of the statistics of the corpora is reported in Table~\ref{tab:collect
 We modelled word frequencies in a corpus in a straightforward manner: we sorted the word frequencies and normalised word rankings such that values close to 100 are attributed to common words and values close to 0 to rare words. Then we replace each word in a document by a number ranging from 0 to 100 which represents the frequency of that word in the corpus. 
 Finally, we extract features based on the word frequency distribution for that document. 
 For example, the feature \textit{75th percentil English Wikipedia} is a number between 0 and 100 representing how frequent is the word at the 75th percentil of a document in which word frequencies were extracted from the English Wikipedia corpus.
-Unless explicitly stated otherwise, we ignored out of vocabulary (OV) words in the corpus. A complete list of methods is provided \todo{in Table~\ref{}}.
+Unless explicitly stated otherwise, we ignored out of vocabulary (OV) words in the corpus. A complete list of methods is provided in Table~\ref{tab:doc_features_wff}.
 
 \begin{table*}[!tb]
 	\centering    
@@ -328,6 +464,37 @@ Unless explicitly stated otherwise, we ignored out of vocabulary (OV) words in t
 	%\vspace{-8pt}
 \end{table*}
 
+\begin{table}
+\caption{Word Frequency Features used to estimate understandability.}
+\label{tab:doc_features_wff} \vspace{-10pt}
+ %
+\begin{tabular}{c}
+\toprule 
+\textbf{Word Frequency Features (WFF)}\tabularnewline
+\midrule 
+25th percentil English Wikipedia\tabularnewline
+50th percentil English Wikipedia\tabularnewline
+75th percentil English Wikipedia\tabularnewline
+Mean Rank English Wikip.\tabularnewline
+Mean Rank English Wikip. - Includes OV\tabularnewline
+25th percentil Medical Reddit\tabularnewline
+50th percentil Medical Reddit\tabularnewline
+75th percentil Medical Reddit\tabularnewline
+Mean Rank Medical Reddit\tabularnewline
+Mean Rank Medical Reddit - Includes OV\tabularnewline
+25th percentil Pubmed\tabularnewline
+50th percentil Pubmed\tabularnewline
+75th percentil Pubmed\tabularnewline
+Mean Rank Pubmed\tabularnewline
+Mean Rank Pubmed - Includes OV\tabularnewline
+25th p. Wikipedia+Reddit+Pubmed \tabularnewline
+50th p. Wikipedia+Reddit+Pubmed \tabularnewline
+75th p. Wikipedia+Reddit+Pubmed \tabularnewline
+Mean R. Wiki.+Reddit+Pubmed \tabularnewline
+Mean R. Wiki.+Reddit+Pubmed - w. OV \tabularnewline
+\bottomrule
+\end{tabular}
+\end{table}
 
 \textit{Machine Learning on Text - Regressors (MLR) and Classifiers (MLC):} These include machine learning methods for estimating Web page understandability. While Collins-Thompson highlighted the promise of estimating understandability using machine learning methods, a challenge is identifying the background corpus to be used for training~\cite{collins2014computational}. To this aim, we used the three corpora detailed above, and assumed understandability labels according to the expected difficulty of documents in these collections:
 
@@ -337,8 +504,42 @@ Unless explicitly stated otherwise, we ignored out of vocabulary (OV) words in t
 	\item PubMed Central (label 3): Documents in this corpus are expected to be written in a highly formal style, as the target audience are physicians and biomedical researchers.
 \end{itemize}
 
-Based on the labels of each class above, models were learnt using all documents from these corpora after features were extracted using Latent Semantic Analysis (LSA) with 10 dimensions (this number of dimensions was chosen based on preliminary experiments with the Random Forest algorithm; we leave as future work a detailed study on the impact of different number of dimensions on other machine learning algorithms). We modelled a classification task as well as a regression task using these corpora. Thus, after applying the same LSA transformation to test documents from CLEF, a continuous score was assigned to each document by a regressor, while each classifier assigned the documents to one of the three classes.  A complete list of methods is provided \todo{in Table~\ref{}}.
+Based on the labels of each class above, models were learnt using all documents from these corpora after features were extracted using Latent Semantic Analysis (LSA) with 10 dimensions (this number of dimensions was chosen based on preliminary experiments with the Random Forest algorithm; we leave as future work a detailed study on the impact of different number of dimensions on other machine learning algorithms). We modelled a classification task as well as a regression task using these corpora. Thus, after applying the same LSA transformation to test documents from CLEF, a continuous score was assigned to each document by a regressor, while each classifier assigned the documents to one of the three classes.  A complete list of methods is provided in Table~\ref{tab:doc_features_mlr} and~\ref{tab:doc_features_mlc}.
 
+\begin{table}
+\caption{Machine Learning Regressors features used to estimate understandability.}
+\label{tab:doc_features_mlr} \vspace{-10pt}
+ %
+\begin{tabular}{c}
+\toprule 
+\textbf{Machine Learning Regressors (MLR)}\tabularnewline
+\midrule 
+Linear Regressor\tabularnewline
+Multi-layer Perceptron Regressor\tabularnewline
+Random Forest Regressor\tabularnewline
+Support Vector Machine Regressor\tabularnewline
+Gradient Boosting Regressor\tabularnewline
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}
+\caption{Machine Learning Classifiers features used to estimate understandability.}
+\label{tab:doc_features_mlc} \vspace{-10pt}
+ %
+\begin{tabular}{c}
+\toprule 
+\textbf{Machine Learning Classifiers (MLC)}\tabularnewline
+\midrule 
+Logistic Regression\tabularnewline
+Multi-layer Perceptron Classifier\tabularnewline
+Random Forest Classifier\tabularnewline
+Support Vector Machine Classifier\tabularnewline
+Multinomial Naive Bayes\tabularnewline
+Gradient Boosting Classifier\tabularnewline
+\bottomrule
+\end{tabular}
+\end{table}
 
 \subsection*{Preprocessing Pipelines and Heuristics}
 \label{sec:pipelines}
