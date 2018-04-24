@@ -39,6 +39,8 @@
 
 \begin{document}
 	
+\newcolumntype{H}{>{\setbox0=\hbox\bgroup}c<{\egroup}@{}}
+
 \section*{Abstract}
 \textbf{Background:} Understandability plays a key role in ensuring that people accessing health information are capable of gaining insights that can assist them with their health concerns and choices. The access to unclear or misleading information has been shown to negatively impact on the health decisions of the general public.
 
@@ -743,8 +745,8 @@ A common trend when comparing preprocessing pipelines is that the Naive pipeline
 	%; a p-value of 0.000 in the table means the p-value is $ \leq 0.000\overline{9}$
 	%\vspace{-0.2cm}
 	\label{tab:experiments} \resizebox{1.00\textwidth}{!}{ %
-		\begin{tabular}{lcllll|clllclllclllcllllllllll}
-        % \begin{tabular}{lclllH|lllHlllHlllHllllllllll}
+	   %\begin{tabular}{lcllll|clllclllclllcllllllllll}
+        \begin{tabular}{lcllll|HlllHlllHlllHllllllllll}
 			\toprule 
 			\multirow{2}{*}{Idx}  & \multirow{2}{*}{\multirow{2}{*}{Rerank} } & \multirow{2}{*}{\multirow{2}{*}{Run} } & \multicolumn{8}{l}{Official CLEF 2016 Measures} & \multicolumn{18}{l}{New Measures to Evaluate Understandability in Retrieval }\tabularnewline
 			\cmidrule(l{2pt}r{2pt}){4-10} \cmidrule(l{2pt}r{2pt}){11-29}  &  &  & $RBP$  & $P_{bl}$ & $P_{g}$ & Res.  & uRBP  & $P_{bl}$ & $P_{g}$ & Res.  & $RBP_{u}$  & $P_{bl}$ & $P_{g}$ & Res.  & $H_{rbp}$ & $P_{bl}$ & $P_{g}$ & Res.  & Unj  & $RBP_{r}^{*}$  & $P_{bl}$ & $P_{g}$ & $RBP_{u}^{*}$  & $P_{bl}$ & $P_{g}$ & $H_{rbp}^{*}$ & $P_{bl}$ & $P_{g}$\tabularnewline
