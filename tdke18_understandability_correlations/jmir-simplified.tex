@@ -148,91 +148,142 @@ The Relevation tool~\cite{koopman14} was used to assist with the assessments, mi
 \subsection*{Understandability Estimators}
 \label{sec:proxies}
 
-Several methods have been used to estimate the understandability of health Web pages, with the most popular methods (at least in the biomedical literature) being readability formulae based on surface level characteristics of the text. Next, we outline the categories of methods to estimate understandability used in this work; an overview is shown in Table~\ref{tab:doc_features}. % Some of these features stem from common aspects used by readability measures, e.g., number of words longer than a set length in characters. 
+Several methods have been used to estimate the understandability of health Web pages, with the most popular methods (at least in the biomedical literature) being readability formulae based on surface level characteristics of the text. Next, we outline the categories of methods to estimate understandability used in this work; an overview is shown in Tables~\ref{tab:doc_features_rf,tab:doc_features_rf}. %Table~\ref{tab:doc_features} % Some of these features stem from common aspects used by readability measures, e.g., number of words longer than a set length in characters. 
 
-\begin{table*}[tb]
-	\caption{Methods used to estimate understandability. $\star$: raw values were
-		used. $\diamondsuit$: values normalised by number of words in a document
-		were used. $\dagger$: values normalised by number of sentences in
-		a document were used.}
-	\label{tab:doc_features} \vspace{-10pt}
-	\centering \resizebox{0.90\textwidth}{!}{ %
-		\begin{tabular}{llccll}
-			\toprule 
-			\textbf{Cat.}  & \textbf{Method}  & \textbf{Cat.}  & \textbf{Method}  & \textbf{Cat.}  & \textbf{Method}\tabularnewline
-			\midrule
-			\multirow{8}{*}{\textbf{\makecell{RF}}}  & Automated Readability Index (ARI) \cite{ari67}  & \multirow{20}{*}{\textbf{\makecell{WFF}}}  & 25th percentil English Wikipedia  & \multirow{26}{*}{\textbf{\makecell{HF}}}  & \# of Abbr tags\tabularnewline
-			& Coleman-Liau Index (CLI) \cite{cli75}  &  & 50th percentil English Wikipedia  &  & \# of A tags\tabularnewline
-			& Dale-Chall Index (DCI) \cite{dale48}  &  & 75th percentil English Wikipedia  &  & \# of Blockquote tags\tabularnewline
-			& Flesch-Kincaid Grade Level (FKGL) \cite{flesch75}  &  & Mean Rank English Wikip.  &  & \# of Bold tags\tabularnewline
-			& Flesch Reading Ease (FRE) \cite{flesch75}  &  & Mean Rank English Wikip. - Includes OV  &  & \# of Cite tags\tabularnewline
-			& Gunning Fog Index (GFI) \cite{gunning52}  &  & 25th percentil Medical Reddit  &  & \# of Div tags\tabularnewline
-			& Lasbarhetsindex (LIX) \cite{lix}  &  & 50th percentil Medical Reddit  &  & \# of Forms tags\tabularnewline
-			& Simple Measure of Gobbledygook (SMOG) \cite{smog69}  &  & 75th percentil Medical Reddit  &  & \# of H1 tags\tabularnewline
-			\cline{1-2}
-			\multirow{10}{*}{\textbf{\makecell{CRF}}}  & \# of Characters $^{\star\diamondsuit\dagger}$  &  & Mean Rank Medical Reddit  &  & \# of H2 tags\tabularnewline
-			& \# of Words $^{\star\dagger}$  &  & Mean Rank Medical Reddit - Includes OV  &  & \# of H3 tags\tabularnewline
-			& \# of Sentences {$^{\star\diamondsuit}$}  &  & 25th percentil Pubmed  &  & \# of H4 tags\tabularnewline
-			& \# of Difficult Words (Dale-Chall list \cite{dale48}) $^{\star\diamondsuit\dagger}$  &  & 50th percentil Pubmed  &  & \# of H5 tags\tabularnewline
-			& \# of Words Longer than 4 chars $^{\star\diamondsuit\dagger}$  &  & 75th percentil Pubmed  &  & \# of H6 tags\tabularnewline
-			& \# of Words Longer than 6 chars $^{\star\diamondsuit\dagger}$  &  & Mean Rank Pubmed  &  & \# of Hs (any H above)\tabularnewline
-			& \# of Words Longer than 10 chars $^{\star\diamondsuit\dagger}$  &  & Mean Rank Pubmed - Includes OV  &  & \# of Img tags\tabularnewline
-			& \# of Words Longer than 13 chars $^{\star\diamondsuit\dagger}$  &  & 25th p. Wikipedia+Reddit+Pubmed  &  & \# of Input tags\tabularnewline
-			& \# of Number of Syllables $^{\star\diamondsuit\dagger}$  &  & 50th p. Wikipedia+Reddit+Pubmed  &  & \# of Link tags\tabularnewline
-			& \# of Polysyllable Words (\textgreater{}3 Syllables) $^{\star\diamondsuit\dagger}$  &  & 75th p. Wikipedia+Reddit+Pubmed  &  & \# of DL tags\tabularnewline
-			\cline{1-2}
-			\multirow{20}{*}{\textbf{\makecell{NLF}}}  & \# of Entities $^{\star\diamondsuit\dagger}$  &  & Mean R. Wiki.+Reddit+Pubmed  &  & \# of UL tags\tabularnewline
-			& \# of verbs $^{\star\diamondsuit\dagger}$  &  & Mean R. Wiki.+Reddit+Pubmed - w. OV  &  & \# of OL tags\tabularnewline
-			\cline{3-4} 
-			& \# of nouns $^{\star\diamondsuit\dagger}$  & \multirow{6}{*}{\textbf{GMV}}  & \# of Words with Medical Prefix $^{\star\diamondsuit\dagger}$  &  & \# of List (DL + UL + OL)\tabularnewline
-			& \# of pronouns $^{\star\diamondsuit\dagger}$  &  & \# of Words with Medical Suffix $^{\star\diamondsuit\dagger}$  &  & \# of Q tags\tabularnewline
-			& \# of adjectives $^{\star\diamondsuit\dagger}$  &  & \# of Acronyms $^{\star\diamondsuit\dagger}$  &  & \# of Scripts tags\tabularnewline
-			& \# of adverbs $^{\star\diamondsuit\dagger}$  &  & \# of ICD Concepts $^{\star\diamondsuit\dagger}$  &  & \# of Spans tags\tabularnewline
-			& \# of adpositions $^{\star\diamondsuit\dagger}$  &  & \# of Drugbank $^{\star\diamondsuit\dagger}$  &  & \# of Table tags\tabularnewline
-			& \# of conjunctions $^{\star\diamondsuit\dagger}$  &  & \# of Words in medical dict. (OpenMedSpel) $^{\star\diamondsuit\dagger}$  &  & \# of P tags\tabularnewline
-			\cline{3-6}
-			& \# of determiners $^{\star\diamondsuit\dagger}$  & \multirow{6}{*}{\textbf{\makecell{CMV}}}  & CHV Mean Score for all Concepts $^{\star\diamondsuit\dagger}$  & \multirow{6}{*}{\textbf{MLR}}  & Linear Regressor\tabularnewline
-			& \# of cardinal numbers $^{\star\diamondsuit\dagger}$  &  & \# of CHV Concepts $^{\star\diamondsuit\dagger}$  &  & Multi-layer Perceptron Regressor\tabularnewline
-			& \# of particles or other function words $^{\star\diamondsuit\dagger}$  &  & CHV Mean Score for Symptom Concepts $^{\star\diamondsuit\dagger}$  &  & Random Forest Regressor\tabularnewline
-			& \# of other POS (foreign words, typos) $^{\star\diamondsuit\dagger}$  &  & \# of CHV Symptom Concepts $^{\star\diamondsuit\dagger}$  &  & Support Vector Machine Regressor\tabularnewline
-			& \# of punctuation $^{\star\diamondsuit\dagger}$  &  & CHV Mean Score for Disease Concepts $^{\star\diamondsuit\dagger}$  &  & Gradient Boosting Regressor\tabularnewline
-			& Height of part-of-speech parser tree $^{\star\diamondsuit\dagger}$  &  & \# of CHV Disease Concepts $^{\star\diamondsuit\dagger}$  &  & Logistic Regression\tabularnewline
-			\cline{3-6} 
-			& \# of Stopwords $^{\star\diamondsuit\dagger}$  & \multirow{6}{*}{\textbf{\makecell{EMV}}}  & \# of MeSH Concepts $^{\star\diamondsuit\dagger}$  & \multirow{5}{*}{\textbf{MLC}}  & Multi-layer Perceptron Classifier\tabularnewline
-			& \# of words not found in Aspell Eng. dict. $^{\star\diamondsuit\dagger}$ &  & Average Tree of MeSH Concepts $^{\star\diamondsuit\dagger}$  &  & Random Forest Classifier\tabularnewline
-			& Positive Words $^{\star\diamondsuit\dagger}$  &  & \# of MeSH Symptom Concepts $^{\star\diamondsuit\dagger}$  &  & Support Vector Machine Classifier\tabularnewline
-			& Negative Words $^{\star\diamondsuit\dagger}$ &  & Average Tree of MeSH Symptom Concepts $^{\star\diamondsuit\dagger}$  &  & Multinomial Naive Bayes\tabularnewline
-			& Neutral Words $^{\star\diamondsuit\dagger}$  &  & \# of MeSH Disease Concepts $^{\star\diamondsuit\dagger}$  &  & Gradient Boosting Classifier\tabularnewline
-			&  &  & Average Tree of MeSH Disease Concepts $^{\star\diamondsuit\dagger}$  &  & \tabularnewline
-			\bottomrule 
-	\end{tabular}} \vspace{-12pt}
-	
-\end{table*}
+%\begin{table*}[tb]
+%	\caption{Methods used to estimate understandability. $\star$: raw values were
+%		used. $\diamondsuit$: values normalised by number of words in a document
+%		were used. $\dagger$: values normalised by number of sentences in
+%		a document were used.}
+%	\label{tab:doc_features} \vspace{-10pt}
+%	\centering \resizebox{0.90\textwidth}{!}{ %
+%		\begin{tabular}{llccll}
+%			\toprule 
+%			\textbf{Cat.}  & \textbf{Method}  & \textbf{Cat.}  & \textbf{Method}  & \textbf{Cat.}  & \textbf{Method}\tabularnewline
+%			\midrule
+%			\multirow{8}{*}{\textbf{\makecell{RF}}}  & Automated Readability Index (ARI) \cite{ari67}  & \multirow{20}{*}{\textbf{\makecell{WFF}}}  & 25th percentil English Wikipedia  & \multirow{26}{*}{\textbf{\makecell{HF}}}  & \# of Abbr tags\tabularnewline
+%			& Coleman-Liau Index (CLI) \cite{cli75}  &  & 50th percentil English Wikipedia  &  & \# of A tags\tabularnewline
+%			& Dale-Chall Index (DCI) \cite{dale48}  &  & 75th percentil English Wikipedia  &  & \# of Blockquote tags\tabularnewline
+%			& Flesch-Kincaid Grade Level (FKGL) \cite{flesch75}  &  & Mean Rank English Wikip.  &  & \# of Bold tags\tabularnewline
+%			& Flesch Reading Ease (FRE) \cite{flesch75}  &  & Mean Rank English Wikip. - Includes OV  &  & \# of Cite tags\tabularnewline
+%			& Gunning Fog Index (GFI) \cite{gunning52}  &  & 25th percentil Medical Reddit  &  & \# of Div tags\tabularnewline
+%			& Lasbarhetsindex (LIX) \cite{lix}  &  & 50th percentil Medical Reddit  &  & \# of Forms tags\tabularnewline
+%			& Simple Measure of Gobbledygook (SMOG) \cite{smog69}  &  & 75th percentil Medical Reddit  &  & \# of H1 tags\tabularnewline
+%			\cline{1-2}
+%			\multirow{10}{*}{\textbf{\makecell{CRF}}}  & \# of Characters $^{\star\diamondsuit\dagger}$  &  & Mean Rank Medical Reddit  &  & \# of H2 tags\tabularnewline
+%			& \# of Words $^{\star\dagger}$  &  & Mean Rank Medical Reddit - Includes OV  &  & \# of H3 tags\tabularnewline
+%			& \# of Sentences {$^{\star\diamondsuit}$}  &  & 25th percentil Pubmed  &  & \# of H4 tags\tabularnewline
+%			& \# of Difficult Words (Dale-Chall list \cite{dale48}) $^{\star\diamondsuit\dagger}$  &  & 50th percentil Pubmed  &  & \# of H5 tags\tabularnewline
+%			& \# of Words Longer than 4 chars $^{\star\diamondsuit\dagger}$  &  & 75th percentil Pubmed  &  & \# of H6 tags\tabularnewline
+%			& \# of Words Longer than 6 chars $^{\star\diamondsuit\dagger}$  &  & Mean Rank Pubmed  &  & \# of Hs (any H above)\tabularnewline
+%			& \# of Words Longer than 10 chars $^{\star\diamondsuit\dagger}$  &  & Mean Rank Pubmed - Includes OV  &  & \# of Img tags\tabularnewline
+%			& \# of Words Longer than 13 chars $^{\star\diamondsuit\dagger}$  &  & 25th p. Wikipedia+Reddit+Pubmed  &  & \# of Input tags\tabularnewline
+%			& \# of Number of Syllables $^{\star\diamondsuit\dagger}$  &  & 50th p. Wikipedia+Reddit+Pubmed  &  & \# of Link tags\tabularnewline
+%			& \# of Polysyllable Words (\textgreater{}3 Syllables) $^{\star\diamondsuit\dagger}$  &  & 75th p. Wikipedia+Reddit+Pubmed  &  & \# of DL tags\tabularnewline
+%			\cline{1-2}
+%			\multirow{20}{*}{\textbf{\makecell{NLF}}}  & \# of Entities $^{\star\diamondsuit\dagger}$  &  & Mean R. Wiki.+Reddit+Pubmed  &  & \# of UL tags\tabularnewline
+%			& \# of verbs $^{\star\diamondsuit\dagger}$  &  & Mean R. Wiki.+Reddit+Pubmed - w. OV  &  & \# of OL tags\tabularnewline
+%			\cline{3-4} 
+%			& \# of nouns $^{\star\diamondsuit\dagger}$  & \multirow{6}{*}{\textbf{GMV}}  & \# of Words with Medical Prefix $^{\star\diamondsuit\dagger}$  &  & \# of List (DL + UL + OL)\tabularnewline
+%			& \# of pronouns $^{\star\diamondsuit\dagger}$  &  & \# of Words with Medical Suffix $^{\star\diamondsuit\dagger}$  &  & \# of Q tags\tabularnewline
+%			& \# of adjectives $^{\star\diamondsuit\dagger}$  &  & \# of Acronyms $^{\star\diamondsuit\dagger}$  &  & \# of Scripts tags\tabularnewline
+%			& \# of adverbs $^{\star\diamondsuit\dagger}$  &  & \# of ICD Concepts $^{\star\diamondsuit\dagger}$  &  & \# of Spans tags\tabularnewline
+%			& \# of adpositions $^{\star\diamondsuit\dagger}$  &  & \# of Drugbank $^{\star\diamondsuit\dagger}$  &  & \# of Table tags\tabularnewline
+%			& \# of conjunctions $^{\star\diamondsuit\dagger}$  &  & \# of Words in medical dict. (OpenMedSpel) $^{\star\diamondsuit\dagger}$  &  & \# of P tags\tabularnewline
+%			\cline{3-6}
+%			& \# of determiners $^{\star\diamondsuit\dagger}$  & \multirow{6}{*}{\textbf{\makecell{CMV}}}  & CHV Mean Score for all Concepts $^{\star\diamondsuit\dagger}$  & \multirow{6}{*}{\textbf{MLR}}  & Linear Regressor\tabularnewline
+%			& \# of cardinal numbers $^{\star\diamondsuit\dagger}$  &  & \# of CHV Concepts $^{\star\diamondsuit\dagger}$  &  & Multi-layer Perceptron Regressor\tabularnewline
+%			& \# of particles or other function words $^{\star\diamondsuit\dagger}$  &  & CHV Mean Score for Symptom Concepts $^{\star\diamondsuit\dagger}$  &  & Random Forest Regressor\tabularnewline
+%			& \# of other POS (foreign words, typos) $^{\star\diamondsuit\dagger}$  &  & \# of CHV Symptom Concepts $^{\star\diamondsuit\dagger}$  &  & Support Vector Machine Regressor\tabularnewline
+%			& \# of punctuation $^{\star\diamondsuit\dagger}$  &  & CHV Mean Score for Disease Concepts $^{\star\diamondsuit\dagger}$  &  & Gradient Boosting Regressor\tabularnewline
+%			& Height of part-of-speech parser tree $^{\star\diamondsuit\dagger}$  &  & \# of CHV Disease Concepts $^{\star\diamondsuit\dagger}$  &  & Logistic Regression\tabularnewline
+%			\cline{3-6} 
+%			& \# of Stopwords $^{\star\diamondsuit\dagger}$  & \multirow{6}{*}{\textbf{\makecell{EMV}}}  & \# of MeSH Concepts $^{\star\diamondsuit\dagger}$  & \multirow{5}{*}{\textbf{MLC}}  & Multi-layer Perceptron Classifier\tabularnewline
+%			& \# of words not found in Aspell Eng. dict. $^{\star\diamondsuit\dagger}$ &  & Average Tree of MeSH Concepts $^{\star\diamondsuit\dagger}$  &  & Random Forest Classifier\tabularnewline
+%			& Positive Words $^{\star\diamondsuit\dagger}$  &  & \# of MeSH Symptom Concepts $^{\star\diamondsuit\dagger}$  &  & Support Vector Machine Classifier\tabularnewline
+%			& Negative Words $^{\star\diamondsuit\dagger}$ &  & Average Tree of MeSH Symptom Concepts $^{\star\diamondsuit\dagger}$  &  & Multinomial Naive Bayes\tabularnewline
+%			& Neutral Words $^{\star\diamondsuit\dagger}$  &  & \# of MeSH Disease Concepts $^{\star\diamondsuit\dagger}$  &  & Gradient Boosting Classifier\tabularnewline
+%			&  &  & Average Tree of MeSH Disease Concepts $^{\star\diamondsuit\dagger}$  &  & \tabularnewline
+%			\bottomrule 
+%	\end{tabular}} \vspace{-12pt}
+%	
+%\end{table*}
+
+
+
 
 
 \textit{Traditional Readability Formulae (RF):}
-These include the most popular readability formulae~\cite{cli75,dale48,flesch75}, as well as other, less popular ones~\cite{ari67,gunning52,lix,smog69}. An extensive description of these readability formulas is provided in surveys by Collins-Thompson \cite{collins2014computational} and Dubay~\cite{dubay04}.
+These include the most popular readability formulae~\cite{cli75,dale48,flesch75}, as well as other, less popular ones~\cite{ari67,gunning52,lix,smog69}. An extensive description of these readability formulas is provided in surveys by Collins-Thompson \cite{collins2014computational} and Dubay~\cite{dubay04}. A complete list of methods is provided in Table~\ref{tab:doc_features_rf}.
+
+\begin{table}
+	\caption{Readability Features used to estimate understandability. $\star$: raw values were
+		used. $\diamondsuit$: values normalised by number of words in a document
+		were used. $\dagger$: values normalised by number of sentences in
+		a document were used.}
+	\label{tab:doc_features_rf} \vspace{-10pt}
+	\begin{tabular}{|c|}
+		\toprule 
+		\textbf{Readability Feature (RF)}\tabularnewline
+		\midrule
+		Automated Readability Index (ARI) \cite{ari67} \tabularnewline
+		Coleman-Liau Index (CLI) \cite{cli75} \tabularnewline
+		Dale-Chall Index (DCI) \cite{dale48} \tabularnewline
+		Flesch-Kincaid Grade Level (FKGL) \cite{flesch75} \tabularnewline
+		Flesch Reading Ease (FRE) \cite{flesch75} \tabularnewline
+		Gunning Fog Index (GFI) \cite{gunning52} \tabularnewline
+		Lasbarhetsindex (LIX) \cite{lix} \tabularnewline
+		Simple Measure of Gobbledygook (SMOG) \cite{smog69} \tabularnewline
+		\bottomrule 
+	\end{tabular}
+\end{table}
+
 
 \textit{Raw Components of Readability Formulae (CRF):}
-These are formed by the ``building blocks'' used in the traditional readability formulae. Examples include the average number of characters per word and the average number of syllables in a sentence. Words are divided into syllables using the Python package Pyphen~\cite{pyphen}.
+These are formed by the ``building blocks'' used in the traditional readability formulae. Examples include the average number of characters per word and the average number of syllables in a sentence. Words are divided into syllables using the Python package Pyphen~\cite{pyphen}. A complete list of methods is provided in Table~\ref{tab:doc_features_crf}.
+
+\begin{table}[t]
+	\caption{Raw Components of Readability Features (CRF) used to estimate understandability.
+		$\star$: raw values were used. $\diamondsuit$: values normalised
+		by number of words in a document were used. $\dagger$: values normalised
+		by number of sentences in a document were used.}
+	\label{tab:doc_features_crf} \vspace{-10pt}
+	%
+	\begin{tabular}{c}
+		\toprule 
+		\textbf{Components of Readability Feature (CRF)}\tabularnewline
+		\midrule 
+		\# of Characters $^{\star\diamondsuit\dagger}$ \tabularnewline
+		\# of Words $^{\star\dagger}$ \tabularnewline
+		\# of Sentences {$^{\star\diamondsuit}$} \tabularnewline
+		\# of Difficult Words (Dale-Chall list \cite{dale48}) $^{\star\diamondsuit\dagger}$ \tabularnewline
+		\# of Words Longer than 4 chars $^{\star\diamondsuit\dagger}$ \tabularnewline
+		\# of Words Longer than 6 chars $^{\star\diamondsuit\dagger}$ \tabularnewline
+		\# of Words Longer than 10 chars $^{\star\diamondsuit\dagger}$ \tabularnewline
+		\# of Words Longer than 13 chars $^{\star\diamondsuit\dagger}$ \tabularnewline
+		\# of Number of Syllables $^{\star\diamondsuit\dagger}$ \tabularnewline
+		\# of Polysyllable Words (\textgreater{}3 Syllables) $^{\star\diamondsuit\dagger}$ \tabularnewline
+		\bottomrule
+	\end{tabular}
+\end{table}
 
 \textit{General Medical Vocabularies (GMV):}
-These include methods that count the number of words with a medical prefix or suffix, i.e. beginning or ending with Latin or Greek particles (e.g., amni-, angi-, algia-, arteri-), and text strings included in lists of acronyms or in medical vocabularies such as the International Statistical Classification of Diseases and Related Health Problems (ICD), Drugbank and the OpenMedSpel dictionary~\cite{openmedspel}. An acronym list from the ADAM database~\cite{zhou2006} was used. Methods in this category were matched with documents using simple keyword matching. 
+These include methods that count the number of words with a medical prefix or suffix, i.e. beginning or ending with Latin or Greek particles (e.g., amni-, angi-, algia-, arteri-), and text strings included in lists of acronyms or in medical vocabularies such as the International Statistical Classification of Diseases and Related Health Problems (ICD), Drugbank and the OpenMedSpel dictionary~\cite{openmedspel}. An acronym list from the ADAM database~\cite{zhou2006} was used. Methods in this category were matched with documents using simple keyword matching. A complete list of methods is provided \todo{in Table~\ref{}}.
 
 \textit{Consumer Medical Vocabulary (CMV):}
 The popular MetaMap \cite{aronson10} tool was used to map the text content of Web pages to entries in  CHV~\cite{zeng06}.
-We used the MetaMap semantic types to retain only concepts identified as symptoms or diseases. Similar approaches have been commonly used in the literature (e.g.,~\cite{pang16,agrafiotesA16,palotti16,yates13}).
+We used the MetaMap semantic types to retain only concepts identified as symptoms or diseases. Similar approaches have been commonly used in the literature (e.g.,~\cite{pang16,agrafiotesA16,palotti16,yates13}). A complete list of methods is provided \todo{in Table~\ref{}}.
 
 \textit{Expert Medical Vocabulary (EMV):}
-Similarly to the CHV features, we used MetaMap to convert the content of Web pages into MeSH entities, studying symptom and disease concepts separately. 
+Similarly to the CHV features, we used MetaMap to convert the content of Web pages into MeSH entities, studying symptom and disease concepts separately.  A complete list of methods is provided \todo{in Table~\ref{}}.
 
 \textit{Natural Language Features (NLF):}
 These included commonly used natural language heuristics such as the ratio of part-of-speech (POS) classes, the height of the POS parser tree, the number of entities in the text, 
 the sentiment polarity~\cite{pang08} and the ratio of words found in English vocabularies. The Python package NLTK~\cite{nltk} was employed for sentiment analysis, POS tagging and entity recognition. The GNU Aspell~\cite{aspell} dictionary was used as a standard English vocabulary and a stop word list was built by merging those of Indri~\cite{indri} and Terrier~\cite{terrier}. 
-Discourse features, such as the distribution of POS classes and density of entity in a text, were previously studied in the task of understandability prediction~\cite{feng10} and found superior to complex features such as entity co-reference and entity grid~\cite{barzilay08}. To the best of our knowledge, sentiment polarity was never investigated in this task. Our intuition is that the content produced by laypeople in patient forums or blogs (easy-to-read) is potentially more emotional than scientific publications (hard-to-read).
+Discourse features, such as the distribution of POS classes and density of entity in a text, were previously studied in the task of understandability prediction~\cite{feng10} and found superior to complex features such as entity co-reference and entity grid~\cite{barzilay08}. To the best of our knowledge, sentiment polarity was never investigated in this task. Our intuition is that the content produced by laypeople in patient forums or blogs (easy-to-read) is potentially more emotional than scientific publications (hard-to-read). A complete list of methods is provided \todo{in Table~\ref{}}.
 
 \textit{HTML Features (HF):}
-These include the identification of a large number of HTML tags, which were extracted with the Python library BeautifulSoup~\cite{bs4}. The intuition for these features is that Web pages with many images and tables may explain and summarise health content better, thus providing more understandable content to the general public. 
+These include the identification of a large number of HTML tags, which were extracted with the Python library BeautifulSoup~\cite{bs4}. The intuition for these features is that Web pages with many images and tables may explain and summarise health content better, thus providing more understandable content to the general public.  A complete list of methods is provided \todo{in Table~\ref{}}.
 
 \textit{Word Frequency Features (WFF):}
 Generally speaking, common and known words are usually frequent words, while unknown and obscure words are generally rare. This idea is implemented in readability formulae such as the DCI, which uses a list of common words and counts the number of words that fall outside this list (complex words)~\cite{dale48} and has shown success in other recent approaches~\cite{elhadad06,wu15}.
@@ -253,7 +304,7 @@ A summary of the statistics of the corpora is reported in Table~\ref{tab:collect
 We modelled word frequencies in a corpus in a straightforward manner: we sorted the word frequencies and normalised word rankings such that values close to 100 are attributed to common words and values close to 0 to rare words. Then we replace each word in a document by a number ranging from 0 to 100 which represents the frequency of that word in the corpus. 
 Finally, we extract features based on the word frequency distribution for that document. 
 For example, the feature \textit{75th percentil English Wikipedia} is a number between 0 and 100 representing how frequent is the word at the 75th percentil of a document in which word frequencies were extracted from the English Wikipedia corpus.
-Unless explicitly stated otherwise, we ignored out of vocabulary (OV) words in the corpus.
+Unless explicitly stated otherwise, we ignored out of vocabulary (OV) words in the corpus. A complete list of methods is provided \todo{in Table~\ref{}}.
 
 \begin{table*}[!tb]
 	\centering    
@@ -286,7 +337,7 @@ Unless explicitly stated otherwise, we ignored out of vocabulary (OV) words in t
 	\item PubMed Central (label 3): Documents in this corpus are expected to be written in a highly formal style, as the target audience are physicians and biomedical researchers.
 \end{itemize}
 
-Based on the labels of each class above, models were learnt using all documents from these corpora after features were extracted using Latent Semantic Analysis (LSA) with 10 dimensions (this number of dimensions was chosen based on preliminary experiments with the Random Forest algorithm; we leave as future work a detailed study on the impact of different number of dimensions on other machine learning algorithms). We modelled a classification task as well as a regression task using these corpora. Thus, after applying the same LSA transformation to test documents from CLEF, a continuous score was assigned to each document by a regressor, while each classifier assigned the documents to one of the three classes. 
+Based on the labels of each class above, models were learnt using all documents from these corpora after features were extracted using Latent Semantic Analysis (LSA) with 10 dimensions (this number of dimensions was chosen based on preliminary experiments with the Random Forest algorithm; we leave as future work a detailed study on the impact of different number of dimensions on other machine learning algorithms). We modelled a classification task as well as a regression task using these corpora. Thus, after applying the same LSA transformation to test documents from CLEF, a continuous score was assigned to each document by a regressor, while each classifier assigned the documents to one of the three classes.  A complete list of methods is provided \todo{in Table~\ref{}}.
 
 
 \subsection*{Preprocessing Pipelines and Heuristics}
@@ -437,7 +488,7 @@ In order to keep this article  succinct, in the following we only report a subse
 \end{table*}
 
 
-Using the CLEF eHealth 2015 and 2016 collections, we studied the correlations of methods to estimate Web page understandability (Table~\ref{tab:doc_features}), compared with human assessments. For each category of understandability estimation, Table~\ref{tab:top_corr_metrics} reports the methods with highest Pearson, Spearman or Kendall correlations. For each method, we used the best preprocessing settings; a study of the impact of preprocessing is reported in the next subsection.
+Using the CLEF eHealth 2015 and 2016 collections, we studied the correlations of methods to estimate Web page understandability compared with human assessments. For each category of understandability estimation, Table~\ref{tab:top_corr_metrics} reports the methods with highest Pearson, Spearman or Kendall correlations. For each method, we used the best preprocessing settings; a study of the impact of preprocessing is reported in the next subsection.
 
 Overall, Spearman and Kendall correlations obtained similar results (in terms of which methods exhibited the highest correlations): this was expected as, unlike Pearson, they are both rank-based correlations.
 
@@ -487,7 +538,7 @@ A common trend when comparing preprocessing pipelines is that the Naive pipeline
 		indices 1-3 (the index column is labelled Idx). Re-ranking experiments
 		are reported at indices 4-21. Fusion experiments are reported at indices
 		22-30. Learning to rank experiments are reported at indices 31-35.
-		All measures were calculated up to rank $n=10$. P-values are rounded to the third decimal digit and reported w.r.t GUIR run ($P_g$) and the BM25 baseline ($P_{bl}$). The highest result of each set of experiments is reported in bold face. }
+		All measures were calculated up to rank $n=10$. P-values are rounded to the third decimal digit and reported with respect to the GUIR run ($P_g$) and the BM25 baseline ($P_{bl}$). The highest result of each set of experiments is reported in bold face. }
 	%; a p-value of 0.000 in the table means the p-value is $ \leq 0.000\overline{9}$
 	%\vspace{-0.2cm}
 	\label{tab:experiments} \resizebox{1.00\textwidth}{!}{ %
@@ -573,7 +624,7 @@ We thus should carefully account for unassessed documents through considering th
 
 No improvements over the baselines were found for LTR 1 (index 31), and the high residuals for $RBP_r$ were not matched by other residuals or by considering only assessed documents (see appendix). LTR 1 was a simple method that used only IR features and was trained only on topical relevance. Specifically, we devised 24 IR features using the Terrier framework. The score of various retrieval models was extracted from a multi-field index composed of title, body and whole document. Although simple, this is a typical learning to rank setting.
 
-Compared to LTR 1, LTR 2 (index 32) included the understandability features listed in Table~\ref{tab:doc_features}. This inclusion was as beneficial to the understandability measures as to the relevance measures, with $RBP_r^*$, $RBP_u^*$ and $H_{RBP}^*$ all showing gains over the baselines. LTR 3 obtained similar $H_{RBP}^*$ values, though with higher effectiveness for relevance measures ($RBP_r^*$) than for understandability ($RBP_u^*$).
+Compared to LTR 1, LTR 2 (index 32) included the understandability features listed \todo{in Table~\ref{}}. This inclusion was as beneficial to the understandability measures as to the relevance measures, with $RBP_r^*$, $RBP_u^*$ and $H_{RBP}^*$ all showing gains over the baselines. LTR 3 obtained similar $H_{RBP}^*$ values, though with higher effectiveness for relevance measures ($RBP_r^*$) than for understandability ($RBP_u^*$).
 
 LTRs 4 and 5 were devised based on a set understandability threshold $U=40$. While LTR 4 took into consideration only documents that were easy-to-read (understandability label $\le$ $U$), LTR 5 considered all documents, but boosted the relevance score. LTR 4 reached the highest understandability score for the learning-to-rank approaches ($RBP_u^{*}=50.06$), but it failed to retrieve a substantial number of relevant documents ($RBP_r^{*}=22.20$). In turn, LTR 5 reached the highest
 understandability-relevance trade-off ($H_{RBP}^{*}=29.20$). Compared to the BM25 baseline (on which it was based), LTR 5  largely increased both relevance ($RBP_r^*$ from 26.01 to 32.60 -- a 25\% increase, $P_{bl}=0.003$) and understandability ($RBP_u^*$ from 43.89 to 45.87 -- a 4\% increase, $P_{bl}<0.001$). Note that LTR 5 was also significantly better than the best run submitted to CLEF 2016 for both $RBP_r^{*}$ (15\% increase, $P_{g}=0.120$) and $H_{RBP}^{*}$ (13\% increase, $P_{g}=0.001$).
@@ -610,15 +661,15 @@ This article contributes to improving search engines tailored to consumer health
 The methods investigated here do not provide a fully personalised search, with respect to how much of the health content consumers with different health knowledge may be able to understand. Instead, we focus on making the results understandable by anyone: and thus promote in the search results content that has the highest level of understandability. However, people with a more than average medical knowledge may benefit higher from more specialised content. We leave this personalisation aspect, i.e., the tailoring of the understandability level of the promoted content with respect to the user's knowledge and abilities, to further work.
 
 \subsection*{Acknowledgment}
-The authors acknowledge the TU Wien University Library for financial support through its Open Access Funding Programme.
+The authors acknowledge the TU Wien University Library for financial support through its Open Access Funding Programme. Dr Guido Zuccon is the recipient of an Australian Research Council DECRA Research Fellowship (DE180101579) and a Google Faculty Award.
 
 
 \begin{thebibliography}{10}
-
-    \bibitem{zhang2014multidimensional}
+	
+	\bibitem{zhang2014multidimensional}
 	Zhang Y, Zhang J, Lease M, Gwizdka J.
-	\newblock Multidimensional relevance modeling via psychometrics and
-	crowdsourcing.
+	\newblock Multidimensional Relevance Modeling via Psychometrics and
+	Crowdsourcing.
 	\newblock In: Proceedings of the 37th international ACM SIGIR conference on
 	Research \& development in information retrieval. ACM; 2014. p. 435--444.
 	\newblock \href {http://dx.doi.org/10.1145/2600428.2609577}
@@ -634,7 +685,7 @@ The authors acknowledge the TU Wien University Library for financial support thr
 	
 	\bibitem{white13}
 	White R.
-	\newblock Beliefs and biases in web search.
+	\newblock Beliefs and Biases in Web Search.
 	\newblock In: Proceedings of the 36th international ACM SIGIR conference on
 	Research and development in information retrieval. SIGIR '13. New York, NY,
 	USA: ACM; 2013. p. 3--12.
@@ -643,29 +694,29 @@ The authors acknowledge the TU Wien University Library for financial support thr
 	
 	\bibitem{graber99}
 	Graber MA, Roller CM, Kaeble B.
-	\newblock Readability levels of patient education material on the World Wide
+	\newblock Readability Levels of Patient Education Material on the World Wide
 	Web.
 	\newblock Journal of Family Practice. 1999;48(1):58--59.
 	\newblock Available from: \url{https://www.ncbi.nlm.nih.gov/pubmed/9934385}.
 	
 	\bibitem{fitzsimmons10}
 	Fitzsimmons P, Michael B, Hulley J, Scott G.
-	\newblock A readability assessment of online Parkinson's disease information.
+	\newblock A Readability Assessment of Online Parkinson's Disease Information.
 	\newblock The journal of the Royal College of Physicians of Edinburgh.
 	2010;40(4):292--296.
 	\newblock Available from: \url{https://www.ncbi.nlm.nih.gov/pubmed/21132132}.
 	
 	\bibitem{wiener13}
 	Wiener RC, Wiener-Pla R.
-	\newblock Literacy, pregnancy and potential oral health changes: The internet
-	and readability levels.
+	\newblock Literacy, Pregnancy and Potential Oral Health Changes: The Internet
+	and Readability Levels.
 	\newblock Maternal and child health journal. 2014;18(3):657--662.
 	\newblock Available from: \url{https://www.ncbi.nlm.nih.gov/pubmed/23784613}.
 	
 	\bibitem{patel13}
 	Patel CR, Cherla DV, Sanghvi S, Baredes S, Eloy JA.
-	\newblock Readability assessment of online thyroid surgery patient education
-	materials.
+	\newblock Readability Assessment of Online Thyroid Surgery Patient Education
+	Materials.
 	\newblock Head \& neck. 2013;35(10):1421--1425.
 	\newblock Available from: \url{https://www.ncbi.nlm.nih.gov/pubmed/22972634}.
 	
@@ -678,35 +729,19 @@ The authors acknowledge the TU Wien University Library for financial support thr
 	
 	\bibitem{ellimoottil12}
 	Ellimoottil C, Polcari A, Kadlec A, Gupta G.
-	\newblock Readability of websites containing information about prostate cancer
-	treatment options.
+	\newblock Readability of Websites Containing Information about Prostate Cancer
+	Treatment Options.
 	\newblock The Journal of urology. 2012;188(6):2171--2176.
 	\newblock Available from: \url{https://www.ncbi.nlm.nih.gov/pubmed/23083852}.
 	
-   	\bibitem{gabrilovich2016cura}
+	\bibitem{gabrilovich2016cura}
 	Gabrilovich E.
-	\newblock Cura Te Ipsum: answering symptom queries with question intent.
+	\newblock Cura Te Ipsum: Answering Symptom Queries with Question Intent.
 	\newblock In: Second WebQA workshop, SIGIR 2016 (invited talk); 2016.
 	WebCitation: \url{http://www.webcitation.org/6yHTeM33k}.
 	\newblock Available from:
 	\url{http://plg2.cs.uwaterloo.ca/~avtyurin/WebQA2016/}.
-
-    \bibitem{boyer15}
-    Boyer, C, Dolamic, L.
-    \newblock Automated detection of HONcode website conformity compared to manual 
-    detection: an evaluation.
-    \newblock In: Journal of medical Internet research. 2015; 17:6.
-    \newblock \href {http://doi.org/10.2196/jmir.3831}
-    {10.2196/jmir.3831}.
-
-	\bibitem{clef16}
-	Zuccon G, Palotti J, Goeuriot L, Kelly L, Lupu M, Pecina P, et~al.
-	\newblock {The IR Task at the CLEF eHealth evaluation lab 2016: user-centred
-		health information retrieval}.
-	\newblock In: {CLEF 2016-Conference and Labs of the Evaluation Forum}. vol.
-	1609; 2016. p. 15--27.
-	\newblock Available from: \url{http://ceur-ws.org/Vol-1609/16090015.pdf}.
-
+	
 	\bibitem{palotti15}
 	Palotti J, Zuccon G, Hanbury A.
 	\newblock The Influence of Pre-processing on the Estimation of Readability of
@@ -719,34 +754,34 @@ The authors acknowledge the TU Wien University Library for financial support thr
 	
 	\bibitem{palotti2016ranking}
 	Palotti J, Goeuriot L, Zuccon G, Hanbury A.
-	\newblock Ranking health web pages with relevance and understandability.
+	\newblock Ranking Health Web Pages with Relevance and Understandability.
 	\newblock In: Proceedings of the 39th international ACM SIGIR conference on
 	Research and development in information retrieval. ACM; 2016. p. 965--968.
 	\newblock Available from: \url{10.1145/2911451.2914741}.
 	
 	\bibitem{cowan04}
 	Cowan CF.
-	\newblock Teaching patients with low literacy skills.
+	\newblock Teaching Patients with Low Literacy Skills.
 	\newblock Jones \& Bartlett Learning; 2004.
 	\newblock ISBN 978-0397551613.
 	
 	\bibitem{wallace04}
 	Wallace LS, Lennon ES.
-	\newblock American Academy of Family Physicians patient education materials:
-	can patients read them?
+	\newblock American Academy of Family Physicians Patient Education Materials:
+	Can Patients Read Them?
 	\newblock Family medicine. 2004;36(8):571--574.
 	\newblock Available from: \url{https://www.ncbi.nlm.nih.gov/pubmed/15343418}.
 	
 	\bibitem{davis04}
 	Davis TC, Wolf MS.
-	\newblock Health literacy: implications for family medicine.
+	\newblock Health Literacy: Implications for Family Medicine.
 	\newblock Family Medicine. 2004;36(8):595--598.
 	\newblock Available from: \url{https://www.ncbi.nlm.nih.gov/pubmed/15343422}.
 	
 	\bibitem{stossel12}
 	Stossel LM, Segar N, Gliatto P, Fallar R, Karani R.
-	\newblock Readability of patient education materials available at the point of
-	care.
+	\newblock Readability of Patient Education Materials Available at the Point of
+	Care.
 	\newblock Journal of general internal medicine. 2012;27(9):1165--1170.
 	\newblock Available from: \url{https://www.ncbi.nlm.nih.gov/pubmed/22528620}.
 	
@@ -762,15 +797,15 @@ The authors acknowledge the TU Wien University Library for financial support thr
 	\bibitem{shoemaker2014development}
 	Shoemaker SJ, Wolf MS, Brach C.
 	\newblock Development of the Patient Education Materials Assessment Tool
-	(PEMAT): a new measure of understandability and actionability for print and
-	audiovisual patient information.
+	(PEMAT): A New Measure of Understandability and Actionability for Print and
+	Audiovisual Patient Information.
 	\newblock Patient education and counseling. 2014;96(3):395--403.
 	\newblock Available from: \url{https://www.ncbi.nlm.nih.gov/pubmed/24973195}.
 	
 	\bibitem{becker04}
 	Becker SA.
-	\newblock A study of web usability for older adults seeking online health
-	resources.
+	\newblock A Study of Web Usability for Older Adults Seeking Online Health
+	Resources.
 	\newblock ACM Transactions on Computer-Human Interaction (TOCHI).
 	2004;11(4):387--406.
 	\newblock \href {http://dx.doi.org/10.1145/1035575.1035578}
@@ -778,8 +813,8 @@ The authors acknowledge the TU Wien University Library for financial support thr
 	
 	\bibitem{zheng2017readability}
 	Zheng J, Yu H.
-	\newblock Readability formulas and user perceptions of electronic health
-	records difficulty: a corpus study.
+	\newblock Readability Formulas and User Perceptions of Electronic Health
+	Records Difficulty: A Corpus Study.
 	\newblock Journal of medical Internet research. 2017;19(3).
 	\newblock \href {http://dx.doi.org/10.2196/jmir.6962} {doi:10.2196/jmir.6962}.
 	
@@ -819,15 +854,15 @@ The authors acknowledge the TU Wien University Library for financial support thr
 	
 	\bibitem{collins05}
 	Collins-Thompson K, Callan J.
-	\newblock Predicting reading difficulty with statistical language models.
+	\newblock Predicting Reading Difficulty with Statistical Language Models.
 	\newblock Journal of the Association for Information Science and Technology.
 	2005;56(13):1448--1462.
 	\newblock \href {http://dx.doi.org/10.1002/asi.20243} {doi:10.1002/asi.20243}.
 	
 	\bibitem{heilman07}
 	Heilman M, Collins-Thompson K, Callan J, Eskenazi M.
-	\newblock Combining lexical and grammatical features to improve readability
-	measures for first and second language texts.
+	\newblock Combining Lexical and Grammatical Features to Improve Readability
+	Measures for First and Second Language Texts.
 	\newblock In: Human Language Technologies 2007: The Conference of the North
 	American Chapter of the Association for Computational Linguistics;
 	Proceedings of the Main Conference; 2007. p. 460--467.
@@ -835,8 +870,8 @@ The authors acknowledge the TU Wien University Library for financial support thr
 	
 	\bibitem{pitler08}
 	Pitler E, Nenkova A.
-	\newblock Revisiting readability: A unified framework for predicting text
-	quality.
+	\newblock Revisiting Readability: A Unified Framework for Predicting Text
+	Quality.
 	\newblock In: Proceedings of the conference on empirical methods in natural
 	language processing. Association for Computational Linguistics; 2008. p.
 	186--195.
@@ -845,14 +880,14 @@ The authors acknowledge the TU Wien University Library for financial support thr
 	
 	\bibitem{zeng05}
 	Zeng Q, Kim E, Crowell J, Tse T.
-	\newblock A text corpora-based estimation of the familiarity of health
-	terminology.
+	\newblock A Text Corpora-based Estimation of the Familiarity of Health
+	Terminology.
 	\newblock Biological and Medical Data Analysis. 2005;p. 184--192.
 	\newblock Available from: \url{10.1007/11573067_19}.
 	
 	\bibitem{zeng06}
 	Zeng QT, Tse T.
-	\newblock Exploring and developing consumer health vocabularies.
+	\newblock Exploring and Developing Consumer Health Vocabularies.
 	\newblock Journal of the American Medical Informatics Association.
 	2006;13(1):24--29.
 	\newblock Available from:
@@ -860,8 +895,8 @@ The authors acknowledge the TU Wien University Library for financial support thr
 	
 	\bibitem{zeng08}
 	Zeng-Treitler Q, Goryachev S, Tse T, Keselman A, Boxwala A.
-	\newblock Estimating consumer familiarity with health terminology: a
-	context-based approach.
+	\newblock Estimating Consumer Familiarity with Health Terminology: A
+	Context-based Approach.
 	\newblock Journal of the American Medical Informatics Association.
 	2008;15(3):349--356.
 	\newblock Available from:
@@ -869,7 +904,7 @@ The authors acknowledge the TU Wien University Library for financial support thr
 	
 	\bibitem{leroy08}
 	Leroy G, Helmreich S, Cowie JR, Miller T, Zheng W.
-	\newblock Evaluating online health information: Beyond readability formulas.
+	\newblock Evaluating Online Health Information: Beyond Readability Formulas.
 	\newblock In: AMIA Annual Symposium Proceedings. vol. 2008. American Medical
 	Informatics Association; 2008. p. 394.
 	\newblock Available from:
@@ -885,16 +920,16 @@ The authors acknowledge the TU Wien University Library for financial support thr
 	
 	\bibitem{yan11}
 	Yan X, Lau RYK, Song D, Li X, Ma J.
-	\newblock Toward a semantic granularity model for domain-specific information
-	retrieval.
+	\newblock Toward a Semantic Granularity Model for Domain-specific Information
+	Retrieval.
 	\newblock ACM Transactions on Information Systems. 2011 Jul;29(3):15:1--15:46.
 	\newblock \href {http://dx.doi.org/10.1145/1993036.1993039}
 	{doi:10.1145/1993036.1993039}.
 	
 	\bibitem{kim2007beyond}
 	Kim H, Goryachev S, Rosemblat G, Browne A, Keselman A, Zeng-Treitler Q.
-	\newblock Beyond surface characteristics: a new health text-specific
-	readability measurement.
+	\newblock Beyond Surface Characteristics: A New Health Text-specific
+	Readability Measurement.
 	\newblock In: AMIA Annual Symposium Proceedings. vol. 2007. American Medical
 	Informatics Association; 2007. p. 418.
 	\newblock Available from:
@@ -902,7 +937,7 @@ The authors acknowledge the TU Wien University Library for financial support thr
 	
 	\bibitem{van2016balancing}
 	van Doorn J, Odijk D, Roijers DM, de~Rijke M.
-	\newblock Balancing relevance criteria through multi-objective optimization.
+	\newblock Balancing Relevance Criteria through Multi-objective Optimization.
 	\newblock In: Proceedings of the 39th International ACM SIGIR conference on
 	Research and Development in Information Retrieval. ACM; 2016. p. 769--772.
 	\newblock \href {http://dx.doi.org/10.1145/2911451.2914708}
@@ -917,17 +952,12 @@ The authors acknowledge the TU Wien University Library for financial support thr
 	
 	\bibitem{zuccon2016understandability}
 	Zuccon G.
-	\newblock Understandability biased evaluation for information retrieval.
+	\newblock Understandability Biased Evaluation for Information Retrieval.
 	\newblock In: European Conference on Information Retrieval. Springer; 2016. p.
 	280--292.
 	\newblock \href {http://dx.doi.org/10.1007/978-3-319-30671-1\_21}
 	{doi:10.1007/978-3-319-30671-1\_21}.
 	
-    \bibitem{clefWebSite}
-    CLEF eHealth Initiative Homepage.
-    \newblock WebCitation: \url{http://www.webcitation.org/6ytaboB6c}
-    \newblock Available from: \url{https://sites.google.com/site/clefehealth/}
-
 	\bibitem{clef15}
 	Palotti J, Zuccon G, Goeuriot L, Kelly L, Hanbury A, Jones GJF, et~al.
 	\newblock {ShARe/CLEF eHealth Evaluation Lab 2015, Task 2: User-centred Health
@@ -936,12 +966,14 @@ The authors acknowledge the TU Wien University Library for financial support thr
 	September 8-11, 2015.; 2015. Available from:
 	\url{ceur-ws.org/Vol-1391/inv-pap9-CR.pdf}.
 	
-	\bibitem{clueweb12}
-	The ClueWeb12 Dataset.
-	\newblock [Online: accessed 21-October-2017] WebCitation:
-	\url{http://www.webcitation.org/6ykSxv4Hp}.
-	\newblock \url{http://lemurproject.org/clueweb12/}.
-
+	\bibitem{clef16}
+	Zuccon G, Palotti J, Goeuriot L, Kelly L, Lupu M, Pecina P, et~al.
+	\newblock {The IR Task at the CLEF eHealth evaluation lab 2016: User-centred
+		Health Information Retrieval}.
+	\newblock In: {CLEF 2016-Conference and Labs of the Evaluation Forum}. vol.
+	1609; 2016. p. 15--27.
+	\newblock Available from: \url{http://ceur-ws.org/Vol-1609/16090015.pdf}.
+	
 	\bibitem{palotti16b}
 	Palotti J, Zuccon G, Bernhardt J, Hanbury A, Goeuriot L.
 	\newblock {Assessors Agreement: A Case Study across Assessor Type, Payment
@@ -954,13 +986,22 @@ The authors acknowledge the TU Wien University Library for financial support thr
 	
 	\bibitem{koopman14}
 	Koopman B, Zuccon G.
-	\newblock Relevation!: An open source system for information retrieval
-	relevance assessment.
+	\newblock Relevation!: An Open Source System for Information Retrieval
+	Relevance Assessment.
 	\newblock In: Proceedings of the 37th international ACM SIGIR conference on
 	Research \& development in information retrieval. ACM; 2014. p. 1243--1244.
 	\newblock \href {http://dx.doi.org/10.1145/2600428.2611175}
 	{doi:10.1145/2600428.2611175}.
 	
+	\bibitem{sakai2007alternatives}
+	Sakai T.
+	\newblock Alternatives to Bpref.
+	\newblock In: Proceedings of the 30th Annual International ACM SIGIR Conference
+	on Research and Development in Information Retrieval. SIGIR '07. New York,
+	NY, USA: ACM; 2007. p. 71--78.
+	\newblock Available from: \url{http://doi.acm.org/10.1145/1277741.1277756}.
+	\href {http://dx.doi.org/10.1145/1277741.1277756}
+	{doi:10.1145/1277741.1277756}.
 	
 	\bibitem{ari67}
 	Smith EA, Senter RJ.
@@ -988,15 +1029,15 @@ The authors acknowledge the TU Wien University Library for financial support thr
 	
 	\bibitem{collins2014computational}
 	Collins-Thompson K.
-	\newblock Computational assessment of text readability: A survey of current and
-	future research.
+	\newblock Computational Assessment of Text Readability: A Survey of Current and
+	Future Research.
 	\newblock ITL-International Journal of Applied Linguistics.
 	2014;165(2):97--135.
 	\newblock \href {http://dx.doi.org/10.1075/itl.165.2.01col}
 	{doi:10.1075/itl.165.2.01col}.
 	
 	\bibitem{pyphen}
-	PyPhen. Python module to hyphenate text; 2017.
+	PyPhen. Python Module to Hyphenate Text; 2017.
 	\newblock [Online: accessed 21-October-2017] WebCitation:
 	\url{http://www.webcitation.org/6yHSW2aHz}.
 	\newblock \url{http://www.pyphen.org/}.
@@ -1015,7 +1056,7 @@ The authors acknowledge the TU Wien University Library for financial support thr
 	
 	\bibitem{aronson10}
 	Aronson AR, Lang F.
-	\newblock An overview of MetaMap: historical perspective and recent advances.
+	\newblock An Overview of MetaMap: Historical Perspective and Recent Advances.
 	\newblock {JAMIA}. 2010;17(3):229--236.
 	\newblock \href {http://dx.doi.org/10.1136/jamia.2009.002733}
 	{doi:10.1136/jamia.2009.002733}.
@@ -1033,29 +1074,22 @@ The authors acknowledge the TU Wien University Library for financial support thr
 	
 	\bibitem{palotti16}
 	Palotti J, Hanbury A, M{\"u}ller H, Kahn CE.
-	\newblock How users search and what they search for in the medical domain.
+	\newblock How Users Search and what they Search for in the Medical Domain.
 	\newblock Information Retrieval Journal. 2016 Apr;19(1):189--224.
 	\newblock \href {http://dx.doi.org/10.1007/s10791-015-9269-8}
 	{doi:10.1007/s10791-015-9269-8}.
 	
 	\bibitem{yates13}
 	Yates A, Goharian N.
-	\newblock ADRTrace: detecting expected and unexpected adverse drug reactions
-	from user reviews on social media sites.
+	\newblock ADRTrace: Detecting Expected and Unexpected Adverse Drug Reactions
+	from User Reviews on Social Media Sites.
 	\newblock In: European Conference on Information Retrieval. Springer; 2013. p.
 	816--819.
 	\newblock \href {http://dx.doi.org/10.1007/978-3-642-36973-5\_92}
 	{doi:10.1007/978-3-642-36973-5\_92}.
 	
-    \bibitem{pang08}
-    Pang, B, Lee, L.
-    \newblock Opinion mining and sentiment analysis.
-    \newblock Foundations and Trends in Information Retrieval. 2008; 2(1); 1--135.
-    \newblock \href {http://dx.doi.org/10.1561/1500000011}
-    {doi:10.1561/1500000011}.
-
 	\bibitem{nltk}
-	Python Natural Language Toolkit Library; 2017.
+	2 NV. Python Natural Language Toolkit Library; 2017.
 	\newblock WebCitation: \url{http://www.webcitation.org/6yHdLox5S} [Online:
 	accessed 21-October-2017].
 	\newblock \url{http://www.nltk.org/}.
@@ -1068,7 +1102,7 @@ The authors acknowledge the TU Wien University Library for financial support thr
 	
 	\bibitem{indri}
 	Strohman T, Metzler D, Turtle H, Croft WB.
-	\newblock Indri: A language model-based search engine for complex queries.
+	\newblock Indri: A Language Model-based Search Engine for Complex Queries.
 	\newblock In: Proceedings of the International Conference on Intelligent
 	Analysis. vol.~2. Amherst, MA, USA; 2005. p. 2--6.
 	\newblock Available from: \url{http://ciir.cs.umass.edu/pubfiles/ir-407.pdf}.
@@ -1084,7 +1118,7 @@ The authors acknowledge the TU Wien University Library for financial support thr
 	
 	\bibitem{feng10}
 	Feng L, Jansche M, Huenerfauth M, Elhadad N.
-	\newblock A comparison of features for automatic readability assessment.
+	\newblock A Comparison of Features for Automatic Readability Assessment.
 	\newblock In: Proceedings of the 23rd International Conference on Computational
 	Linguistics: Posters. Association for Computational Linguistics; 2010. p.
 	276--284.
@@ -1104,15 +1138,15 @@ The authors acknowledge the TU Wien University Library for financial support thr
 	
 	\bibitem{elhadad06}
 	Elhadad N.
-	\newblock Comprehending technical texts: Predicting and defining unfamiliar
-	terms.
+	\newblock Comprehending Technical Texts: Predicting and Defining Unfamiliar
+	Terms.
 	\newblock In: AMIA annual symposium proceedings. vol. 2006. American Medical
 	Informatics Association; 2006. p. 239.
 	\newblock Available from: \url{https://www.ncbi.nlm.nih.gov/pubmed/17238339}.
 	
 	\bibitem{wu15}
 	Wu DT, Hanauer DA, Mei Q, Clark PM, An LC, Proulx J, et~al.
-	\newblock Assessing the readability of ClinicalTrials.gov.
+	\newblock Assessing the Readability of ClinicalTrials.gov.
 	\newblock Journal of the American Medical Informatics Association.
 	2015;23(2):269--275.
 	\newblock Available from: \url{https://www.ncbi.nlm.nih.gov/pubmed/26269536}.
@@ -1157,8 +1191,8 @@ The authors acknowledge the TU Wien University Library for financial support thr
 	
 	\bibitem{roberts16}
 	Roberts K, Simpson M, Demner-Fushman D, Voorhees E, Hersh W.
-	\newblock State-of-the-art in biomedical literature retrieval for clinical
-	cases: a survey of the TREC 2014 CDS track.
+	\newblock State-of-the-art in Biomedical Literature Retrieval for Clinical
+	Cases: A Survey of the TREC 2014 CDS Track.
 	\newblock Information Retrieval Journal. 2016;19(1):113--148.
 	\newblock \href {http://dx.doi.org/10.1007/s10791-015-9259-x}
 	{doi:10.1007/s10791-015-9259-x}.
@@ -1173,7 +1207,7 @@ The authors acknowledge the TU Wien University Library for financial support thr
 	
 	\bibitem{kohlschutter10}
 	Kohlsch{\"u}tter C, Fankhauser P, Nejdl W.
-	\newblock Boilerplate detection using shallow text features.
+	\newblock Boilerplate Detection using Shallow Text Features.
 	\newblock In: Proceedings of the third ACM international conference on Web
 	search and data mining. ACM; 2010. p. 441--450.
 	\newblock \href {http://dx.doi.org/10.1145/1718487.1718542}
@@ -1187,7 +1221,7 @@ The authors acknowledge the TU Wien University Library for financial support thr
 	\bibitem{chen16}
 	Chen T, Guestrin C.
 	\newblock XGBoost: A Scalable Tree Boosting System.
-	\newblock In: Proceedings of the 22Nd ACM SIGKDD International Conference on
+	\newblock In: Proceedings of the 22nd ACM SIGKDD International Conference on
 	Knowledge Discovery and Data Mining. KDD '16. New York, NY, USA: ACM; 2016.
 	p. 785--794.
 	\newblock \href {http://dx.doi.org/10.1145/2939672.2939785}
@@ -1234,25 +1268,16 @@ The authors acknowledge the TU Wien University Library for financial support thr
 	157--161.
 	\newblock Available from: \url{http://ceur-ws.org/Vol-1609/16090157.pdf}.
 	
-    \bibitem{sakai2007alternatives}
-	Sakai T.
-	\newblock Alternatives to Bpref.
-	\newblock In: Proceedings of the 30th Annual International ACM SIGIR Conference
-	on Research and Development in Information Retrieval. SIGIR '07. New York,
-	NY, USA: ACM; 2007. p. 71--78.
-	\newblock Available from: \url{http://doi.acm.org/10.1145/1277741.1277756}.
-	\href {http://dx.doi.org/10.1145/1277741.1277756}
-	{doi:10.1145/1277741.1277756}.
-
 	\bibitem{sanderson2010test}
 	Sanderson M, et~al.
-	\newblock Test collection based evaluation of information retrieval systems.
+	\newblock Test Collection based Evaluation of Information Retrieval Systems.
 	\newblock Foundations and Trends{\textregistered} in Information Retrieval.
 	2010;4(4):247--375.
 	\newblock \href {http://dx.doi.org/10.1561/1500000009}
 	{doi:10.1561/1500000009}.
 	
 \end{thebibliography}
+
 
 
 \end{document}
