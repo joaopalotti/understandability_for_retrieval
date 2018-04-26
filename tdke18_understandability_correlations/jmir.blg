@@ -1,0 +1,86 @@
+This is BibTeX, Version 0.99d (TeX Live 2016)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: jmir.aux
+The style file: vancouver.bst
+Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
+Reallocated global_strs (elt_size=20001) to 20 items from 10.
+Reallocated glb_str_end (elt_size=4) to 20 items from 10.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Database file #1: main.bib
+Warning--empty pages in gabrilovich2016cura
+Warning--empty booktitle in clear94
+Warning--empty pages in clear94
+Warning--empty pages in palotti14
+Warning--empty pages in zuccon14
+Warning--empty pages in clef15
+Warning--empty pages in palotti16b
+Warning--empty author and editor in pyphen
+Warning--missing publisher in pyphen
+Warning--empty author and editor in openmedspel
+Warning--missing publisher in openmedspel
+Warning--empty author and editor in pang16
+Warning--missing publisher in pang16
+Warning--empty pages in agrafiotesA16
+Warning--empty author and editor in nltk
+Warning--missing publisher in nltk
+Warning--empty author and editor in aspell
+Warning--missing publisher in aspell
+Warning--empty author and editor in bs4
+Warning--missing publisher in bs4
+Warning--empty author and editor in reddit
+Warning--missing publisher in reddit
+Warning--empty author and editor in redditaskdocs
+Warning--missing publisher in redditaskdocs
+Warning--empty author and editor in redditapi
+Warning--missing publisher in redditapi
+Warning--empty author and editor in wikipedia
+Warning--missing publisher in wikipedia
+Warning--empty author and editor in pubmed
+Warning--missing publisher in pubmed
+Warning--empty pages in trec15
+Warning--empty author and editor in jan11
+Warning--missing publisher in jan11
+Warning--empty pages in song15
+Warning--empty pages in oh15
+You've used 82 entries,
+            3170 wiz_defined-function locations,
+            1170 strings with 23137 characters,
+and the built_in function-call counts, 114553 in all, are:
+= -- 14301
+> -- 912
+< -- 32
++ -- 492
+- -- 228
+* -- 9116
+:= -- 12507
+add.period$ -- 356
+call.type$ -- 82
+change.case$ -- 82
+chr.to.int$ -- 0
+cite$ -- 117
+duplicate$ -- 9472
+empty$ -- 10934
+format.name$ -- 285
+if$ -- 27164
+int.to.chr$ -- 0
+int.to.str$ -- 82
+missing$ -- 770
+newline$ -- 469
+num.names$ -- 82
+pop$ -- 1636
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 1713
+stack$ -- 0
+substring$ -- 19815
+swap$ -- 2049
+text.length$ -- 32
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 35
+while$ -- 655
+width$ -- 84
+write$ -- 1050
+(There were 35 warnings)
