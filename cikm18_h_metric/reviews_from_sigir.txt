@@ -1,0 +1,89 @@
+
+
+----------------------- REVIEW 1 ---------------------
+PAPER: 677
+TITLE: A new Framework for Multidimensional Evaluation of Search Engines
+AUTHORS: Joao Palotti and Guido Zuccon
+
+Relevance to SIGIR: 4 (Relevant: Interesting to some SIGIR participants.)
+Originality of Work: 2 (Rather straightforward: Obvious, or a minor improvement on familiar techniques.)
+Technical Soundness: 4 (The authors mostly use appropriate description of technical facts but there are some minor mistakes.)
+Quality of Presentation: 4 (With all the essential content and understandable by most readers.)
+Impact of Contributions: 1 (Will have no impact on the field.)
+Adequacy of Citations: 4 (Mostly comprehensive: Review written well; there are one or two papers missing, but they aren't crucial omissions.)
+Reproducibility of Methods/Findings: 4 (Could be reproduced: Researchers could reproduce the methods and results with some effort.)
+Resource Paper?: no
+Overall Evaluation: -1 (Unworthy (Reject): I think it should be rejected (does not reach the threshold of SIGIR).)
+Nominated for Best Paper: no
+Reviewer's Confidence: 3 (High)
+
+----------- Comments to the Author(s) -----------
+This paper proposes a framework for multi-dimensional evaluation of search engine, which attempts to capture the multiple dimensions of relevance beyond topical relevance (e.g. understandability, trustworthiness). Differently from previous approaches (e.g. UBIRE) the proposed framework proposes a "late fusion" approach to computing a multidimensional relevance score - i.e. compute relevance on each dimension separately, and then combine each results using the harmonic mean. The author claim that this approach has the advantage of allowed a better understanding of the trade-off between different dimensions of relevance. 
+
+My main issue with this paper is that I don't really get what the significant contribution is or, more specifically, I'm not convinced by the main claim of the paper: that this new framework allow easier understanding of the trade-offs from different relevance dimensions.
+
+Their solution to that problem appears to be the their framework allows them to evaluate each dimension separately: frankly, I don't see why this is not possible with other approaches (i.e. how the integrated metric is calculated should limit our ability to also calculate separate metrics for each dimension), and I also don't think proposing to use separate metrics for each dimenstion is a significant enough contribution, even for a short paper.
+
+
+----------------------- REVIEW 2 ---------------------
+PAPER: 677
+TITLE: A new Framework for Multidimensional Evaluation of Search Engines
+AUTHORS: Joao Palotti and Guido Zuccon
+
+Relevance to SIGIR: 5 (Highly relevant: Interesting to many SIGIR participants.)
+Originality of Work: 3 (Somewhat conventional: A number of people could have come up with this if they thought about it for a while.)
+Technical Soundness: 4 (The authors mostly use appropriate description of technical facts but there are some minor mistakes.)
+Quality of Presentation: 4 (With all the essential content and understandable by most readers.)
+Impact of Contributions: 2 (Marginally interesting. May or may not be cited.)
+Adequacy of Citations: 3 (Just good enough: Review is OK; just about enough past work is covered to make it acceptable.)
+Reproducibility of Methods/Findings: 5 (Easy to reproduce: Researchers could easily reproduce the methods and results described in the paper without much difficulty.)
+Resource Paper?: no
+Overall Evaluation: 0 (Not sure (Borderline): I'd rather not see it in the conference.)
+Nominated for Best Paper: no
+Reviewer's Confidence: 2 (Medium)
+
+----------- Comments to the Author(s) -----------
+This paper proposes a new framework, named H, to evaluate information retrieval systems in the presence of multidimensional relevance. 
+The authors compared H with the known UBIRE (Understandability-Biased IR Evaluation), and showed how the proposed approach diverges from the UBIRE framework, and how H can be used to better understand the trade-offs between topical relevance and the other relevance dimensions.
+
+However, this paper does not provide new technique in the computation of information relevance in IR, only give the suggestion in the combination of the known multidimensional relevance to form a final evaluation score, so the improvement seems not significant.
+Furthermore, the authors did not do the user-based validation with H on the two dimension relevance, clearly the metric of Understandability is strongly relevant to users’ feedback.
+
+
+----------------------- REVIEW 3 ---------------------
+PAPER: 677
+TITLE: A new Framework for Multidimensional Evaluation of Search Engines
+AUTHORS: Joao Palotti and Guido Zuccon
+
+Relevance to SIGIR: 4 (Relevant: Interesting to some SIGIR participants.)
+Originality of Work: 3 (Somewhat conventional: A number of people could have come up with this if they thought about it for a while.)
+Technical Soundness: 4 (The authors mostly use appropriate description of technical facts but there are some minor mistakes.)
+Quality of Presentation: 3 (Missing a few important details but the major points were clear.)
+Impact of Contributions: 4 (Some of the ideas, results, or resources will substantially help other people's ongoing research.)
+Adequacy of Citations: 4 (Mostly comprehensive: Review written well; there are one or two papers missing, but they aren't crucial omissions.)
+Reproducibility of Methods/Findings: 4 (Could be reproduced: Researchers could reproduce the methods and results with some effort.)
+Resource Paper?: no
+Overall Evaluation: 1 (Solid work (Accept): I would like to see it accepted.)
+Nominated for Best Paper: no
+Reviewer's Confidence: 2 (Medium)
+
+----------- Comments to the Author(s) -----------
+The authors propose a new framework (the H framework) to evaluate multidimensional relevance. In the H measure, each relevance dimension is combined with the weighted harmonic mean, which allows for the examination of the single contributions of each dimension to the overall weight. A synthetic and a run with real data, using topical relevance and understandability, are used to demonstrate the behavior of the proposed measure, also when it comes to explaining the tradeoff between dimensions.
+
+All in all an interesting, but I think a pretty straightforward improvement over given measures. The behavior of the new proposed framework is explained to a sufficient degree for a short paper. The work is interesting for people who need to evaluate multi-dimensional relevance. The work might also fit in related conferences like ICTIR.
+
+While the paper contains all information required to understand the proposed framework, descriptions are a bit cryptic at times (for instance, in section 3 the compositionality assumption and the use of a mixture model in UBIRE is mentioned, but it's not clear to me what is meant here). (TODO)
+
+Small remark: Reference [3] is 'Metzler' not 'Metlzer'  (FIXED)
+
+
+-------------------------  METAREVIEW  ------------------------
+PAPER: 677
+TITLE: A new Framework for Multidimensional Evaluation of Search Engines
+
+RECOMMENDATION: reject
+
+This is the meta-review for this paper.
+
+This paper compares an existing evaluation measure taking account of multi-dimensional relevance, with a proposed measure. The two measures are highly correlated in both synthetic and a "real data" testing, yielding the same ranking of systems when combining topical relevance and understandability. The claimed advantage to the proposed measure is that its method allows understanding of the contribution of each relevance type to the eventual combined score. This is accomplished by computing a score for each separately, and then combining using the harmonic mean (as in F-score). This is really a very marginal improvement, and the authors do not make a strong enough claim for the utility of their method to justify its use. More argument concerning this, and, especially, the issues of relative weighting of different dimensions, is necessary before this work is accepted for publication.
+

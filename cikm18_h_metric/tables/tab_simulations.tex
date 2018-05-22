@@ -1,0 +1,33 @@
+\begin{table*}[t]
+\centering \caption{We varied $T$, the expected number of topical relevance (rows), and
+the mean $\mu$ of Gaussian distribution used to generate understandability
+labels (columns). A smaller $\mu$ means that easier to read documents
+are retrieved. We showed the average and standard deviation of each
+experiment.     \vspace{-6pt} % All numbers were multiplied by 10. \todo{{[}I would prefer not multiplying{]}}
+}
+\label{tab:simulations} \resizebox{1.\textwidth}{!}{ %
+\resizebox{0.05\textwidth}{!}{
+\begin{tabular}{cllllllllllll}
+\toprule 
+\multirow{2}{*}{$T$}  & \multicolumn{4}{c}{\textbf{Understandability $\mathcal{N}$(50,40)}} & \multicolumn{4}{c}{\textbf{Understandability $\mathcal{N}$(40,40)}} & \multicolumn{4}{c}{\textbf{Understandability $\mathcal{N}$(30,40)}} \\
+    \cmidrule{2-13}
+ & RBP  & uRBP  & $RBP_{u}$  & $H_{RBP}$  & RBP  & uRBP  & $RBP_{u}$  & $H_{RBP}$  & RBP  & uRBP  & $RBP_{u}$  & $H_{RBP}$ \tabularnewline
+\midrule 
+.3  & .26$\pm$.15 & .13$\pm$.09 & .37$\pm$.16 & .27$\pm$.12 & .26$\pm$.15 & .15$\pm$.11 & .47$\pm$.17 & .31$\pm$.13 & .26$\pm$.15  & .16$\pm$.11  & .59$\pm$.15  & .34$\pm$.14 \tabularnewline
+.4  & .36$\pm$.16 & .17$\pm$.10 & .37$\pm$.16 & .33$\pm$.13 & .36$\pm$.16 & .20$\pm$.11 & .46$\pm$.16 & .37$\pm$.13 & .36$\pm$.16  & .21$\pm$.11  & .57$\pm$.15  & .40$\pm$.13 \tabularnewline
+    .5  & .44$\pm$.16 & .21$\pm$.11 & .37$\pm$.16 & .37$\pm$.13 & .44$\pm$.16 & .25$\pm$.11 & .46$\pm$.16 & .42$\pm$.13 & {\cellcolor{yellow!25}}.44$\pm$.16 & {\cellcolor{yellow!25}}.26$\pm$.12  & {\cellcolor{yellow!25}}.56$\pm$.16  & {\cellcolor{yellow!25}}\textbf{.46$\pm$.12}\tabularnewline
+    .6  & .54$\pm$.16 & .25$\pm$.11 & .37$\pm$.16 & .41$\pm$.14 & {\cellcolor{blue!25}}.54$\pm$.16  & {\cellcolor{blue!25}}.30$\pm$.11  & {\cellcolor{blue!25}}.45$\pm$.16 & {\cellcolor{blue!25}}\textbf{.46$\pm$.13} & .54$\pm$.16  & .33$\pm$.13  & .53$\pm$.16 & .50$\pm$.12\tabularnewline
+.7  & .63$\pm$.15 & .30$\pm$.12 & .37$\pm$.17 & .44$\pm$.14 & .63$\pm$.15  & .34$\pm$.11  & .44$\pm$.16 & .49$\pm$.13 & .63$\pm$.15  & .37$\pm$.12  & .54$\pm$.16  & .54$\pm$.12 \tabularnewline
+\bottomrule
+\end{tabular}
+} 
+}%resize box
+    \vspace{-10pt}
+\end{table*}
+
+%.3 & 28$\pm$1 & 14$\pm$1 & 41$\pm$1 & 30$\pm$1 & 28$\pm$1 & 16$\pm$1 & 50$\pm$1 & 33$\pm$1 & 28$\pm$1 & 19$\pm$1 & 59$\pm$2 & 35$\pm$1\tabularnewline
+%.4 & 38$\pm$2 & 19$\pm$1 & 41$\pm$1 & 36$\pm$1 & 38$\pm$2 & 21$\pm$1 & 50$\pm$1 & 39$\pm$1 & 38$\pm$2 & 25$\pm$1 & 60$\pm$1 & 43$\pm$1\tabularnewline
+%.5 & 47$\pm$1 & 24$\pm$1 & 41$\pm$1 & 40$\pm$1 & 47$\pm$1 & 26$\pm$1 & 49$\pm$1 & 45$\pm$1 & {\cellcolor{yellow!25}} 47$\pm$1 & {\cellcolor{yellow!25}} 30$\pm$1 & {\cellcolor{yellow!25}} 60$\pm$1 & {\cellcolor{yellow!25}} 49$\pm$1\tabularnewline
+%.6 & 56$\pm$1 & 28$\pm$1 & 41$\pm$1 & 44$\pm$1 & {\cellcolor{blue!25}}56$\pm$1 & {\cellcolor{blue!25}}32$\pm$1 &  {\cellcolor{blue!25}}49$\pm$2 & {\cellcolor{blue!25}}49$\pm$1 & 56$\pm$1 & 37$\pm$1 & 60$\pm$1 & 55$\pm$1\tabularnewline
+%.7 & 65$\pm$1 & 33$\pm$1 & 42$\pm$1 & 48$\pm$1 & 65$\pm$1 & 37$\pm$1 & 49$\pm$1 & 53$\pm$1 & 65$\pm$1 & 42$\pm$1 & 60$\pm$1 & 60$\pm$1\tabularnewline
+
