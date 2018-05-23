@@ -8,7 +8,7 @@ To overcome this limitation, we aim to create a measure which, while still allow
 
 The evaluation of each relevance dimension separately is trivial, as it consists in applying the discount and gain function of the underlying evaluation measure, e.g. RBP, to each relevance dimension $\delta \in \mathcal{D}$, where the gains are those associated with the criteria for that specific dimension. 
 
-While the outputs of each relevance dimension could be combined with a linear or geometric combination of values, we opt to use the weighted harmonic mean, as it is particularly sensitive to a single lower-than average value. The same intuition is used to combine recall and precision in the widely used $F$-measure. 
+While the outputs of each relevance dimension could be combined with a linear or geometric combination of values, we opt to use the weighted harmonic mean, as it is particularly sensitive to a single lower-than-average value. The same intuition is used to combine recall and precision in the widely used $F$-measure. 
 Given a (discount-gain) evaluation measure $\mathcal{M}$, we apply the measure to evaluate a list of  documents $l_\delta$ which have been labeled with respect to dimension $\delta$ (i.e., we compute $\mathcal{M}(l_\delta)$). Then, to compute the proposed measure $H_\mathcal{M}$, we combine all $\mathcal{M}(l_\delta)$ for each relevance dimension using the harmonic mean, where each dimension is weighted according to a preferential weight $w_\delta$ assigned to each dimension; formally:
 
 \vspace{-4pt}
