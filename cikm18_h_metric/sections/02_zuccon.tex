@@ -1,7 +1,7 @@
 \section{Incorporating Understandability into Evaluation Metrics}
 \label{sec:understandability_metrics}
 The understandability-biased IR evaluation framework (UBIRE)~\cite{zuccon14,zuccon16} is based on the gain-discount framework~\cite{carterette11} which models an evaluation measure $\mathcal{M}$ as:
-
+%
 \vspace{-4pt}
 \begin{equation*}
 \mathcal{M} = \frac{1}{\mathcal{N}} \sum_{k=1}^{K} \mathtt{d}(k) \mathtt{g}(d@k)
@@ -27,6 +27,7 @@ This is done by modelling the probability of relevance $P(R|d@k)$ as the joint d
 
 Evaluation metrics developed within this framework differ by means of the instantiations of $f\big(P(\delta_1, \cdots, \delta_n|d@k)\big)$, other than by which dimensions are modelled. Zuccon provided an instantiation that considers both topicality and understandability~\cite{zuccon16}:
 %
+\vspace{-4pt}
 \begin{equation*}
 \mathtt{g}(d@k) = f(P(R|d@k)) = f\big(P(T|d@k) \cdot P(U|d@k)\big)
 \end{equation*}

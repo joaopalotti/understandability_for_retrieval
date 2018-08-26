@@ -5,7 +5,7 @@
 \section{Comparing frameworks Through System Simulations}
 \label{sec:simulations}
 
-To understand the behaviour of UBIRE and H when facing different IR systems, we first employed synthetic systems so as to have a fine-grained control over our experiments. This allowed to know a priori what has changed between two system instances and study the effect these changes had on evaluation. In our experiments, along with topicality, we considered understandability, leaving the (trivial) extension to other dimensions to later work. 
+To understand the behaviour of UBIRE and $MM$ when facing different IR systems, we first employed synthetic systems so as to have a fine-grained control over our experiments. This allowed to know a priori what has changed between two system instances and study the effect these changes had on evaluation. In our experiments, along with topicality, we considered understandability, leaving the (trivial) extension to other dimensions to later work. 
 In the following simulations we controlled the amount of topical documents and understandable documents retrieved. We did so by following this two-phase procedure:
 
 \begin{enumerate}
@@ -29,21 +29,21 @@ We executed these two phases in succession. In total, we generated 1,000 runs fo
 \end{figure}
 
 
-We calculated $uRBP$ (using UBIRE) and $H_{RBP}$ for each synthetic system.
+We calculated $uRBP$ (using UBIRE) and $MM_{RBP}$ for each synthetic system.
 The average result of the synthetic runs is shown in Table~\ref{tab:simulations}. Each row shows the results of simulations with different values for $T$, i.e., different expected number of topical documents retrieved.
 We varied $\mu$ which was used to create the understandability labels, and show the results for $\mu = 50, 40, 30$.
 A smaller $\mu$ means that more understandable documents were retrieved. The results show that as the expected number of topical documents ($T$) increases, $RBP$ increases. Likewise, $uRBP$ increases, as it is bounded by topical relevance.
-In turn, increasing $T$ has no effect on $RBP_u$, but increases $H_{RBP}$, as it is also directly dependant on $RBP$. When the number of understandable documents retrieved is increased (i.e., $\mu$ decreased ), $RBP$ stays constant, as it does not measure how understandable documents are.
-In turn, $uRBP$, $RBP_u$ and $H_{RBP}$ increase. 
+In turn, increasing $T$ has no effect on $RBP_u$, but increases $MM_{RBP}$, as it is also directly dependant on $RBP$. When the number of understandable documents retrieved is increased (i.e., $\mu$ decreased ), $RBP$ stays constant, as it does not measure how understandable documents are.
+In turn, $uRBP$, $RBP_u$ and $MM_{RBP}$ increase. 
 Those are the expected behaviour of the considered measures. % aforementioned metrics and only shows that our simulated runs produce sane results.
 
 We further focused our attention to the results of specific experiments highlighted in blue and yellow in Table~\ref{tab:simulations}. These cases simulated an initial system S1 that exhibited the results in blue (condition $T=0.6$ and $\mathcal{N}(40,40)$) being modified to improve the understandability of retrieved documents ($\mathcal{N}(30,40)$) at the expenses of topicality ($T=0.5$), producing a new system S2. The effectiveness of S2 is highlighted in yellow. 
 
 If $RBP$ and $uRBP$ were used to decide whether S2 should be preferred over the initial system S1, then S2 would be discarded and S1 preferred, as S2 produced a $18\%$ reduction in $RBP$ and a $13\%$ reduction in $uRBP$. With these results, an IR researcher would conclude that the modifications in S2 did not pay off.
 
-If $H_{RBP}$ was used instead, the IR researcher would have been able to gain more insights about system effectiveness and the trade-off between understandability and topicality. To use $H_{RBP}$, $RBP_t$ ($=RBP$) and $RBP_u$ needed to be computed. Between S1 and S2, there was a decrease in $RBP_t$ of $18\%$; but conversely $RBP_u$ increased by $24\%$: this clearly allows to gauge the trade-off between topicality and understandability. 
+If $MM_{RBP}$ was used instead, the IR researcher would have been able to gain more insights about system effectiveness and the trade-off between understandability and topicality. To use $MM_{RBP}$, $RBP_t$ ($=RBP$) and $RBP_u$ needed to be computed. Between S1 and S2, there was a decrease in $RBP_t$ of $18\%$; but conversely $RBP_u$ increased by $24\%$: this clearly allows to gauge the trade-off between topicality and understandability. 
 
-When $RBP$ and $uRBP$ were combined within $H_{RBP}$, if both dimensions were given equal weight, then systems S1 and S2 obtained the same $H_{RBP}$. Note that $H$ can be adapted to specific circumstances: if topicality was more important than understandability, then the weights of each dimension would have been changed accordingly in the harmonic mean computation. 
+When $RBP$ and $uRBP$ were combined within $MM_{RBP}$, if both dimensions were given equal weight, then systems S1 and S2 obtained the same $MM_{RBP}$. Note that $MM$ can be adapted to specific circumstances: if topicality was more important than understandability, then the weights of each dimension would have been changed accordingly in the harmonic mean computation. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
