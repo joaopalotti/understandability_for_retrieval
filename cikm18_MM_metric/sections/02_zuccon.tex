@@ -7,8 +7,10 @@ The understandability-biased IR evaluation framework (UBIRE)~\cite{zuccon14,zucc
 \mathcal{M} = \frac{1}{\mathcal{N}} \sum_{k=1}^{K} \mathtt{d}(k) \mathtt{g}(d@k)
 \end{equation*}
 %
-where $\mathtt{g}(d@k)$ and $\mathtt{d}(k)$ are respectively the \textit{gain function} computed for the (relevance of the) document at rank $k$ (i.e. $d@k$) and the \textit{discount function} computed for the rank $k$.
-$K$ is the depth of assessment at which measure $\mathcal{M}$ is evaluated, and $1/\mathcal{N}$ is an optional normalization factor, which serves to bound the value of the sum into the range [0,1] (details in~\cite{carterette11}).
+%where $\mathtt{g}(d@k)$ and $\mathtt{d}(k)$ are respectively the \textit{gain function} computed for the (relevance of the) document at rank $k$ (i.e. $d@k$) and the \textit{discount function} computed for the rank $k$.
+%$K$ is the depth of assessment at which measure $\mathcal{M}$ is evaluated, and $1/\mathcal{N}$ is an optional normalization factor, which serves to bound the value of the sum into the range [0,1] (details in~\cite{carterette11}).
+where $\mathtt{g}(d@k)$ and $\mathtt{d}(k)$ are respectively the \textit{gain function} computed for the document at rank $k$ and the \textit{discount function} computed for the rank $k$.
+$K$ is the depth of assessment at which measure $\mathcal{M}$ is evaluated, and $1/\mathcal{N}$ is a normalization factor, which serves to bound the value of the sum into the range [0,1] (details in~\cite{carterette11}).
 
 The gain-discount framework encompasses measures such as the normalized Discounted Cumulative Gain (nDCG)~\cite{jarvelin02} with $\mathtt{g}(d@k) = 2^{P(R|d@k)} - 1$ and $\mathtt{d}(k) = 1/(log_2(1 + k))$; the expected reciprocal rank (ERR)~\cite{chapelle09} with $\mathtt{g}(d@K) =  (2^{P (R|d@k)} - 1)/2^{max(P (R|d))}$ and $\mathtt{d}(k) = 1/k$; and the Rank Biased Precision (RBP) with $\mathtt{g}(d@k)$ equal to 1 if $d@k$ is relevant and 0 otherwise and $\mathtt{d}(k) = \rho^{k-1}$ (with $\rho$ representing the user persistence).
 
@@ -32,7 +34,7 @@ Evaluation metrics developed within this framework differ by means of the instan
 \mathtt{g}(d@k) = f(P(R|d@k)) = f\big(P(T|d@k) \cdot P(U|d@k)\big)
 \end{equation*}
 
-Specific implementations of the UBIRE framework that have been developed in previous work considered the basic gain and discount functions from RBP~\cite{moffat08}; an instantiation with understandability~\cite{zuccon14,zuccon16} has been later extended by jointly considering also trustworthiness~\cite{clefIR17}. For ease of explanation, we consider the formulation with topicality and understandability; similar considerations apply when also trustworthiness is modelled (as well as other dimensions, as a matter of fact). In this case, the understandability-biased RBP, $uRBP$, is defined as: 
+Specific implementations of the UBIRE framework that have been developed in previous work considered the basic gain and discount functions from RBP~\cite{moffat08}; an instantiation with understandability~\cite{zuccon14,zuccon16} has been later extended by jointly considering also trustworthiness~\cite{clefIR17}. For ease of explanation, we consider the formulation with topicality and understandability; similar considerations apply when also trustworthiness is modelled (as well as other dimensions). In this case, the understandability-biased RBP, $uRBP$, is defined as: 
 %
 \begin{eqnarray*}
     uRBP(\rho) &=& (1-\rho) \sum_{k=1}^{K} \rho^{k-1} P(T|d@k) \cdot P(U|d@k)\\ 
