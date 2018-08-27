@@ -1,0 +1,200 @@
+%%% -*-BibTeX-*-
+%%% Do NOT edit. File created by BibTeX with style
+%%% ACM-Reference-Format-Journals [18-Jan-2012].
+
+\begin{thebibliography}{14}
+
+%%% ====================================================================
+%%% NOTE TO THE USER: you can override these defaults by providing
+%%% customized versions of any of these macros before the \bibliography
+%%% command.  Each of them MUST provide its own final punctuation,
+%%% except for \shownote{}, \showDOI{}, and \showURL{}.  The latter two
+%%% do not use final punctuation, in order to avoid confusing it with
+%%% the Web address.
+%%%
+%%% To suppress output of a particular field, define its macro to expand
+%%% to an empty string, or better, \unskip, like this:
+%%%
+%%% \newcommand{\showDOI}[1]{\unskip}   % LaTeX syntax
+%%%
+%%% \def \showDOI #1{\unskip}           % plain TeX syntax
+%%%
+%%% ====================================================================
+
+\ifx \showCODEN    \undefined \def \showCODEN     #1{\unskip}     \fi
+\ifx \showDOI      \undefined \def \showDOI       #1{#1}\fi
+\ifx \showISBNx    \undefined \def \showISBNx     #1{\unskip}     \fi
+\ifx \showISBNxiii \undefined \def \showISBNxiii  #1{\unskip}     \fi
+\ifx \showISSN     \undefined \def \showISSN      #1{\unskip}     \fi
+\ifx \showLCCN     \undefined \def \showLCCN      #1{\unskip}     \fi
+\ifx \shownote     \undefined \def \shownote      #1{#1}          \fi
+\ifx \showarticletitle \undefined \def \showarticletitle #1{#1}   \fi
+\ifx \showURL      \undefined \def \showURL       {\relax}        \fi
+% The following commands are used for tagged output and should be
+% invisible to TeX
+\providecommand\bibfield[2]{#2}
+\providecommand\bibinfo[2]{#2}
+\providecommand\natexlab[1]{#1}
+\providecommand\showeprint[2][]{arXiv:#2}
+
+\bibitem[\protect\citeauthoryear{Borlund}{Borlund}{2003}]%
+        {borlund03}
+\bibfield{author}{\bibinfo{person}{P Borlund}.}
+  \bibinfo{year}{2003}\natexlab{}.
+\newblock \showarticletitle{The concept of relevance in IR}.
+\newblock \bibinfo{journal}{{\em Journal of the Association for Information
+  Science and Technology\/}} \bibinfo{volume}{54}, \bibinfo{number}{10}
+  (\bibinfo{year}{2003}), \bibinfo{pages}{913--925}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Carterette}{Carterette}{2011}]%
+        {carterette11}
+\bibfield{author}{\bibinfo{person}{B Carterette}.}
+  \bibinfo{year}{2011}\natexlab{}.
+\newblock \showarticletitle{System effectiveness, user models, and user
+  utility: a conceptual framework for investigation}. In
+  \bibinfo{booktitle}{{\em SIGIR}}. ACM, \bibinfo{pages}{903--912}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Chapelle, Meltzer, Zhang, and
+  Grinspan}{Chapelle et~al\mbox{.}}{2009}]%
+        {chapelle09}
+\bibfield{author}{\bibinfo{person}{Olivier Chapelle}, \bibinfo{person}{Donald
+  Meltzer}, \bibinfo{person}{Ya Zhang}, {and} \bibinfo{person}{Pierre
+  Grinspan}.} \bibinfo{year}{2009}\natexlab{}.
+\newblock \showarticletitle{Expected Reciprocal Rank for Graded Relevance}. In
+  \bibinfo{booktitle}{{\em CIKM}}. \bibinfo{publisher}{ACM},
+  \bibinfo{pages}{621--630}.
+\newblock
+\showISBNx{978-1-60558-512-3}
+
+
+\bibitem[\protect\citeauthoryear{Hersh}{Hersh}{2008}]%
+        {hersh08}
+\bibfield{author}{\bibinfo{person}{W Hersh}.} \bibinfo{year}{2008}\natexlab{}.
+\newblock \bibinfo{booktitle}{{\em Information retrieval: a health and
+  biomedical perspective}}.
+\newblock \bibinfo{publisher}{Springer Science \& Business Media}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{J\"{a}rvelin and
+  Kek\"{a}l\"{a}inen}{J\"{a}rvelin and Kek\"{a}l\"{a}inen}{2002}]%
+        {jarvelin02}
+\bibfield{author}{\bibinfo{person}{K J\"{a}rvelin} {and} \bibinfo{person}{J
+  Kek\"{a}l\"{a}inen}.} \bibinfo{year}{2002}\natexlab{}.
+\newblock \showarticletitle{Cumulated Gain-based Evaluation of IR Techniques}.
+\newblock \bibinfo{journal}{{\em ACM Trans. Inf. Syst.\/}}
+  \bibinfo{volume}{20}, \bibinfo{number}{4} (\bibinfo{date}{Oct.}
+  \bibinfo{year}{2002}), \bibinfo{pages}{422--446}.
+\newblock
+\showISSN{1046-8188}
+
+
+\bibitem[\protect\citeauthoryear{Mishra, White, Ieong, and Horvitz}{Mishra
+  et~al\mbox{.}}{2014}]%
+        {mishra2014time}
+\bibfield{author}{\bibinfo{person}{N Mishra}, \bibinfo{person}{R White},
+  \bibinfo{person}{S Ieong}, {and} \bibinfo{person}{E Horvitz}.}
+  \bibinfo{year}{2014}\natexlab{}.
+\newblock \showarticletitle{Time-critical search}. In \bibinfo{booktitle}{{\em
+  SIGIR}}. ACM, \bibinfo{pages}{747--756}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Moffat and Zobel}{Moffat and Zobel}{2008}]%
+        {moffat08}
+\bibfield{author}{\bibinfo{person}{A Moffat} {and} \bibinfo{person}{J Zobel}.}
+  \bibinfo{year}{2008}\natexlab{}.
+\newblock \showarticletitle{Rank-biased Precision for Measurement of Retrieval
+  Effectiveness}.
+\newblock \bibinfo{journal}{{\em ACM Trans. Inf. Syst.\/}}
+  \bibinfo{volume}{27}, \bibinfo{number}{1}, Article \bibinfo{articleno}{2}
+  (\bibinfo{year}{2008}), \bibinfo{numpages}{27}~pages.
+\newblock
+\showISSN{1046-8188}
+
+
+\bibitem[\protect\citeauthoryear{Palotti, Zuccon, Goeuriot, Kelly, Hanbury,
+  Jones, Lupu, and Pecina}{Palotti et~al\mbox{.}}{2015}]%
+        {clefIR15}
+\bibfield{author}{\bibinfo{person}{J Palotti}, \bibinfo{person}{G Zuccon},
+  \bibinfo{person}{L Goeuriot}, \bibinfo{person}{L Kelly}, \bibinfo{person}{A
+  Hanbury}, \bibinfo{person}{G Jones}, \bibinfo{person}{M Lupu}, {and}
+  \bibinfo{person}{P Pecina}.} \bibinfo{year}{2015}\natexlab{}.
+\newblock \showarticletitle{{ShARe/CLEF eHealth Evaluation Lab 2015, Task 2:
+  User-centred Health Information Retrieval}}. In \bibinfo{booktitle}{{\em
+  CLEF}}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Palotti, Zuccon, Jimmy, Pecina, Lupu,
+  Goeuriot, Kelly, and Hanbury}{Palotti et~al\mbox{.}}{2017}]%
+        {clefIR17}
+\bibfield{author}{\bibinfo{person}{J Palotti}, \bibinfo{person}{G Zuccon},
+  \bibinfo{person}{Jimmy}, \bibinfo{person}{P Pecina}, \bibinfo{person}{M
+  Lupu}, \bibinfo{person}{L Goeuriot}, \bibinfo{person}{L Kelly}, {and}
+  \bibinfo{person}{A Hanbury}.} \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{{CLEF 2017 Task Overview: The IR Task at the
+  eHealth Evaluation Lab}}. In \bibinfo{booktitle}{{\em CLEF}}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Park}{Park}{1993}]%
+        {park93}
+\bibfield{author}{\bibinfo{person}{T~K Park}.} \bibinfo{year}{1993}\natexlab{}.
+\newblock \showarticletitle{The Nature of Relevance in Information Retrieval:
+  An Empirical Study}.
+\newblock \bibinfo{journal}{{\em The Library Quarterly\/}}
+  \bibinfo{volume}{63}, \bibinfo{number}{3} (\bibinfo{year}{1993}),
+  \bibinfo{pages}{318--351}.
+\newblock
+\showISSN{00242519, 1549652X}
+
+
+\bibitem[\protect\citeauthoryear{Schamber}{Schamber}{1994}]%
+        {schamber94}
+\bibfield{author}{\bibinfo{person}{L Schamber}.}
+  \bibinfo{year}{1994}\natexlab{}.
+\newblock \showarticletitle{Relevance and information behavior.}
+\newblock \bibinfo{journal}{{\em ARIST\/}}  \bibinfo{volume}{29}
+  (\bibinfo{year}{1994}).
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Zuccon}{Zuccon}{2016}]%
+        {zuccon16}
+\bibfield{author}{\bibinfo{person}{G Zuccon}.} \bibinfo{year}{2016}\natexlab{}.
+\newblock \showarticletitle{Understandability biased evaluation for information
+  retrieval}. In \bibinfo{booktitle}{{\em European Conference on Information
+  Retrieval}}. Springer, \bibinfo{pages}{280--292}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Zuccon and Koopman}{Zuccon and
+  Koopman}{2014}]%
+        {zuccon14}
+\bibfield{author}{\bibinfo{person}{G Zuccon} {and} \bibinfo{person}{B
+  Koopman}.} \bibinfo{year}{2014}\natexlab{}.
+\newblock \showarticletitle{{Integrating Understandability in the Evaluation of
+  Consumer Health Search Engines}}. In \bibinfo{booktitle}{{\em MedIR}}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Zuccon, Palotti, Goeuriot, Kelly, Lupu,
+  Pecina, Mueller, Budaher, and Deacon}{Zuccon et~al\mbox{.}}{2016}]%
+        {clefIR16}
+\bibfield{author}{\bibinfo{person}{G Zuccon}, \bibinfo{person}{J Palotti},
+  \bibinfo{person}{L Goeuriot}, \bibinfo{person}{L Kelly}, \bibinfo{person}{M
+  Lupu}, \bibinfo{person}{P Pecina}, \bibinfo{person}{H Mueller},
+  \bibinfo{person}{J Budaher}, {and} \bibinfo{person}{A Deacon}.}
+  \bibinfo{year}{2016}\natexlab{}.
+\newblock \showarticletitle{{The IR Task at the CLEF eHealth evaluation lab
+  2016}}. In \bibinfo{booktitle}{{\em {CLEF}}}, Vol.~\bibinfo{volume}{1609}.
+  \bibinfo{pages}{15--27}.
+\newblock
+
+
+\end{thebibliography}

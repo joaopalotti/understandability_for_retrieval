@@ -1,0 +1,76 @@
+This is BibTeX, Version 0.99d (TeX Live 2016)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: main.aux
+The style file: ACM-Reference-Format.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Database file #1: main.bib
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
+Reallocated global_strs (elt_size=20001) to 20 items from 10.
+Reallocated glb_str_end (elt_size=4) to 20 items from 10.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Warning--empty publisher in carterette11
+Warning--empty address in carterette11
+Warning--empty address in chapelle09
+Warning--numpages field, but no articleno or eid field, in chapelle09
+Warning--empty address in hersh08
+Warning--numpages field, but no articleno or eid field, in jarvelin02
+Warning--empty publisher in mishra2014time
+Warning--empty address in mishra2014time
+Warning--empty publisher in clefIR15
+Warning--empty address in clefIR15
+Warning--page numbers missing in both pages and numpages fields in clefIR15
+Warning--empty publisher in clefIR17
+Warning--empty address in clefIR17
+Warning--page numbers missing in both pages and numpages fields in clefIR17
+Warning--page numbers missing in both pages and numpages fields in schamber94
+Warning--empty publisher in zuccon16
+Warning--empty address in zuccon16
+Warning--empty publisher in zuccon14
+Warning--empty address in zuccon14
+Warning--page numbers missing in both pages and numpages fields in zuccon14
+Warning--empty publisher in clefIR16
+Warning--empty address in clefIR16
+You've used 14 entries,
+            5795 wiz_defined-function locations,
+            1403 strings with 17305 characters,
+and the built_in function-call counts, 16907 in all, are:
+= -- 2008
+> -- 637
+< -- 0
++ -- 210
+- -- 228
+* -- 1188
+:= -- 1734
+add.period$ -- 68
+call.type$ -- 14
+change.case$ -- 101
+chr.to.int$ -- 14
+cite$ -- 36
+duplicate$ -- 1530
+empty$ -- 1074
+format.name$ -- 260
+if$ -- 4044
+int.to.chr$ -- 2
+int.to.str$ -- 1
+missing$ -- 61
+newline$ -- 148
+num.names$ -- 112
+pop$ -- 626
+preamble$ -- 1
+purify$ -- 227
+quote$ -- 0
+skip$ -- 516
+stack$ -- 0
+substring$ -- 1187
+swap$ -- 134
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 335
+warning$ -- 22
+while$ -- 115
+width$ -- 0
+write$ -- 274
+(There were 22 warnings)
