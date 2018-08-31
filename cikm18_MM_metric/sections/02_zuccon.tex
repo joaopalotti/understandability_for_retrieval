@@ -21,6 +21,7 @@ For binary relevance, this probability is 1 for relevant documents and 0 for non
 UBIRE extends this framework to consider cases where relevance is modelled beyond topicality so as to explicitly model other dimensions, such as understandability.
 This is done by modelling the probability of relevance $P(R|d@k)$ as the joint distribution over all considered dimensions, $P(\delta_1, \cdots, \delta_n|d@k)$, where each $\delta_i \in \mathcal{D}$ represents a dimension of relevance, e.g., topicality, understandability. The computation is simplified by assuming that dimensions are compositional events and their probabilities independent (see~\cite{zuccon16} for more details). The gain function with respect to different dimensions of relevance can then be expressed as:
 
+\vspace{-12pt}
 \begin{eqnarray*}
     \mathtt{g}(d@k) &=& f(P(R|d@k)) \\
     &=& f\big(P(\delta_1, \cdots, \delta_n|d@k)\big) = f\Big(\prod_{i=1}^n P(\delta_i|d@k)\Big) 
@@ -36,14 +37,16 @@ Evaluation metrics developed within this framework differ by means of the instan
 
 Specific implementations of the UBIRE framework that have been developed in previous work considered the basic gain and discount functions from RBP~\cite{moffat08}; an instantiation with understandability~\cite{zuccon14,zuccon16} has been later extended by jointly considering also trustworthiness~\cite{clefIR17}. For ease of explanation, we consider the formulation with topicality and understandability; similar considerations apply when also trustworthiness is modelled (as well as other dimensions). In this case, the understandability-biased RBP, $uRBP$, is defined as: 
 %
+\vspace{-4pt}
 \begin{eqnarray*}
     uRBP(\rho) &=& (1-\rho) \sum_{k=1}^{K} \rho^{k-1} P(T|d@k) \cdot P(U|d@k)\\ 
 &=& (1-\rho) \sum_{k=1}^{K} \rho^{k-1} \mathtt{g}_{RBP}(d@k) \cdot \mathtt{g}_{U}(d@k)
 \label{eq:RBP}
 \end{eqnarray*}
+\vspace{-6pt}
 
 In the $uRBP$, the function $\mathtt{g}_{RBP}(d@k)$ is the same as the gain in RBP and transforms relevance values into the corresponding gains and, likewise, $\mathtt{g}_{U}(d@k)$ transforms understandability values into the corresponding gains. 
-If $\mathtt{g}_{U}(d@k)=1$ for every document, then only topical relevance affects retrieval evaluation, i.e. every document is considered as having equal understandability (and its highest value) and we obtain the original RBP. Two instantiations of the gain function $\mathtt{g}_{U}(d@k)$ have been explored in previous work: one binary (\textit{uRBP}) and the other graded (\textit{uRBPgr}). In the binary version $\mathtt{g}_{U}(d@k) = 1$ if $P(U|d@k) \geq th_U$, where $th_U$ is a threshold on the assessments of understandability (every assessment that is greater than or equal to $th_U$ would generate a gain of 1), and $\mathtt{g}_{U}(d@k)=0$ otherwise. In the graded version, understandability assessments are transformed into estimations of the probability function $P(U|d@k)$.
+If $\mathtt{g}_{U}(d@k)=1$ for every document, then only topical relevance affects retrieval evaluation, i.e. every document is considered as having equal understandability and we obtain the original RBP. Two instantiations of the gain function $\mathtt{g}_{U}(d@k)$ have been explored in previous work: one binary (\textit{uRBP}) and the other graded (\textit{uRBPgr}). In the binary version $\mathtt{g}_{U}(d@k) = 1$ if $P(U|d@k) \geq th_U$, where $th_U$ is a threshold on the assessments of understandability (every assessment that is greater than or equal to $th_U$ would generate a gain of 1), and $\mathtt{g}_{U}(d@k)=0$ otherwise. In the graded version, understandability assessments are transformed into estimations of the probability function $P(U|d@k)$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -17,17 +17,17 @@ As previously done in consumer health search collections~\cite{clefIR16,clefIR17
 We fixed a relatively large variance, $\sigma=40$, to mimic results of previous collections in which the understandability labels had a large variance \cite{clefIR16}, and we varied the mean $\mu$ of the Gaussian from 0 to 100. Figure~\ref{fig:gaussians} shows the expected label distribution for $\mu=20, 50, 80$, i.e., $\mathcal{N}(20, 40)$, $\mathcal{N}(50, 40)$ and $\mathcal{N}(80, 40)$.
 In Figure~\ref{fig:gaussians} we also included the threshold U used to compute $RBP_u$ (Section~\ref{sec:extension}).
 \end{enumerate}
-
-We executed these two phases in succession. In total, we generated 1,000 runs for each value of T (topicality phase) and $\mu$ value (understandability phase). 
+%
+%We executed these two phases in succession. In total, we generated 1,000 runs for each value of T (topicality phase) and $\mu$ value (understandability phase). 
+We executed these two phases in succession. In total, we generated 1,000 runs for each value of T and $\mu$. 
 
 \begin{figure}[t!]
   \centering
-   \includegraphics[width=0.30\textwidth]{figs/gaussians}
+   \includegraphics[width=0.30\textwidth]{figs/gaussians2}
     \vspace{-.2cm}
-    \caption{Gaussian distribution for different $\mu$: higher $\mu$ generates higher understandability labels (more difficult documents were retrieved). Here, only documents with understandability lower than 40 are considered easy-to-understand. (Understandability threshold shown as dotted line). \vspace{-16pt}}
+    \caption{Gaussian distribution for different $\mu$: higher $\mu$ generates higher understandability labels (more difficult documents were retrieved). Here, only documents with understandability lower than 40 are considered easy-to-understand (threshold shown as dotted line). \vspace{-16pt}}
   \label{fig:gaussians}
 \end{figure}
-
 
 We calculated $uRBP$ (using UBIRE) and $MM_{RBP}$ for each synthetic system.
 %The average result of the synthetic runs is shown in Table~\ref{tab:simulations}. Each row shows the results of simulations with different values for $T$, i.e., different expected number of topical documents retrieved.
